@@ -1,0 +1,270 @@
+{
+  "@@locale": "en",
+  "@welcome": {
+    "description": "Welcome message displayed at the start of the game"
+  },
+  "add_new_player": "Add new player",
+  "@add_new_player": {
+    "description": "Button to add a new player to the game"
+  },
+  "already_started": "The game has already started",
+  "@already_started": {
+    "description": "Error message indicating that the game has already started"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Title of the appearance settings"
+  },
+  "are_you_sure": "Are you sure?",
+  "@are_you_sure": {
+    "description": "Message asking the user if they are sure of their action"
+  },
+  "back": "Back",
+  "@back": {
+    "description": "Button to go back"
+  },
+  "back_to_game": "Back to game",
+  "@back_to_game": {
+    "description": "Button to go back to the game"
+  },
+  "create_game": "Create game",
+  "@create_game": {
+    "description": "Button to create a new game"
+  },
+  "continue_": "Continue",
+  "@continue": {
+    "description": "Button to continue"
+  },
+  "copy": "Copy",
+  "@copy": {
+    "description": "Button to copy the given text"
+  },
+  "current_word": "Your word is:",
+  "@current_word": {
+    "description": "Message indicating the current player's word"
+  },
+  "dark": "Dark",
+  "@dark": {
+    "description": "Dark mode"
+  },
+  "english": "English",
+  "@english": {
+    "description": "English language"
+  },
+  "enter_pseudo": "Enter your pseudo",
+  "@enter_pseudo": {
+    "description": "Instructions to ask the user to enter their pseudo"
+  },
+  "enter_word": "Enter your word",
+  "@enter_word": {
+    "description": "Instructions to ask the user to enter their word"
+  },
+  "french": "French",
+  "@french": {
+    "description": "French language"
+  },
+  "game_id": "Game ID",
+  "@game_id": {
+    "description": "Title of the game ID"
+  },
+  "hide_word": "Hide word",
+  "@hide_word": {
+    "description": "Button to hide the current player's word"
+  },
+  "go_to_party": "Go to party",
+  "@go_to_party": {
+    "description": "Button to go to the party"
+  },
+  "impostor": "Impostor",
+  "@impostor": {
+    "description": "Term used to refer to the player who must deceive the other players"
+  },
+  "join_game": "Join",
+  "@join_game": {
+    "description": "Button to join a game"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Title of the language settings"
+  },
+  "leaderboard": "Leaderboard",
+  "@leaderboard": {
+    "description": "Title of the leaderboard"
+  },
+  "leaderboard_description": "The game has ended, thank you for playing! Congratulations to {name} who was the best impostor!",
+  "@leaderboard_description": {
+    "description": "Description of the leaderboard"
+  },
+  "light": "Light",
+  "@light": {
+    "description": "Light mode"
+  },
+  "loading_screen_message": "Loadings of impostures...",
+  "@loading_screen_message": {
+    "description": "Message displayed during game loading"
+  },
+  "lobby": "Lobby",
+  "@lobby": {
+    "description": "Title of the lobby"
+  },
+  "lobby_description": "Waiting for players to join the game. The game master can start the game when ready.",
+  "@lobby_description": {
+    "description": "Description of the lobby"
+  },
+  "new_party": "New party",
+  "@new_party": {
+    "description": "Button to create a new party"
+  },
+  "not_all_player_read": "Not all players have read their word!",
+  "@not_all_player_read": {
+    "description": "Message indicating that not all players have read their word"
+  },
+  "notFound": "Not Found",
+  "@notFound": {
+    "description": "Message indicating that a resource could not be found"
+  },
+  "offline_mode": "Single device",
+  "@offline_mode": {
+    "description": "Option to play the game without an internet connection"
+  },
+  "online_mode": "Multi devices",
+  "@online_mode": {
+    "description": "Option to play the game with an internet connection"
+  },
+  "or_join_game": "Or join a multi devices game",
+  "@or_join_game": {
+    "description": "text to suggest to join a game"
+  },
+  "party": "Party",
+  "@party": {
+    "description": "Title of the party"
+  },
+  "party_rules": "Write a word that will be displayed to the other players. But careful, an impostor will try to deceive!",
+  "@party_rules": {
+    "description": "Rules of the party"
+  },
+  "party_over": "The party is over, impostor was {name}",
+  "@party_over": {
+    "description": "Subtitle on the results screen"
+  },
+  "pseudo_cannot_be_empty": "Pseudo cannot be empty",
+  "@pseudo_cannot_be_empty": {
+    "description": "Error message indicating that the user's pseudo cannot be empty"
+  },
+  "read_word_rule": "Each player must read their word",
+  "@read_word_rule": {
+    "description": "Rule to read the word"
+  },
+  "remove_player": "Remove {player}",
+  "@remove": {
+    "description": "Button to remove the given text"
+  },
+  "replay_game": "Replay game",
+  "@replay_game": {
+    "description": "Button to replay the game"
+  },
+  "results": "Results",
+  "@results": {
+    "description": "Results title"
+  },
+  "see_results": "See results",
+  "@see_result": {
+    "description": "Button to see the result of the game"
+  },
+  "send": "Send",
+  "@send": {
+    "description": "Button to send the given text"
+  },
+  "share_game": "Share game",
+  "@share_game": {
+    "description": "Button to share the game"
+  },
+  "share_game_message": "Hey, come play Impostor with me!\nGame ID: {id}\nhttps://impostor-multi.com/#/multi/{id}",
+  "@share_game_message": {
+    "description": "Message to share the game"
+  },
+  "show_word": "Show word",
+  "@show_word": {
+    "description": "Button to show the current player's word"
+  },
+  "show_words": "Show words",
+  "@show_words": {
+    "description": "Button to show all the words"
+  },
+  "start_game": "Start game",
+  "@start_game": {
+    "description": "Button to start the game"
+  },
+  "system": "System",
+  "@system": {
+    "description": "Used to refer to the system"
+  },
+  "toggle_light_dark_mode": "Toggle light/dark mode",
+  "@toggle_light_dark_mode": {
+    "description": "Button to toggle between light and dark mode"
+  },
+  "views": "Views",
+  "@views": {
+    "description": "Number of time the word has been viewed"
+  },
+  "voting_phase": "Voting phase",
+  "@voting_phase": {
+    "description": "Title of the voting phase"
+  },
+  "voting_phase_description": "Time to deliberate and vote for the impostor",
+  "@voting_phase_description": {
+    "description": "Description of the voting phase"
+  },
+  "waiting_for_game_master": "Waiting for the game master...",
+  "@waiting_for_game_master": {
+    "description": "Waiting the game master to do an action"
+  },
+  "welcome": "Welcome to the Impostor game",
+  "@_LEXICON_WORDS": {},
+  "lex_beverages": "beer_wine_cocktail",
+  "lex_hot_drinks": "coffee_tea_matcha",
+  "lex_european_countries": "germany_france_switzerland_spain_united kingdom",
+  "lex_fruits": "apple_pear_banana_orange",
+  "lex_vehicles": "car_truck_motorcycle_bus",
+  "lex_musical_instruments": "guitar_piano_violin_drum",
+  "lex_public_transportation": "train_metro_tram_bus",
+  "lex_wheelers": "bike_motorbike_scooter_skateboard_roller",
+  "lex_baked_goods": "cake_pie_dessert_bakery",
+  "lex_fast_food": "burger_pizza_sushi_taco",
+  "lex_ball_games": "basketball_soccer_tennis_volleyball",
+  "lex_natural_environments": "forest_jungle_mountain",
+  "lex_arid_environments": "desert_savannah_beach",
+  "lex_visual_entertainment": "movie_series_theater_opera_concert",
+  "lex_reading_materials": "book_comic_newspaper",
+  "lex_wearable_tech": "smartphone_smartwatch_headphones",
+  "lex_computing_devices": "laptop_tablet_desktop_smartphone",
+  "lex_transportation": "boat_airplane_helicopter",
+  "lex_planets": "earth_mars_venus_saturn",
+  "lex_celestial_bodies": "sun_moon",
+  "lex_day_parts": "morning_evening_afternoon_night",
+  "lex_seasons": "spring_summer_autumn_winter",
+  "lex_grains": "rice_pasta_bread_quinoa_couscous",
+  "lex_hairstyle": "bun_ponytail_braid",
+  "lex_drinks": "water_juice_soda_coffee_tea",
+  "lex_furniture": "chair_table_sofa_bed",
+  "lex_movies": "inception, the movie_titanic, the movie_avatar, the movie_gladiator, the movie",
+  "lex_materials": "wood_metal_plastic_glass",
+  "lex_weather": "sunny_rainy_windy_snowy",
+  "lex_sea_creatures": "shark_whale_dolphin_octopus",
+  "lex_reptiles": "snake_lizard_crocodile_turtle",
+  "lex_medical_specialties": "cardiology_neurology_oncology_pediatrics",
+  "lex_scientific_disciplines": "physics_chemistry_biology_geology",
+  "lex_head_parts": "eye_nose_mouth_ear",
+  "lex_warm_clothing": "jacket_gloves_scarf_hat",
+  "lex_luxury_brands": "gucci_prada_louis vuitton_burberry_versace_ralph lauren",
+  "lex_board_games": "chess_monopoly_scrabble_uno",
+  "lex_cosmetics": "lipstick_mascara_blush_eyeliner",
+  "lex_monuments": "eiffel tower_statue of liberty_pyramids_colosseum",
+  "lex_dog_breeds": "labrador_bulldog_husky_chihuahua_dalmatian_akita",
+  "lex_social_networks": "facebook_instagram_linkedin_snapchat_ticktock",
+  "lex_apple_products": "iphone_macbook_ipad_apple watch_airpods",
+  "lex_console": "playstation_xbox_gamecube_switch_wii",
+    "lex_clothing_brands": "nike_adidas_puma_reebok",
+  "lex_pedagogical_jobs": "teacher_coach_school director",
+  "lex_old_communications": "letter_telegraph_telephone"
+}
