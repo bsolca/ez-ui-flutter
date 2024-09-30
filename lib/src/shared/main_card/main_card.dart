@@ -122,7 +122,7 @@ class MainCard extends ConsumerWidget {
                                   maxWidth: maxWidth,
                                 ),
                                 child: footer,
-                              )
+                              ),
                           ].withSpaceBetween(
                             height: ConstLayout.spacer,
                           ),

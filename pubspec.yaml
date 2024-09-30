@@ -9,7 +9,7 @@ environment:
   flutter: 3.16.9
 
 dependencies:
-  collection:
+  collection: ^1.16.0
   country_flags: ^2.2.0
   dropdown_button2: ^2.3.9
   easy_localization: ^3.0.3
@@ -55,4 +55,4 @@ flutter:
 fonts:
   - family: Prototype
     fonts:
-        - asset: assets/fonts/Prototype.ttf
+      - asset: assets/fonts/Prototype.ttf
