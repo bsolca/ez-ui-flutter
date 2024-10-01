@@ -1,48 +1,69 @@
 // indicator_widget.dart
 import 'package:flutter/material.dart';
 
+/// A widget that shows a scrollable indicator synced with a scrollable list.
+///
+/// The [IndicatorWidget] displays an indicator that moves along with the
+/// items in a scrollable list and highlights the currently selected item
+/// based on the scroll position. The indicator size adjusts according to
+/// the height of the selected item.
+///
+/// This widget works with a [ScrollController] to update the indicator's
+/// position and size based on the current scroll offset and selected index.
 class IndicatorWidget extends StatefulWidget {
+  /// Creates an [IndicatorWidget] with the given [scrollController],
   const IndicatorWidget({
-    Key? key,
+    super.key,
     required this.scrollController,
     required this.itemHeights,
     required this.selectedIndex,
     this.indicatorColor = Colors.blue,
-  }) : super(key: key);
+  });
 
+  /// The controller to monitor and control the scroll position of the list.
   final ScrollController scrollController;
+
+  /// A list of item heights for the scrollable list.
+  ///
+  /// The length of this list should correspond to the number of items
+  /// in the scrollable list, and each value represents the height of the
+  /// respective item.
   final List<double> itemHeights;
+
+  /// The index of the currently selected item in the scrollable list.
   final int selectedIndex;
+
+  /// The color of the scroll indicator.
   final Color indicatorColor;
 
   @override
-  _IndicatorWidgetState createState() => _IndicatorWidgetState();
+  State<IndicatorWidget> createState() => _IndicatorWidgetState();
 }
 
 class _IndicatorWidgetState extends State<IndicatorWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
-  double _indicatorPosition = 0.0;
+  double _indicatorPosition = 0;
 
   @override
   void initState() {
     super.initState();
 
-    // Initialize the AnimationController
+    // Initialize the AnimationController for smooth transitions
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
 
-    // Calculate initial indicator position after the first frame
+    // Calculate the initial position of the indicator
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         _indicatorPosition = _calculateIndicatorPosition();
       });
     });
 
-    // Add scroll listener to update indicator position instantly during scroll
+    // Listen to scroll changes to update the indicator's position
     widget.scrollController.addListener(_onScroll);
   }
 
@@ -50,12 +71,12 @@ class _IndicatorWidgetState extends State<IndicatorWidget>
   void didUpdateWidget(covariant IndicatorWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
 
+    // Animate the indicator when the selected index changes
     if (oldWidget.selectedIndex != widget.selectedIndex) {
-      // Selected index has changed, animate the indicator
       _animateIndicator();
     }
 
-    // If item heights change, recalculate position
+    // Recalculate the indicator position when item heights change
     if (oldWidget.itemHeights != widget.itemHeights) {
       setState(() {
         _indicatorPosition = _calculateIndicatorPosition();
@@ -65,21 +86,23 @@ class _IndicatorWidgetState extends State<IndicatorWidget>
 
   @override
   void dispose() {
+    // Clean up the animation controller and scroll listener
     _animationController.dispose();
     widget.scrollController.removeListener(_onScroll);
     super.dispose();
   }
 
+  /// Handles scroll events and updates the indicator position accordingly.
   void _onScroll() {
-    // Update indicator position instantly during scroll
     setState(() {
       _indicatorPosition = _calculateIndicatorPosition();
     });
   }
 
+  /// Animates the indicator position when the selected index changes.
   void _animateIndicator() {
-    final double start = _indicatorPosition;
-    final double end = _calculateIndicatorPosition();
+    final start = _indicatorPosition;
+    final end = _calculateIndicatorPosition();
 
     _animationController.reset();
 
@@ -94,9 +117,10 @@ class _IndicatorWidgetState extends State<IndicatorWidget>
     _animationController.forward();
   }
 
+  /// Calculates indicator position from scroll offset and selected index.
   double _calculateIndicatorPosition() {
-    double position = -widget.scrollController.offset;
-    for (int i = 0; i < widget.selectedIndex; i++) {
+    var position = -widget.scrollController.offset;
+    for (var i = 0; i < widget.selectedIndex; i++) {
       position += widget.itemHeights[i];
     }
     return position;
@@ -121,6 +145,7 @@ class _IndicatorWidgetState extends State<IndicatorWidget>
   }
 }
 
+/// A custom painter that draws the indicator on the canvas.
 class _IndicatorPainter extends CustomPainter {
   _IndicatorPainter({
     required this.indicatorPosition,
@@ -128,38 +153,44 @@ class _IndicatorPainter extends CustomPainter {
     required this.indicatorColor,
   });
 
+  /// The vertical position of the indicator.
   final double indicatorPosition;
+
+  /// The height of the indicator, which matches the selected item height.
   final double indicatorHeight;
+
+  /// The color of the indicator.
   final Color indicatorColor;
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Define the indicator rectangle
-    final Rect indicatorRect = Rect.fromLTWH(
-      0.0,
+    // Define the rectangle for the indicator
+    final indicatorRect = Rect.fromLTWH(
+      0,
       indicatorPosition,
-      4.0, // Indicator width
+      4, // Indicator width
       indicatorHeight,
     );
 
-    // Define the visible area
-    final Rect visibleRect = Offset.zero & size;
+    // Define the visible area of the canvas
+    final visibleRect = Offset.zero & size;
 
-    // Check if the indicator is within the visible area
+    // Only paint if the indicator is within the visible area
     if (!indicatorRect.overlaps(visibleRect)) {
-      return; // Don't paint if not visible
+      return;
     }
 
-    // Calculate the overlapping portion
-    final Rect clippedRect = indicatorRect.intersect(visibleRect);
+    // Calculate the portion of the indicator that overlaps.
+    final clippedRect = indicatorRect.intersect(visibleRect);
 
-    // Draw the indicator
-    final Paint paint = Paint()..color = indicatorColor;
+    // Paint the indicator
+    final paint = Paint()..color = indicatorColor;
     canvas.drawRect(clippedRect, paint);
   }
 
   @override
   bool shouldRepaint(covariant _IndicatorPainter oldDelegate) {
+    // Repaint when the position, height, or color of the indicator changes
     return indicatorPosition != oldDelegate.indicatorPosition ||
         indicatorHeight != oldDelegate.indicatorHeight ||
         indicatorColor != oldDelegate.indicatorColor;

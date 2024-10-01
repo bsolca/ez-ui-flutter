@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+/// Scrollable indicator synced with a scrollable list.
+///
+/// The [IndicatorRenderBox] calculates and paints the position and size
+/// of the indicator based on the scroll position of the list and the
+/// currently selected index. The indicator height is determined by the
+/// height of the selected item.
 class IndicatorRenderBox extends RenderBox {
+  /// Creates an [IndicatorRenderBox] with the given parameters.
   IndicatorRenderBox({
     required this.scrollController,
     required this.itemHeights,
@@ -9,9 +16,16 @@ class IndicatorRenderBox extends RenderBox {
     required this.indicatorColor,
   });
 
+  /// The controller to track and control the scrollable list's position.
   final ScrollController scrollController;
+
+  /// A list of item heights corresponding to the items in the scrollable list.
   final List<double> itemHeights;
+
+  /// The index of the currently selected item in the scrollable list.
   int selectedIndex;
+
+  /// The color of the scroll indicator.
   Color indicatorColor;
 
   @override
@@ -20,27 +34,30 @@ class IndicatorRenderBox extends RenderBox {
   @override
   void attach(PipelineOwner owner) {
     super.attach(owner);
+    // Attach a listener to the scroll controller to repaint when scrolling.
     scrollController.addListener(markNeedsPaint);
   }
 
   @override
   void detach() {
+    // Remove the listener from the scroll controller when detaching.
     scrollController.removeListener(markNeedsPaint);
     super.detach();
   }
 
   @override
   void performResize() {
+    // Set the size to be constrained by the parent.
     size = constraints.biggest;
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    final Canvas canvas = context.canvas;
+    final canvas = context.canvas;
 
-    // Calculate the top position of the indicator
-    double topPosition = -scrollController.offset;
-    for (int i = 0; i < selectedIndex; i++) {
+    // Calculate the top position of the indicator based on the scroll offset
+    var topPosition = -scrollController.offset;
+    for (var i = 0; i < selectedIndex; i++) {
       topPosition += itemHeights[i];
     }
 
@@ -52,17 +69,18 @@ class IndicatorRenderBox extends RenderBox {
     }
 
     // Get the height of the selected item
-    double indicatorHeight = itemHeights[selectedIndex];
+    final indicatorHeight = itemHeights[selectedIndex];
 
-    // Draw the indicator
-    final Paint paint = Paint()..color = indicatorColor;
-    final Rect rect = Rect.fromLTWH(
+    // Draw the indicator rectangle on the canvas
+    final paint = Paint()..color = indicatorColor;
+    final rect = Rect.fromLTWH(
       offset.dx,
       offset.dy + topPosition,
-      4.0, // Indicator width
+      4, // Indicator width
       indicatorHeight,
     );
 
+    // Paint the rectangle representing the indicator
     canvas.drawRect(rect, paint);
   }
 }
