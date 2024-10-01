@@ -11,6 +11,8 @@
 /// - [SmoothRectangleBorder]: A border class that supports smooth, customizable
 ///   corner radii and various border alignments, including inside, center, or
 ///   outside of the shape's edge.
+///
+/// From: https://github.com/aloisdeniel/figma_squircle/tree/main
 library squircle;
 
 export 'src/clip_smooth_rect.dart';
