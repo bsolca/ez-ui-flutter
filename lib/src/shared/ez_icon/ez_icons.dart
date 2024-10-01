@@ -5,8 +5,13 @@ const String _basePath = 'assets/hero_icons/';
 enum EzIcons {
   /// Chevron up mini icon
   chevronUpMini,
+
+  /// Chevron down mini icon
+  chevronDownMini,
+
   /// Home mini icon
   homeMini,
+
   // Add more icons here as needed
 }
 
@@ -17,6 +22,8 @@ extension EzIconPath on EzIcons {
     switch (this) {
       case EzIcons.chevronUpMini:
         return '${_basePath}chevron-up-mini.svg';
+      case EzIcons.chevronDownMini:
+        return '${_basePath}chevron-down-mini.svg';
       case EzIcons.homeMini:
         return '${_basePath}home-mini.svg';
     }

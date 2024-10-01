@@ -90,9 +90,8 @@ class _EzSidebarState extends State<EzSidebar> {
         child: Column(
           children: [
             EzSidebarHeader(
-              logo: widget.logo,
-              headerText: widget.headerText,
-              headerDropdown: widget.headerDropdown,
+              onTap: () => print('Logo tapped'),
+              appName: 'Ez Dashboard',
             ),
             divider,
             Expanded(
@@ -136,7 +135,7 @@ class _EzSidebarState extends State<EzSidebar> {
                     selectedIndex: widget.currentIndex,
                     indicatorColor:
                     EzSidebarConsts.getIndicatorColor(colorScheme),
-                    indicatorPadding: EzSidebarConsts.indicatorPadding,
+                    indicatorPadding: EzSidebarConsts.indicatorVerticalPadding,
                   ),
                 ],
               ),

@@ -1,4 +1,3 @@
-// ez_sidebar_item.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
@@ -75,8 +74,8 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
         child: ClipSmoothRect(
           radius: const SmoothBorderRadius.all(
             SmoothRadius(
-              cornerRadius: 10,
-              cornerSmoothing: 0.3,
+              cornerRadius: EzSidebarConsts.itemBorderRadius,
+              cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
             ),
           ),
           child: Material(
@@ -87,7 +86,7 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
                 EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
               ),
               child: Padding(
-                padding: EzSidebarConsts.sidebarItemContentPadding,
+                padding: EzSidebarConsts.contentPadding, // Using contentPadding here
                 child: Row(
                   children: [
                     if (widget.iconPath != null)

@@ -14,13 +14,32 @@ class EzSidebarConsts {
   static const double sidebarWidth = 260;
 
   // ************
-  // Divider
+  // Padding and Margins
   // ************
 
-  /// Divider padding
+  /// General horizontal padding
   static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
     horizontal: 8,
   );
+
+  /// General content padding inside items
+  static const EdgeInsets contentPadding = EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 8,
+  );
+
+  /// Padding to the right of the icon in SidebarItem
+  static const EdgeInsets sidebarItemIconPadding = EdgeInsets.only(right: 16);
+
+  /// Header padding
+  static const EdgeInsets headerPadding = EdgeInsets.all(16);
+
+  /// Footer padding
+  static const EdgeInsets footerPadding = EdgeInsets.all(8);
+
+  // ************
+  // Divider
+  // ************
 
   /// Divider thickness
   static const double dividerThickness = 1;
@@ -48,30 +67,13 @@ class EzSidebarConsts {
   // Indicator
   // ************
 
-  /// Padding for sidebar indicator
-  static const EdgeInsets indicatorPadding = EdgeInsets.symmetric(vertical: 8);
-
   /// Default indicator vertical padding
-  static const double indicatorVerticalPadding = 8;
+  static const indicatorVerticalPadding = EdgeInsets.symmetric(vertical: 8);
 
   /// Returns the indicator color based on the color scheme.
   static Color getIndicatorColor(ColorScheme colorScheme) {
     return colorScheme.onSurface;
   }
-
-  // *****************
-  // Sidebar Header
-  // *****************
-
-  /// Padding for sidebar header
-  static const EdgeInsets headerPadding = EdgeInsets.all(16);
-
-  // *****************
-  // Sidebar Footer
-  // *****************
-
-  /// Padding for sidebar footer
-  static const EdgeInsets footerPadding = EdgeInsets.all(8);
 
   // ***********
   // Sidebar Item
@@ -89,23 +91,11 @@ class EzSidebarConsts {
   /// Overlay color opacity for sidebar items
   static const int itemOverlayOpacity = 20;
 
-  /// Padding for SidebarItem content
-  static const EdgeInsets sidebarItemContentPadding =
-      EdgeInsets.symmetric(horizontal: 16, vertical: 8);
-
-  /// Padding to the right of the icon in SidebarItem
-  static const EdgeInsets sidebarItemIconPadding = EdgeInsets.only(right: 16);
-
-  /// Text style for SidebarItem
-  static const TextStyle sidebarItemTextStyle = TextStyle(
-    fontWeight: FontWeight.w500,
-  );
-
   /// Size of the SVG icon in SidebarItem
   static const double sidebarItemIconSize = 24;
 
-  /// Border radius for InkWell in SidebarItem
-  static const double sidebarItemInkWellBorderRadius = 8;
+  /// Blend mode for the SVG icon color filter
+  static const BlendMode sidebarItemIconBlendMode = BlendMode.srcIn;
 
   /// Returns the overlay color for SidebarItem based on the color scheme.
   static Color getSidebarItemOverlayColor(ColorScheme colorScheme) {
@@ -137,17 +127,15 @@ class EzSidebarConsts {
     return colorScheme.onSurface;
   }
 
+  /// Text style for SidebarItem
+  static const TextStyle sidebarItemTextStyle = TextStyle(
+    fontWeight: FontWeight.w500,
+  );
+
   // ***************
   // Avatar
   // ***************
 
   /// Avatar size
   static const double avatarSize = 36;
-
-  // ***************
-  // Icon
-  // ***************
-
-  /// Blend mode for the SVG icon color filter
-  static const BlendMode sidebarItemIconBlendMode = BlendMode.srcIn;
 }
