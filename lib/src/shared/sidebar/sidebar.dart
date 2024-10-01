@@ -7,6 +7,7 @@ import 'package:impostor/src/shared/sidebar/sidebar_footer.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_header.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_indicator_widget.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_item.dart';
+import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 /// A [Sidebar] widget that displays a customizable navigation sidebar.
 ///
@@ -100,30 +101,34 @@ class _SidebarState extends State<Sidebar> {
                 children: [
                   NotificationListener<SizeChangedLayoutNotification>(
                     onNotification: (notification) => true,
-                    child: ListView.builder(
+                    child: WebSmoothScroll(
                       controller: widget.scrollController,
-                      itemCount: widget.items.length,
-                      itemBuilder: (context, index) {
-                        final item = widget.items[index];
-                        return MeasuringWidget(
-                          onSize: (size) => widget.updateItemHeight(
-                            index,
-                            size.height,
-                          ),
-                          child: Padding(
-                            padding: SidebarConsts.itemPadding,
-                            child: SidebarItem(
-                              text: item.text,
-                              iconPath: item.iconPath,
-                              isSelected: index == widget.currentIndex,
-                              onTap: () {
-                                widget.onItemTap(index);
-                                item.onTap.call();
-                              },
+                      child: ListView.builder(
+                        controller: widget.scrollController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: widget.items.length,
+                        itemBuilder: (context, index) {
+                          final item = widget.items[index];
+                          return MeasuringWidget(
+                            onSize: (size) => widget.updateItemHeight(
+                              index,
+                              size.height,
                             ),
-                          ),
-                        );
-                      },
+                            child: Padding(
+                              padding: SidebarConsts.itemPadding,
+                              child: SidebarItem(
+                                text: item.text,
+                                iconPath: item.iconPath,
+                                isSelected: index == widget.currentIndex,
+                                onTap: () {
+                                  widget.onItemTap(index);
+                                  item.onTap.call();
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                   SidebarIndicatorWidget(
