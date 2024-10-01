@@ -1,5 +1,6 @@
+// sidebar_item.dart
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
 
 /// A [SidebarItem] widget that represents a single item in the sidebar.
 ///
@@ -33,32 +34,31 @@ class SidebarItem extends StatefulWidget {
 class _SidebarItemState extends State<SidebarItem> {
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
+      duration: SidebarConsts.animationDuration,
       decoration: ShapeDecoration(
-        shape: SmoothRectangleBorder(
-          borderRadius: SmoothBorderRadius(
-            cornerRadius: 10,
-            cornerSmoothing: 0.5,
-          ),
-        ),
+        shape: SidebarConsts.getSidebarItemShapeBorder(),
+        color: widget.isSelected
+            ? colorScheme.primary.withOpacity(0.1)
+            : Colors.transparent, // Example selected color
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: widget.onTap,
           overlayColor: WidgetStateProperty.all(
-            Theme.of(context).colorScheme.inverseSurface.withAlpha(20),
+            SidebarConsts.getSidebarItemOverlayColor(colorScheme),
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius:
+          BorderRadius.circular(SidebarConsts.sidebarItemInkWellBorderRadius),
           child: Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: SidebarConsts.sidebarItemContentPadding,
             child: Text(
               widget.text,
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-              ),
+              style: SidebarConsts.sidebarItemTextStyle,
             ),
           ),
         ),

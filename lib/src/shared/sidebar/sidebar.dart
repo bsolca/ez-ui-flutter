@@ -1,5 +1,7 @@
+// sidebar.dart
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
+import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_footer.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_header.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_indicator_widget.dart';
@@ -63,68 +65,81 @@ class Sidebar extends StatefulWidget {
 }
 
 class _SidebarState extends State<Sidebar> {
-
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    // Determine the sidebar background color based on the flag
+    final sidebarBackgroundColor = SidebarConsts.getSidebarBackgroundColor(
+      colorScheme,
+    );
+
+    // Define the divider widget using constants and dynamic colors
     final divider = Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: SidebarConsts.dividerPadding,
       child: Divider(
-        thickness: 1,
-        color: Theme.of(context).colorScheme.inverseSurface.withAlpha(20),
+        thickness: SidebarConsts.dividerThickness,
+        color: SidebarConsts.getDividerColor(colorScheme),
       ),
     );
+
     return SizedBox(
-      width: 200,
-      child: Column(
-        children: [
-          SidebarHeader(
-            logo: widget.logo,
-            headerText: widget.headerText,
-            headerDropdown: widget.headerDropdown,
-          ),
-          divider,
-          Expanded(
-            child: Stack(
-              children: [
-                NotificationListener<SizeChangedLayoutNotification>(
-                  onNotification: (notification) => true,
-                  child: ListView.builder(
-                    controller: widget.scrollController,
-                    itemCount: widget.items.length,
-                    itemBuilder: (context, index) {
-                      return MeasuringWidget(
-                        onSize: (size) => widget.updateItemHeight(
-                          index,
-                          size.height,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: SidebarItem(
-                            text: widget.items[index],
-                            isSelected: index == widget.currentIndex,
-                            onTap: () => widget.onItemTap(index),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SidebarIndicatorWidget(
-                  scrollController: widget.scrollController,
-                  itemHeights: widget.itemHeights,
-                  selectedIndex: widget.currentIndex,
-                  indicatorColor: Theme.of(context).colorScheme.onSurface,
-                  indicatorPadding: const EdgeInsets.symmetric(vertical: 8),
-                ),
-              ],
+      width: SidebarConsts.sidebarWidth,
+      child: ColoredBox(
+        color: sidebarBackgroundColor,
+        child: Column(
+          children: [
+            SidebarHeader(
+              logo: widget.logo,
+              headerText: widget.headerText,
+              headerDropdown: widget.headerDropdown,
             ),
-          ),
-          divider,
-          SidebarFooter(
-            logo: widget.logo,
-            headerText: widget.headerText,
-          ),
-        ],
+            divider,
+            Expanded(
+              child: Stack(
+                children: [
+                  NotificationListener<SizeChangedLayoutNotification>(
+                    onNotification: (notification) => true,
+                    child: ListView.builder(
+                      controller: widget.scrollController,
+                      itemCount: widget.items.length,
+                      itemBuilder: (context, index) {
+                        return MeasuringWidget(
+                          onSize: (size) => widget.updateItemHeight(
+                            index,
+                            size.height,
+                          ),
+                          child: Padding(
+                            padding: SidebarConsts.itemPadding,
+                            child: SidebarItem(
+                              text: widget.items[index],
+                              isSelected: index == widget.currentIndex,
+                              onTap: () => widget.onItemTap(index),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SidebarIndicatorWidget(
+                    scrollController: widget.scrollController,
+                    itemHeights: widget.itemHeights,
+                    selectedIndex: widget.currentIndex,
+                    indicatorColor: SidebarConsts.getIndicatorColor(
+                      colorScheme,
+                    ),
+                    indicatorPadding: SidebarConsts.indicatorPadding,
+                  ),
+                ],
+              ),
+            ),
+            divider,
+            SidebarFooter(
+              logo: widget.logo,
+              headerText: widget.headerText,
+            ),
+          ],
+        ),
       ),
     );
   }

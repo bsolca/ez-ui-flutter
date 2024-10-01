@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
 
 /// A [SidebarHeader] widget that displays the header section of the sidebar.
 ///
@@ -26,7 +27,7 @@ class SidebarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: SidebarConsts.headerPadding,
       child: Row(
         children: [
           if (logo != null) logo!,

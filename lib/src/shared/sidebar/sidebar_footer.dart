@@ -1,4 +1,6 @@
+// sidebar_footer.dart
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
 
 /// A [SidebarFooter] widget that displays the footer section of the sidebar.
 ///
@@ -21,12 +23,15 @@ class SidebarFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final logo = this.logo;
+    final headerText = this.headerText;
+
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: SidebarConsts.footerPadding,
       child: Row(
         children: [
-          if (logo != null) logo!,
-          if (headerText != null) Text(headerText!),
+          if (logo != null) logo,
+          if (headerText != null) Text(headerText),
         ],
       ),
     );
