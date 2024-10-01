@@ -3,13 +3,13 @@ import 'package:flutter/rendering.dart';
 
 /// Scrollable indicator synced with a scrollable list.
 ///
-/// The [IndicatorRenderBox] calculates and paints the position and size
+/// The [SidebarIndicatorRenderBox] calculates and paints the position and size
 /// of the indicator based on the scroll position of the list and the
 /// currently selected index. The indicator height is determined by the
 /// height of the selected item.
-class IndicatorRenderBox extends RenderBox {
-  /// Creates an [IndicatorRenderBox] with the given parameters.
-  IndicatorRenderBox({
+class SidebarIndicatorRenderBox extends RenderBox {
+  /// Creates an [SidebarIndicatorRenderBox] with the given parameters.
+  SidebarIndicatorRenderBox({
     required this.scrollController,
     required this.itemHeights,
     required this.selectedIndex,

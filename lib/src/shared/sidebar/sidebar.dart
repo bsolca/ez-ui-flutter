@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/sidebar/indicator_widget.dart';
-import 'package:impostor/src/shared/sidebar/measuring_widget.dart';
+import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_footer.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_header.dart';
+import 'package:impostor/src/shared/sidebar/sidebar_indicator_widget.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_item.dart';
 
 /// A [Sidebar] widget that displays a customizable navigation sidebar.
@@ -109,7 +109,7 @@ class _SidebarState extends State<Sidebar> {
                     },
                   ),
                 ),
-                IndicatorWidget(
+                SidebarIndicatorWidget(
                   scrollController: widget.scrollController,
                   itemHeights: widget.itemHeights,
                   selectedIndex: widget.currentIndex,
