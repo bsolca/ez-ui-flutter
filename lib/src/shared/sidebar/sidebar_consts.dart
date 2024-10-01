@@ -48,7 +48,6 @@ class SidebarConsts {
         : colorScheme.surfaceContainer;
   }
 
-
   // *******************
   // sidebar_footer.dart
   // *******************
@@ -56,16 +55,16 @@ class SidebarConsts {
   /// Padding for sidebar footer
   static const EdgeInsets footerPadding = EdgeInsets.all(16);
 
-  // *******************
+  // ***********
   // sidebar_header.dart
-  // *******************
+  // ***********
 
   /// Padding for sidebar header
   static const EdgeInsets headerPadding = EdgeInsets.all(16);
 
-  // *****************
+  // ***********
   // sidebar_item.dart
-  // *****************
+  // ***********
 
   /// Animation duration for sidebar items
   static const Duration animationDuration = Duration(milliseconds: 200);
@@ -104,5 +103,33 @@ class SidebarConsts {
         cornerSmoothing: itemBorderSmoothing,
       ),
     );
+  }
+
+  // ***********
+  // sidebar_item.dart - New Constants
+  // ***********
+
+  /// Padding to the right of the icon in SidebarItem
+  static const EdgeInsets sidebarItemIconPadding = EdgeInsets.only(right: 16);
+
+  /// Size of the SVG icon in SidebarItem
+  static const double sidebarItemIconSize = 24;
+
+  /// Blend mode for the SVG icon color filter
+  static const BlendMode sidebarItemIconBlendMode = BlendMode.srcIn;
+
+  /// Icon color when hovered
+  static Color getSidebarItemIconHoverColor(ColorScheme colorScheme) {
+    return colorScheme.onSurface;
+  }
+
+  /// Icon color when not hovered and not selected
+  static Color getSidebarItemIconDefaultColor(ColorScheme colorScheme) {
+      return colorScheme.onSurface.withOpacity(0.6);
+  }
+
+  /// Icon color when selected and not hovered
+  static Color getSidebarItemIconSelectedColor(ColorScheme colorScheme) {
+    return colorScheme.onSurface;
   }
 }

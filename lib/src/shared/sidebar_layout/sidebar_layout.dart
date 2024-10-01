@@ -1,4 +1,6 @@
+// sidebar_layout.dart
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/sidebar/model/sidebar_item_data.codegen.dart';
 import 'package:impostor/src/shared/sidebar/sidebar.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
@@ -39,8 +41,8 @@ class _SidebarLayoutState extends State<SidebarLayout> {
   /// Controller for managing the scroll position of the sidebar.
   final ScrollController _scrollController = ScrollController();
 
-  /// The list of sidebar item labels.
-  late final List<String> items;
+  /// The list of sidebar items.
+  late final List<SidebarItemData> items;
 
   /// The heights of each sidebar item.
   final List<double> _itemHeights = [];
@@ -48,8 +50,14 @@ class _SidebarLayoutState extends State<SidebarLayout> {
   @override
   void initState() {
     super.initState();
-    // Generate a list of 25 sidebar items labeled 'Index 0' to 'Index 24'.
-    items = List.generate(25, (index) => 'Index $index');
+    // Initialize a list of 25 sidebar items with optional icons.
+    items = List.generate(25, (index) {
+      return SidebarItemData(
+        text: 'Item $index',
+        iconPath: 'assets/hero_icons/home-mini.svg',
+        onTap: () => print('Item $index tapped'),
+      );
+    });
     // Initialize the item heights with zeros.
     _itemHeights.addAll(List<double>.filled(items.length, 0));
   }

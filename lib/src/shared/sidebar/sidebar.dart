@@ -1,6 +1,7 @@
 // sidebar.dart
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
+import 'package:impostor/src/shared/sidebar/model/sidebar_item_data.codegen.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_footer.dart';
 import 'package:impostor/src/shared/sidebar/sidebar_header.dart';
@@ -40,8 +41,8 @@ class Sidebar extends StatefulWidget {
   /// An optional dropdown widget displayed in the header.
   final Widget? headerDropdown;
 
-  /// The list of item labels to display in the sidebar.
-  final List<String> items;
+  /// The list of items to display in the sidebar.
+  final List<SidebarItemData> items;
 
   /// The index of the currently selected item.
   final int currentIndex;
@@ -69,10 +70,9 @@ class _SidebarState extends State<Sidebar> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    // Determine the sidebar background color based on the flag
-    final sidebarBackgroundColor = SidebarConsts.getSidebarBackgroundColor(
-      colorScheme,
-    );
+    // Determine the sidebar background color based on the color scheme
+    final sidebarBackgroundColor =
+    SidebarConsts.getSidebarBackgroundColor(colorScheme);
 
     // Define the divider widget using constants and dynamic colors
     final divider = Padding(
@@ -86,7 +86,7 @@ class _SidebarState extends State<Sidebar> {
     return SizedBox(
       width: SidebarConsts.sidebarWidth,
       child: ColoredBox(
-        color: sidebarBackgroundColor,
+        color: sidebarBackgroundColor, // Set the background color
         child: Column(
           children: [
             SidebarHeader(
@@ -104,6 +104,7 @@ class _SidebarState extends State<Sidebar> {
                       controller: widget.scrollController,
                       itemCount: widget.items.length,
                       itemBuilder: (context, index) {
+                        final item = widget.items[index];
                         return MeasuringWidget(
                           onSize: (size) => widget.updateItemHeight(
                             index,
@@ -112,9 +113,13 @@ class _SidebarState extends State<Sidebar> {
                           child: Padding(
                             padding: SidebarConsts.itemPadding,
                             child: SidebarItem(
-                              text: widget.items[index],
+                              text: item.text,
+                              iconPath: item.iconPath,
                               isSelected: index == widget.currentIndex,
-                              onTap: () => widget.onItemTap(index),
+                              onTap: () {
+                                widget.onItemTap(index);
+                                item.onTap.call();
+                              },
                             ),
                           ),
                         );
@@ -125,9 +130,8 @@ class _SidebarState extends State<Sidebar> {
                     scrollController: widget.scrollController,
                     itemHeights: widget.itemHeights,
                     selectedIndex: widget.currentIndex,
-                    indicatorColor: SidebarConsts.getIndicatorColor(
-                      colorScheme,
-                    ),
+                    indicatorColor:
+                    SidebarConsts.getIndicatorColor(colorScheme),
                     indicatorPadding: SidebarConsts.indicatorPadding,
                   ),
                 ],
