@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-/// Pseudo of the player.
+/// Text widget.
 class AvatarName extends StatelessWidget {
-  /// Pseudo of the player.
+  /// Text widget.
   const AvatarName({
     super.key,
     required this.name,
   });
 
-  /// Pseudo of the player.
+  /// Name or pseudo.
   final String name;
 
   @override

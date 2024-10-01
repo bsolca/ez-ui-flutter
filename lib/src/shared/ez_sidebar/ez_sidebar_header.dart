@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 
-/// A [SidebarHeader] widget that displays the header section of the sidebar.
+/// A [EzSidebarHeader] widget that displays the header section of the sidebar.
 ///
 /// This widget can include a logo, header text, and an optional dropdown menu.
-class SidebarHeader extends StatelessWidget {
-  /// Creates a [SidebarHeader] widget.
+class EzSidebarHeader extends StatelessWidget {
+  /// Creates a [EzSidebarHeader] widget.
   ///
   /// The [logo], [headerText], and [headerDropdown] parameters are optional.
-  const SidebarHeader({
+  const EzSidebarHeader({
     super.key,
     this.logo,
     this.headerText,
@@ -27,7 +27,7 @@ class SidebarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: SidebarConsts.headerPadding,
+      padding: EzSidebarConsts.headerPadding,
       child: Row(
         children: [
           if (logo != null) logo!,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'sidebar_item_data.codegen.freezed.dart';
+part 'ez_sidebar_item_data.codegen.freezed.dart';
 
 /// A data model representing a sidebar item with text and an optional icon.
 @freezed
-class SidebarItemData with _$SidebarItemData {
-  /// Creates a [SidebarItemData] instance.
-  const factory SidebarItemData({
+class EzSidebarItemData with _$EzSidebarItemData {
+  /// Creates a [EzSidebarItemData] instance.
+  const factory EzSidebarItemData({
     /// The text label of the sidebar item.
     required String text,
 
@@ -16,5 +16,5 @@ class SidebarItemData with _$SidebarItemData {
 
     /// onTap VoidCallback
     required VoidCallback onTap,
-  }) = _SidebarItemData;
+  }) = _EzSidebarItemData;
 }

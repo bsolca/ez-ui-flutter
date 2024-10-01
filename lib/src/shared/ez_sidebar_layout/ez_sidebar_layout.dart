@@ -1,20 +1,19 @@
-// sidebar_layout.dart
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/sidebar/model/sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/sidebar/sidebar.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
 /// A layout widget that includes a sidebar and a main content area.
 ///
-/// The [SidebarLayout] consists of a [Sidebar] on the left and a content
+/// The [EzSidebarLayout] consists of a [EzSidebar] on the left and a content
 /// area on the right. It manages the state of the currently selected
 /// sidebar item and handles scrolling behavior.
-class SidebarLayout extends StatefulWidget {
-  /// Creates a [SidebarLayout].
+class EzSidebarLayout extends StatefulWidget {
+  /// Creates a [EzSidebarLayout].
   ///
   /// The [logo], [headerText], and [headerDropdown] are optional and can be
   /// used to customize the sidebar's header.
-  const SidebarLayout({
+  const EzSidebarLayout({
     super.key,
     this.logo,
     this.headerText,
@@ -31,10 +30,10 @@ class SidebarLayout extends StatefulWidget {
   final Widget? headerDropdown;
 
   @override
-  State<SidebarLayout> createState() => _SidebarLayoutState();
+  State<EzSidebarLayout> createState() => _EzSidebarLayoutState();
 }
 
-class _SidebarLayoutState extends State<SidebarLayout> {
+class _EzSidebarLayoutState extends State<EzSidebarLayout> {
   /// The index of the currently selected sidebar item.
   int currentIndex = 0;
 
@@ -42,7 +41,7 @@ class _SidebarLayoutState extends State<SidebarLayout> {
   final ScrollController _scrollController = ScrollController();
 
   /// The list of sidebar items.
-  late final List<SidebarItemData> items;
+  late final List<EzSidebarItemData> items;
 
   /// The heights of each sidebar item.
   final List<double> _itemHeights = [];
@@ -52,7 +51,7 @@ class _SidebarLayoutState extends State<SidebarLayout> {
     super.initState();
     // Initialize a list of 25 sidebar items with optional icons.
     items = List.generate(25, (index) {
-      return SidebarItemData(
+      return EzSidebarItemData(
         text: 'Item $index',
         iconPath: 'assets/hero_icons/home-mini.svg',
         onTap: () => print('Item $index tapped'),
@@ -105,7 +104,7 @@ class _SidebarLayoutState extends State<SidebarLayout> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Sidebar(
+            child: EzSidebar(
               logo: widget.logo,
               headerText: widget.headerText,
               headerDropdown: widget.headerDropdown,

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impostor/src/shared/app_scaffold/app_scaffold.dart';
-import 'package:impostor/src/shared/sidebar_layout/sidebar_layout.dart';
+import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout.dart';
 import 'package:impostor/src/utils/routing/data/location_provider.codegen.dart';
 import 'package:impostor/src/utils/routing/presentation/not_found_screen.dart';
 import 'package:impostor/src/utils/routing/presentation/unauthorized_screen.dart';
@@ -55,7 +55,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             },
             pageBuilder: (_, state) {
               return const MaterialPage(
-                child: SidebarLayout(
+                child: EzSidebarLayout(
                   headerText: 'Hello',
                 ),
               );

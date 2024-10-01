@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// A widget that shows a scrollable indicator synced with a scrollable list.
-class SidebarIndicatorWidget extends StatefulWidget {
+class EzSidebarIndicatorWidget extends StatefulWidget {
   /// A widget that shows a scrollable indicator synced with a scrollable list.
-  const SidebarIndicatorWidget({
+  const EzSidebarIndicatorWidget({
     super.key,
     required this.scrollController,
     required this.itemHeights,
@@ -36,10 +36,11 @@ class SidebarIndicatorWidget extends StatefulWidget {
   final EdgeInsets indicatorPadding;
 
   @override
-  State<SidebarIndicatorWidget> createState() => _SidebarIndicatorWidgetState();
+  State<EzSidebarIndicatorWidget> createState() =>
+      _EzSidebarIndicatorWidgetState();
 }
 
-class _SidebarIndicatorWidgetState extends State<SidebarIndicatorWidget>
+class _EzSidebarIndicatorWidgetState extends State<EzSidebarIndicatorWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -57,7 +58,7 @@ class _SidebarIndicatorWidgetState extends State<SidebarIndicatorWidget>
   }
 
   @override
-  void didUpdateWidget(covariant SidebarIndicatorWidget oldWidget) {
+  void didUpdateWidget(covariant EzSidebarIndicatorWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedIndex != widget.selectedIndex) {
       _animateIndicator();

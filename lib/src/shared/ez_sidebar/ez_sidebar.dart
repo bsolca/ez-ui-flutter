@@ -1,26 +1,25 @@
-// sidebar.dart
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_header.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_indicator_widget.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_item.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
-import 'package:impostor/src/shared/sidebar/model/sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/sidebar/sidebar_consts.dart';
-import 'package:impostor/src/shared/sidebar/sidebar_footer.dart';
-import 'package:impostor/src/shared/sidebar/sidebar_header.dart';
-import 'package:impostor/src/shared/sidebar/sidebar_indicator_widget.dart';
-import 'package:impostor/src/shared/sidebar/sidebar_item.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
-/// A [Sidebar] widget that displays a customizable navigation sidebar.
+/// A [EzSidebar] widget that displays a customizable navigation sidebar.
 ///
 /// This widget includes a header, a list of items with selection
 /// indicators, and a footer. It supports dynamic item heights and
 /// scrolling.
-class Sidebar extends StatefulWidget {
-  /// Creates a [Sidebar] widget.
+class EzSidebar extends StatefulWidget {
+  /// Creates a [EzSidebar] widget.
   ///
   /// The [logo], [headerText], [items], [currentIndex], [onItemTap],
   /// [scrollController], [itemHeights], and [updateItemHeight] parameters
   /// are required.
-  const Sidebar({
+  const EzSidebar({
     super.key,
     required this.logo,
     required this.headerText,
@@ -43,7 +42,7 @@ class Sidebar extends StatefulWidget {
   final Widget? headerDropdown;
 
   /// The list of items to display in the sidebar.
-  final List<SidebarItemData> items;
+  final List<EzSidebarItemData> items;
 
   /// The index of the currently selected item.
   final int currentIndex;
@@ -63,34 +62,34 @@ class Sidebar extends StatefulWidget {
   final void Function(int, double) updateItemHeight;
 
   @override
-  State<Sidebar> createState() => _SidebarState();
+  State<EzSidebar> createState() => _EzSidebarState();
 }
 
-class _SidebarState extends State<Sidebar> {
+class _EzSidebarState extends State<EzSidebar> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     // Determine the sidebar background color based on the color scheme
     final sidebarBackgroundColor =
-    SidebarConsts.getSidebarBackgroundColor(colorScheme);
+    EzSidebarConsts.getSidebarBackgroundColor(colorScheme);
 
     // Define the divider widget using constants and dynamic colors
     final divider = Padding(
-      padding: SidebarConsts.dividerPadding,
+      padding: EzSidebarConsts.horizontalPadding,
       child: Divider(
-        thickness: SidebarConsts.dividerThickness,
-        color: SidebarConsts.getDividerColor(colorScheme),
+        thickness: EzSidebarConsts.dividerThickness,
+        color: EzSidebarConsts.getDividerColor(colorScheme),
       ),
     );
 
     return SizedBox(
-      width: SidebarConsts.sidebarWidth,
+      width: EzSidebarConsts.sidebarWidth,
       child: ColoredBox(
-        color: sidebarBackgroundColor, // Set the background color
+        color: sidebarBackgroundColor,
         child: Column(
           children: [
-            SidebarHeader(
+            EzSidebarHeader(
               logo: widget.logo,
               headerText: widget.headerText,
               headerDropdown: widget.headerDropdown,
@@ -115,8 +114,8 @@ class _SidebarState extends State<Sidebar> {
                               size.height,
                             ),
                             child: Padding(
-                              padding: SidebarConsts.itemPadding,
-                              child: SidebarItem(
+                              padding: EzSidebarConsts.horizontalPadding,
+                              child: EzSidebarItem(
                                 text: item.text,
                                 iconPath: item.iconPath,
                                 isSelected: index == widget.currentIndex,
@@ -131,21 +130,22 @@ class _SidebarState extends State<Sidebar> {
                       ),
                     ),
                   ),
-                  SidebarIndicatorWidget(
+                  EzSidebarIndicatorWidget(
                     scrollController: widget.scrollController,
                     itemHeights: widget.itemHeights,
                     selectedIndex: widget.currentIndex,
                     indicatorColor:
-                    SidebarConsts.getIndicatorColor(colorScheme),
-                    indicatorPadding: SidebarConsts.indicatorPadding,
+                    EzSidebarConsts.getIndicatorColor(colorScheme),
+                    indicatorPadding: EzSidebarConsts.indicatorPadding,
                   ),
                 ],
               ),
             ),
             divider,
-            SidebarFooter(
-              logo: widget.logo,
-              headerText: widget.headerText,
+            EzSidebarFooter(
+              name: 'Benjamin Sx',
+              email: 'benjamin@ez.io',
+              onTap: () => print('Footer button tapped'),
             ),
           ],
         ),
