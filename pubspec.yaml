@@ -54,6 +54,7 @@ flutter:
     - assets/images/avatar/
     - assets/images/medals/
     - assets/hero_icons/
+    - assets/flag_icons/
 
 fonts:
   - family: Prototype

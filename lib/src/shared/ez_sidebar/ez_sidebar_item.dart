@@ -44,6 +44,7 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final icon = widget.icon;
 
     // Determine the icon color based on hover and selection states
     Color iconColor;
@@ -56,17 +57,9 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
     }
 
     return MouseRegion(
-      onEnter: (_) {
-        setState(() {
-          _isHovered = true;
-        });
-      },
-      onExit: (_) {
-        setState(() {
-          _isHovered = false;
-        });
-      },
-      cursor: SystemMouseCursors.click, // Optional: Change cursor on hover
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      cursor: SystemMouseCursors.click,
       child: AnimatedContainer(
         duration: EzSidebarConsts.animationDuration,
         decoration: ShapeDecoration(
@@ -91,12 +84,14 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
                 // Using contentPadding here
                 child: Row(
                   children: [
-                    if (widget.icon != null)
+                    if (icon != null)
                       Padding(
                         padding: EzSidebarConsts.sidebarItemIconPadding,
-                        child: EzIcon(widget.icon!,
-                            color: iconColor,
-                            size: EzSidebarConsts.sidebarItemIconSize),
+                        child: EzIcon(
+                          icon,
+                          color: iconColor,
+                          size: EzSidebarConsts.sidebarItemIconSize,
+                        ),
                       ),
                     Expanded(
                       child: Text(
