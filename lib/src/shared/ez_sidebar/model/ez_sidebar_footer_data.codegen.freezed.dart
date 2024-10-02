@@ -135,7 +135,7 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
       {required this.name,
       required this.email,
       required this.onTap,
-      this.avatarUrl});
+      required this.avatarUrl});
 
   @override
   final String name;
@@ -181,7 +181,7 @@ abstract class _EzSidebarFooterData implements EzSidebarFooterData {
       {required final String name,
       required final String email,
       required final VoidCallback onTap,
-      final String? avatarUrl}) = _$EzSidebarFooterDataImpl;
+      required final String? avatarUrl}) = _$EzSidebarFooterDataImpl;
 
   @override
   String get name;

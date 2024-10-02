@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer_item.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_header.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_indicator_widget.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_items_list.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
@@ -14,8 +15,8 @@ class EzSidebar extends StatelessWidget {
   /// Creates the sidebar widget.
   const EzSidebar({
     super.key,
-    required this.logo,
-    required this.headerText,
+    required this.headerData,
+    required this.footerData,
     required this.items,
     required this.currentIndex,
     required this.onItemTap,
@@ -24,11 +25,11 @@ class EzSidebar extends StatelessWidget {
     required this.updateItemHeight,
   });
 
-  /// The logo of the sidebar
-  final Widget? logo;
+  /// The header data of the sidebar
+  final EzSidebarHeaderData headerData;
 
-  /// The header text of the sidebar
-  final String? headerText;
+  /// The footer data of the sidebar
+  final EzSidebarFooterData footerData;
 
   /// The list of items in the sidebar
   final List<EzSidebarItemData> items;
@@ -51,6 +52,7 @@ class EzSidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final footerItems = items.whereType<BottomSidebarItemData>().toList();
 
     // Sidebar background color based on the color scheme
     final sidebarBackgroundColor =
@@ -71,13 +73,11 @@ class EzSidebar extends StatelessWidget {
         color: sidebarBackgroundColor,
         child: Column(
           children: [
-            // Header
             EzSidebarHeader(
-              onTap: () => print('Logo tapped'),
-              appName: 'Ez Dashboard',
+              onTap: headerData.onTap,
+              appName: headerData.appName,
             ),
             divider,
-            // Main scrollable area for regular items
             Expanded(
               child: ClipRect(
                 child: Stack(
@@ -98,15 +98,15 @@ class EzSidebar extends StatelessWidget {
                             hasScrollBody: false,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                EzSidebarFooterItem(
-                                  text: 'Footer Item',
-                                  icon: EzIcons.homeMini,
-                                  onTap: () {
-                                    print('Footer item tapped');
-                                  },
-                                ),
-                              ],
+                              children: footerItems
+                                  .map(
+                                    (e) => EzSidebarFooterItem(
+                                      text: e.text,
+                                      icon: e.icon,
+                                      onTap: e.onTap,
+                                    ),
+                                  )
+                                  .toList(),
                             ),
                           ),
                         ],
@@ -127,11 +127,10 @@ class EzSidebar extends StatelessWidget {
               ),
             ),
             divider,
-            // Bottom items and footer fixed at the bottom
             EzSidebarFooter(
-              name: 'Benjamin Sx',
-              email: 'benjamin@ez.io',
-              onTap: () => print('Footer button tapped'),
+              name: footerData.name,
+              email: footerData.email,
+              onTap: footerData.onTap,
             ),
           ],
         ),

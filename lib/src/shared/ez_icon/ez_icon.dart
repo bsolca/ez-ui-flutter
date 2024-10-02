@@ -23,14 +23,19 @@ class EzIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ColorFilter? colorFilter;
+
+    // if path has hero_icons
+    if (icon.path.contains('flag_icons') == false) {
+      colorFilter = ColorFilter.mode(
+        color,
+        BlendMode.srcIn,
+      );
+    }
     return SvgPicture.asset(
       icon.path,
       width: size,
-      height: size,
-      colorFilter: ColorFilter.mode(
-        color,
-        BlendMode.srcIn,
-      ),
+      colorFilter: colorFilter,
     );
   }
 }

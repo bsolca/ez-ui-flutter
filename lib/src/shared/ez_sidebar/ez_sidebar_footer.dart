@@ -99,7 +99,7 @@ class EzSidebarFooter extends StatelessWidget {
                     ),
                   ),
                   EzIcon(
-                    EzIcons.chevronUpMini,
+                    EzIcons.chevronUpSolid,
                     color: colorScheme.primary,
                     size: EzSidebarConsts.sidebarItemIconSize,
                   ),

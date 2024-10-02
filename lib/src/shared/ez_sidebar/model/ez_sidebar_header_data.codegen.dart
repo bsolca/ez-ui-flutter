@@ -11,6 +11,6 @@ class EzSidebarHeaderData with _$EzSidebarHeaderData {
   const factory EzSidebarHeaderData({
     required String appName,
     required VoidCallback onTap,
-    String? avatarUrl,
+    required String? avatarUrl,
   }) = _EzSidebarHeaderData;
 }

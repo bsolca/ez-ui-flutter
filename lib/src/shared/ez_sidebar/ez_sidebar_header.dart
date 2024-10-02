@@ -109,7 +109,7 @@ class EzSidebarHeader extends StatelessWidget {
                     ),
                   ),
                   EzIcon(
-                    EzIcons.chevronDownMini,
+                    EzIcons.chevronDownSolid,
                     color: Theme.of(context).colorScheme.primary,
                     size: EzSidebarConsts.sidebarItemIconSize,
                   ),

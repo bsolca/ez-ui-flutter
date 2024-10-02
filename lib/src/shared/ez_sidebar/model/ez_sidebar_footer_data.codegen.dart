@@ -12,6 +12,6 @@ class EzSidebarFooterData with _$EzSidebarFooterData {
     required String name,
     required String email,
     required VoidCallback onTap,
-    String? avatarUrl,
+    required String? avatarUrl,
   }) = _EzSidebarFooterData;
 }

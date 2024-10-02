@@ -17,7 +17,7 @@ class EzSidebarFooterItem extends StatelessWidget {
   final String text;
 
   /// The icon to display in the footer item.
-  final EzIcons icon;
+  final EzIcons? icon;
 
   /// The callback to be called when the footer item is tapped.
   final VoidCallback onTap;

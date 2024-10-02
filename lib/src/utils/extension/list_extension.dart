@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Extension methods for [List]
-extension AMListExtension on List<Widget> {
+extension EzListExtension on List<Widget> {
   /// Returns a [ListView] with a [SizedBox] between each item.
   List<Widget> withSpaceBetween({
     double? width,

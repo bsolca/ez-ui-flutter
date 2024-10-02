@@ -121,7 +121,7 @@ class __$$EzSidebarHeaderDataImplCopyWithImpl<$Res>
 
 class _$EzSidebarHeaderDataImpl implements _EzSidebarHeaderData {
   const _$EzSidebarHeaderDataImpl(
-      {required this.appName, required this.onTap, this.avatarUrl});
+      {required this.appName, required this.onTap, required this.avatarUrl});
 
   @override
   final String appName;
@@ -163,7 +163,7 @@ abstract class _EzSidebarHeaderData implements EzSidebarHeaderData {
   const factory _EzSidebarHeaderData(
       {required final String appName,
       required final VoidCallback onTap,
-      final String? avatarUrl}) = _$EzSidebarHeaderDataImpl;
+      required final String? avatarUrl}) = _$EzSidebarHeaderDataImpl;
 
   @override
   String get appName;
