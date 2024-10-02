@@ -11,11 +11,11 @@ import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 /// A [EzSidebar] widget that displays a customizable navigation sidebar.
 class EzSidebar extends StatefulWidget {
+  /// Creates the sidebar widget.
   const EzSidebar({
     super.key,
     required this.logo,
     required this.headerText,
-    this.headerDropdown,
     required this.items,
     required this.currentIndex,
     required this.onItemTap,
@@ -24,14 +24,28 @@ class EzSidebar extends StatefulWidget {
     required this.updateItemHeight,
   });
 
+  /// The logo of the sidebar
   final Widget? logo;
+
+  /// The header text of the sidebar
   final String? headerText;
-  final Widget? headerDropdown;
+
+  /// The list of items in the sidebar
   final List<EzSidebarItemData> items;
+
+  /// The index of the currently selected item
   final int currentIndex;
+
+  /// The callback function that is called when an item is tapped
   final ValueChanged<int> onItemTap;
+
+  /// The scroll controller of the sidebar
   final ScrollController scrollController;
+
+  /// The list of item heights
   final List<double> itemHeights;
+
+  /// The callback function that is called when an item height is updated
   final void Function(int, double) updateItemHeight;
 
   @override
