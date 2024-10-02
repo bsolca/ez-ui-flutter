@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/features/user_settings/ui/drop_down/user_settings_drop_down_brightness.dart';
-import 'package:impostor/src/features/user_settings/ui/drop_down/user_settings_drop_down_language.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
+import 'package:impostor/src/features/sidebar/sidebar.dart';
 
 /// Scaffold widget for the app.
 class AppScaffold extends StatelessWidget {
@@ -19,24 +16,24 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: ConstLayout.spacer,
-            right: ConstLayout.spacer,
-          ),
-          child: AppBar(
-            actions: const [
-              Flexible(child: UserSettingsDropDownLanguage()),
-              Flexible(child: UserSettingsDropDownBrightness()),
-            ].withSpaceBetween(
-              width: ConstLayout.spacer,
-            ),
-          ),
-        ),
-      ),
-      body: body,
+      // appBar: PreferredSize(
+      //   preferredSize: const Size.fromHeight(kToolbarHeight),
+      //   child: Padding(
+      //     padding: const EdgeInsets.only(
+      //       top: ConstLayout.spacer,
+      //       right: ConstLayout.spacer,
+      //     ),
+      //     child: AppBar(
+      //       actions: const [
+      //         Flexible(child: UserSettingsDropDownLanguage()),
+      //         Flexible(child: UserSettingsDropDownBrightness()),
+      //       ].withSpaceBetween(
+      //         width: ConstLayout.spacer,
+      //       ),
+      //     ),
+      //   ),
+      // ),
+      body: Sidebar(child: body),
     );
   }
 }

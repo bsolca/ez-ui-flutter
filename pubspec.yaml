@@ -9,7 +9,7 @@ environment:
   flutter: 3.16.9
 
 dependencies:
-  collection:
+  collection: ^1.16.0
   country_flags: ^2.2.0
   dropdown_button2: ^2.3.9
   easy_localization: ^3.0.3
@@ -32,6 +32,8 @@ dependencies:
   rxdart: ^0.27.7
   share_plus: ^7.2.1
   short_uuids: ^2.0.0
+  vector_math: ^2.1.4
+  web_smooth_scroll: ^1.1.0
 
 dev_dependencies:
   build_runner: ^2.4.7
@@ -51,8 +53,10 @@ flutter:
   assets:
     - assets/images/avatar/
     - assets/images/medals/
+    - assets/hero_icons/
+    - assets/flag_icons/
 
 fonts:
   - family: Prototype
     fonts:
-        - asset: assets/fonts/Prototype.ttf
+      - asset: assets/fonts/Prototype.ttf

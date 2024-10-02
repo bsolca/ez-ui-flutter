@@ -30,7 +30,7 @@ class App extends ConsumerWidget {
                   brightness: brightness ??
                       PlatformDispatcher.instance.platformBrightness,
                 ),
-                fontFamily: 'Prototype',
+                fontFamily: 'Inter',
               ),
               onGenerateTitle: (BuildContext context) => 'impostor'.hardcoded,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
