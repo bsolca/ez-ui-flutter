@@ -10,7 +10,7 @@ import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codege
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 /// A [EzSidebar] widget that displays a customizable navigation sidebar.
-class EzSidebar extends StatefulWidget {
+class EzSidebar extends StatelessWidget {
   /// Creates the sidebar widget.
   const EzSidebar({
     super.key,
@@ -49,11 +49,6 @@ class EzSidebar extends StatefulWidget {
   final void Function(int, double) updateItemHeight;
 
   @override
-  State<EzSidebar> createState() => _EzSidebarState();
-}
-
-class _EzSidebarState extends State<EzSidebar> {
-  @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
@@ -88,16 +83,16 @@ class _EzSidebarState extends State<EzSidebar> {
                 child: Stack(
                   children: [
                     WebSmoothScroll(
-                      controller: widget.scrollController,
+                      controller: scrollController,
                       child: CustomScrollView(
-                        controller: widget.scrollController,
+                        controller: scrollController,
                         physics: const NeverScrollableScrollPhysics(),
                         slivers: [
                           EzSidebarItemsList(
-                            items: widget.items,
-                            currentIndex: widget.currentIndex,
-                            onItemTap: widget.onItemTap,
-                            updateItemHeight: widget.updateItemHeight,
+                            items: items,
+                            currentIndex: currentIndex,
+                            onItemTap: onItemTap,
+                            updateItemHeight: updateItemHeight,
                           ),
                           SliverFillRemaining(
                             hasScrollBody: false,
@@ -114,18 +109,18 @@ class _EzSidebarState extends State<EzSidebar> {
                               ],
                             ),
                           ),
-
                         ],
                       ),
                     ),
                     EzSidebarIndicatorWidget(
-                      scrollController: widget.scrollController,
-                      itemHeights: widget.itemHeights,
-                      selectedIndex: widget.currentIndex,
+                      scrollController: scrollController,
+                      itemHeights: itemHeights,
+                      selectedIndex: currentIndex,
                       indicatorColor: EzSidebarConsts.getIndicatorColor(
                         Theme.of(context).colorScheme,
                       ),
-                      indicatorPadding: EzSidebarConsts.indicatorVerticalPadding,
+                      indicatorPadding:
+                          EzSidebarConsts.indicatorVerticalPadding,
                     ),
                   ],
                 ),

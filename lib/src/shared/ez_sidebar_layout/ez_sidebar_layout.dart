@@ -121,7 +121,6 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
             child: EzSidebar(
               logo: widget.logo,
               headerText: widget.headerText,
-              headerDropdown: widget.headerDropdown,
               items: items,
               currentIndex: currentIndex,
               onItemTap: _onItemTap,

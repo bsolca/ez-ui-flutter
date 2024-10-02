@@ -55,7 +55,7 @@ class EzSidebarFooter extends StatelessWidget {
           height: EzSidebarConsts.avatarSize,
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) {
-            return _buildFallbackAvatar(context, name); // Provide fallback on error
+            return _buildFallbackAvatar(context, name);
           },
         ),
       );

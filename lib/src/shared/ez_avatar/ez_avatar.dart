@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// Avatar widget.
 class EzAvatar extends StatelessWidget {
+  /// Avatar widget.
   const EzAvatar({
-    Key? key,
+    super.key,
     this.imageUrl,
     this.isSquare = false,
     this.initials,
@@ -11,7 +13,7 @@ class EzAvatar extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.backgroundColor,
     this.textStyle,
-  }) : super(key: key);
+  });
 
   /// URL of the avatar image.
   final String? imageUrl;
