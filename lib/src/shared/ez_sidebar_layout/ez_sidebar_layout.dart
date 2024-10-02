@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
@@ -50,10 +51,23 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
   void initState() {
     super.initState();
     // Initialize a list of 25 sidebar items with optional icons.
-    items = List.generate(25, (index) {
-      return EzSidebarItemData(
+    items = List.generate(10, (index) {
+      if (index == 3) {
+        return EzSidebarItemData.heading(
+          text: 'Heading $index',
+        );
+      }
+      // if last 3 do bottom
+      if (index == 7 || index == 8 || index == 9) {
+        return EzSidebarItemData.bottom(
+          text: 'Bottom $index',
+          icon: EzIcons.homeMini,
+          onTap: () => print('Bottom $index tapped'),
+        );
+      }
+      return EzSidebarItemData.regular(
         text: 'Item $index',
-        iconPath: 'assets/hero_icons/home-mini.svg',
+        icon: EzIcons.homeMini,
         onTap: () => print('Item $index tapped'),
       );
     });

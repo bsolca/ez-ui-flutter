@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:impostor/src/shared/ez_icon/ez_icon.dart';
+import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
@@ -12,13 +13,13 @@ class EzSidebarItem extends StatefulWidget {
   /// Creates a [EzSidebarItem] widget.
   ///
   /// The [text], [isSelected], and [onTap] parameters are required.
-  /// The [iconPath] parameter is optional and can be used to display an icon.
+  /// The [icon] parameter is optional and can be used to display an icon.
   const EzSidebarItem({
     super.key,
     required this.text,
     required this.isSelected,
     required this.onTap,
-    this.iconPath,
+    this.icon,
   });
 
   /// The text label of the sidebar item.
@@ -31,7 +32,7 @@ class EzSidebarItem extends StatefulWidget {
   final VoidCallback onTap;
 
   /// The path to the SVG icon asset.
-  final String? iconPath;
+  final EzIcons? icon;
 
   @override
   State<EzSidebarItem> createState() => _EzSidebarItemState();
@@ -86,21 +87,16 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
                 EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
               ),
               child: Padding(
-                padding: EzSidebarConsts.contentPadding, // Using contentPadding here
+                padding: EzSidebarConsts.contentPadding,
+                // Using contentPadding here
                 child: Row(
                   children: [
-                    if (widget.iconPath != null)
+                    if (widget.icon != null)
                       Padding(
                         padding: EzSidebarConsts.sidebarItemIconPadding,
-                        child: SvgPicture.asset(
-                          widget.iconPath!,
-                          width: EzSidebarConsts.sidebarItemIconSize,
-                          height: EzSidebarConsts.sidebarItemIconSize,
-                          colorFilter: ColorFilter.mode(
-                            iconColor,
-                            EzSidebarConsts.sidebarItemIconBlendMode,
-                          ),
-                        ),
+                        child: EzIcon(widget.icon!,
+                            color: iconColor,
+                            size: EzSidebarConsts.sidebarItemIconSize),
                       ),
                     Expanded(
                       child: Text(

@@ -16,14 +16,53 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EzSidebarItemData {
-  /// The text label of the sidebar item.
   String get text => throw _privateConstructorUsedError;
-
-  /// The path to the SVG icon asset.
-  String get iconPath => throw _privateConstructorUsedError;
-
-  /// onTap VoidCallback
-  VoidCallback get onTap => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        regular,
+    required TResult Function(String text) heading,
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        bottom,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(String text)? heading,
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(String text)? heading,
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RegularSidebarItemData value) regular,
+    required TResult Function(HeadingSidebarItemData value) heading,
+    required TResult Function(BottomSidebarItemData value) bottom,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RegularSidebarItemData value)? regular,
+    TResult? Function(HeadingSidebarItemData value)? heading,
+    TResult? Function(BottomSidebarItemData value)? bottom,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RegularSidebarItemData value)? regular,
+    TResult Function(HeadingSidebarItemData value)? heading,
+    TResult Function(BottomSidebarItemData value)? bottom,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of EzSidebarItemData
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +77,7 @@ abstract class $EzSidebarItemDataCopyWith<$Res> {
           EzSidebarItemData value, $Res Function(EzSidebarItemData) then) =
       _$EzSidebarItemDataCopyWithImpl<$Res, EzSidebarItemData>;
   @useResult
-  $Res call({String text, String iconPath, VoidCallback onTap});
+  $Res call({String text});
 }
 
 /// @nodoc
@@ -57,43 +96,35 @@ class _$EzSidebarItemDataCopyWithImpl<$Res, $Val extends EzSidebarItemData>
   @override
   $Res call({
     Object? text = null,
-    Object? iconPath = null,
-    Object? onTap = null,
   }) {
     return _then(_value.copyWith(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      iconPath: null == iconPath
-          ? _value.iconPath
-          : iconPath // ignore: cast_nullable_to_non_nullable
-              as String,
-      onTap: null == onTap
-          ? _value.onTap
-          : onTap // ignore: cast_nullable_to_non_nullable
-              as VoidCallback,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$EzSidebarItemDataImplCopyWith<$Res>
+abstract class _$$RegularSidebarItemDataImplCopyWith<$Res>
     implements $EzSidebarItemDataCopyWith<$Res> {
-  factory _$$EzSidebarItemDataImplCopyWith(_$EzSidebarItemDataImpl value,
-          $Res Function(_$EzSidebarItemDataImpl) then) =
-      __$$EzSidebarItemDataImplCopyWithImpl<$Res>;
+  factory _$$RegularSidebarItemDataImplCopyWith(
+          _$RegularSidebarItemDataImpl value,
+          $Res Function(_$RegularSidebarItemDataImpl) then) =
+      __$$RegularSidebarItemDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String text, String iconPath, VoidCallback onTap});
+  $Res call({String text, EzIcons? icon, VoidCallback onTap});
 }
 
 /// @nodoc
-class __$$EzSidebarItemDataImplCopyWithImpl<$Res>
-    extends _$EzSidebarItemDataCopyWithImpl<$Res, _$EzSidebarItemDataImpl>
-    implements _$$EzSidebarItemDataImplCopyWith<$Res> {
-  __$$EzSidebarItemDataImplCopyWithImpl(_$EzSidebarItemDataImpl _value,
-      $Res Function(_$EzSidebarItemDataImpl) _then)
+class __$$RegularSidebarItemDataImplCopyWithImpl<$Res>
+    extends _$EzSidebarItemDataCopyWithImpl<$Res, _$RegularSidebarItemDataImpl>
+    implements _$$RegularSidebarItemDataImplCopyWith<$Res> {
+  __$$RegularSidebarItemDataImplCopyWithImpl(
+      _$RegularSidebarItemDataImpl _value,
+      $Res Function(_$RegularSidebarItemDataImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of EzSidebarItemData
@@ -102,18 +133,18 @@ class __$$EzSidebarItemDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? text = null,
-    Object? iconPath = null,
+    Object? icon = freezed,
     Object? onTap = null,
   }) {
-    return _then(_$EzSidebarItemDataImpl(
+    return _then(_$RegularSidebarItemDataImpl(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      iconPath: null == iconPath
-          ? _value.iconPath
-          : iconPath // ignore: cast_nullable_to_non_nullable
-              as String,
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as EzIcons?,
       onTap: null == onTap
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
@@ -124,73 +155,462 @@ class __$$EzSidebarItemDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EzSidebarItemDataImpl implements _EzSidebarItemData {
-  const _$EzSidebarItemDataImpl(
-      {required this.text, required this.iconPath, required this.onTap});
+class _$RegularSidebarItemDataImpl implements RegularSidebarItemData {
+  const _$RegularSidebarItemDataImpl(
+      {required this.text, required this.icon, required this.onTap});
 
-  /// The text label of the sidebar item.
   @override
   final String text;
-
-  /// The path to the SVG icon asset.
   @override
-  final String iconPath;
-
-  /// onTap VoidCallback
+  final EzIcons? icon;
   @override
   final VoidCallback onTap;
 
   @override
   String toString() {
-    return 'EzSidebarItemData(text: $text, iconPath: $iconPath, onTap: $onTap)';
+    return 'EzSidebarItemData.regular(text: $text, icon: $icon, onTap: $onTap)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EzSidebarItemDataImpl &&
+            other is _$RegularSidebarItemDataImpl &&
             (identical(other.text, text) || other.text == text) &&
-            (identical(other.iconPath, iconPath) ||
-                other.iconPath == iconPath) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text, iconPath, onTap);
+  int get hashCode => Object.hash(runtimeType, text, icon, onTap);
 
   /// Create a copy of EzSidebarItemData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$EzSidebarItemDataImplCopyWith<_$EzSidebarItemDataImpl> get copyWith =>
-      __$$EzSidebarItemDataImplCopyWithImpl<_$EzSidebarItemDataImpl>(
-          this, _$identity);
+  _$$RegularSidebarItemDataImplCopyWith<_$RegularSidebarItemDataImpl>
+      get copyWith => __$$RegularSidebarItemDataImplCopyWithImpl<
+          _$RegularSidebarItemDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        regular,
+    required TResult Function(String text) heading,
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        bottom,
+  }) {
+    return regular(text, icon, onTap);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(String text)? heading,
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+  }) {
+    return regular?.call(text, icon, onTap);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(String text)? heading,
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    required TResult orElse(),
+  }) {
+    if (regular != null) {
+      return regular(text, icon, onTap);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RegularSidebarItemData value) regular,
+    required TResult Function(HeadingSidebarItemData value) heading,
+    required TResult Function(BottomSidebarItemData value) bottom,
+  }) {
+    return regular(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RegularSidebarItemData value)? regular,
+    TResult? Function(HeadingSidebarItemData value)? heading,
+    TResult? Function(BottomSidebarItemData value)? bottom,
+  }) {
+    return regular?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RegularSidebarItemData value)? regular,
+    TResult Function(HeadingSidebarItemData value)? heading,
+    TResult Function(BottomSidebarItemData value)? bottom,
+    required TResult orElse(),
+  }) {
+    if (regular != null) {
+      return regular(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _EzSidebarItemData implements EzSidebarItemData {
-  const factory _EzSidebarItemData(
+abstract class RegularSidebarItemData implements EzSidebarItemData {
+  const factory RegularSidebarItemData(
       {required final String text,
-      required final String iconPath,
-      required final VoidCallback onTap}) = _$EzSidebarItemDataImpl;
+      required final EzIcons? icon,
+      required final VoidCallback onTap}) = _$RegularSidebarItemDataImpl;
 
-  /// The text label of the sidebar item.
   @override
   String get text;
-
-  /// The path to the SVG icon asset.
-  @override
-  String get iconPath;
-
-  /// onTap VoidCallback
-  @override
+  EzIcons? get icon;
   VoidCallback get onTap;
 
   /// Create a copy of EzSidebarItemData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EzSidebarItemDataImplCopyWith<_$EzSidebarItemDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RegularSidebarItemDataImplCopyWith<_$RegularSidebarItemDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HeadingSidebarItemDataImplCopyWith<$Res>
+    implements $EzSidebarItemDataCopyWith<$Res> {
+  factory _$$HeadingSidebarItemDataImplCopyWith(
+          _$HeadingSidebarItemDataImpl value,
+          $Res Function(_$HeadingSidebarItemDataImpl) then) =
+      __$$HeadingSidebarItemDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String text});
+}
+
+/// @nodoc
+class __$$HeadingSidebarItemDataImplCopyWithImpl<$Res>
+    extends _$EzSidebarItemDataCopyWithImpl<$Res, _$HeadingSidebarItemDataImpl>
+    implements _$$HeadingSidebarItemDataImplCopyWith<$Res> {
+  __$$HeadingSidebarItemDataImplCopyWithImpl(
+      _$HeadingSidebarItemDataImpl _value,
+      $Res Function(_$HeadingSidebarItemDataImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EzSidebarItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? text = null,
+  }) {
+    return _then(_$HeadingSidebarItemDataImpl(
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HeadingSidebarItemDataImpl implements HeadingSidebarItemData {
+  const _$HeadingSidebarItemDataImpl({required this.text});
+
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'EzSidebarItemData.heading(text: $text)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HeadingSidebarItemDataImpl &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, text);
+
+  /// Create a copy of EzSidebarItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HeadingSidebarItemDataImplCopyWith<_$HeadingSidebarItemDataImpl>
+      get copyWith => __$$HeadingSidebarItemDataImplCopyWithImpl<
+          _$HeadingSidebarItemDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        regular,
+    required TResult Function(String text) heading,
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        bottom,
+  }) {
+    return heading(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(String text)? heading,
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+  }) {
+    return heading?.call(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(String text)? heading,
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    required TResult orElse(),
+  }) {
+    if (heading != null) {
+      return heading(text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RegularSidebarItemData value) regular,
+    required TResult Function(HeadingSidebarItemData value) heading,
+    required TResult Function(BottomSidebarItemData value) bottom,
+  }) {
+    return heading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RegularSidebarItemData value)? regular,
+    TResult? Function(HeadingSidebarItemData value)? heading,
+    TResult? Function(BottomSidebarItemData value)? bottom,
+  }) {
+    return heading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RegularSidebarItemData value)? regular,
+    TResult Function(HeadingSidebarItemData value)? heading,
+    TResult Function(BottomSidebarItemData value)? bottom,
+    required TResult orElse(),
+  }) {
+    if (heading != null) {
+      return heading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HeadingSidebarItemData implements EzSidebarItemData {
+  const factory HeadingSidebarItemData({required final String text}) =
+      _$HeadingSidebarItemDataImpl;
+
+  @override
+  String get text;
+
+  /// Create a copy of EzSidebarItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$HeadingSidebarItemDataImplCopyWith<_$HeadingSidebarItemDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BottomSidebarItemDataImplCopyWith<$Res>
+    implements $EzSidebarItemDataCopyWith<$Res> {
+  factory _$$BottomSidebarItemDataImplCopyWith(
+          _$BottomSidebarItemDataImpl value,
+          $Res Function(_$BottomSidebarItemDataImpl) then) =
+      __$$BottomSidebarItemDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String text, EzIcons? icon, VoidCallback onTap});
+}
+
+/// @nodoc
+class __$$BottomSidebarItemDataImplCopyWithImpl<$Res>
+    extends _$EzSidebarItemDataCopyWithImpl<$Res, _$BottomSidebarItemDataImpl>
+    implements _$$BottomSidebarItemDataImplCopyWith<$Res> {
+  __$$BottomSidebarItemDataImplCopyWithImpl(_$BottomSidebarItemDataImpl _value,
+      $Res Function(_$BottomSidebarItemDataImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EzSidebarItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? text = null,
+    Object? icon = freezed,
+    Object? onTap = null,
+  }) {
+    return _then(_$BottomSidebarItemDataImpl(
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as EzIcons?,
+      onTap: null == onTap
+          ? _value.onTap
+          : onTap // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BottomSidebarItemDataImpl implements BottomSidebarItemData {
+  const _$BottomSidebarItemDataImpl(
+      {required this.text, required this.icon, required this.onTap});
+
+  @override
+  final String text;
+  @override
+  final EzIcons? icon;
+  @override
+  final VoidCallback onTap;
+
+  @override
+  String toString() {
+    return 'EzSidebarItemData.bottom(text: $text, icon: $icon, onTap: $onTap)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BottomSidebarItemDataImpl &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.onTap, onTap) || other.onTap == onTap));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, text, icon, onTap);
+
+  /// Create a copy of EzSidebarItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BottomSidebarItemDataImplCopyWith<_$BottomSidebarItemDataImpl>
+      get copyWith => __$$BottomSidebarItemDataImplCopyWithImpl<
+          _$BottomSidebarItemDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        regular,
+    required TResult Function(String text) heading,
+    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+        bottom,
+  }) {
+    return bottom(text, icon, onTap);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(String text)? heading,
+    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+  }) {
+    return bottom?.call(text, icon, onTap);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(String text)? heading,
+    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    required TResult orElse(),
+  }) {
+    if (bottom != null) {
+      return bottom(text, icon, onTap);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RegularSidebarItemData value) regular,
+    required TResult Function(HeadingSidebarItemData value) heading,
+    required TResult Function(BottomSidebarItemData value) bottom,
+  }) {
+    return bottom(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RegularSidebarItemData value)? regular,
+    TResult? Function(HeadingSidebarItemData value)? heading,
+    TResult? Function(BottomSidebarItemData value)? bottom,
+  }) {
+    return bottom?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RegularSidebarItemData value)? regular,
+    TResult Function(HeadingSidebarItemData value)? heading,
+    TResult Function(BottomSidebarItemData value)? bottom,
+    required TResult orElse(),
+  }) {
+    if (bottom != null) {
+      return bottom(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BottomSidebarItemData implements EzSidebarItemData {
+  const factory BottomSidebarItemData(
+      {required final String text,
+      required final EzIcons? icon,
+      required final VoidCallback onTap}) = _$BottomSidebarItemDataImpl;
+
+  @override
+  String get text;
+  EzIcons? get icon;
+  VoidCallback get onTap;
+
+  /// Create a copy of EzSidebarItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BottomSidebarItemDataImplCopyWith<_$BottomSidebarItemDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

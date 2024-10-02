@@ -96,12 +96,16 @@ class _EzSidebarIndicatorWidgetState extends State<EzSidebarIndicatorWidget>
   }
 
   double _calculateIndicatorPosition() {
-    var position = -widget.scrollController.offset;
+    var position = 0.0;
+
+    // Sum the heights of all items before the selected index
     for (var i = 0; i < widget.selectedIndex; i++) {
       position += widget.itemHeights[i];
     }
-    return position;
+
+    return position - widget.scrollController.offset;
   }
+
 
   @override
   Widget build(BuildContext context) {
