@@ -76,6 +76,7 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
             color: Colors.transparent,
             child: InkWell(
               onTap: widget.onTap,
+              splashFactory: NoSplash.splashFactory,
               overlayColor: WidgetStateProperty.all(
                 EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
               ),
