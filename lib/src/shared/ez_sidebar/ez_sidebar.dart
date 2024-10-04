@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_divider.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer_item.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_header.dart';
@@ -58,15 +59,6 @@ class EzSidebar extends StatelessWidget {
     final sidebarBackgroundColor =
         EzSidebarConsts.getSidebarBackgroundColor(colorScheme);
 
-    // Divider widget using constants
-    final divider = Padding(
-      padding: EzSidebarConsts.horizontalPadding,
-      child: Divider(
-        thickness: EzSidebarConsts.dividerThickness,
-        color: EzSidebarConsts.getDividerColor(colorScheme),
-      ),
-    );
-
     return SizedBox(
       width: EzSidebarConsts.sidebarWidth,
       child: ColoredBox(
@@ -76,8 +68,10 @@ class EzSidebar extends StatelessWidget {
             EzSidebarHeader(
               onTap: headerData.onTap,
               appName: headerData.appName,
+              avatarUrl: headerData.avatarUrl,
+              items: headerData.items,
             ),
-            divider,
+            const EzSidebarDivider(),
             Expanded(
               child: ClipRect(
                 child: Stack(
@@ -126,11 +120,13 @@ class EzSidebar extends StatelessWidget {
                 ),
               ),
             ),
-            divider,
+            const EzSidebarDivider(),
             EzSidebarFooter(
               name: footerData.name,
               email: footerData.email,
               onTap: footerData.onTap,
+              items: footerData.items,
+              avatarUrl: footerData.avatarUrl,
             ),
           ],
         ),

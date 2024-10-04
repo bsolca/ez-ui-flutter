@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icon.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
 /// A [EzSidebarHeader] widget that displays the header section of the sidebar.
@@ -15,7 +17,8 @@ class EzSidebarHeader extends StatelessWidget {
     Key? key,
     required String appName,
     required VoidCallback onTap,
-    String? avatarUrl,
+    required String? avatarUrl,
+    required List<EzSidebarPopoverItemData> items,
   }) {
     return EzSidebarHeader._(
       key: key,
@@ -23,6 +26,7 @@ class EzSidebarHeader extends StatelessWidget {
         appName: appName,
         onTap: onTap,
         avatarUrl: avatarUrl,
+        items: items,
       ),
     );
   }
@@ -63,26 +67,22 @@ class EzSidebarHeader extends StatelessWidget {
       );
     } else {
       avatarWidget = ClipOval(
-        child: InkWell(
-          onTap: _data.onTap,
-          overlayColor: WidgetStateProperty.all(
-            EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
-          ),
-          child: Container(
-            width: EzSidebarConsts.avatarSize,
-            height: EzSidebarConsts.avatarSize,
-            color: Theme.of(context).colorScheme.primary,
-            child: Center(
-              child: Icon(
-                Icons.apps, // You can customize this icon
-                color: Theme.of(context).colorScheme.onPrimary,
-                size: EzSidebarConsts.avatarSize / 2,
-              ),
+        child: Container(
+          width: EzSidebarConsts.avatarSize,
+          height: EzSidebarConsts.avatarSize,
+          color: Theme.of(context).colorScheme.primary,
+          child: Center(
+            child: Icon(
+              Icons.apps, // You can customize this icon
+              color: Theme.of(context).colorScheme.onPrimary,
+              size: EzSidebarConsts.avatarSize / 2,
             ),
           ),
         ),
       );
     }
+
+    final menuController = MenuController();
 
     return Padding(
       padding: EzSidebarConsts.horizontalPadding,
@@ -90,30 +90,42 @@ class EzSidebarHeader extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: _data.onTap,
+            onTap: () {
+              _data.onTap();
+              if (menuController.isOpen) {
+                menuController.close();
+              } else {
+                menuController.open();
+              }
+            }, // _data.onTap,
             overlayColor: WidgetStateProperty.all(
               EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
             ),
-            child: Padding(
-              padding: EzSidebarConsts.footerPadding,
-              child: Row(
-                children: [
-                  avatarWidget,
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      appName,
-                      style: Theme.of(context).textTheme.titleMedium,
+            child: EzSidebarPopover(
+              controller: menuController,
+              offset: EzSidebarConsts.popoverOffset,
+              items: _data.items,
+              child: Padding(
+                padding: EzSidebarConsts.footerPadding,
+                child: Row(
+                  children: [
+                    avatarWidget,
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        appName,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                     ),
-                  ),
-                  EzIcon(
-                    EzIcons.chevronDownSolid,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: EzSidebarConsts.sidebarItemIconSize,
-                  ),
-                ],
+                    EzIcon(
+                      EzIcons.chevronDownSolid,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: EzSidebarConsts.sidebarItemIconSize,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

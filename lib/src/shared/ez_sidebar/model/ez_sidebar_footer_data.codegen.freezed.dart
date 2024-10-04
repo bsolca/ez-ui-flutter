@@ -20,6 +20,8 @@ mixin _$EzSidebarFooterData {
   String get email => throw _privateConstructorUsedError;
   VoidCallback get onTap => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
+  List<EzSidebarPopoverItemData> get items =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of EzSidebarFooterData
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +36,12 @@ abstract class $EzSidebarFooterDataCopyWith<$Res> {
           EzSidebarFooterData value, $Res Function(EzSidebarFooterData) then) =
       _$EzSidebarFooterDataCopyWithImpl<$Res, EzSidebarFooterData>;
   @useResult
-  $Res call({String name, String email, VoidCallback onTap, String? avatarUrl});
+  $Res call(
+      {String name,
+      String email,
+      VoidCallback onTap,
+      String? avatarUrl,
+      List<EzSidebarPopoverItemData> items});
 }
 
 /// @nodoc
@@ -56,6 +63,7 @@ class _$EzSidebarFooterDataCopyWithImpl<$Res, $Val extends EzSidebarFooterData>
     Object? email = null,
     Object? onTap = null,
     Object? avatarUrl = freezed,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -74,6 +82,10 @@ class _$EzSidebarFooterDataCopyWithImpl<$Res, $Val extends EzSidebarFooterData>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<EzSidebarPopoverItemData>,
     ) as $Val);
   }
 }
@@ -86,7 +98,12 @@ abstract class _$$EzSidebarFooterDataImplCopyWith<$Res>
       __$$EzSidebarFooterDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String email, VoidCallback onTap, String? avatarUrl});
+  $Res call(
+      {String name,
+      String email,
+      VoidCallback onTap,
+      String? avatarUrl,
+      List<EzSidebarPopoverItemData> items});
 }
 
 /// @nodoc
@@ -106,6 +123,7 @@ class __$$EzSidebarFooterDataImplCopyWithImpl<$Res>
     Object? email = null,
     Object? onTap = null,
     Object? avatarUrl = freezed,
+    Object? items = null,
   }) {
     return _then(_$EzSidebarFooterDataImpl(
       name: null == name
@@ -124,6 +142,10 @@ class __$$EzSidebarFooterDataImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<EzSidebarPopoverItemData>,
     ));
   }
 }
@@ -135,7 +157,9 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
       {required this.name,
       required this.email,
       required this.onTap,
-      required this.avatarUrl});
+      required this.avatarUrl,
+      required final List<EzSidebarPopoverItemData> items})
+      : _items = items;
 
   @override
   final String name;
@@ -145,10 +169,17 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
   final VoidCallback onTap;
   @override
   final String? avatarUrl;
+  final List<EzSidebarPopoverItemData> _items;
+  @override
+  List<EzSidebarPopoverItemData> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
-    return 'EzSidebarFooterData(name: $name, email: $email, onTap: $onTap, avatarUrl: $avatarUrl)';
+    return 'EzSidebarFooterData(name: $name, email: $email, onTap: $onTap, avatarUrl: $avatarUrl, items: $items)';
   }
 
   @override
@@ -160,11 +191,13 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl));
+                other.avatarUrl == avatarUrl) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, onTap, avatarUrl);
+  int get hashCode => Object.hash(runtimeType, name, email, onTap, avatarUrl,
+      const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of EzSidebarFooterData
   /// with the given fields replaced by the non-null parameter values.
@@ -178,10 +211,12 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
 
 abstract class _EzSidebarFooterData implements EzSidebarFooterData {
   const factory _EzSidebarFooterData(
-      {required final String name,
-      required final String email,
-      required final VoidCallback onTap,
-      required final String? avatarUrl}) = _$EzSidebarFooterDataImpl;
+          {required final String name,
+          required final String email,
+          required final VoidCallback onTap,
+          required final String? avatarUrl,
+          required final List<EzSidebarPopoverItemData> items}) =
+      _$EzSidebarFooterDataImpl;
 
   @override
   String get name;
@@ -191,6 +226,8 @@ abstract class _EzSidebarFooterData implements EzSidebarFooterData {
   VoidCallback get onTap;
   @override
   String? get avatarUrl;
+  @override
+  List<EzSidebarPopoverItemData> get items;
 
   /// Create a copy of EzSidebarFooterData
   /// with the given fields replaced by the non-null parameter values.

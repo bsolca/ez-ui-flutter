@@ -12,6 +12,7 @@ enum EzIcons {
   chevronDownSolid,
   chevronUpSolid,
   computerDesktopSolid,
+  cog8ToothSolid,
   flagFr,
   flagUs,
   homeSolid,
@@ -36,6 +37,8 @@ extension EzIconPath on EzIcons {
         return '${_basePath}chevron-up-solid.svg';
       case EzIcons.computerDesktopSolid:
         return '${_basePath}computer-desktop-solid.svg';
+      case EzIcons.cog8ToothSolid:
+        return '${_basePath}cog-8-tooth-solid.svg';
       case EzIcons.homeSolid:
         return '${_basePath}home-solid.svg';
       case EzIcons.moonSolid:

@@ -19,6 +19,8 @@ mixin _$EzSidebarHeaderData {
   String get appName => throw _privateConstructorUsedError;
   VoidCallback get onTap => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
+  List<EzSidebarPopoverItemData> get items =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of EzSidebarHeaderData
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +35,11 @@ abstract class $EzSidebarHeaderDataCopyWith<$Res> {
           EzSidebarHeaderData value, $Res Function(EzSidebarHeaderData) then) =
       _$EzSidebarHeaderDataCopyWithImpl<$Res, EzSidebarHeaderData>;
   @useResult
-  $Res call({String appName, VoidCallback onTap, String? avatarUrl});
+  $Res call(
+      {String appName,
+      VoidCallback onTap,
+      String? avatarUrl,
+      List<EzSidebarPopoverItemData> items});
 }
 
 /// @nodoc
@@ -54,6 +60,7 @@ class _$EzSidebarHeaderDataCopyWithImpl<$Res, $Val extends EzSidebarHeaderData>
     Object? appName = null,
     Object? onTap = null,
     Object? avatarUrl = freezed,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
       appName: null == appName
@@ -68,6 +75,10 @@ class _$EzSidebarHeaderDataCopyWithImpl<$Res, $Val extends EzSidebarHeaderData>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<EzSidebarPopoverItemData>,
     ) as $Val);
   }
 }
@@ -80,7 +91,11 @@ abstract class _$$EzSidebarHeaderDataImplCopyWith<$Res>
       __$$EzSidebarHeaderDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String appName, VoidCallback onTap, String? avatarUrl});
+  $Res call(
+      {String appName,
+      VoidCallback onTap,
+      String? avatarUrl,
+      List<EzSidebarPopoverItemData> items});
 }
 
 /// @nodoc
@@ -99,6 +114,7 @@ class __$$EzSidebarHeaderDataImplCopyWithImpl<$Res>
     Object? appName = null,
     Object? onTap = null,
     Object? avatarUrl = freezed,
+    Object? items = null,
   }) {
     return _then(_$EzSidebarHeaderDataImpl(
       appName: null == appName
@@ -113,6 +129,10 @@ class __$$EzSidebarHeaderDataImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<EzSidebarPopoverItemData>,
     ));
   }
 }
@@ -121,7 +141,11 @@ class __$$EzSidebarHeaderDataImplCopyWithImpl<$Res>
 
 class _$EzSidebarHeaderDataImpl implements _EzSidebarHeaderData {
   const _$EzSidebarHeaderDataImpl(
-      {required this.appName, required this.onTap, required this.avatarUrl});
+      {required this.appName,
+      required this.onTap,
+      required this.avatarUrl,
+      required final List<EzSidebarPopoverItemData> items})
+      : _items = items;
 
   @override
   final String appName;
@@ -129,10 +153,17 @@ class _$EzSidebarHeaderDataImpl implements _EzSidebarHeaderData {
   final VoidCallback onTap;
   @override
   final String? avatarUrl;
+  final List<EzSidebarPopoverItemData> _items;
+  @override
+  List<EzSidebarPopoverItemData> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
-    return 'EzSidebarHeaderData(appName: $appName, onTap: $onTap, avatarUrl: $avatarUrl)';
+    return 'EzSidebarHeaderData(appName: $appName, onTap: $onTap, avatarUrl: $avatarUrl, items: $items)';
   }
 
   @override
@@ -143,11 +174,13 @@ class _$EzSidebarHeaderDataImpl implements _EzSidebarHeaderData {
             (identical(other.appName, appName) || other.appName == appName) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl));
+                other.avatarUrl == avatarUrl) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appName, onTap, avatarUrl);
+  int get hashCode => Object.hash(runtimeType, appName, onTap, avatarUrl,
+      const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of EzSidebarHeaderData
   /// with the given fields replaced by the non-null parameter values.
@@ -161,9 +194,11 @@ class _$EzSidebarHeaderDataImpl implements _EzSidebarHeaderData {
 
 abstract class _EzSidebarHeaderData implements EzSidebarHeaderData {
   const factory _EzSidebarHeaderData(
-      {required final String appName,
-      required final VoidCallback onTap,
-      required final String? avatarUrl}) = _$EzSidebarHeaderDataImpl;
+          {required final String appName,
+          required final VoidCallback onTap,
+          required final String? avatarUrl,
+          required final List<EzSidebarPopoverItemData> items}) =
+      _$EzSidebarHeaderDataImpl;
 
   @override
   String get appName;
@@ -171,6 +206,8 @@ abstract class _EzSidebarHeaderData implements EzSidebarHeaderData {
   VoidCallback get onTap;
   @override
   String? get avatarUrl;
+  @override
+  List<EzSidebarPopoverItemData> get items;
 
   /// Create a copy of EzSidebarHeaderData
   /// with the given fields replaced by the non-null parameter values.

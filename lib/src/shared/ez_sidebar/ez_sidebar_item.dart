@@ -94,11 +94,11 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
                           size: EzSidebarConsts.sidebarItemIconSize,
                         ),
                       ),
-                    Expanded(
-                      child: Text(
-                        widget.text,
-                        style: EzSidebarConsts.sidebarItemTextStyle,
-                      ),
+                    Text(
+                      widget.text,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: EzSidebarConsts.sidebarItemTextStyle,
                     ),
                   ],
                 ),

@@ -1,6 +1,7 @@
 // ez_sidebar_consts.dart
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/utils/constants/const_layout.dart';
 
 /// Constants and utility methods used in the Sidebar widget.
 class EzSidebarConsts {
@@ -13,6 +14,22 @@ class EzSidebarConsts {
   /// Sidebar width
   static const double sidebarWidth = 260;
 
+  /// Popover width
+  static const double popoverWidth = sidebarWidth - 32;
+
+  /// Popover background color
+  static Color getPopoverColor(ColorScheme colorScheme) {
+    return ConstLayout.getBackgroundColor(colorScheme);
+  }
+
+  /// Popover border color getter
+  static Color getPopoverBorderColor(ColorScheme colorScheme) {
+    return ConstLayout.getMainBorderColor(colorScheme).withOpacity(0.95);
+  }
+
+  /// Header Popover Offset
+  static const popoverOffset = Offset(0, 4);
+
   // ************
   // Padding and Margins
   // ************
@@ -20,6 +37,12 @@ class EzSidebarConsts {
   /// General horizontal padding
   static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
     horizontal: 8,
+  );
+
+  /// Popover padding
+  static const EdgeInsets allPadding = EdgeInsets.symmetric(
+    horizontal: 8,
+    vertical: 16,
   );
 
   /// General content padding inside items
@@ -58,14 +81,12 @@ class EzSidebarConsts {
 
   /// Returns the sidebar background color based on the color scheme.
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
-    return colorScheme.brightness == Brightness.dark
-        ? colorScheme.surface
-        : colorScheme.surfaceContainer;
+    return ConstLayout.getSecondaryBackgroundColor(colorScheme);
   }
 
   // ************
-  // Indicator
-  // ************
+    // Indicator
+    // ************
 
   /// Default indicator vertical padding
   static const indicatorVerticalPadding = EdgeInsets.symmetric(vertical: 8);

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:impostor/src/utils/constants/const_value.dart';
 
 /// All the layout constants are defined here.
@@ -63,4 +64,29 @@ class ConstLayout {
 
   /// Medal size.
   static const double medalSize = ConstValue.dp48;
+
+  /*
+   *  Get Colors
+   */
+
+  /// Get main background color.
+  static Color getBackgroundColor(ColorScheme colorScheme) {
+    return colorScheme.brightness == Brightness.dark
+        ? colorScheme.surfaceContainerHigh
+        : colorScheme.surface;
+  }
+
+  /// Get main border color.
+  static Color getMainBorderColor(ColorScheme colorScheme) {
+    return colorScheme.brightness == Brightness.dark
+        ? colorScheme.surfaceContainer
+        : colorScheme.surfaceContainerHighest;
+  }
+
+  /// Get secondary background color.
+  static Color getSecondaryBackgroundColor(ColorScheme colorScheme) {
+    return colorScheme.brightness == Brightness.dark
+        ? colorScheme.surface
+        : colorScheme.surfaceContainer;
+  }
 }

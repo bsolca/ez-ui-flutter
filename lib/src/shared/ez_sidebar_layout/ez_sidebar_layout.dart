@@ -3,7 +3,7 @@ import 'package:impostor/src/shared/ez_sidebar/ez_sidebar.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts.dart';
 
 /// A layout widget that includes a sidebar and a main content area.
 ///
@@ -74,10 +74,6 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
     });
   }
 
-  final sidebarKey = GlobalKey();
-
-  final contentKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     // Ensure the currentIndex is within valid bounds.
@@ -85,25 +81,16 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
       currentIndex = 0;
     }
 
-    final colorBackground = Theme.of(context).brightness == Brightness.dark
-        ? Theme.of(context).colorScheme.surface
-        : Theme.of(context).colorScheme.surfaceContainer;
-
-    final color = Theme.of(context).brightness == Brightness.dark
-        ? Theme.of(context).colorScheme.surfaceContainerHigh
-        : Theme.of(context).colorScheme.surface;
-
-    final colorBorder = Theme.of(context).brightness == Brightness.dark
-        ? Theme.of(context).colorScheme.surfaceContainer
-        : Theme.of(context).colorScheme.surfaceContainerLow;
+    final colorScheme = Theme
+        .of(context)
+        .colorScheme;
 
     return ColoredBox(
-      color: colorBackground,
+      color: EzSidebarLayoutConsts.getSidebarBackgroundColor(colorScheme),
       child: Row(
         children: [
           Padding(
-            key: sidebarKey,
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EzSidebarLayoutConsts.sidebarPadding,
             child: EzSidebar(
               headerData: widget.headerData,
               footerData: widget.footerData,
@@ -116,22 +103,12 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
             ),
           ),
           Expanded(
-            key: contentKey,
             child: Container(
               decoration: ShapeDecoration(
-                color: color,
-                shape: SmoothRectangleBorder(
-                  side: BorderSide(
-                    color: colorBorder,
-                    width: 0.5,
-                  ),
-                  borderRadius: SmoothBorderRadius(
-                    cornerRadius: 10,
-                    cornerSmoothing: 0.5,
-                  ),
-                ),
+                color: EzSidebarLayoutConsts.getContentColor(colorScheme),
+                shape: EzSidebarLayoutConsts.getContentShapeBorder(colorScheme),
               ),
-              margin: const EdgeInsets.all(8),
+              margin: EzSidebarLayoutConsts.contentMargin,
               child: widget.content,
             ),
           ),

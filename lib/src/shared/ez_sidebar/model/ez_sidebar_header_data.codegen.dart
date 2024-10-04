@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 
 part 'ez_sidebar_header_data.codegen.freezed.dart';
 
@@ -12,5 +13,6 @@ class EzSidebarHeaderData with _$EzSidebarHeaderData {
     required String appName,
     required VoidCallback onTap,
     required String? avatarUrl,
+    required List<EzSidebarPopoverItemData> items,
   }) = _EzSidebarHeaderData;
 }
