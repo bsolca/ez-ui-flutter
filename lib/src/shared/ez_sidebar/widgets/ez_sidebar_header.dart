@@ -90,6 +90,7 @@ class EzSidebarHeader extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
+            splashFactory: NoSplash.splashFactory,
             onTap: () {
               _data.onTap();
               if (menuController.isOpen) {

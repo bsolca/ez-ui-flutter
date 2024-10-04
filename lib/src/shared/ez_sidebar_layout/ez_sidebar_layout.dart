@@ -81,9 +81,7 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
       currentIndex = 0;
     }
 
-    final colorScheme = Theme
-        .of(context)
-        .colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return ColoredBox(
       color: EzSidebarLayoutConsts.getSidebarBackgroundColor(colorScheme),

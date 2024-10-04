@@ -7,23 +7,17 @@ import 'package:impostor/src/utils/routing/presentation/not_found_screen.dart';
 import 'package:impostor/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'presentation/go_route_page_scaffold.dart';
+
 part 'go_router_provider.codegen.g.dart';
 
 /// Routes for the app.
 enum AppRoute {
   /// Home route.
   home,
-
-  /// Games box route.
-  gamesBox,
-
-  /// Lobby screen route.
-  lobby
 }
 
 /// Provider for [GoRouter].
-@riverpod
-// Remove the sidebarKey
 @riverpod
 Raw<GoRouter> goRouter(GoRouterRef ref) {
   final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -48,70 +42,48 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
           );
         },
         routes: [
-          GoRoute(
+          GoRoutePageScaffold(
             path: '/',
-            name: AppRoute.home.name,
-            pageBuilder: (_, state) {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const Center(
-                  child: Text(
-                    'Route / builder',
-                    style: TextStyle(fontFamily: 'Inter'),
-                  ),
-                ),
-              );
-            },
+            name: 'home',
+            parentNavigatorKey: shellNavigatorKey,
+            body: const Center(
+              child: Text(
+                'Route / builder',
+                style: TextStyle(fontFamily: 'Inter'),
+              ),
+            ),
           ),
-          GoRoute(
+          GoRoutePageScaffold(
             path: '/settings',
             name: 'settings',
-            pageBuilder: (_, state) {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const Center(child: Text('Settings')),
-              );
-            },
+            parentNavigatorKey: shellNavigatorKey,
+            body: const Center(
+              child: Text('Settings'),
+            ),
           ),
-          GoRoute(
+          GoRoutePageScaffold(
             path: '/profile',
             name: 'profile',
-            pageBuilder: (_, state) {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const Counter(),
-              );
-            },
+            parentNavigatorKey: shellNavigatorKey,
+            body: const Counter(),
           ),
-          GoRoute(
+          GoRoutePageScaffold(
             path: '/users',
             name: 'users',
-            pageBuilder: (_, state) {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const Center(child: Text('Users')),
-              );
-            },
+            parentNavigatorKey: shellNavigatorKey,
+            body: const Center(child: Text('Users')),
           ),
-          GoRoute(
+          GoRoutePageScaffold(
             path: '/groups',
             name: 'groups',
-            pageBuilder: (_, state) {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const Center(child: Text('Groups')),
-              );
-            },
+            parentNavigatorKey: shellNavigatorKey,
+            body: const Center(child: Text('Groups')),
           ),
-          GoRoute(
+          GoRoutePageScaffold(
             path: '/unauthorized',
             name: 'unauthorized',
-            pageBuilder: (_, state) {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const UnauthorizedScreen(),
-              );
-            },
+            parentNavigatorKey: shellNavigatorKey,
+            body: const UnauthorizedScreen(),
           ),
         ],
       ),

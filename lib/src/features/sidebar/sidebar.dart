@@ -47,6 +47,27 @@ class Sidebar extends ConsumerWidget {
             icon: EzIcons.cog8ToothSolid,
             onTap: () => print('Settings Tapped'),
           ),
+          EzSidebarPopoverItemData.regular(
+            text: 'Settings',
+            icon: EzIcons.cog8ToothSolid,
+            onTap: () => print('Settings Tapped'),
+          ),
+          const EzSidebarPopoverItemData.separator(),
+          EzSidebarPopoverItemData.regular(
+            text: 'Settings',
+            icon: EzIcons.cog8ToothSolid,
+            onTap: () => print('Settings Tapped'),
+          ),
+          EzSidebarPopoverItemData.regular(
+            text: 'Settings',
+            icon: EzIcons.cog8ToothSolid,
+            onTap: () => print('Settings Tapped'),
+          ),
+          EzSidebarPopoverItemData.regular(
+            text: 'Settings',
+            icon: EzIcons.cog8ToothSolid,
+            onTap: () => print('Settings Tapped'),
+          ),
         ],
       ),
       items: [
