@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_item.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_item.dart';
 
 /// A widget that displays a footer item in the sidebar.
 class EzSidebarFooterItem extends StatelessWidget {

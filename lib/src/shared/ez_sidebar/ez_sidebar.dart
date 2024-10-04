@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_divider.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_footer_item.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_header.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_indicator_widget.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_items_list.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_divider.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer_item.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_header.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_indicator_widget.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_items_list.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 /// A [EzSidebar] widget that displays a customizable navigation sidebar.

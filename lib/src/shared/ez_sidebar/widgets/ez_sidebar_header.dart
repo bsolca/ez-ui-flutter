@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icon.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
 /// A [EzSidebarHeader] widget that displays the header section of the sidebar.
@@ -52,8 +52,8 @@ class EzSidebarHeader extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Theme.of(context).colorScheme.primary,
-              width: 0.5,
+              color: colorScheme.primary,
+              width: EzSidebarConsts.itemBorderSmoothing,
             ),
             shape: BoxShape.circle,
           ),
@@ -70,11 +70,11 @@ class EzSidebarHeader extends StatelessWidget {
         child: Container(
           width: EzSidebarConsts.avatarSize,
           height: EzSidebarConsts.avatarSize,
-          color: Theme.of(context).colorScheme.primary,
+          color: colorScheme.primary,
           child: Center(
             child: Icon(
-              Icons.apps, // You can customize this icon
-              color: Theme.of(context).colorScheme.onPrimary,
+              Icons.apps,
+              color: colorScheme.onPrimary,
               size: EzSidebarConsts.avatarSize / 2,
             ),
           ),
@@ -97,7 +97,7 @@ class EzSidebarHeader extends StatelessWidget {
               } else {
                 menuController.open();
               }
-            }, // _data.onTap,
+            },
             overlayColor: WidgetStateProperty.all(
               EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
             ),
@@ -110,18 +110,20 @@ class EzSidebarHeader extends StatelessWidget {
                 child: Row(
                   children: [
                     avatarWidget,
-                    const SizedBox(width: 8),
+                    SizedBox(
+                      width: EzSidebarConsts.horizontalPadding.horizontal / 2,
+                    ),
                     Expanded(
                       child: Text(
+                        appName,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        appName,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                     EzIcon(
                       EzIcons.chevronDownSolid,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: colorScheme.primary,
                       size: EzSidebarConsts.sidebarItemIconSize,
                     ),
                   ],
@@ -138,8 +140,8 @@ class EzSidebarHeader extends StatelessWidget {
     return ClipSmoothRect(
       radius: const SmoothBorderRadius.all(
         SmoothRadius(
-          cornerRadius: 10,
-          cornerSmoothing: 0.3,
+          cornerRadius: EzSidebarConsts.itemBorderRadius,
+          cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
         ),
       ),
       child: child,

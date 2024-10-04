@@ -5,15 +5,16 @@ import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
-import 'ez_sidebar_popover.dart';
-
-/// A [EzSidebarFooter] widget that displays the footer section of the sidebar.
+/// Footer section of the sidebar.
 ///
-/// This widget uses [EzSidebarFooterData] to display user information.
+/// The [EzSidebarFooter] displays the user's avatar, name, email, and a set of
+/// items that can be accessed via a popover menu. The avatar can either be an
+/// image or initials derived from the user's name.
 class EzSidebarFooter extends StatelessWidget {
-  /// Factory constructor that creates [EzSidebarFooterData] from parameters.
+  /// Footer section of the sidebar.
   factory EzSidebarFooter({
     Key? key,
     required String name,
@@ -34,9 +35,7 @@ class EzSidebarFooter extends StatelessWidget {
     );
   }
 
-  /// Creates a [EzSidebarFooter] widget.
-  ///
-  /// This const constructor takes the [_data] parameter directly.
+  /// Private constructor used to initialize the [EzSidebarFooter] with data.
   const EzSidebarFooter._({
     super.key,
     required EzSidebarFooterData data,
@@ -96,7 +95,9 @@ class EzSidebarFooter extends StatelessWidget {
                 child: Row(
                   children: [
                     avatarWidget,
-                    const SizedBox(width: 8),
+                    SizedBox(
+                      width: EzSidebarConsts.horizontalPadding.horizontal / 2,
+                    ),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,18 +132,20 @@ class EzSidebarFooter extends StatelessWidget {
     );
   }
 
+  /// Builds a rounded rectangle clip for the provided [child] widget.
   Widget _buildClipSmoothRect({required Widget child}) {
     return ClipSmoothRect(
       radius: const SmoothBorderRadius.all(
         SmoothRadius(
-          cornerRadius: 10,
-          cornerSmoothing: 0.3,
+          cornerRadius: EzSidebarConsts.itemBorderRadius,
+          cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
         ),
       ),
       child: child,
     );
   }
 
+  /// 2 Letter initials avatar fallback.
   Widget _buildFallbackAvatar(BuildContext context, String name) {
     String getInitials(String name) {
       final nameParts = name.split(' ');

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_heading_item.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_regular_item.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_heading_item.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_regular_item.dart';
 import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
 
 /// Represents a list of sidebar items.
