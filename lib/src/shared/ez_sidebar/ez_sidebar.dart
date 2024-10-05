@@ -63,12 +63,14 @@ class EzSidebar extends ConsumerWidget {
       padding: isCompact ? EzSidebarConsts.sidebarPadding : EdgeInsets.zero,
       width: EzSidebarConsts.sidebarWidth,
       margin: isCompact ? EzSidebarLayoutConsts.contentMargin : EdgeInsets.zero,
-      decoration: isCompact ?ShapeDecoration(
-        color: EzSidebarLayoutConsts.getContentColor(colorScheme),
-        shape: EzSidebarLayoutConsts.getContentShapeBorder(
-          colorScheme,
-        ),
-      ) : null,
+      decoration: isCompact
+          ? ShapeDecoration(
+              color: EzSidebarLayoutConsts.getContentColor(colorScheme),
+              shape: EzSidebarLayoutConsts.getContentShapeBorder(
+                colorScheme,
+              ),
+            )
+          : null,
       child: Column(
         children: [
           EzSidebarHeader(
@@ -119,21 +121,21 @@ class EzSidebar extends ConsumerWidget {
                     indicatorColor: EzSidebarConsts.getIndicatorColor(
                       Theme.of(context).colorScheme,
                     ),
-                    indicatorPadding:
-                        EzSidebarConsts.indicatorVerticalPadding,
+                    indicatorPadding: EzSidebarConsts.indicatorVerticalPadding,
                   ),
                 ],
               ),
             ),
           ),
-          const EzSidebarDivider(),
-          EzSidebarFooter(
-            name: footerData.name,
-            email: footerData.email,
-            onTap: footerData.onTap,
-            items: footerData.items,
-            avatarUrl: footerData.avatarUrl,
-          ),
+          if (!isCompact) const EzSidebarDivider(),
+          if (!isCompact)
+            EzSidebarFooter(
+              name: footerData.name,
+              email: footerData.email,
+              onTap: footerData.onTap,
+              items: footerData.items,
+              avatarUrl: footerData.avatarUrl,
+            ),
         ],
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer.dart';
 import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts.dart';
 import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
@@ -12,7 +14,7 @@ import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dar
 /// area on the right. It manages the state of the currently selected
 /// sidebar item and handles scrolling behavior.
 @immutable
-class EzSidebarLayout extends StatefulWidget {
+class EzSidebarLayout extends ConsumerStatefulWidget {
   /// Creates a [EzSidebarLayout].
   const EzSidebarLayout({
     super.key,
@@ -37,15 +39,12 @@ class EzSidebarLayout extends StatefulWidget {
   final Widget content;
 
   @override
-  State<EzSidebarLayout> createState() => _EzSidebarLayoutState();
+  ConsumerState<EzSidebarLayout> createState() => _EzSidebarLayoutState();
 }
 
-class _EzSidebarLayoutState extends State<EzSidebarLayout> {
+class _EzSidebarLayoutState extends ConsumerState<EzSidebarLayout> {
   /// The index of the currently selected sidebar item.
   int currentIndex = 0;
-
-  /// Controller for managing the scroll position of the sidebar.
-  final ScrollController _scrollController = ScrollController();
 
   /// The heights of each sidebar item.
   final List<double> itemHeights = [];
@@ -75,8 +74,6 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
     });
   }
 
-  final sidebarKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     // Ensure the currentIndex is within valid bounds.
@@ -87,14 +84,16 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return ResponsiveLayout(
-      medium: (_, children) {
+      medium: (child, _) {
+        final scrollController = ScrollController();
+
         return ColoredBox(
           color: EzSidebarLayoutConsts.getSidebarBackgroundColor(colorScheme),
           child: Row(
             children: [
               Padding(
                 padding: EzSidebarLayoutConsts.sidebarPadding,
-                child: children![0],
+                child: _buildSidebar(scrollController),
               ),
               Expanded(
                 child: Container(
@@ -105,16 +104,18 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
                     ),
                   ),
                   margin: EzSidebarLayoutConsts.contentMargin,
-                  child: children[1],
+                  child: child,
                 ),
               ),
             ],
           ),
         );
       },
-      compact: (_, children) {
-        final sidebarWidget = children![0];
-        final contentWidget = children[1];
+      compact: (child, _) {
+        final scrollController = ScrollController();
+
+        final sidebarWidget = _buildSidebar(scrollController);
+        final contentWidget = child;
         return Scaffold(
           appBar: AppBar(
             backgroundColor: EzSidebarLayoutConsts.getContentColor(colorScheme),
@@ -126,6 +127,15 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
                 },
               ),
             ),
+            actions: [
+              EzSidebarFooter(
+                name: widget.footerData.name,
+                email: widget.footerData.email,
+                onTap: widget.footerData.onTap,
+                items: widget.footerData.items,
+                avatarUrl: widget.footerData.avatarUrl,
+              ),
+            ],
           ),
           drawer: Drawer(
             backgroundColor: Colors.transparent,
@@ -137,20 +147,18 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
           ),
         );
       },
-      children: [
-        EzSidebar(
-          key: sidebarKey,
-          headerData: widget.headerData,
-          footerData: widget.footerData,
-          items: widget.items,
-          currentIndex: currentIndex,
-          onItemTap: _onItemTap,
-          scrollController: _scrollController,
-          itemHeights: itemHeights,
-          updateItemHeight: _updateItemHeight,
-        ),
-        widget.content,
-      ],
+      child: widget.content,
     );
   }
+
+  Widget _buildSidebar(ScrollController scrollController) => EzSidebar(
+      headerData: widget.headerData,
+      footerData: widget.footerData,
+      items: widget.items,
+      currentIndex: currentIndex,
+      onItemTap: _onItemTap,
+      scrollController: scrollController,
+      itemHeights: itemHeights,
+      updateItemHeight: _updateItemHeight,
+    );
 }

@@ -7,6 +7,7 @@ import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.code
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// Footer section of the sidebar.
 ///
@@ -93,37 +94,43 @@ class EzSidebarFooter extends StatelessWidget {
               offset: EzSidebarConsts.popoverOffset,
               child: Padding(
                 padding: EzSidebarConsts.footerPadding,
-                child: Row(
-                  children: [
-                    avatarWidget,
-                    SizedBox(
-                      width: EzSidebarConsts.horizontalPadding.horizontal / 2,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            _data.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.titleMedium,
+                child: ResponsiveLayout(
+                  compact: (_, __) => avatarWidget,
+                  medium: (_, __) {
+                    return Row(
+                      children: [
+                        avatarWidget,
+                        SizedBox(
+                          width:
+                              EzSidebarConsts.horizontalPadding.horizontal / 2,
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                _data.name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              Text(
+                                _data.email,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ],
                           ),
-                          Text(
-                            _data.email,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                    EzIcon(
-                      EzIcons.chevronUpSolid,
-                      color: colorScheme.primary,
-                      size: EzSidebarConsts.sidebarItemIconSize,
-                    ),
-                  ],
+                        ),
+                        EzIcon(
+                          EzIcons.chevronUpSolid,
+                          color: colorScheme.primary,
+                          size: EzSidebarConsts.sidebarItemIconSize,
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ),
