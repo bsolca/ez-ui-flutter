@@ -3,11 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/counter.dart';
 import 'package:impostor/src/shared/app_scaffold/app_scaffold.dart';
 import 'package:impostor/src/utils/routing/data/location_provider.codegen.dart';
+import 'package:impostor/src/utils/routing/presentation/go_route_page_scaffold.dart';
 import 'package:impostor/src/utils/routing/presentation/not_found_screen.dart';
 import 'package:impostor/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'presentation/go_route_page_scaffold.dart';
 
 part 'go_router_provider.codegen.g.dart';
 

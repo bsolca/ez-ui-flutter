@@ -6,8 +6,8 @@ import 'package:impostor/src/features/sidebar/sidebar_item_language.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 
