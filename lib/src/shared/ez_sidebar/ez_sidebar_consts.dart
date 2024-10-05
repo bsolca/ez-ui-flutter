@@ -25,7 +25,7 @@ class EzSidebarConsts {
   // ************
 
   static Color getPopoverColor(ColorScheme colorScheme) {
-    return ConstLayout.getBackgroundColor(colorScheme);
+    return colorScheme.secondaryContainer;
   }
 
   static Color getPopoverBorderColor(ColorScheme colorScheme) {
@@ -63,6 +63,8 @@ class EzSidebarConsts {
   // ************
   // Padding and Margins
   // ************
+
+  static const EdgeInsets sidebarPadding = EdgeInsets.symmetric(vertical: 8);
 
   static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
     horizontal: ConstValue.dp8,

@@ -38,12 +38,12 @@ class ConstValue {
   /// Density-independent Pixels 192.0.
   static const double dp192 = 192;
 
-  /// Density-independent Pixels 500.0.
-  static const double dp500 = 500;
+  /// Density-independent Pixels 640.0.
+  static const double dp640 = 640;
 
-  /// Density-independent Pixels 600.0.
-  static const double dp600 = 600;
+  /// Density-independent Pixels 1024.0.
+  static const double dp1024 = 1024;
 
-  /// Density-independent Pixels 840.0.
-  static const double dp840 = 840;
+  /// Density-independent Pixels 2048.0.
+  static const double dp2048 = 2048;
 }

@@ -4,6 +4,7 @@ import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.code
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts.dart';
+import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// A layout widget that includes a sidebar and a main content area.
 ///
@@ -74,6 +75,8 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
     });
   }
 
+  final sidebarKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     // Ensure the currentIndex is within valid bounds.
@@ -83,35 +86,71 @@ class _EzSidebarLayoutState extends State<EzSidebarLayout> {
 
     final colorScheme = Theme.of(context).colorScheme;
 
-    return ColoredBox(
-      color: EzSidebarLayoutConsts.getSidebarBackgroundColor(colorScheme),
-      child: Row(
-        children: [
-          Padding(
-            padding: EzSidebarLayoutConsts.sidebarPadding,
-            child: EzSidebar(
-              headerData: widget.headerData,
-              footerData: widget.footerData,
-              items: widget.items,
-              currentIndex: currentIndex,
-              onItemTap: _onItemTap,
-              scrollController: _scrollController,
-              itemHeights: itemHeights,
-              updateItemHeight: _updateItemHeight,
-            ),
-          ),
-          Expanded(
-            child: Container(
-              decoration: ShapeDecoration(
-                color: EzSidebarLayoutConsts.getContentColor(colorScheme),
-                shape: EzSidebarLayoutConsts.getContentShapeBorder(colorScheme),
+    return ResponsiveLayout(
+      medium: (_, children) {
+        return ColoredBox(
+          color: EzSidebarLayoutConsts.getSidebarBackgroundColor(colorScheme),
+          child: Row(
+            children: [
+              Padding(
+                padding: EzSidebarLayoutConsts.sidebarPadding,
+                child: children![0],
               ),
-              margin: EzSidebarLayoutConsts.contentMargin,
-              child: widget.content,
+              Expanded(
+                child: Container(
+                  decoration: ShapeDecoration(
+                    color: EzSidebarLayoutConsts.getContentColor(colorScheme),
+                    shape: EzSidebarLayoutConsts.getContentShapeBorder(
+                      colorScheme,
+                    ),
+                  ),
+                  margin: EzSidebarLayoutConsts.contentMargin,
+                  child: children[1],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      compact: (_, children) {
+        final sidebarWidget = children![0];
+        final contentWidget = children[1];
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: EzSidebarLayoutConsts.getContentColor(colorScheme),
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
             ),
           ),
-        ],
-      ),
+          drawer: Drawer(
+            backgroundColor: Colors.transparent,
+            child: sidebarWidget,
+          ),
+          body: ColoredBox(
+            color: EzSidebarLayoutConsts.getContentColor(colorScheme),
+            child: contentWidget,
+          ),
+        );
+      },
+      children: [
+        EzSidebar(
+          key: sidebarKey,
+          headerData: widget.headerData,
+          footerData: widget.footerData,
+          items: widget.items,
+          currentIndex: currentIndex,
+          onItemTap: _onItemTap,
+          scrollController: _scrollController,
+          itemHeights: itemHeights,
+          updateItemHeight: _updateItemHeight,
+        ),
+        widget.content,
+      ],
     );
   }
 }

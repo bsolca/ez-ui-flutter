@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
@@ -9,10 +10,12 @@ import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer_item.da
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_header.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_indicator_widget.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_items_list.dart';
+import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts.dart';
+import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 /// A [EzSidebar] widget that displays a customizable navigation sidebar.
-class EzSidebar extends StatelessWidget {
+class EzSidebar extends ConsumerWidget {
   /// Creates the sidebar widget.
   const EzSidebar({
     super.key,
@@ -51,85 +54,87 @@ class EzSidebar extends StatelessWidget {
   final void Function(int, double) updateItemHeight;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
     final footerItems = items.whereType<BottomSidebarItemData>().toList();
+    final isCompact = ref.isCompactScreen;
 
-    // Sidebar background color based on the color scheme
-    final sidebarBackgroundColor =
-        EzSidebarConsts.getSidebarBackgroundColor(colorScheme);
-
-    return SizedBox(
+    return Container(
+      padding: isCompact ? EzSidebarConsts.sidebarPadding : EdgeInsets.zero,
       width: EzSidebarConsts.sidebarWidth,
-      child: ColoredBox(
-        color: sidebarBackgroundColor,
-        child: Column(
-          children: [
-            EzSidebarHeader(
-              onTap: headerData.onTap,
-              appName: headerData.appName,
-              avatarUrl: headerData.avatarUrl,
-              items: headerData.items,
-            ),
-            const EzSidebarDivider(),
-            Expanded(
-              child: ClipRect(
-                child: Stack(
-                  children: [
-                    WebSmoothScroll(
+      margin: isCompact ? EzSidebarLayoutConsts.contentMargin : EdgeInsets.zero,
+      decoration: isCompact ?ShapeDecoration(
+        color: EzSidebarLayoutConsts.getContentColor(colorScheme),
+        shape: EzSidebarLayoutConsts.getContentShapeBorder(
+          colorScheme,
+        ),
+      ) : null,
+      child: Column(
+        children: [
+          EzSidebarHeader(
+            onTap: headerData.onTap,
+            appName: headerData.appName,
+            avatarUrl: headerData.avatarUrl,
+            items: headerData.items,
+          ),
+          const EzSidebarDivider(),
+          Expanded(
+            child: ClipRect(
+              child: Stack(
+                children: [
+                  WebSmoothScroll(
+                    controller: scrollController,
+                    child: CustomScrollView(
                       controller: scrollController,
-                      child: CustomScrollView(
-                        controller: scrollController,
-                        physics: const NeverScrollableScrollPhysics(),
-                        slivers: [
-                          EzSidebarItemsList(
-                            items: items,
-                            currentIndex: currentIndex,
-                            onItemTap: onItemTap,
-                            updateItemHeight: updateItemHeight,
+                      physics: const NeverScrollableScrollPhysics(),
+                      slivers: [
+                        EzSidebarItemsList(
+                          items: items,
+                          currentIndex: currentIndex,
+                          onItemTap: onItemTap,
+                          updateItemHeight: updateItemHeight,
+                        ),
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: footerItems
+                                .map(
+                                  (e) => EzSidebarFooterItem(
+                                    text: e.text,
+                                    icon: e.icon,
+                                    onTap: e.onTap,
+                                  ),
+                                )
+                                .toList(),
                           ),
-                          SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: footerItems
-                                  .map(
-                                    (e) => EzSidebarFooterItem(
-                                      text: e.text,
-                                      icon: e.icon,
-                                      onTap: e.onTap,
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    EzSidebarIndicatorWidget(
-                      scrollController: scrollController,
-                      itemHeights: itemHeights,
-                      selectedIndex: currentIndex,
-                      indicatorColor: EzSidebarConsts.getIndicatorColor(
-                        Theme.of(context).colorScheme,
-                      ),
-                      indicatorPadding:
-                          EzSidebarConsts.indicatorVerticalPadding,
+                  ),
+                  EzSidebarIndicatorWidget(
+                    scrollController: scrollController,
+                    itemHeights: itemHeights,
+                    selectedIndex: currentIndex,
+                    indicatorColor: EzSidebarConsts.getIndicatorColor(
+                      Theme.of(context).colorScheme,
                     ),
-                  ],
-                ),
+                    indicatorPadding:
+                        EzSidebarConsts.indicatorVerticalPadding,
+                  ),
+                ],
               ),
             ),
-            const EzSidebarDivider(),
-            EzSidebarFooter(
-              name: footerData.name,
-              email: footerData.email,
-              onTap: footerData.onTap,
-              items: footerData.items,
-              avatarUrl: footerData.avatarUrl,
-            ),
-          ],
-        ),
+          ),
+          const EzSidebarDivider(),
+          EzSidebarFooter(
+            name: footerData.name,
+            email: footerData.email,
+            onTap: footerData.onTap,
+            items: footerData.items,
+            avatarUrl: footerData.avatarUrl,
+          ),
+        ],
       ),
     );
   }

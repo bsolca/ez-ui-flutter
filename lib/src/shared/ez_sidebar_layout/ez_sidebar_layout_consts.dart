@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 
@@ -11,7 +12,7 @@ class EzSidebarLayoutConsts {
   // ***************
 
   /// Sidebar padding (vertical)
-  static const EdgeInsets sidebarPadding = EdgeInsets.symmetric(vertical: 8);
+  static const EdgeInsets sidebarPadding = EzSidebarConsts.sidebarPadding;
 
   /// Content container margin
   static const EdgeInsets contentMargin = EdgeInsets.all(8);

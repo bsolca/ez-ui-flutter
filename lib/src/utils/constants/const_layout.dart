@@ -23,9 +23,8 @@ class ConstLayout {
   static const double iconMediumSize = ConstValue.dp24;
 
   // Layout Dimensions
-  static const double maxGameWidthSize = ConstValue.dp840;
-  static const double maxWidthCompact = ConstValue.dp600;
-  static const double maxWidthMedium = ConstValue.dp840;
+  static const double maxWidthCompact = ConstValue.dp1024;
+  static const double maxWidthMedium = ConstValue.dp2048;
 
   // Avatar Sizes
   static const double avatarMediumSize = ConstValue.dp64;
