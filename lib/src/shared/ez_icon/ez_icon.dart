@@ -36,7 +36,10 @@ class EzIcon extends StatelessWidget {
     return SvgPicture.asset(
       icon.path,
       width: size,
-      color: color,
+      colorFilter: colorFilter,
+      theme: SvgTheme(
+        currentColor: color,
+      ),
     );
   }
 }
