@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 
 /// EzIcon from HeroIcons
 class EzIcon extends StatelessWidget {
@@ -29,14 +29,13 @@ class EzIcon extends StatelessWidget {
     if (icon.path.contains('flag_icons') == false) {
       colorFilter = ColorFilter.mode(
         color,
-        BlendMode.srcATop,
+        BlendMode.srcIn,
       );
     }
 
-    return WebsafeSvg.asset(
+    return SvgPicture.asset(
       icon.path,
       width: size,
-
       colorFilter: colorFilter,
     );
   }
