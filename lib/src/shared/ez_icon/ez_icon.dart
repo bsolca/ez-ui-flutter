@@ -29,9 +29,10 @@ class EzIcon extends StatelessWidget {
     if (icon.path.contains('flag_icons') == false) {
       colorFilter = ColorFilter.mode(
         color,
-        BlendMode.srcIn,
+        BlendMode.srcATop,
       );
     }
+
     return SvgPicture.asset(
       icon.path,
       width: size,
