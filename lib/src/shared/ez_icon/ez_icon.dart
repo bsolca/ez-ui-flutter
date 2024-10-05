@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
+import 'package:websafe_svg/websafe_svg.dart';
 
 /// EzIcon from HeroIcons
 class EzIcon extends StatelessWidget {
@@ -33,13 +33,11 @@ class EzIcon extends StatelessWidget {
       );
     }
 
-    return SvgPicture.asset(
+    return WebsafeSvg.asset(
       icon.path,
       width: size,
+
       colorFilter: colorFilter,
-      theme: SvgTheme(
-        currentColor: color,
-      ),
     );
   }
 }
