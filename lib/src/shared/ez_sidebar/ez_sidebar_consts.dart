@@ -103,7 +103,7 @@ class EzSidebarConsts {
   // ************
 
   static const double itemBorderRadius = ConstValue.dp8;
-  static const double itemBorderSmoothing = 0.5;
+  static const double itemBorderSmoothing = 0.4;
   static const int _itemOverlayOpacity = 20;
   static const double sidebarItemIconSize = ConstValue.dp24;
   static const BlendMode sidebarItemIconBlendMode = BlendMode.srcIn;
