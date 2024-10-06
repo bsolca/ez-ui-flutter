@@ -61,5 +61,3 @@ flutter:
     - family: HeroIcons
       fonts:
         - asset: assets/fonts/HeroIconSolid.ttf
-        - asset: assets/fonts/HeroIconOutline.ttf
-          style: italic
