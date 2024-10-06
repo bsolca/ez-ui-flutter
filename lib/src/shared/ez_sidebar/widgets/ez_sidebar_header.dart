@@ -1,13 +1,11 @@
 // ez_sidebar_header.dart
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icon.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
+import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
-import 'package:impostor/src/utils/ez_icons/ez_icons.dart';
 
 /// A [EzSidebarHeader] widget that displays the header section of the sidebar.
 ///
@@ -124,12 +122,7 @@ class EzSidebarHeader extends StatelessWidget {
                       ),
                     ),
                     Icon(
-                      CustomIcons.chevronUpSolid,
-                      color: colorScheme.primary,
-                      size: EzSidebarConsts.sidebarItemIconSize,
-                    ),
-                    EzIcon(
-                      EzIcons.chevronDownSolid,
+                      HeroIcon.chevronDown,
                       color: colorScheme.primary,
                       size: EzSidebarConsts.sidebarItemIconSize,
                     ),

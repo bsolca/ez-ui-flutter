@@ -18,20 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EzSidebarPopoverItemData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function() separator,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function()? separator,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function()? separator,
     required TResult orElse(),
   }) =>
@@ -87,7 +92,7 @@ abstract class _$$EzRegularSidebarPopoverItemDataImplCopyWith<$Res> {
           $Res Function(_$EzRegularSidebarPopoverItemDataImpl) then) =
       __$$EzRegularSidebarPopoverItemDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String text, EzIcons? icon, VoidCallback onTap});
+  $Res call({IconData? icon, String? svgPath, String text, VoidCallback onTap});
 }
 
 /// @nodoc
@@ -105,19 +110,24 @@ class __$$EzRegularSidebarPopoverItemDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
     Object? icon = freezed,
+    Object? svgPath = freezed,
+    Object? text = null,
     Object? onTap = null,
   }) {
     return _then(_$EzRegularSidebarPopoverItemDataImpl(
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as IconData?,
+      svgPath: freezed == svgPath
+          ? _value.svgPath
+          : svgPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as EzIcons?,
       onTap: null == onTap
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
@@ -131,18 +141,20 @@ class __$$EzRegularSidebarPopoverItemDataImplCopyWithImpl<$Res>
 class _$EzRegularSidebarPopoverItemDataImpl
     implements EzRegularSidebarPopoverItemData {
   const _$EzRegularSidebarPopoverItemDataImpl(
-      {required this.text, required this.icon, required this.onTap});
+      {this.icon, this.svgPath, required this.text, required this.onTap});
 
   @override
-  final String text;
+  final IconData? icon;
   @override
-  final EzIcons? icon;
+  final String? svgPath;
+  @override
+  final String text;
   @override
   final VoidCallback onTap;
 
   @override
   String toString() {
-    return 'EzSidebarPopoverItemData.regular(text: $text, icon: $icon, onTap: $onTap)';
+    return 'EzSidebarPopoverItemData.regular(icon: $icon, svgPath: $svgPath, text: $text, onTap: $onTap)';
   }
 
   @override
@@ -150,13 +162,14 @@ class _$EzRegularSidebarPopoverItemDataImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EzRegularSidebarPopoverItemDataImpl &&
-            (identical(other.text, text) || other.text == text) &&
             (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.svgPath, svgPath) || other.svgPath == svgPath) &&
+            (identical(other.text, text) || other.text == text) &&
             (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text, icon, onTap);
+  int get hashCode => Object.hash(runtimeType, icon, svgPath, text, onTap);
 
   /// Create a copy of EzSidebarPopoverItemData
   /// with the given fields replaced by the non-null parameter values.
@@ -171,31 +184,36 @@ class _$EzRegularSidebarPopoverItemDataImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function() separator,
   }) {
-    return regular(text, icon, onTap);
+    return regular(icon, svgPath, text, onTap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function()? separator,
   }) {
-    return regular?.call(text, icon, onTap);
+    return regular?.call(icon, svgPath, text, onTap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function()? separator,
     required TResult orElse(),
   }) {
     if (regular != null) {
-      return regular(text, icon, onTap);
+      return regular(icon, svgPath, text, onTap);
     }
     return orElse();
   }
@@ -236,13 +254,15 @@ class _$EzRegularSidebarPopoverItemDataImpl
 abstract class EzRegularSidebarPopoverItemData
     implements EzSidebarPopoverItemData {
   const factory EzRegularSidebarPopoverItemData(
-          {required final String text,
-          required final EzIcons? icon,
+          {final IconData? icon,
+          final String? svgPath,
+          required final String text,
           required final VoidCallback onTap}) =
       _$EzRegularSidebarPopoverItemDataImpl;
 
+  IconData? get icon;
+  String? get svgPath;
   String get text;
-  EzIcons? get icon;
   VoidCallback get onTap;
 
   /// Create a copy of EzSidebarPopoverItemData
@@ -299,7 +319,8 @@ class _$EzSeparatorSidebarPopoverItemDataImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function() separator,
   }) {
@@ -309,7 +330,9 @@ class _$EzSeparatorSidebarPopoverItemDataImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function()? separator,
   }) {
     return separator?.call();
@@ -318,7 +341,9 @@ class _$EzSeparatorSidebarPopoverItemDataImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function()? separator,
     required TResult orElse(),
   }) {

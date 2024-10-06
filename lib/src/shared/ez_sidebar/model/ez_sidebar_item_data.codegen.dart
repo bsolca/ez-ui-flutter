@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 
 part 'ez_sidebar_item_data.codegen.freezed.dart';
 
@@ -9,8 +8,9 @@ part 'ez_sidebar_item_data.codegen.freezed.dart';
 class EzSidebarItemData with _$EzSidebarItemData {
   /// Regular sidebar item data.
   const factory EzSidebarItemData.regular({
+    IconData? icon,
+    String? svgPath,
     required String text,
-    required EzIcons? icon,
     required VoidCallback onTap,
   }) = RegularSidebarItemData;
 
@@ -21,8 +21,9 @@ class EzSidebarItemData with _$EzSidebarItemData {
 
   /// Bottom sidebar item data, can not be selected.
   const factory EzSidebarItemData.bottom({
+    IconData? icon,
+    String? svgPath,
     required String text,
-    required EzIcons? icon,
     required VoidCallback onTap,
   }) = BottomSidebarItemData;
 }

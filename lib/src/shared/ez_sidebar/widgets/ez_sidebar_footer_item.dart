@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_item.dart';
 
@@ -10,6 +9,7 @@ class EzSidebarFooterItem extends StatelessWidget {
     super.key,
     required this.text,
     required this.icon,
+    required this.svgPath,
     required this.onTap,
   });
 
@@ -17,10 +17,13 @@ class EzSidebarFooterItem extends StatelessWidget {
   final String text;
 
   /// The icon to display in the footer item.
-  final EzIcons? icon;
+  final IconData? icon;
 
   /// The callback to be called when the footer item is tapped.
   final VoidCallback onTap;
+
+  /// Path to the SVg icon
+  final String? svgPath;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class EzSidebarFooterItem extends StatelessWidget {
       child: EzSidebarItem(
         text: text,
         icon: icon,
+        svgPath: svgPath,
         isSelected: false, // Footer items cannot be selected
         onTap: onTap,
       ),

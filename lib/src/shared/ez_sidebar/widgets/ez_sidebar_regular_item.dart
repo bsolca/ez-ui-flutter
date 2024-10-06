@@ -29,6 +29,7 @@ class EzSidebarRegularItem extends StatelessWidget {
       child: EzSidebarItem(
         text: item.text,
         icon: item.icon,
+        svgPath: item.svgPath,
         isSelected: isSelected,
         onTap: onTap,
       ),

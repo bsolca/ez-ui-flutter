@@ -15,7 +15,7 @@ class SidebarItemLanguage {
 
     return EzSidebarItemData.bottom(
       text: ref.loc.changeLanguage,
-      icon: switchToIcon,
+      svgPath: switchToIcon.path,
       onTap: () async {
         await ref.read(getLocaleProvider.notifier).setLanguageCode(
           isEnglish ? 'fr' : 'en',

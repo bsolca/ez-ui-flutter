@@ -19,25 +19,35 @@ mixin _$EzSidebarItemData {
   String get text => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function(String text) heading,
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         bottom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function(String text)? heading,
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function(String text)? heading,
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,7 +125,7 @@ abstract class _$$RegularSidebarItemDataImplCopyWith<$Res>
       __$$RegularSidebarItemDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String text, EzIcons? icon, VoidCallback onTap});
+  $Res call({IconData? icon, String? svgPath, String text, VoidCallback onTap});
 }
 
 /// @nodoc
@@ -132,19 +142,24 @@ class __$$RegularSidebarItemDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
     Object? icon = freezed,
+    Object? svgPath = freezed,
+    Object? text = null,
     Object? onTap = null,
   }) {
     return _then(_$RegularSidebarItemDataImpl(
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as IconData?,
+      svgPath: freezed == svgPath
+          ? _value.svgPath
+          : svgPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as EzIcons?,
       onTap: null == onTap
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
@@ -157,18 +172,20 @@ class __$$RegularSidebarItemDataImplCopyWithImpl<$Res>
 
 class _$RegularSidebarItemDataImpl implements RegularSidebarItemData {
   const _$RegularSidebarItemDataImpl(
-      {required this.text, required this.icon, required this.onTap});
+      {this.icon, this.svgPath, required this.text, required this.onTap});
 
   @override
-  final String text;
+  final IconData? icon;
   @override
-  final EzIcons? icon;
+  final String? svgPath;
+  @override
+  final String text;
   @override
   final VoidCallback onTap;
 
   @override
   String toString() {
-    return 'EzSidebarItemData.regular(text: $text, icon: $icon, onTap: $onTap)';
+    return 'EzSidebarItemData.regular(icon: $icon, svgPath: $svgPath, text: $text, onTap: $onTap)';
   }
 
   @override
@@ -176,13 +193,14 @@ class _$RegularSidebarItemDataImpl implements RegularSidebarItemData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegularSidebarItemDataImpl &&
-            (identical(other.text, text) || other.text == text) &&
             (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.svgPath, svgPath) || other.svgPath == svgPath) &&
+            (identical(other.text, text) || other.text == text) &&
             (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text, icon, onTap);
+  int get hashCode => Object.hash(runtimeType, icon, svgPath, text, onTap);
 
   /// Create a copy of EzSidebarItemData
   /// with the given fields replaced by the non-null parameter values.
@@ -196,35 +214,45 @@ class _$RegularSidebarItemDataImpl implements RegularSidebarItemData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function(String text) heading,
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         bottom,
   }) {
-    return regular(text, icon, onTap);
+    return regular(icon, svgPath, text, onTap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function(String text)? heading,
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
   }) {
-    return regular?.call(text, icon, onTap);
+    return regular?.call(icon, svgPath, text, onTap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function(String text)? heading,
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
     required TResult orElse(),
   }) {
     if (regular != null) {
-      return regular(text, icon, onTap);
+      return regular(icon, svgPath, text, onTap);
     }
     return orElse();
   }
@@ -266,13 +294,15 @@ class _$RegularSidebarItemDataImpl implements RegularSidebarItemData {
 
 abstract class RegularSidebarItemData implements EzSidebarItemData {
   const factory RegularSidebarItemData(
-      {required final String text,
-      required final EzIcons? icon,
+      {final IconData? icon,
+      final String? svgPath,
+      required final String text,
       required final VoidCallback onTap}) = _$RegularSidebarItemDataImpl;
 
+  IconData? get icon;
+  String? get svgPath;
   @override
   String get text;
-  EzIcons? get icon;
   VoidCallback get onTap;
 
   /// Create a copy of EzSidebarItemData
@@ -356,10 +386,12 @@ class _$HeadingSidebarItemDataImpl implements HeadingSidebarItemData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function(String text) heading,
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         bottom,
   }) {
     return heading(text);
@@ -368,9 +400,13 @@ class _$HeadingSidebarItemDataImpl implements HeadingSidebarItemData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function(String text)? heading,
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
   }) {
     return heading?.call(text);
   }
@@ -378,9 +414,13 @@ class _$HeadingSidebarItemDataImpl implements HeadingSidebarItemData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function(String text)? heading,
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
     required TResult orElse(),
   }) {
     if (heading != null) {
@@ -448,7 +488,7 @@ abstract class _$$BottomSidebarItemDataImplCopyWith<$Res>
       __$$BottomSidebarItemDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String text, EzIcons? icon, VoidCallback onTap});
+  $Res call({IconData? icon, String? svgPath, String text, VoidCallback onTap});
 }
 
 /// @nodoc
@@ -464,19 +504,24 @@ class __$$BottomSidebarItemDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
     Object? icon = freezed,
+    Object? svgPath = freezed,
+    Object? text = null,
     Object? onTap = null,
   }) {
     return _then(_$BottomSidebarItemDataImpl(
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as IconData?,
+      svgPath: freezed == svgPath
+          ? _value.svgPath
+          : svgPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as EzIcons?,
       onTap: null == onTap
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
@@ -489,18 +534,20 @@ class __$$BottomSidebarItemDataImplCopyWithImpl<$Res>
 
 class _$BottomSidebarItemDataImpl implements BottomSidebarItemData {
   const _$BottomSidebarItemDataImpl(
-      {required this.text, required this.icon, required this.onTap});
+      {this.icon, this.svgPath, required this.text, required this.onTap});
 
   @override
-  final String text;
+  final IconData? icon;
   @override
-  final EzIcons? icon;
+  final String? svgPath;
+  @override
+  final String text;
   @override
   final VoidCallback onTap;
 
   @override
   String toString() {
-    return 'EzSidebarItemData.bottom(text: $text, icon: $icon, onTap: $onTap)';
+    return 'EzSidebarItemData.bottom(icon: $icon, svgPath: $svgPath, text: $text, onTap: $onTap)';
   }
 
   @override
@@ -508,13 +555,14 @@ class _$BottomSidebarItemDataImpl implements BottomSidebarItemData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BottomSidebarItemDataImpl &&
-            (identical(other.text, text) || other.text == text) &&
             (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.svgPath, svgPath) || other.svgPath == svgPath) &&
+            (identical(other.text, text) || other.text == text) &&
             (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text, icon, onTap);
+  int get hashCode => Object.hash(runtimeType, icon, svgPath, text, onTap);
 
   /// Create a copy of EzSidebarItemData
   /// with the given fields replaced by the non-null parameter values.
@@ -528,35 +576,45 @@ class _$BottomSidebarItemDataImpl implements BottomSidebarItemData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         regular,
     required TResult Function(String text) heading,
-    required TResult Function(String text, EzIcons? icon, VoidCallback onTap)
+    required TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)
         bottom,
   }) {
-    return bottom(text, icon, onTap);
+    return bottom(icon, svgPath, text, onTap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult? Function(String text)? heading,
-    TResult? Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult? Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
   }) {
-    return bottom?.call(text, icon, onTap);
+    return bottom?.call(icon, svgPath, text, onTap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? regular,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        regular,
     TResult Function(String text)? heading,
-    TResult Function(String text, EzIcons? icon, VoidCallback onTap)? bottom,
+    TResult Function(
+            IconData? icon, String? svgPath, String text, VoidCallback onTap)?
+        bottom,
     required TResult orElse(),
   }) {
     if (bottom != null) {
-      return bottom(text, icon, onTap);
+      return bottom(icon, svgPath, text, onTap);
     }
     return orElse();
   }
@@ -598,13 +656,15 @@ class _$BottomSidebarItemDataImpl implements BottomSidebarItemData {
 
 abstract class BottomSidebarItemData implements EzSidebarItemData {
   const factory BottomSidebarItemData(
-      {required final String text,
-      required final EzIcons? icon,
+      {final IconData? icon,
+      final String? svgPath,
+      required final String text,
       required final VoidCallback onTap}) = _$BottomSidebarItemDataImpl;
 
+  IconData? get icon;
+  String? get svgPath;
   @override
   String get text;
-  EzIcons? get icon;
   VoidCallback get onTap;
 
   /// Create a copy of EzSidebarItemData

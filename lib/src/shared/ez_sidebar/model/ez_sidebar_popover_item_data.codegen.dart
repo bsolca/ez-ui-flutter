@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
 
 part 'ez_sidebar_popover_item_data.codegen.freezed.dart';
 
@@ -9,8 +8,9 @@ part 'ez_sidebar_popover_item_data.codegen.freezed.dart';
 class EzSidebarPopoverItemData with _$EzSidebarPopoverItemData {
   /// Regular sidebar item data.
   const factory EzSidebarPopoverItemData.regular({
+    IconData? icon,
+    String? svgPath,
     required String text,
-    required EzIcons? icon,
     required VoidCallback onTap,
   }) = EzRegularSidebarPopoverItemData;
 

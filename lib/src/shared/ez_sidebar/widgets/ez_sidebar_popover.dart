@@ -70,6 +70,7 @@ class EzSidebarPopover extends StatelessWidget {
                 return EzSidebarItem(
                   text: item.text,
                   icon: item.icon,
+                  svgPath: item.svgPath,
                   isSelected: false,
                   onTap: item.onTap,
                 );

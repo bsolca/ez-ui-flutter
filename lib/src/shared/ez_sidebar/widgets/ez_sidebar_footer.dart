@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icon.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
+import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
@@ -123,8 +122,8 @@ class EzSidebarFooter extends StatelessWidget {
                             ],
                           ),
                         ),
-                        EzIcon(
-                          EzIcons.chevronUpSolid,
+                        Icon(
+                          HeroIcon.chevronUp,
                           color: colorScheme.primary,
                           size: EzSidebarConsts.sidebarItemIconSize,
                         ),

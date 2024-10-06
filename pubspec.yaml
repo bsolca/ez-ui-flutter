@@ -53,12 +53,13 @@ flutter:
   assets:
     - assets/images/avatar/
     - assets/images/medals/
-    - assets/hero_icons/
     - assets/flag_icons/
   fonts:
     - family: Prototype
       fonts:
         - asset: assets/fonts/Prototype.ttf
-    - family: icomoon
+    - family: HeroIcons
       fonts:
-        - asset: assets/fonts/icomoon.ttf
+        - asset: assets/fonts/HeroIconSolid.ttf
+        - asset: assets/fonts/HeroIconOutline.ttf
+          style: italic

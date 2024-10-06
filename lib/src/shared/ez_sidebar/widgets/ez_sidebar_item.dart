@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icon.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
@@ -19,7 +18,8 @@ class EzSidebarItem extends StatefulWidget {
     required this.text,
     required this.isSelected,
     required this.onTap,
-    this.icon,
+    required this.icon,
+    required this.svgPath,
   });
 
   /// The text label of the sidebar item.
@@ -32,7 +32,10 @@ class EzSidebarItem extends StatefulWidget {
   final VoidCallback onTap;
 
   /// The path to the SVG icon asset.
-  final EzIcons? icon;
+  final IconData? icon;
+
+  /// Svg asset path.
+  final String? svgPath;
 
   @override
   State<EzSidebarItem> createState() => _EzSidebarItemState();
@@ -45,6 +48,7 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final icon = widget.icon;
+    final svgPath = widget.svgPath;
 
     // Determine the icon color based on hover and selection states
     Color iconColor;
@@ -85,10 +89,18 @@ class _EzSidebarItemState extends State<EzSidebarItem> {
                 // Using contentPadding here
                 child: Row(
                   children: [
+                    if (svgPath != null)
+                      Padding(
+                        padding: EzSidebarConsts.sidebarItemIconPadding,
+                        child: SvgPicture.asset(
+                          svgPath,
+                          width: EzSidebarConsts.sidebarItemIconSize,
+                        ),
+                      ),
                     if (icon != null)
                       Padding(
                         padding: EzSidebarConsts.sidebarItemIconPadding,
-                        child: EzIcon(
+                        child: Icon(
                           icon,
                           color: iconColor,
                           size: EzSidebarConsts.sidebarItemIconSize,

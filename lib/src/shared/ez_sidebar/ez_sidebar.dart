@@ -105,6 +105,7 @@ class EzSidebar extends ConsumerWidget {
                                   (e) => EzSidebarFooterItem(
                                     text: e.text,
                                     icon: e.icon,
+                                    svgPath: e.svgPath,
                                     onTap: e.onTap,
                                   ),
                                 )

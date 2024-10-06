@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/sidebar/sidebar_item_brightness.dart';
 import 'package:impostor/src/features/sidebar/sidebar_item_language.dart';
-import 'package:impostor/src/shared/ez_icon/ez_icons.dart';
+import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
@@ -31,7 +31,7 @@ class Sidebar extends ConsumerWidget {
         items: [
           EzSidebarPopoverItemData.regular(
             text: 'Settings',
-            icon: EzIcons.cog8ToothSolid,
+            icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
         ],
@@ -44,28 +44,28 @@ class Sidebar extends ConsumerWidget {
         items: [
           EzSidebarPopoverItemData.regular(
             text: 'Settings',
-            icon: EzIcons.cog8ToothSolid,
+            icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
           EzSidebarPopoverItemData.regular(
             text: 'Settings',
-            icon: EzIcons.cog8ToothSolid,
+            icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
           const EzSidebarPopoverItemData.separator(),
           EzSidebarPopoverItemData.regular(
             text: 'Settings',
-            icon: EzIcons.cog8ToothSolid,
+            icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
           EzSidebarPopoverItemData.regular(
             text: 'Settings',
-            icon: EzIcons.cog8ToothSolid,
+            icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
           EzSidebarPopoverItemData.regular(
             text: 'Settings',
-            icon: EzIcons.cog8ToothSolid,
+            icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
         ],
@@ -74,30 +74,30 @@ class Sidebar extends ConsumerWidget {
         // Make items const if possible
         EzSidebarItemData.regular(
           text: ref.loc.home,
-          icon: EzIcons.homeSolid,
+          icon: HeroIcon.home,
           onTap: () => context.go('/'),
         ),
         EzSidebarItemData.regular(
           text: ref.loc.settings,
-          icon: EzIcons.adjustmentsHorizontalSolid,
+          icon: HeroIcon.adjustmentsHorizontal,
           onTap: () => context.go('/settings'),
         ),
         EzSidebarItemData.regular(
           text: ref.loc.profile,
-          icon: EzIcons.userCircleSolid,
+          icon: HeroIcon.userCircle,
           onTap: () => context.go('/profile'),
         ),
         // Add heading
         EzSidebarItemData.heading(text: ref.loc.users),
         EzSidebarItemData.regular(
           text: ref.loc.users,
-          icon: EzIcons.usersSolid,
+          icon: HeroIcon.users,
           onTap: () => context.go('/users'),
         ),
         // add groups
         EzSidebarItemData.regular(
           text: ref.loc.groups,
-          icon: EzIcons.userGroupSolid,
+          icon: HeroIcon.userGroup,
           onTap: () => context.go('/groups'),
         ),
 
