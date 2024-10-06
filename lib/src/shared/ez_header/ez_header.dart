@@ -8,9 +8,9 @@ enum _HeaderSize {
 }
 
 /// A header widget that displays a text with a specific style.
-class Header extends ConsumerWidget {
+class EzHeader extends ConsumerWidget {
   /// Medium size header.
-  const Header.displayMedium(
+  const EzHeader.displayMedium(
     this.text, {
     super.key,
     this.subText,
@@ -18,7 +18,7 @@ class Header extends ConsumerWidget {
   }) : _size = _HeaderSize.displayMedium;
 
   /// Small size header.
-  const Header.displaySmall(
+  const EzHeader.displaySmall(
     this.text, {
     super.key,
     this.subText,
@@ -46,6 +46,7 @@ class Header extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
+          softWrap: true,
           style: _size == _HeaderSize.displayMedium ? medium : small,
           text,
         ),

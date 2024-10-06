@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/header/header.dart';
+import 'package:impostor/src/shared/ez_header/ez_header.dart';
 
-/// Use under a [Header] to display a sub title.
+/// Use under a [EzHeader] to display a sub title.
 class SubHeader extends StatelessWidget {
-  /// Use under a [Header] to display a sub title.
+  /// Use under a [EzHeader] to display a sub title.
   const SubHeader(
     this.text, {
     super.key,

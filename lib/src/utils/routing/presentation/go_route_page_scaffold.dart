@@ -14,14 +14,11 @@ class GoRoutePageScaffold extends GoRoute {
     required super.parentNavigatorKey,
     required Widget body,
   }) : super(
-    pageBuilder: (_, state) {
-      return NoTransitionPage(
-        key: state.pageKey,
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: body,
-        ),
-      );
-    },
-  );
+          pageBuilder: (_, state) {
+            return NoTransitionPage(
+              key: state.pageKey,
+              child: body,
+            );
+          },
+        );
 }

@@ -114,8 +114,6 @@ class _EzSidebarLayoutState extends ConsumerState<EzSidebarLayout> {
       compact: (child, _) {
         final scrollController = ScrollController();
 
-        final sidebarWidget = _buildSidebar(scrollController);
-        final contentWidget = child;
         return Scaffold(
           appBar: AppBar(
             backgroundColor: EzSidebarLayoutConsts.getContentColor(colorScheme),
@@ -139,11 +137,11 @@ class _EzSidebarLayoutState extends ConsumerState<EzSidebarLayout> {
           ),
           drawer: Drawer(
             backgroundColor: Colors.transparent,
-            child: sidebarWidget,
+            child: _buildSidebar(scrollController),
           ),
           body: ColoredBox(
             color: EzSidebarLayoutConsts.getContentColor(colorScheme),
-            child: contentWidget,
+            child: child,
           ),
         );
       },
@@ -152,13 +150,13 @@ class _EzSidebarLayoutState extends ConsumerState<EzSidebarLayout> {
   }
 
   Widget _buildSidebar(ScrollController scrollController) => EzSidebar(
-      headerData: widget.headerData,
-      footerData: widget.footerData,
-      items: widget.items,
-      currentIndex: currentIndex,
-      onItemTap: _onItemTap,
-      scrollController: scrollController,
-      itemHeights: itemHeights,
-      updateItemHeight: _updateItemHeight,
-    );
+        headerData: widget.headerData,
+        footerData: widget.footerData,
+        items: widget.items,
+        currentIndex: currentIndex,
+        onItemTap: _onItemTap,
+        scrollController: scrollController,
+        itemHeights: itemHeights,
+        updateItemHeight: _updateItemHeight,
+      );
 }

@@ -45,26 +45,24 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             path: '/',
             name: 'home',
             parentNavigatorKey: shellNavigatorKey,
-            body: const Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Route / builder',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 48,
-                    ),
+            body: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Route / builder',
+                  style: TextStyle(
+                    fontFamily: 'Prototype',
+                    fontSize: 48,
                   ),
-                  Text(
-                    'Route / builder',
-                    style: TextStyle(
-                      fontFamily: 'Prototype',
-                      fontSize: 48,
-                    ),
+                ),
+                Text(
+                  'Route / builder',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 48,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           GoRoutePageScaffold(
