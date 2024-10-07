@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:impostor/src/shared/squircle/squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
+import 'package:impostor/src/utils/extension/list_extension.dart';
 
 /// Styled text form field.
 class EzTextFormField extends ConsumerWidget {
@@ -10,6 +12,7 @@ class EzTextFormField extends ConsumerWidget {
     super.key,
     required this.hintText,
     required this.controller,
+    required this.textLabel,
     this.inputFormatters,
     this.focusNode,
     this.onEditingComplete,
@@ -25,6 +28,7 @@ class EzTextFormField extends ConsumerWidget {
     super.key,
     required this.hintText,
     required this.controller,
+    required this.textLabel,
     this.inputFormatters,
     this.focusNode,
     this.onEditingComplete,
@@ -35,6 +39,9 @@ class EzTextFormField extends ConsumerWidget {
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
   });
+
+  /// Text above the text form field.
+  final String? textLabel;
 
   /// Mandatory hint text.
   final String hintText;
@@ -72,13 +79,21 @@ class EzTextFormField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonText = this.buttonText;
+    final textLabel = this.textLabel;
     final isWithButton = buttonText != null && onButtonPressed != null;
-    const radius = ConstLayout.borderRadius;
+    const radius = ConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
-        ? const BorderRadius.horizontal(
-            left: Radius.circular(radius),
+        ? const SmoothBorderRadius.horizontal(
+            left: SmoothRadius(
+              cornerRadius: radius,
+              cornerSmoothing: ConstLayout.cornerSmoothing,
+            ),
           )
-        : BorderRadius.circular(radius);
+        : SmoothBorderRadius(
+            cornerRadius: radius,
+            cornerSmoothing: ConstLayout.cornerSmoothing,
+          );
+
     final fieldWidget = TextFormField(
       controller: controller,
       autofocus: autofocus,
@@ -90,16 +105,40 @@ class EzTextFormField extends ConsumerWidget {
       onEditingComplete: onEditingComplete,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: Theme.of(context).colorScheme.onSecondaryContainer,
+            fontWeight: FontWeight.bold,
           ),
       decoration: InputDecoration(
         hintText: hintText,
-        fillColor: Theme.of(context).colorScheme.secondaryContainer,
+        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSecondaryContainer
+                  .withOpacity(
+                    0.5,
+                  ),
+            ),
+        isDense: true,
+        contentPadding: const EdgeInsets.all(ConstLayout.spacer),
+        fillColor: Theme.of(context).colorScheme.surfaceContainer,
         filled: true,
         focusedBorder: OutlineInputBorder(
           borderRadius: borderRadius,
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.primary,
             width: 0.5,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.error,
+            width: 0.5,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.error,
           ),
         ),
         border: OutlineInputBorder(
@@ -109,7 +148,7 @@ class EzTextFormField extends ConsumerWidget {
       ),
     );
 
-    return isWithButton
+    final textFormFieldWidget = isWithButton
         ? IntrinsicHeight(
             child: Row(
               children: [
@@ -123,16 +162,22 @@ class EzTextFormField extends ConsumerWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.primaryContainer,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(radius),
-                        bottomRight: Radius.circular(radius),
+                      borderRadius: SmoothBorderRadius.only(
+                        topRight: SmoothRadius(
+                          cornerRadius: radius,
+                          cornerSmoothing: ConstLayout.cornerSmoothing,
+                        ),
+                        bottomRight: SmoothRadius(
+                          cornerRadius: radius,
+                          cornerSmoothing: ConstLayout.cornerSmoothing,
+                        ),
                       ),
                     ),
                   ),
                   child: Center(
                     child: Text(
                       buttonText,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                 ),
@@ -140,5 +185,27 @@ class EzTextFormField extends ConsumerWidget {
             ),
           )
         : fieldWidget;
+
+    if (textLabel == null) {
+      return textFormFieldWidget;
+    }
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          textLabel,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSecondaryContainer
+                    .withOpacity(0.7),
+              ),
+        ),
+        textFormFieldWidget,
+      ].withSpaceBetween(
+        height: ConstLayout.spacerExtraSmall,
+      ),
+    );
   }
 }

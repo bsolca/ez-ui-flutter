@@ -16,6 +16,7 @@ class ConstLayout {
   static const double borderSize = ConstValue.dp1;
   static const double borderRadiusSmall = ConstValue.dp8;
   static const double borderRadius = ConstValue.dp16;
+  static const double cornerSmoothing = ConstValue.dp05;
 
   // Button and Icon Sizes
   static const double buttonHeight = ConstValue.dp48;

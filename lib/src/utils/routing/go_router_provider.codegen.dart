@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/counter.dart';
+import 'package:impostor/src/features/user_settings/ui/UserSettingsScreen.dart';
 import 'package:impostor/src/shared/app_scaffold/app_scaffold.dart';
 import 'package:impostor/src/utils/routing/data/location_provider.codegen.dart';
 import 'package:impostor/src/utils/routing/presentation/go_route_page_scaffold.dart';
@@ -69,9 +70,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             path: '/settings',
             name: 'settings',
             parentNavigatorKey: shellNavigatorKey,
-            body: const Center(
-              child: Text('Settings'),
-            ),
+            body: const UserSettingsScreen(),
           ),
           GoRoutePageScaffold(
             path: '/profile',

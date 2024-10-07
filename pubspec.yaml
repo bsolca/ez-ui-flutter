@@ -13,6 +13,7 @@ dependencies:
   country_flags: ^3.0.0
   dropdown_button2: ^2.3.9
   easy_localization: ^3.0.3
+  email_validator: ^3.0.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.3.0
