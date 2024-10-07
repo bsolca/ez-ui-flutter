@@ -125,5 +125,5 @@ class EzSidebarConsts {
   // Avatar
   // ***************
 
-  static const double avatarSize = 36;
+  static const double avatarSize = ConstValue.dp36;
 }
