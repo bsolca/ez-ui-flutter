@@ -17,5 +17,11 @@
   "switchDark": "Switch (Dark)",
   "switchLight": "Switch (Light)",
   "switchSystem": "Switch (System)",
-  "users": "Users"
+  "users": "Users",
+  "@_PHONE_ERROR_MESSAGES": {},
+  "phoneErrorMessageNotFound": "A phone number was not found",
+  "phoneErrorMessageInvalid": "Invalid phone number",
+  "phoneErrorMessageInvalidCountryCallingCode": "Invalid country code",
+  "phoneErrorMessageInvalidIsoCode": "Invalid alpha-2 code",
+  "phoneErrorMessageInputIsTooLong": "Input has reached the maximum limit"
 }

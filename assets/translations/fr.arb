@@ -17,5 +17,11 @@
   "switchDark": "Basculer (Sombre)",
   "switchLight": "Basculer (Clair)",
   "switchSystem": "Basculer (Système)",
-  "users": "Utilisateurs"
+  "users": "Utilisateurs",
+  "@_PHONE_ERROR_MESSAGES": {},
+  "phoneErrorMessageNotFound": "Aucun numéro de téléphone n'a été trouvé",
+  "phoneErrorMessageInvalid": "Numéro de téléphone invalide",
+  "phoneErrorMessageInvalidCountryCallingCode": "Code de pays invalide",
+  "phoneErrorMessageInvalidIsoCode": "Code alpha-2 invalide",
+  "phoneErrorMessageInputIsTooLong": "La longueur de l'entrée a atteint la limite maximale"
 }
