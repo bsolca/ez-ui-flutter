@@ -35,7 +35,8 @@ class ConstLayout {
   static const double avatarExtraSmallSize = ConstValue.dp48;
   static const double maxPlayerCardWidthSize = avatarMediumSize * 3;
 
-  // Medal Sizes
+  // Sizes
+  static const double itemHeight = ConstValue.dp40;
   static const double medalSize = ConstValue.dp48;
 
   // Colors

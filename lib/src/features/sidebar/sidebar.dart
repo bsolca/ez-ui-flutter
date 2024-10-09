@@ -78,7 +78,7 @@ class Sidebar extends ConsumerWidget {
           onTap: () => context.go('/'),
         ),
         EzSidebarItemData.regular(
-          text: ref.loc.settings,
+          text: ref.loc.settingScreenSettings,
           icon: HeroIcon.adjustmentsHorizontal,
           onTap: () => context.go('/settings'),
         ),

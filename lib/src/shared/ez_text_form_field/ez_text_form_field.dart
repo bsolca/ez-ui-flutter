@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
 
 /// Styled text form field.
 class EzTextFormField extends ConsumerWidget {
@@ -12,7 +11,6 @@ class EzTextFormField extends ConsumerWidget {
     super.key,
     required this.hintText,
     required this.controller,
-    required this.textLabel,
     this.inputFormatters,
     this.focusNode,
     this.onEditingComplete,
@@ -20,6 +18,7 @@ class EzTextFormField extends ConsumerWidget {
     this.autovalidateMode,
     this.maxLength,
     this.autofocus = false,
+    this.obscureText = false,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -28,7 +27,6 @@ class EzTextFormField extends ConsumerWidget {
     super.key,
     required this.hintText,
     required this.controller,
-    required this.textLabel,
     this.inputFormatters,
     this.focusNode,
     this.onEditingComplete,
@@ -36,12 +34,10 @@ class EzTextFormField extends ConsumerWidget {
     this.autovalidateMode,
     this.maxLength,
     this.autofocus = false,
+    this.obscureText = false,
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
   });
-
-  /// Text above the text form field.
-  final String? textLabel;
 
   /// Mandatory hint text.
   final String hintText;
@@ -70,6 +66,9 @@ class EzTextFormField extends ConsumerWidget {
   /// Whether the text form field is autofocus or not.
   final bool autofocus;
 
+  /// Whether the text form field obscure text or not.
+  final bool obscureText;
+
   /// Widget to be displayed inside the button.
   final String? buttonText;
 
@@ -79,7 +78,6 @@ class EzTextFormField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonText = this.buttonText;
-    final textLabel = this.textLabel;
     final isWithButton = buttonText != null && onButtonPressed != null;
     const radius = ConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
@@ -102,6 +100,7 @@ class EzTextFormField extends ConsumerWidget {
       validator: validator,
       autovalidateMode: autovalidateMode,
       maxLength: maxLength,
+      obscureText: obscureText,
       onEditingComplete: onEditingComplete,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: Theme.of(context).colorScheme.onSecondaryContainer,
@@ -118,7 +117,8 @@ class EzTextFormField extends ConsumerWidget {
                   ),
             ),
         isDense: true,
-        contentPadding: const EdgeInsets.all(ConstLayout.spacer),
+        // To have 40 height to respect ConstLayout.itemHeight
+        contentPadding: const EdgeInsets.all(12),
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         filled: true,
         focusedBorder: OutlineInputBorder(
@@ -149,13 +149,15 @@ class EzTextFormField extends ConsumerWidget {
     );
 
     final textFormFieldWidget = isWithButton
-        ? IntrinsicHeight(
-            child: Row(
-              children: [
-                Expanded(
-                  child: fieldWidget,
-                ),
-                ElevatedButton(
+        ? Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                child: fieldWidget,
+              ),
+              SizedBox(
+                height: ConstLayout.itemHeight,
+                child: ElevatedButton(
                   onPressed: onButtonPressed,
                   style: OutlinedButton.styleFrom(
                     elevation: 0,
@@ -181,31 +183,10 @@ class EzTextFormField extends ConsumerWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           )
         : fieldWidget;
-
-    if (textLabel == null) {
-      return textFormFieldWidget;
-    }
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          textLabel,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSecondaryContainer
-                    .withOpacity(0.7),
-              ),
-        ),
-        textFormFieldWidget,
-      ].withSpaceBetween(
-        height: ConstLayout.spacerExtraSmall,
-      ),
-    );
+    return textFormFieldWidget;
   }
 }
