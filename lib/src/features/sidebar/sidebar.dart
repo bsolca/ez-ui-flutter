@@ -100,7 +100,12 @@ class Sidebar extends ConsumerWidget {
           icon: HeroIcon.userGroup,
           onTap: () => context.go('/groups'),
         ),
-
+        const EzSidebarItemData.heading(text: 'Tools'),
+        EzSidebarItemData.regular(
+          text: 'Color Scheme Preview',
+          icon: HeroIcon.userGroup,
+          onTap: () => context.go('/color_scheme_preview'),
+        ),
         SidebarItemLanguage.build(ref, context),
         SidebarItemBrightness.build(ref, context),
       ],

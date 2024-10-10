@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:impostor/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:impostor/src/features/counter.dart';
 import 'package:impostor/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:impostor/src/shared/app_scaffold/app_scaffold.dart';
@@ -89,6 +90,13 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             name: 'groups',
             parentNavigatorKey: shellNavigatorKey,
             body: const Center(child: Text('Groups')),
+          ),
+          // ColorSchemePreview
+          GoRoutePageScaffold(
+            path: '/color_scheme_preview',
+            name: 'color_scheme_preview',
+            parentNavigatorKey: shellNavigatorKey,
+            body: const ColorSchemePreview(),
           ),
           GoRoutePageScaffold(
             path: '/unauthorized',
