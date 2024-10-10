@@ -58,6 +58,7 @@ class _EzFileUploaderState extends State<EzFileUploader> {
         splashFactory: NoSplash.splashFactory,
         onTap: pickFiles,
         child: Container(
+          margin: const EdgeInsets.all(1),
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: ShapeDecoration(
