@@ -8,6 +8,8 @@ import 'package:impostor/src/utils/constants/const_value.dart';
 class EzDividerConsts {
   EzDividerConsts._();
 
+  static const int _dividerColorOpacity = 20;
+
   // ************
   // Padding and Margins
   // ************
@@ -17,4 +19,8 @@ class EzDividerConsts {
   );
 
   static const double dividerThickness = ConstValue.dp1;
+
+  static Color getDividerColor(ColorScheme colorScheme) {
+    return colorScheme.inverseSurface.withAlpha(_dividerColorOpacity);
+  }
 }

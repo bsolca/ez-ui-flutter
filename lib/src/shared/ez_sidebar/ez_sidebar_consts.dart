@@ -32,10 +32,6 @@ class EzSidebarConsts {
     return ConstLayout.getMainBorderColor(colorScheme).withOpacity(0.95);
   }
 
-  static Color getDividerColor(ColorScheme colorScheme) {
-    return colorScheme.inverseSurface.withAlpha(_dividerColorOpacity);
-  }
-
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
     return ConstLayout.getSecondaryBackgroundColor(colorScheme);
   }
@@ -93,7 +89,6 @@ class EzSidebarConsts {
   // ************
 
   static const double dividerThickness = ConstValue.dp1;
-  static const int _dividerColorOpacity = 20;
 
   // ************
   // Sidebar Item

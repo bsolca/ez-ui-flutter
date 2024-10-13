@@ -5,7 +5,7 @@ import 'package:impostor/src/shared/ez_popover/ez_sidebar_popover.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_divider.dart';
+import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
 import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
@@ -118,7 +118,7 @@ class EzSidebarHeader extends StatelessWidget {
                     onTap: item.onTap,
                   );
                 }
-                return const EzSidebarDivider();
+                return const EzDivider();
               }).toList(),
               child: Padding(
                 padding: EzSidebarConsts.footerPadding,
