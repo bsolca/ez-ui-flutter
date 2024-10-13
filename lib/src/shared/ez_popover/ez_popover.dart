@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/ez_popover/ez_popover_const.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
 /// Represents a popover with a list of items.
@@ -11,7 +12,6 @@ class EzPopover extends StatelessWidget {
     required this.items,
     required this.offset,
     this.width,
-    this.padding = const EdgeInsets.all(8),
   });
 
   /// Widget to tap to open the popover.
@@ -29,13 +29,10 @@ class EzPopover extends StatelessWidget {
   /// Width of the popover.
   final double? width;
 
-  /// Menu style padding
-  final EdgeInsets padding;
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-
+    final width = this.width;
     return MenuAnchor(
       builder: (context, controller, _) {
         return child;
@@ -43,7 +40,9 @@ class EzPopover extends StatelessWidget {
       controller: controller,
       alignmentOffset: offset,
       style: MenuStyle(
-        padding: WidgetStateProperty.all(padding),
+        padding: WidgetStateProperty.all(
+          EzPopoverConsts.allPadding,
+        ),
         elevation: WidgetStateProperty.all(0),
         backgroundColor: WidgetStateProperty.all(
           colorScheme.onPrimary,
@@ -65,7 +64,9 @@ class EzPopover extends StatelessWidget {
       menuChildren: [
         // MenuStyle.minWidth in MenuAnchor doesn't work, this is a workaround.
         SizedBox(
-          width: width,
+          width: width != null
+              ? (width - EzPopoverConsts.allPadding.horizontal)
+              : null,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,

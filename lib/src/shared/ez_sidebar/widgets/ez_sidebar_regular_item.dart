@@ -26,7 +26,7 @@ class EzSidebarRegularItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EzSidebarConsts.horizontalPadding,
-      child: EzSidebarItem(
+      child: EzItem(
         text: item.text,
         icon: item.icon,
         svgPath: item.svgPath,

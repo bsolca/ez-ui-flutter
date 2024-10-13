@@ -12,7 +12,8 @@ class EzButton extends StatelessWidget {
     this.type = EzButtonType.regular,
     required this.onPressed,
     required this.text,
-    this.icon,
+    this.prefixIcon,
+    this.suffixIcon,
     this.textColor,
   });
 
@@ -29,7 +30,10 @@ class EzButton extends StatelessWidget {
   final EzButtonType type;
 
   /// Prefix icon of the button.
-  final IconData? icon;
+  final IconData? prefixIcon;
+
+  /// Suffix icon of the button.
+  final IconData? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +51,16 @@ class EzButton extends StatelessWidget {
       visualDensity: VisualDensity.comfortable,
       highlightColor: Colors.transparent,
       mouseCursor: _getMouseCursor(),
-      child: Text(
-        text,
-        style: _getTextStyle(context),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (prefixIcon != null) Icon(prefixIcon),
+          Text(
+            text,
+            style: _getTextStyle(context),
+          ),
+          if (suffixIcon != null) Icon(suffixIcon),
+        ],
       ),
     );
   }

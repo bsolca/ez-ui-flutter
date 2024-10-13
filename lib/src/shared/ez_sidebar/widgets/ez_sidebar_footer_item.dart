@@ -29,7 +29,7 @@ class EzSidebarFooterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EzSidebarConsts.horizontalPadding,
-      child: EzSidebarItem(
+      child: EzItem(
         text: text,
         icon: icon,
         svgPath: svgPath,

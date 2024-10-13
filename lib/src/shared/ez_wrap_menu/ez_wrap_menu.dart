@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/shared/ez_button/data/ez_button_enum.dart';
 import 'package:impostor/src/shared/ez_button/ez_button.dart';
+import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
+import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
 import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
+import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
+import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// A widget that displays a list of items in a wrap menu.
-class EzWrapMenu extends StatefulWidget {
+class EzWrapMenu extends ConsumerStatefulWidget {
   /// Creates an item in the wrap menu.
   const EzWrapMenu({
     super.key,
@@ -19,39 +24,86 @@ class EzWrapMenu extends StatefulWidget {
   final int initialSelectedItem;
 
   @override
-  State<EzWrapMenu> createState() => _EzWrapMenuState();
+  ConsumerState<EzWrapMenu> createState() => _EzWrapMenuState();
 }
 
-class _EzWrapMenuState extends State<EzWrapMenu> {
-  late int _selectedItemIndex;
+class _EzWrapMenuState extends ConsumerState<EzWrapMenu> {
+  int selectedItemIndex = 0;
+  Size size = Size.zero;
 
   @override
   void initState() {
     super.initState();
-    _selectedItemIndex = widget.initialSelectedItem;
+    selectedItemIndex = widget.initialSelectedItem;
   }
+
+  final controller = MenuController();
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 8,
-      children: List.generate(widget.items.length, (index) {
-        final item = widget.items[index];
-        final isSelected = index == _selectedItemIndex;
-
-        return EzButton(
-          key: ValueKey(index),
-          onPressed: () {
-            setState(() {
-              _selectedItemIndex = index;
-            });
-            item.onPressed();
-          },
-          text: item.text,
-          icon: item.icon,
-          type: isSelected ? EzButtonType.regular : EzButtonType.link,
+    return ResponsiveLayout(
+      compact: (_, __) {
+        return EzPopover(
+          offset: Offset.zero,
+          width: size.width,
+          controller: controller,
+          items: List.generate(widget.items.length, (index) {
+            final item = widget.items[index];
+            return EzItem(
+              svgPath: null,
+              icon: item.icon,
+              text: item.text,
+              isSelected: false,
+              onTap: () {
+                setState(() {
+                  selectedItemIndex = index;
+                });
+                item.onPressed.call();
+                controller.close();
+              },
+            );
+          }),
+          child: MeasuringWidget(
+            onSize: (s) {
+              setState(() {
+                size = s;
+              });
+            },
+            child: EzButton(
+              onPressed: () {
+                if (controller.isOpen) {
+                  controller.close();
+                } else {
+                  controller.open();
+                }
+              },
+              text: widget.items[selectedItemIndex].text,
+            ),
+          ),
         );
-      }),
+      },
+      medium: (_, __) {
+        return Wrap(
+          spacing: 8,
+          children: List.generate(widget.items.length, (index) {
+            final item = widget.items[index];
+            final isSelected = index == selectedItemIndex;
+
+            return EzButton(
+              key: ValueKey(index),
+              onPressed: () {
+                setState(() {
+                  selectedItemIndex = index;
+                });
+                item.onPressed();
+              },
+              text: item.text,
+              prefixIcon: item.icon,
+              type: isSelected ? EzButtonType.regular : EzButtonType.link,
+            );
+          }),
+        );
+      },
     );
   }
 }

@@ -4,17 +4,17 @@ import 'package:impostor/src/shared/ez_item/ez_item_const.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 
-/// A [EzSidebarItem] widget that represents a single item in the sidebar.
+/// A [EzItem] widget that represents a single item in the sidebar.
 ///
 /// This widget displays an optional icon, text, and indicates selection status.
 /// It handles tap interactions to notify when the item is selected.
 /// It also provides hover and splash effects for better user interaction.
-class EzSidebarItem extends StatefulWidget {
-  /// Creates a [EzSidebarItem] widget.
+class EzItem extends StatefulWidget {
+  /// Creates a [EzItem] widget.
   ///
   /// The [text], [isSelected], and [onTap] parameters are required.
   /// The [icon] parameter is optional and can be used to display an icon.
-  const EzSidebarItem({
+  const EzItem({
     super.key,
     required this.text,
     required this.isSelected,
@@ -39,10 +39,10 @@ class EzSidebarItem extends StatefulWidget {
   final String? svgPath;
 
   @override
-  State<EzSidebarItem> createState() => _EzSidebarItemState();
+  State<EzItem> createState() => _EzItemState();
 }
 
-class _EzSidebarItemState extends State<EzSidebarItem> {
+class _EzItemState extends State<EzItem> {
   bool _isHovered = false;
 
   @override

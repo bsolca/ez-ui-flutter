@@ -1,7 +1,7 @@
 // ez_sidebar_header.dart
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_popover/ez_sidebar_popover.dart';
+import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
@@ -105,12 +105,11 @@ class EzSidebarHeader extends StatelessWidget {
             ),
             child: EzPopover(
               width: EzSidebarConsts.popoverWidth,
-              padding: EzSidebarConsts.allPadding,
               controller: menuController,
               offset: EzSidebarConsts.popoverOffset,
               items: _data.items.map((item) {
                 if (item is EzRegularSidebarPopoverItemData) {
-                  return EzSidebarItem(
+                  return EzItem(
                     text: item.text,
                     icon: item.icon,
                     svgPath: item.svgPath,
