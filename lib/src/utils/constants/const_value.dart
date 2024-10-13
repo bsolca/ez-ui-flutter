@@ -17,6 +17,9 @@ class ConstValue {
   /// Density-independent Pixels 8.0.
   static const double dp8 = 8;
 
+  /// Density-independent Pixels 12.0.
+  static const double dp12 = 12;
+
   /// Density-independent Pixels 16.0.
   static const double dp16 = 16;
 

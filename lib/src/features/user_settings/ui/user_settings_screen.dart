@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/features/ez_scaffold_body/ez_scaffold_body.dart';
+import 'package:impostor/src/shared/ez_button/data/ez_button_enum.dart';
 import 'package:impostor/src/shared/ez_button/ez_button.dart';
 import 'package:impostor/src/shared/ez_file_uploader/ez_file_uploader.dart';
 import 'package:impostor/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
 import 'package:impostor/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:impostor/src/shared/ez_header/ez_header.dart';
 import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
+import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
+import 'package:impostor/src/shared/ez_wrap_menu/ez_wrap_menu.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 import 'package:impostor/src/utils/extension/list_extension.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
@@ -30,10 +33,40 @@ class UserSettingsScreen extends ConsumerWidget {
     final facebookController = TextEditingController();
     final whatsappController = TextEditingController();
     final snapchatController = TextEditingController();
+    final ezWrapMenuItems = <EzWrapMenuItem>[
+      EzWrapMenuItem(
+        text: 'Profile',
+        onPressed: () {
+          print('Profile pressed');
+        },
+      ),
+      EzWrapMenuItem(
+        text: 'Notifications',
+        onPressed: () {
+          print('Notifications pressed');
+        },
+      ),
+      EzWrapMenuItem(
+        text: 'Preferences',
+        onPressed: () {
+          print('Preferences pressed');
+        },
+      ),
+      EzWrapMenuItem(
+        text: 'Plan & Billing',
+        onPressed: () {
+          print('Plan & Billing pressed');
+        },
+      ),
+    ];
 
     return EzScaffoldBody(
       child: ListView(
         children: [
+          EzWrapMenu(
+            items: ezWrapMenuItems,
+            initialSelectedItem: 0,
+          ),
           EzHeader.displayMedium(
             ref.loc.settingScreenSettings,
           ),
@@ -58,13 +91,15 @@ class UserSettingsScreen extends ConsumerWidget {
                       runSpacing: ConstLayout.spacer,
                       spacing: ConstLayout.spacer,
                       children: [
-                        EzButton.outlined(
+                        EzButton(
                           onPressed: () {},
                           text: 'Upload photo',
+                          type: EzButtonType.outlined,
                         ),
-                        const EzButton.outlined(
+                        const EzButton(
                           onPressed: null,
                           text: 'Delete photo',
+                          type: EzButtonType.outlined,
                         ),
                       ],
                     ),
@@ -192,10 +227,11 @@ class UserSettingsScreen extends ConsumerWidget {
           EzFormItemLayout(
             itemLabel: ref.loc.settingScreenDangerZoneAccountDeletion,
             itemDescription: ref.loc.settingScreenDangerZoneDescription,
-            child: EzButton.outlined(
+            child: EzButton(
               onPressed: () {},
               textColor: Colors.red,
               text: 'Delete account',
+              type: EzButtonType.outlined,
             ),
           ),
         ].withSpaceBetween(
