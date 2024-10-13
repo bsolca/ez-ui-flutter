@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:impostor/src/shared/squircle/squircle.dart';
 import 'package:impostor/src/utils/constants/const_value.dart';
 
 class ConstLayout {
@@ -54,4 +55,17 @@ class ConstLayout {
       colorScheme.brightness == Brightness.dark
           ? colorScheme.surface
           : colorScheme.surfaceContainer;
+
+  // Radius
+  static const double itemBorderRadius = ConstValue.dp8;
+  static const double itemBorderSmoothing = 0.4;
+
+  static ShapeBorder getShapeBorder() {
+    return SmoothRectangleBorder(
+      borderRadius: SmoothBorderRadius(
+        cornerRadius: itemBorderRadius,
+        cornerSmoothing: itemBorderSmoothing,
+      ),
+    );
+  }
 }

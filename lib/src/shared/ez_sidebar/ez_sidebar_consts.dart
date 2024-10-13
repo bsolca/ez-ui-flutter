@@ -80,9 +80,6 @@ class EzSidebarConsts {
     vertical: ConstValue.dp8,
   );
 
-  static const EdgeInsets sidebarItemIconPadding = EdgeInsets.only(
-    right: ConstValue.dp16,
-  );
 
   static const EdgeInsets headerPadding = EdgeInsets.all(ConstValue.dp16);
   static const EdgeInsets footerPadding = EdgeInsets.all(ConstValue.dp8);

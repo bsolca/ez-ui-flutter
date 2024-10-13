@@ -30,7 +30,7 @@ class EzSidebarLayoutConsts {
   // Colors
   // ***************
 
-  /// Returns the background color of the sidebar layout based on the color scheme.
+  /// Returns the background color of layout based on the color scheme.
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
     return ConstLayout.getSecondaryBackgroundColor(colorScheme);
   }

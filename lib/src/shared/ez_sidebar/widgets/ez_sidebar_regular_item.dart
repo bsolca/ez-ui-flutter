@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_item.dart';
+import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
 
 /// Represents a regular item with a link in the sidebar.
 class EzSidebarRegularItem extends StatelessWidget {
