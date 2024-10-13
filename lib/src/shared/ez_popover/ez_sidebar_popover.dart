@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_divider.dart';
-import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_item.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 
-/// Represents a popover with a list of items in the sidebar.
-class EzSidebarPopover extends StatelessWidget {
-  /// Creates a popover for the header section of the sidebar.
-  const EzSidebarPopover({
+/// Represents a popover with a list of items.
+class EzPopover extends StatelessWidget {
+  /// Creates a popover.
+  const EzPopover({
     super.key,
     required this.child,
     required this.controller,
     required this.items,
     required this.offset,
+    this.width,
+    this.padding = const EdgeInsets.all(8),
   });
 
   /// Widget to tap to open the popover.
@@ -23,10 +21,16 @@ class EzSidebarPopover extends StatelessWidget {
   final MenuController controller;
 
   /// Items to display in the popover.
-  final List<EzSidebarPopoverItemData> items;
+  final List<Widget> items;
 
   /// Offset of the popover.
   final Offset offset;
+
+  /// Width of the popover.
+  final double? width;
+
+  /// Menu style padding
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +43,20 @@ class EzSidebarPopover extends StatelessWidget {
       controller: controller,
       alignmentOffset: offset,
       style: MenuStyle(
-        padding: WidgetStateProperty.all(EzSidebarConsts.allPadding),
+        padding: WidgetStateProperty.all(padding),
         elevation: WidgetStateProperty.all(0),
         backgroundColor: WidgetStateProperty.all(
-          EzSidebarConsts.getPopoverColor(colorScheme),
+          colorScheme.onPrimary,
         ),
         shape: WidgetStateProperty.all(
           SmoothRectangleBorder(
             side: BorderSide(
-              color: EzSidebarConsts.getPopoverBorderColor(colorScheme),
+              color: colorScheme.onPrimary,
             ),
             borderRadius: const SmoothBorderRadius.all(
               SmoothRadius(
-                cornerRadius: EzSidebarConsts.itemBorderRadius,
-                cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
+                cornerRadius: 12,
+                cornerSmoothing: 1,
               ),
             ),
           ),
@@ -61,22 +65,11 @@ class EzSidebarPopover extends StatelessWidget {
       menuChildren: [
         // MenuStyle.minWidth in MenuAnchor doesn't work, this is a workaround.
         SizedBox(
-          width: EzSidebarConsts.popoverWidth,
+          width: width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            children: items.map((item) {
-              if (item is EzRegularSidebarPopoverItemData) {
-                return EzSidebarItem(
-                  text: item.text,
-                  icon: item.icon,
-                  svgPath: item.svgPath,
-                  isSelected: false,
-                  onTap: item.onTap,
-                );
-              }
-              return const EzSidebarDivider();
-            }).toList(),
+            children: items,
           ),
         ),
       ],
