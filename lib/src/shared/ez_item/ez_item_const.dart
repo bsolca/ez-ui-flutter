@@ -38,9 +38,10 @@ class EzItemConsts {
   // Padding and Margins
   // ************
 
-  static const EdgeInsets contentPadding = EdgeInsets.symmetric(
-    horizontal: ConstValue.dp16,
-    vertical: ConstValue.dp8,
+  static const EdgeInsets contentPadding = EdgeInsets.only(
+    left: ConstValue.dp16,
+    top: ConstValue.dp8,
+    bottom: ConstValue.dp8,
   );
 
   static const EdgeInsets itemIconPadding = EdgeInsets.only(

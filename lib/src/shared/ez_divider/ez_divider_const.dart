@@ -14,9 +14,7 @@ class EzDividerConsts {
   // Padding and Margins
   // ************
 
-  static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
-    horizontal: ConstValue.dp8,
-  );
+  static const EdgeInsets horizontalPadding = EdgeInsets.zero;
 
   static const double dividerThickness = ConstValue.dp1;
 

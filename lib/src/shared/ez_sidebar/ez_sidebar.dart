@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
 import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer_item.dart';
 import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_header.dart';

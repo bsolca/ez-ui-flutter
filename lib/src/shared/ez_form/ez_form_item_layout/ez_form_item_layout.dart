@@ -42,7 +42,9 @@ class EzFormItemLayout extends StatelessWidget {
                       children: [
                         children[1],
                         children[2],
-                      ],
+                      ].withSpaceBetween(
+                        height: ConstLayout.spacerSmall,
+                      ),
                     )
                   : children[1],
             ),

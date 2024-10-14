@@ -5,7 +5,6 @@ import 'package:impostor/src/shared/ez_button/ez_button.dart';
 import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
 import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
 import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
-import 'package:impostor/src/shared/measuring_widget/measuring_widget.dart';
 import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// A widget that displays a list of items in a wrap menu.
@@ -63,22 +62,24 @@ class _EzWrapMenuState extends ConsumerState<EzWrapMenu> {
               },
             );
           }),
-          child: MeasuringWidget(
-            onSize: (s) {
-              setState(() {
-                size = s;
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                setState(() {
+                  size = constraints.biggest;
+                });
               });
+              return EzButton(
+                onPressed: () {
+                  if (controller.isOpen) {
+                    controller.close();
+                  } else {
+                    controller.open();
+                  }
+                },
+                text: widget.items[selectedItemIndex].text,
+              );
             },
-            child: EzButton(
-              onPressed: () {
-                if (controller.isOpen) {
-                  controller.close();
-                } else {
-                  controller.open();
-                }
-              },
-              text: widget.items[selectedItemIndex].text,
-            ),
           ),
         );
       },

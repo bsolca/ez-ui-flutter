@@ -16,7 +16,7 @@ class EzSidebarConsts {
 
   /// Global settings for the sidebar widget
   static const double sidebarWidth = 260;
-  static const double popoverWidth = sidebarWidth - ConstValue.dp32;
+  static const double popoverWidth = sidebarWidth - ConstValue.dp16;
   static const Offset popoverOffset = Offset(0, ConstValue.dp4);
   static const Duration animationDuration = Duration(milliseconds: 200);
 
@@ -60,7 +60,9 @@ class EzSidebarConsts {
   // Padding and Margins
   // ************
 
-  static const EdgeInsets sidebarPadding = EdgeInsets.symmetric(vertical: 8);
+  static const EdgeInsets sidebarPadding = EdgeInsets.symmetric(
+    vertical: 8,
+  );
 
   static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
     horizontal: ConstValue.dp8,
@@ -70,7 +72,6 @@ class EzSidebarConsts {
     horizontal: ConstValue.dp16,
     vertical: ConstValue.dp8,
   );
-
 
   static const EdgeInsets headerPadding = EdgeInsets.all(ConstValue.dp16);
   static const EdgeInsets footerPadding = EdgeInsets.all(ConstValue.dp8);

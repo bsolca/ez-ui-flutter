@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_popover/ez_popover_const.dart';
-import 'package:impostor/src/shared/squircle/squircle.dart';
 
 /// Represents a popover with a list of items.
 class EzPopover extends StatelessWidget {
@@ -45,20 +44,7 @@ class EzPopover extends StatelessWidget {
         ),
         elevation: WidgetStateProperty.all(0),
         backgroundColor: WidgetStateProperty.all(
-          colorScheme.onPrimary,
-        ),
-        shape: WidgetStateProperty.all(
-          SmoothRectangleBorder(
-            side: BorderSide(
-              color: colorScheme.onPrimary,
-            ),
-            borderRadius: const SmoothBorderRadius.all(
-              SmoothRadius(
-                cornerRadius: 12,
-                cornerSmoothing: 1,
-              ),
-            ),
-          ),
+          colorScheme.surfaceContainer,
         ),
       ),
       menuChildren: [
