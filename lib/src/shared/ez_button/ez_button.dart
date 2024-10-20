@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_button/data/ez_button_enum.dart';
+import 'package:impostor/src/shared/ez_button/model/ez_button_enum.dart';
 import 'package:impostor/src/shared/squircle/squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 import 'package:impostor/src/utils/constants/const_value.dart';
