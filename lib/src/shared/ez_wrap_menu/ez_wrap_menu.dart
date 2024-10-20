@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_button/data/ez_button_enum.dart';
 import 'package:impostor/src/shared/ez_button/ez_button.dart';
+import 'package:impostor/src/shared/ez_button/model/ez_button_enum.dart';
 import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
 import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
 import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
