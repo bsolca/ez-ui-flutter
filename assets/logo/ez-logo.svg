@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 5200 5000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-6);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="800" y1="2500" x2="4400" y2="2500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="1" stop-color="#333"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="4076" x2="4524" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="0" y1="800" x2="1600" y2="800" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="3600" y1="800" x2="5200" y2="800" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="3600" y1="4200" x2="5200" y2="4200" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-6" x1="0" y1="4200" x2="1600" y2="4200" xlink:href="#linear-gradient"/>
+  </defs>
+  <path class="cls-6" d="M4400,800H800v3400h3600v-600h-1750l1750-1900v-900ZM1800,3600h-400v-800h700l600-600h-1300v-800h2500L1800,3600Z"/>
+  <circle class="cls-1" cx="4300" cy="2500" r="224"/>
+  <path class="cls-3" d="M1600,1c0-.55-.45-1-1-1H281C125.81,0,0,125.81,0,281v1318c0,.55.45,1,1,1h398c.55,0,1-.45,1-1V401c0-.55.45-1,1-1h1198c.55,0,1-.45,1-1V1Z"/>
+  <path class="cls-2" d="M5199,1600c.55,0,1-.45,1-1V284.5c0-157.13-127.37-284.5-284.5-284.5h-1314.5c-.55,0-1,.45-1,1v398c0,.55.45,1,1,1h1198c.55,0,1,.45,1,1v1198c0,.55.45,1,1,1h398Z"/>
+  <path class="cls-4" d="M3600,4999c0,.55.45,1,1,1h1199s115.5,0,115.5,0c157.13,0,284.5-127.37,284.5-284.5v-115.5s0-1199,0-1199c0-.55-.45-1-1-1h-398c-.55,0-1,.45-1,1v1198c0,.55-.45,1-1,1h-1198c-.55,0-1,.45-1,1v398Z"/>
+  <path class="cls-5" d="M1,3400c-.55,0-1,.45-1,1v1199s0,115.5,0,115.5c0,157.13,127.37,284.5,284.5,284.5h115.5s1199,0,1199,0c.55,0,1-.45,1-1v-398c0-.55-.45-1-1-1H401c-.55,0-1-.45-1-1v-1198c0-.55-.45-1-1-1H1Z"/>
+</svg>
