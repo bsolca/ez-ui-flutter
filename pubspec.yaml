@@ -27,6 +27,7 @@ dependencies:
   go_router: ^14.3.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  http: ^1.2.2
   intl: any
   json_annotation: ^4.8.1
   phone_numbers_parser: ^9.0.1
@@ -37,6 +38,7 @@ dependencies:
   share_plus: ^10.0.2
   short_uuids: ^2.0.0
   super_drag_and_drop: ^0.7.0
+  syncfusion_flutter_datagrid: ^27.1.53
   vector_math: ^2.1.4
   web_smooth_scroll: ^1.1.0
 
