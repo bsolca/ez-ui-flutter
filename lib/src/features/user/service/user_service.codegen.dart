@@ -16,7 +16,7 @@ class UserService {
   UserService(this._repository);
 
   /// Retrieves a list of users from the repository.
-  Future<List<UserModel>> getUsers() {
-    return _repository.fetchUsers();
+  Stream<List<UserModel>> getUsersStream() {
+    return _repository.fetchUsersStream();
   }
 }

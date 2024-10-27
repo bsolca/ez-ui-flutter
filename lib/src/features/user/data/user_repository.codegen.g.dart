@@ -8,7 +8,9 @@ part of 'user_repository.codegen.dart';
 
 String _$userRepositoryHash() => r'f57c5c0b9b0485125e28199e7485d48a63f8ef70';
 
-/// See also [userRepository].
+/// Repository class for the [UserModel].
+///
+/// Copied from [userRepository].
 @ProviderFor(userRepository)
 final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
   userRepository,

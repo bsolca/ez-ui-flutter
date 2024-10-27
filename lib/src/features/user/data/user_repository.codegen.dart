@@ -16,8 +16,13 @@ UserRepository userRepository(UserRepositoryRef ref) {
 class UserRepository {
   final String _baseUrl = 'https://dummyjson.com';
 
+  /// Fetches a list of users from the API as a stream with a single emission.
+  Stream<List<UserModel>> fetchUsersStream() {
+    return Stream.fromFuture(_fetchUsersOnce());
+  }
+
   /// Fetches a list of users from the API.
-  Future<List<UserModel>> fetchUsers() async {
+  Future<List<UserModel>> _fetchUsersOnce() async {
     final response = await http.get(Uri.parse('$_baseUrl/users'));
 
     if (response.statusCode == 200) {

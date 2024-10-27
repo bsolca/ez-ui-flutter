@@ -8,8 +8,8 @@ part 'user_controller.codegen.g.dart';
 @riverpod
 class UserController extends _$UserController {
   @override
-  FutureOr<List<UserModel>> build() async {
+  Stream<List<UserModel>> build() {
     final userService = ref.read(userServiceProvider);
-    return await userService.getUsers();
+    return userService.getUsersStream();
   }
 }

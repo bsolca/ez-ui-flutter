@@ -12,14 +12,18 @@ class UsersScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userAsyncValue = ref.watch(userControllerProvider);
+    final userStream = ref.watch(userControllerProvider);
 
     return EzScaffoldBody(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           const EzHeader.displayMedium('Users'),
-          UserSfGrid(userAsyncValue: userAsyncValue),
+          userStream.when(
+            data: (users) => UserSfGrid(users: users),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (error, stack) => Center(child: Text('Error: $error')),
+          ),
         ],
       ),
     );
