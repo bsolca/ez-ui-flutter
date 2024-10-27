@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/features/ez_scaffold_body/ez_scaffold_body.dart';
+import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 
 /// Home screen for "/" route.
 class HomeScreen extends ConsumerWidget {
