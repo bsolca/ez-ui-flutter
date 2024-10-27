@@ -1,26 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'go_router_provider.codegen.dart';
+part of 'user_service.codegen.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'c6d441761581c3c42d84d759b7ed5818d64e3394';
+String _$userServiceHash() => r'a53929ce202016c79e7499b3863e2820a7fd8cfa';
 
-/// Provider for [GoRouter].
-///
-/// Copied from [goRouter].
-@ProviderFor(goRouter)
-final goRouterProvider = AutoDisposeProvider<Raw<GoRouter>>.internal(
-  goRouter,
-  name: r'goRouterProvider',
+/// See also [userService].
+@ProviderFor(userService)
+final userServiceProvider = AutoDisposeProvider<UserService>.internal(
+  userService,
+  name: r'userServiceProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$goRouterHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef GoRouterRef = AutoDisposeProviderRef<Raw<GoRouter>>;
+typedef UserServiceRef = AutoDisposeProviderRef<UserService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
