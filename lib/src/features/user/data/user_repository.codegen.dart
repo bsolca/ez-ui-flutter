@@ -6,11 +6,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_repository.codegen.g.dart';
 
+/// Repository class for the [UserModel].
 @riverpod
 UserRepository userRepository(UserRepositoryRef ref) {
   return UserRepository();
 }
 
+/// Repository class for the [UserModel].
 class UserRepository {
   final String _baseUrl = 'https://dummyjson.com';
 

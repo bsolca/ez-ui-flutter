@@ -2,39 +2,40 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/features/user/model/user_model.codegen.dart';
-import 'package:impostor/src/features/user/user_controller.codegen.dart';
+import 'package:impostor/src/utils/constants/const_layout.dart';
 import 'package:impostor/src/utils/log/logger.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of users.
 class UserSfGrid extends ConsumerStatefulWidget {
   /// A [SfDataGrid] that displays a list of users.
-  const UserSfGrid({super.key});
+  const UserSfGrid({
+    super.key,
+    required this.userAsyncValue,
+  });
+
+  /// The async value of the users.
+  final AsyncValue<List<UserModel>> userAsyncValue;
 
   @override
   ConsumerState<UserSfGrid> createState() => _UserSfGridState();
 }
 
 class _UserSfGridState extends ConsumerState<UserSfGrid> {
-  final Map<String, double> columnWidths = {
-    'id': double.nan,
-    'firstName': double.nan,
-    'lastName': double.nan,
-    'birthDate': double.nan,
-  };
+  final Map<String, double> columnWidths = {};
 
   @override
   Widget build(BuildContext context) {
-    final userAsyncValue = ref.watch(userControllerProvider);
-
-    return userAsyncValue.when(
+    return widget.userAsyncValue.when(
       data: (users) {
         return SfDataGrid(
-          source: UserDataSource(users: users),
+          source: _UserDataSource(users: users),
           allowColumnsResizing: true,
           onColumnResizeStart: (ColumnResizeStartDetails details) {
             // Disable resizing for the `id` column.
-            if (details.columnIndex == 0) {
+            if (details.columnIndex == 0 ||
+                details.columnIndex ==
+                    _UserSfGridColumnNamesEnum.values.length - 1) {
               return false;
             }
             return true;
@@ -46,48 +47,18 @@ class _UserSfGridState extends ConsumerState<UserSfGrid> {
             return true;
           },
           columnWidthMode: ColumnWidthMode.lastColumnFill,
-
-          columns: <GridColumn>[
-            GridColumn(
-              columnName: 'id',
-              width: columnWidths['id']!,
+          columns: _UserSfGridColumnNamesEnum.values.map((name) {
+            return GridColumn(
+              columnName: name.name,
+              minimumWidth: ConstLayout.minColumnWidth,
+              width: columnWidths[name.name] ?? double.nan,
               label: Container(
                 padding: const EdgeInsets.all(8),
                 alignment: Alignment.centerLeft,
-                child: const Text(
-                  'ID',
-                ),
+                child: Text(name.name),
               ),
-            ),
-            GridColumn(
-              columnName: 'firstName',
-              width: columnWidths['firstName']!,
-              label: Container(
-                padding: const EdgeInsets.all(8),
-                alignment: Alignment.centerLeft,
-                child: const Text('First Name'),
-              ),
-            ),
-            GridColumn(
-              columnName: 'lastName',
-              width: columnWidths['lastName']!,
-              label: Container(
-                padding: const EdgeInsets.all(8),
-                alignment: Alignment.centerLeft ,
-                child: const Text('Last Name'),
-              ),
-            ),
-            GridColumn(
-              columnName: 'birthDate',
-              width: columnWidths['birthDate']!,
-              label: Container(
-                padding: const EdgeInsets.all(8),
-                alignment: Alignment.centerLeft,
-                child: const Text('Birth Date'),
-              ),
-            ),
-            // Add more columns as needed
-          ],
+            );
+          }).toList(),
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
@@ -97,29 +68,38 @@ class _UserSfGridState extends ConsumerState<UserSfGrid> {
 }
 
 /// Data source class with required data for the data grid widget.
-class UserDataSource extends DataGridSource {
+class _UserDataSource extends DataGridSource {
   /// Creates the employee data source class with required details.
-  UserDataSource({required List<UserModel> users}) {
+  _UserDataSource({required List<UserModel> users}) {
     _users = users.map<DataGridRow>(
       (user) {
         return DataGridRow(
-          cells: [
-            DataGridCell<int>(columnName: 'id', value: user.id),
-            DataGridCell<String>(
-              columnName: 'firstName',
-              value: user.firstName,
-            ),
-            DataGridCell<String>(
-              columnName: 'lastName',
-              value: user.lastName,
-            ),
-            // Assuming user has a 'birthDate' field of type DateTime
-            DataGridCell<String>(
-              columnName: 'birthDate',
-              value: _formatDate(user.birthDate), // Format the date
-            ),
-            // Add more cells as needed
-          ],
+          cells: _UserSfGridColumnNamesEnum.values.map<DataGridCell>(
+            (column) {
+              switch (column) {
+                case _UserSfGridColumnNamesEnum.id:
+                  return DataGridCell<int>(
+                    columnName: column.name,
+                    value: user.id,
+                  );
+                case _UserSfGridColumnNamesEnum.firstName:
+                  return DataGridCell<String>(
+                    columnName: column.name,
+                    value: user.firstName,
+                  );
+                case _UserSfGridColumnNamesEnum.lastName:
+                  return DataGridCell<String>(
+                    columnName: column.name,
+                    value: user.lastName,
+                  );
+                case _UserSfGridColumnNamesEnum.birthDate:
+                  return DataGridCell<String>(
+                    columnName: column.name,
+                    value: _formatDate(user.birthDate),
+                  );
+              }
+            },
+          ).toList(),
         );
       },
     ).toList();
@@ -173,4 +153,19 @@ class UserDataSource extends DataGridSource {
       return 'Invalid date';
     }
   }
+}
+
+/// A list of column for the data grid widget.
+enum _UserSfGridColumnNamesEnum {
+  /// The id column.
+  id,
+
+  /// The first name column.
+  firstName,
+
+  /// The last name column.
+  lastName,
+
+  /// The birth date column.
+  birthDate,
 }

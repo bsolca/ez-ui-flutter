@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_controller.codegen.g.dart';
 
+/// Controller for the [UserModel].
 @riverpod
 class UserController extends _$UserController {
   @override
