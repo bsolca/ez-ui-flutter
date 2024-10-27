@@ -7,24 +7,53 @@ import 'package:impostor/src/utils/log/logger.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of users.
-class UserSfGrid extends ConsumerWidget {
+class UserSfGrid extends ConsumerStatefulWidget {
   /// A [SfDataGrid] that displays a list of users.
   const UserSfGrid({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<UserSfGrid> createState() => _UserSfGridState();
+}
+
+class _UserSfGridState extends ConsumerState<UserSfGrid> {
+  final Map<String, double> columnWidths = {
+    'id': double.nan,
+    'firstName': double.nan,
+    'lastName': double.nan,
+    'birthDate': double.nan,
+  };
+
+  @override
+  Widget build(BuildContext context) {
     final userAsyncValue = ref.watch(userControllerProvider);
 
     return userAsyncValue.when(
       data: (users) {
         return SfDataGrid(
           source: UserDataSource(users: users),
+          allowColumnsResizing: true,
+          onColumnResizeStart: (ColumnResizeStartDetails details) {
+            // Disable resizing for the `id` column.
+            if (details.columnIndex == 0) {
+              return false;
+            }
+            return true;
+          },
+          onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
+            setState(() {
+              columnWidths[details.column.columnName] = details.width;
+            });
+            return true;
+          },
+          columnWidthMode: ColumnWidthMode.lastColumnFill,
+
           columns: <GridColumn>[
             GridColumn(
               columnName: 'id',
+              width: columnWidths['id']!,
               label: Container(
                 padding: const EdgeInsets.all(8),
-                alignment: Alignment.center,
+                alignment: Alignment.centerLeft,
                 child: const Text(
                   'ID',
                 ),
@@ -32,25 +61,28 @@ class UserSfGrid extends ConsumerWidget {
             ),
             GridColumn(
               columnName: 'firstName',
+              width: columnWidths['firstName']!,
               label: Container(
                 padding: const EdgeInsets.all(8),
-                alignment: Alignment.center,
+                alignment: Alignment.centerLeft,
                 child: const Text('First Name'),
               ),
             ),
             GridColumn(
               columnName: 'lastName',
+              width: columnWidths['lastName']!,
               label: Container(
                 padding: const EdgeInsets.all(8),
-                alignment: Alignment.center,
+                alignment: Alignment.centerLeft ,
                 child: const Text('Last Name'),
               ),
             ),
             GridColumn(
               columnName: 'birthDate',
+              width: columnWidths['birthDate']!,
               label: Container(
                 padding: const EdgeInsets.all(8),
-                alignment: Alignment.center,
+                alignment: Alignment.centerLeft,
                 child: const Text('Birth Date'),
               ),
             ),
@@ -92,6 +124,7 @@ class UserDataSource extends DataGridSource {
       },
     ).toList();
   }
+
   List<DataGridRow> _users = [];
 
   @override
@@ -102,7 +135,7 @@ class UserDataSource extends DataGridSource {
     return DataGridRowAdapter(
       cells: row.getCells().map<Widget>((cell) {
         return Container(
-          alignment: Alignment.center,
+          alignment: Alignment.centerLeft,
           padding: const EdgeInsets.all(8),
           child: Text(cell.value.toString()),
         );
