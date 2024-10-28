@@ -6,9 +6,9 @@ import 'package:impostor/src/utils/log/logger.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of users.
-class UserSfGrid extends StatefulWidget {
+class UsersTable extends StatefulWidget {
   /// A [SfDataGrid] that displays a list of users.
-  const UserSfGrid({
+  const UsersTable({
     super.key,
     required this.users,
   });
@@ -17,10 +17,10 @@ class UserSfGrid extends StatefulWidget {
   final List<UserModel> users;
 
   @override
-  State<UserSfGrid> createState() => _UserSfGridState();
+  State<UsersTable> createState() => _UsersTableState();
 }
 
-class _UserSfGridState extends State<UserSfGrid> {
+class _UsersTableState extends State<UsersTable> {
   final Map<String, double> columnWidths = {};
 
   @override
@@ -46,6 +46,7 @@ class _UserSfGridState extends State<UserSfGrid> {
               return true;
             },
             columnWidthMode: ColumnWidthMode.lastColumnFill,
+            shrinkWrapRows: true,
             columns: _UserSfGridColumnNamesEnum.values.map((name) {
               return GridColumn(
                 columnName: name.name,
