@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_header/ez_header.dart';
 
 /// Use under a [EzHeader] to display a sub title.
-class SubHeader extends StatelessWidget {
+class EzSubHeader extends StatelessWidget {
   /// Use under a [EzHeader] to display a sub title.
-  const SubHeader(
+  const EzSubHeader(
     this.text, {
     super.key,
     this.fit = BoxFit.scaleDown,

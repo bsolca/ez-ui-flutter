@@ -4,7 +4,7 @@ import 'package:impostor/src/features/color_scheme_preview/color_scheme_preview.
 import 'package:impostor/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:impostor/src/screens/home_screen/home_screen.dart';
 import 'package:impostor/src/screens/users_screen/users_screen.dart';
-import 'package:impostor/src/shared/app_scaffold/app_scaffold.dart';
+import 'package:impostor/src/shared/ez_app_scaffold/ez_app_scaffold.dart';
 import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
 import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
@@ -68,7 +68,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
           // ShellRoute should ideally build the shell only once
           return NoTransitionPage(
             key: state.pageKey,
-            child: AppScaffold(
+            child: EzAppScaffold(
               body: child,
             ),
           );

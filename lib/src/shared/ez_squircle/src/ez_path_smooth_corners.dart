@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
-import 'package:impostor/src/shared/squircle/src/processed_smooth_radius.dart';
+import 'package:impostor/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
 
 /// Extension for adding smooth corners to a [Path].
 ///

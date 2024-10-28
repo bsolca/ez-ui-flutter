@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:impostor/src/features/sidebar/sidebar.dart';
 
 /// Scaffold widget for the app.
-class AppScaffold extends StatelessWidget {
+class EzAppScaffold extends StatelessWidget {
   /// Scaffold widget for the app.
-  const AppScaffold({
+  const EzAppScaffold({
     required this.body,
     super.key,
   });

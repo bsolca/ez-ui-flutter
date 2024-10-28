@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:impostor/src/utils/constants/const_value.dart';
 
 class ConstLayout {

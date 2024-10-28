@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 
 /// Styled text form field.

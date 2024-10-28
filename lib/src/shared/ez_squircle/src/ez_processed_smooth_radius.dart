@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/squircle/src/smooth_radius.dart';
+import 'package:impostor/src/shared/ez_squircle/src/ez_smooth_radius.dart';
 import 'package:vector_math/vector_math.dart' as vector;
 
 /// A class for processing smooth radii based on given dimensions.

@@ -13,9 +13,9 @@
 ///   outside of the shape's edge.
 ///
 /// From: https://github.com/aloisdeniel/figma_squircle/tree/main
-library squircle;
+library ez_squircle;
 
-export 'src/clip_smooth_rect.dart';
-export 'src/smooth_border_radius.dart';
-export 'src/smooth_radius.dart';
-export 'src/smooth_rectangle_border.dart';
+export 'src/ez_clip_smooth_rect.dart';
+export 'src/ez_smooth_border_radius.dart';
+export 'src/ez_smooth_radius.dart';
+export 'src/ez_smooth_rectangle_border.dart';

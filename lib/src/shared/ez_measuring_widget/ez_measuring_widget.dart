@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-/// A [MeasuringWidget] that measures the size of its child widget.
+/// A [EzMeasuringWidget] that measures the size of its child widget.
 /// This widget notifies when the size of the [child] changes.
-class MeasuringWidget extends StatefulWidget {
-  /// Creates a [MeasuringWidget].
-  const MeasuringWidget({
+class EzMeasuringWidget extends StatefulWidget {
+  /// Creates a [EzMeasuringWidget].
+  const EzMeasuringWidget({
     super.key,
     required this.child,
     required this.onSize,
@@ -17,10 +17,10 @@ class MeasuringWidget extends StatefulWidget {
   final ValueChanged<Size> onSize;
 
   @override
-  State<MeasuringWidget> createState() => _MeasuringWidgetState();
+  State<EzMeasuringWidget> createState() => _EzMeasuringWidgetState();
 }
 
-class _MeasuringWidgetState extends State<MeasuringWidget> {
+class _EzMeasuringWidgetState extends State<EzMeasuringWidget> {
   final GlobalKey _key = GlobalKey();
   Size? _oldSize;
 
@@ -31,7 +31,7 @@ class _MeasuringWidgetState extends State<MeasuringWidget> {
   }
 
   @override
-  void didUpdateWidget(covariant MeasuringWidget oldWidget) {
+  void didUpdateWidget(covariant EzMeasuringWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
   }

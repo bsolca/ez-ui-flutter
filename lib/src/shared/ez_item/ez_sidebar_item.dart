@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impostor/src/shared/ez_item/ez_item_const.dart';
-import 'package:impostor/src/shared/squircle/squircle.dart';
+import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 
 /// A [EzItem] widget that represents a single item in the sidebar.

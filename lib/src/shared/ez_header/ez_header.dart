@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/sub_header/sub_header.dart';
+import 'package:impostor/src/shared/ez_sub_header/ez_sub_header.dart';
 import 'package:impostor/src/utils/constants/const_value.dart';
 
 enum _HeaderSize {
@@ -39,7 +39,7 @@ class EzHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final medium = Theme.of(context).textTheme.titleMedium  ;
+    final medium = Theme.of(context).textTheme.titleMedium;
     final small = Theme.of(context).textTheme.titleSmall;
     final subText = this.subText;
 
@@ -58,7 +58,7 @@ class EzHeader extends ConsumerWidget {
             ),
           ),
         ),
-        if (subText != null) SubHeader(subText),
+        if (subText != null) EzSubHeader(subText),
       ],
     );
   }
