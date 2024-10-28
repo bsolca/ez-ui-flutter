@@ -121,6 +121,9 @@ class EzTextFormField extends ConsumerWidget {
         contentPadding: const EdgeInsets.all(12),
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         filled: true,
+        hoverColor: Theme.of(context).brightness == Brightness.light
+            ? null
+            : Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
           borderRadius: borderRadius,
           borderSide: BorderSide(
