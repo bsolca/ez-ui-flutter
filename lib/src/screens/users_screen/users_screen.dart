@@ -4,6 +4,7 @@ import 'package:impostor/src/features/user/user_controller.codegen.dart';
 import 'package:impostor/src/features/users_table/users_table.dart';
 import 'package:impostor/src/shared/ez_header/ez_header.dart';
 import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// Screen that displays a list of users.
 class UsersScreen extends ConsumerWidget {
@@ -13,6 +14,7 @@ class UsersScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userStream = ref.watch(userControllerProvider);
+    final dataGridController = DataGridController();
 
     return EzScaffoldBody(
       child: Column(
@@ -20,7 +22,11 @@ class UsersScreen extends ConsumerWidget {
           const EzHeader.displayMedium('Users'),
           Expanded(
             child: userStream.when(
-              data: (users) => UsersTable(users: users),
+              data: (users) =>
+                  UsersTable(
+                    users: users,
+                    dataGridController: dataGridController,
+                  ),
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (error, stack) => Center(child: Text('Error: $error')),
             ),
