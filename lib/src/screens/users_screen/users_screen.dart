@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/user/user_controller.codegen.dart';
 import 'package:impostor/src/features/users_table/users_table.dart';
 import 'package:impostor/src/shared/ez_button/ez_button.dart';
@@ -11,6 +12,7 @@ import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 import 'package:impostor/src/utils/extension/list_extension.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
+import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// Screen that displays a list of users.
@@ -43,7 +45,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
 
   void _onSearchChanged() {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
-    _debounce = Timer(Duration.zero, () {
+    _debounce = Timer(const Duration(milliseconds: 300), () {
       setState(() {
         _searchText = searchController.text;
       });
@@ -52,7 +54,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userStream = ref.watch(userControllerProvider);
+    final usersStream = ref.watch(userControllerProvider);
 
     return EzScaffoldBody(
       child: Column(
@@ -65,10 +67,15 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                   hintText: ref.loc.search,
                   controller: searchController,
                   isClearable: true,
+                  onEditingComplete: () {},
                 ),
               ),
               EzButton(
-                onPressed: () => print('Add User'),
+                // Go to AppRoute.usersUser with param new
+                onPressed: () => context.goNamed(
+                  AppRoute.usersUser.name,
+                  pathParameters: {'id': 'new'},
+                ),
                 text: ref.loc.addUser,
               ),
             ].withSpaceBetween(
@@ -76,7 +83,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
             ),
           ),
           Expanded(
-            child: userStream.when(
+            child: usersStream.when(
               data: (users) => UsersTable(
                 users: users.where((e) {
                   bool isIn(String? value) =>

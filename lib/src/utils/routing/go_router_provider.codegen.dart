@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:impostor/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:impostor/src/screens/home_screen/home_screen.dart';
+import 'package:impostor/src/screens/user_screen/user_screen.dart';
 import 'package:impostor/src/screens/users_screen/users_screen.dart';
 import 'package:impostor/src/shared/ez_app_scaffold/ez_app_scaffold.dart';
 import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
@@ -37,6 +38,9 @@ enum AppRoute {
 
   /// List of users.
   usersUsers,
+
+  /// Create or go to a specific user.
+  usersUser,
 
   /// List of groups.
   usersGroups,
@@ -175,11 +179,26 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
               ),
             ],
           ),
-          GoRoutePageScaffold(
+          GoRoute(
             path: '/users',
             name: AppRoute.usersUsers.name,
-            parentNavigatorKey: shellNavigatorKey,
-            body: const UsersScreen(),
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                key: ValueKey(AppRoute.usersUsers.name),
+                child: const UsersScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: '/users/:id',
+            name: AppRoute.usersUser.name,
+            pageBuilder: (context, state) {
+              final id = state.pathParameters['id'];
+              return NoTransitionPage(
+                key: ValueKey('${AppRoute.usersUsers.name}/$id'),
+                child: UserScreen(id: id ?? 'new'),
+              );
+            },
           ),
           GoRoutePageScaffold(
             path: '/groups',

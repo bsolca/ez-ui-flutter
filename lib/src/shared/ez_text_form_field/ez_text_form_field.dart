@@ -25,7 +25,7 @@ class EzTextFormField extends ConsumerWidget {
   })  : buttonText = null,
         onButtonPressed = null;
 
-  ///
+  /// Styled text form field with button.
   const EzTextFormField.withButton({
     super.key,
     required this.hintText,

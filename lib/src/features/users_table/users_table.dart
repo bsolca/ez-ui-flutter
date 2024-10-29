@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/user/model/user_model.codegen.dart';
 import 'package:impostor/src/features/users_table/model/users_table_column_enum.dart';
 import 'package:impostor/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 import 'package:impostor/src/utils/log/logger.dart';
+import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of users.
@@ -54,9 +56,6 @@ class _UsersTableState extends ConsumerState<UsersTable> {
                   (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
                 return true;
               },
-              onQueryRowHeight: (details) {
-                return details.getIntrinsicRowHeight(details.rowIndex);
-              },
               onColumnResizeStart: (ColumnResizeStartDetails details) {
                 // Disable resizing for the `id` column.
                 if (details.columnIndex == 0 ||
@@ -73,7 +72,13 @@ class _UsersTableState extends ConsumerState<UsersTable> {
                 return true;
               },
               columnWidthMode: ColumnWidthMode.lastColumnFill,
-              shrinkWrapRows: true,
+              onCellTap: (DataGridCellTapDetails details) {
+                final userId = details.rowColumnIndex.rowIndex - 1;
+                context.goNamed(
+                  AppRoute.usersUser.name,
+                  pathParameters: {'id': userId.toString()},
+                );
+              },
               columns: isCompact
                   ? [
                       GridColumn(
@@ -182,7 +187,6 @@ class _UserDataSource extends DataGridSource {
     return DataGridRowAdapter(
       cells: row.getCells().map<Widget>((cell) {
         if (cell.columnName == UsersTableColumnEnum.id.name) {
-          // return red text
           return Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.symmetric(horizontal: ConstLayout.spacer),
@@ -197,6 +201,7 @@ class _UserDataSource extends DataGridSource {
           padding: const EdgeInsets.symmetric(horizontal: ConstLayout.spacer),
           child: EzHighlightedText(
             cell.value.toString(),
+            maxLines: 3,
             highlight: searchText,
           ),
         );

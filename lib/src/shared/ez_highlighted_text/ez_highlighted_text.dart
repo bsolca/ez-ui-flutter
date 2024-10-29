@@ -7,8 +7,8 @@ class EzHighlightedText extends StatelessWidget {
     this.text, {
     super.key,
     required this.highlight,
-    this.style,
     this.highlightStyle,
+    this.maxLines,
   });
 
   /// Text to display.
@@ -17,15 +17,19 @@ class EzHighlightedText extends StatelessWidget {
   /// Text to highlight.
   final String? highlight;
 
-  /// Text style.
-  final TextStyle? style;
 
   /// Highlight style.
   final TextStyle? highlightStyle;
 
+  /// Maximum number of lines to display.
+  final int? maxLines;
+
   @override
   Widget build(BuildContext context) {
     final highlight = this.highlight;
+    final style = Theme.of(context).textTheme.bodyMedium?.copyWith(
+      overflow: TextOverflow.ellipsis,
+    );
 
     if (highlight == null ||
         highlight.isEmpty ||
@@ -80,7 +84,9 @@ class EzHighlightedText extends StatelessWidget {
 
     return SelectableText.rich(
       TextSpan(
-        style: DefaultTextStyle.of(context).style,
+        style: DefaultTextStyle.of(context).style.copyWith(
+          overflow: TextOverflow.ellipsis,
+        ),
         children: spans,
       ),
       cursorColor: Theme.of(context).colorScheme.primary,

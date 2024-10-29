@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
+
+/// User screen for "/users/:id" route.
+class UserScreen extends ConsumerWidget {
+  /// User screen for "/users/:id" route.
+  const UserScreen({super.key, required this.id});
+
+  /// The user to display.
+  final String id;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return EzScaffoldBody(
+      child: Center(
+        child: Text('User $id screen'),
+      ),
+    );
+  }
+}
