@@ -54,6 +54,9 @@ class _UsersTableState extends ConsumerState<UsersTable> {
                   (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
                 return true;
               },
+              onQueryRowHeight: (details) {
+                return details.getIntrinsicRowHeight(details.rowIndex);
+              },
               onColumnResizeStart: (ColumnResizeStartDetails details) {
                 // Disable resizing for the `id` column.
                 if (details.columnIndex == 0 ||

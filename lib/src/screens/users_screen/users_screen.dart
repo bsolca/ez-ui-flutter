@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/features/sidebar/sidebar.dart';
 import 'package:impostor/src/features/user/user_controller.codegen.dart';
 import 'package:impostor/src/features/users_table/users_table.dart';
 import 'package:impostor/src/shared/ez_button/ez_button.dart';
@@ -65,6 +64,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                 child: EzTextFormField(
                   hintText: ref.loc.search,
                   controller: searchController,
+                  isClearable: true,
                 ),
               ),
               EzButton(
@@ -78,7 +78,22 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
           Expanded(
             child: userStream.when(
               data: (users) => UsersTable(
-                users: users,
+                users: users.where((e) {
+                  bool isIn(String? value) =>
+                      value?.toLowerCase().contains(
+                            _searchText.toLowerCase(),
+                          ) ??
+                      false;
+
+                  return isIn(e.firstName) ||
+                      isIn(e.lastName) ||
+                      isIn(e.email) ||
+                      isIn(e.birthDate) ||
+                      isIn(e.address.address) ||
+                      isIn(e.address.city) ||
+                      isIn(e.address.state) ||
+                      isIn(e.address.postalCode);
+                }).toList(),
                 dataGridController: dataGridController,
                 searchText: _searchText,
               ),

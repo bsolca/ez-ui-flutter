@@ -48,7 +48,6 @@ class EzButton extends StatelessWidget {
       hoverElevation: 0,
       highlightElevation: 0,
       elevation: 0,
-      visualDensity: VisualDensity.comfortable,
       highlightColor: Colors.transparent,
       mouseCursor: _getMouseCursor(),
       child: Row(

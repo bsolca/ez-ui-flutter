@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:impostor/src/shared/ez_icon_button/ez_icon_button.dart';
 import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 
@@ -19,6 +21,7 @@ class EzTextFormField extends ConsumerWidget {
     this.maxLength,
     this.autofocus = false,
     this.obscureText = false,
+    this.isClearable = false,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -35,6 +38,7 @@ class EzTextFormField extends ConsumerWidget {
     this.maxLength,
     this.autofocus = false,
     this.obscureText = false,
+    this.isClearable = false,
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
   });
@@ -68,6 +72,9 @@ class EzTextFormField extends ConsumerWidget {
 
   /// Whether the text form field obscure text or not.
   final bool obscureText;
+
+  /// Whether the text form field is clearable or not.
+  final bool isClearable;
 
   /// Widget to be displayed inside the button.
   final String? buttonText;
@@ -104,7 +111,6 @@ class EzTextFormField extends ConsumerWidget {
       onEditingComplete: onEditingComplete,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: Theme.of(context).colorScheme.onSecondaryContainer,
-            fontWeight: FontWeight.bold,
           ),
       decoration: InputDecoration(
         hintText: hintText,
@@ -118,7 +124,7 @@ class EzTextFormField extends ConsumerWidget {
             ),
         isDense: true,
         // To have 40 height to respect ConstLayout.itemHeight
-        contentPadding: const EdgeInsets.all(12),
+        contentPadding: const EdgeInsets.all(14),
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         filled: true,
         hoverColor: Theme.of(context).brightness == Brightness.light
@@ -148,6 +154,12 @@ class EzTextFormField extends ConsumerWidget {
           borderRadius: borderRadius,
           borderSide: BorderSide.none,
         ),
+        suffixIcon: isClearable && controller.text.isNotEmpty
+            ? EzIconButton(
+                icon: HeroIcon.xMark,
+                onPressed: controller.clear,
+              )
+            : null,
       ),
     );
 
