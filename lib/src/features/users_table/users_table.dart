@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/features/user/model/user_model.codegen.dart';
 import 'package:impostor/src/features/users_table/model/users_table_column_enum.dart';
+import 'package:impostor/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
 import 'package:impostor/src/utils/constants/const_layout.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 import 'package:impostor/src/utils/log/logger.dart';
@@ -15,6 +16,7 @@ class UsersTable extends ConsumerStatefulWidget {
     super.key,
     required this.users,
     required this.dataGridController,
+    required this.searchText,
   });
 
   /// The list of users.
@@ -22,6 +24,9 @@ class UsersTable extends ConsumerStatefulWidget {
 
   /// The controller for the data grid widget.
   final DataGridController dataGridController;
+
+  /// Text searched by the user and is highlighted in the table.
+  final String? searchText;
 
   @override
   ConsumerState<UsersTable> createState() => _UsersTableState();
@@ -35,62 +40,76 @@ class _UsersTableState extends ConsumerState<UsersTable> {
     final isCompact = ref.isCompactScreen;
 
     return widget.users.isEmpty
-        ? const Center(child: Text('No users found.'))
-        : SfDataGrid(
-            source: _UserDataSource(users: widget.users, isCompact: isCompact),
-            allowColumnsResizing: true,
-            controller: widget.dataGridController,
-            onSelectionChanging:
-                (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
-              return true;
-            },
-            onColumnResizeStart: (ColumnResizeStartDetails details) {
-              // Disable resizing for the `id` column.
-              if (details.columnIndex == 0 ||
-                  details.columnIndex ==
-                      UsersTableColumnEnum.values.length - 1) {
-                return false;
-              }
-              return true;
-            },
-            onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
-              setState(() {
-                columnWidths[details.column.columnName] = details.width;
-              });
-              return true;
-            },
-            columnWidthMode: ColumnWidthMode.lastColumnFill,
-            shrinkWrapRows: true,
-            columns: isCompact
-                ? [
-                    GridColumn(
-                      columnName: UsersTableColumnEnum.firstName.name,
-                      label: Container(
-                        padding: const EdgeInsets.all(8),
-                        alignment: Alignment.centerLeft,
-                        child: Text(UsersTableColumnEnum.firstName.name),
+        ? Center(child: Text(ref.loc.noUsersFound))
+        : SelectionArea(
+            child: SfDataGrid(
+              source: _UserDataSource(
+                users: widget.users,
+                isCompact: isCompact,
+                searchText: widget.searchText,
+              ),
+              allowColumnsResizing: true,
+              controller: widget.dataGridController,
+              onSelectionChanging:
+                  (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
+                return true;
+              },
+              onColumnResizeStart: (ColumnResizeStartDetails details) {
+                // Disable resizing for the `id` column.
+                if (details.columnIndex == 0 ||
+                    details.columnIndex ==
+                        UsersTableColumnEnum.values.length - 1) {
+                  return false;
+                }
+                return true;
+              },
+              onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
+                setState(() {
+                  columnWidths[details.column.columnName] = details.width;
+                });
+                return true;
+              },
+              columnWidthMode: ColumnWidthMode.lastColumnFill,
+              shrinkWrapRows: true,
+              columns: isCompact
+                  ? [
+                      GridColumn(
+                        columnName: UsersTableColumnEnum.firstName.name,
+                        label: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: ConstLayout.spacer,
+                          ),
+                          child: Text(UsersTableColumnEnum.firstName.name),
+                        ),
                       ),
-                    )
-                  ]
-                : UsersTableColumnEnum.values.map((name) {
-                    return GridColumn(
-                      columnName: name.name,
-                      minimumWidth: ConstLayout.minColumnWidth,
-                      width: columnWidths[name.name] ?? double.nan,
-                      label: Container(
-                        padding: const EdgeInsets.all(8),
-                        alignment: Alignment.centerLeft,
-                        child: Text(name.name),
-                      ),
-                    );
-                  }).toList(),
+                    ]
+                  : UsersTableColumnEnum.values.map((name) {
+                      return GridColumn(
+                        columnName: name.name,
+                        minimumWidth: ConstLayout.minColumnWidth,
+                        width: columnWidths[name.name] ?? double.nan,
+                        label: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: ConstLayout.spacer,
+                          ),
+                          child: Text(name.name),
+                        ),
+                      );
+                    }).toList(),
+            ),
           );
   }
 }
 
 /// Data source class with required data for the data grid widget.
 class _UserDataSource extends DataGridSource {
-  _UserDataSource({required List<UserModel> users, required bool isCompact}) {
+  _UserDataSource({
+    required List<UserModel> users,
+    required bool isCompact,
+    required this.searchText,
+  }) {
     _users = users.map<DataGridRow>(
       (user) {
         if (isCompact) {
@@ -150,6 +169,8 @@ class _UserDataSource extends DataGridSource {
 
   List<DataGridRow> _users = [];
 
+  final String? searchText;
+
   @override
   List<DataGridRow> get rows => _users;
 
@@ -161,7 +182,7 @@ class _UserDataSource extends DataGridSource {
           // return red text
           return Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.all(ConstLayout.spacer),
+            padding: const EdgeInsets.symmetric(horizontal: ConstLayout.spacer),
             child: Text(
               cell.value.toString(),
               style: const TextStyle(color: Colors.red),
@@ -170,8 +191,11 @@ class _UserDataSource extends DataGridSource {
         }
         return Container(
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.all(ConstLayout.spacer),
-          child: Text(cell.value.toString()),
+          padding: const EdgeInsets.symmetric(horizontal: ConstLayout.spacer),
+          child: EzHighlightedText(
+            cell.value.toString(),
+            highlight: searchText,
+          ),
         );
       }).toList(),
     );
