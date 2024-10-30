@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:impostor/src/shared/ez_icon_button/ez_icon_button.dart';
 import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
+import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 
 /// Styled text form field.
 class EzTextFormField extends ConsumerWidget {
@@ -86,17 +86,17 @@ class EzTextFormField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonText = this.buttonText;
     final isWithButton = buttonText != null && onButtonPressed != null;
-    const radius = ConstLayout.borderRadiusSmall;
+    const radius = EzConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
         ? const SmoothBorderRadius.horizontal(
             left: SmoothRadius(
               cornerRadius: radius,
-              cornerSmoothing: ConstLayout.cornerSmoothing,
+              cornerSmoothing: EzConstLayout.cornerSmoothing,
             ),
           )
         : SmoothBorderRadius(
             cornerRadius: radius,
-            cornerSmoothing: ConstLayout.cornerSmoothing,
+            cornerSmoothing: EzConstLayout.cornerSmoothing,
           );
 
     final fieldWidget = TextFormField(
@@ -171,7 +171,7 @@ class EzTextFormField extends ConsumerWidget {
                 child: fieldWidget,
               ),
               SizedBox(
-                height: ConstLayout.itemHeight,
+                height: EzConstLayout.itemHeight,
                 child: ElevatedButton(
                   onPressed: onButtonPressed,
                   style: OutlinedButton.styleFrom(
@@ -182,11 +182,11 @@ class EzTextFormField extends ConsumerWidget {
                       borderRadius: SmoothBorderRadius.only(
                         topRight: SmoothRadius(
                           cornerRadius: radius,
-                          cornerSmoothing: ConstLayout.cornerSmoothing,
+                          cornerSmoothing: EzConstLayout.cornerSmoothing,
                         ),
                         bottomRight: SmoothRadius(
                           cornerRadius: radius,
-                          cornerSmoothing: ConstLayout.cornerSmoothing,
+                          cornerSmoothing: EzConstLayout.cornerSmoothing,
                         ),
                       ),
                     ),

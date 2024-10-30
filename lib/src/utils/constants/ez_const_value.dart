@@ -1,6 +1,6 @@
 /// All the value constants are defined here.
-class ConstValue {
-  ConstValue._();
+class EzConstValue {
+  EzConstValue._();
 
   /// Animation duration.
   static const Duration animationDuration = Duration(milliseconds: 300);

@@ -9,7 +9,7 @@ import 'package:impostor/src/shared/ez_button/ez_button.dart';
 import 'package:impostor/src/shared/ez_header/ez_header.dart';
 import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
+import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 import 'package:impostor/src/utils/extension/list_extension.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
@@ -79,7 +79,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                 text: ref.loc.addUser,
               ),
             ].withSpaceBetween(
-              width: ConstLayout.spacer,
+              width: EzConstLayout.spacer,
             ),
           ),
           Expanded(
@@ -109,7 +109,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
             ),
           ),
         ].withSpaceBetween(
-          height: ConstLayout.spacer,
+          height: EzConstLayout.spacer,
         ),
       ),
     );

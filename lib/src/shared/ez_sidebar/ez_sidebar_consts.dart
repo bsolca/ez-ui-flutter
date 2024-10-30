@@ -3,8 +3,8 @@
 // ez_sidebar_consts.dart
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/constants/const_value.dart';
+import 'package:impostor/src/utils/constants/ez_const_layout.dart';
+import 'package:impostor/src/utils/constants/ez_const_value.dart';
 
 /// Constants and utility methods used in the Sidebar widget.
 class EzSidebarConsts {
@@ -16,8 +16,8 @@ class EzSidebarConsts {
 
   /// Global settings for the sidebar widget
   static const double sidebarWidth = 260;
-  static const double popoverWidth = sidebarWidth - ConstValue.dp16;
-  static const Offset popoverOffset = Offset(0, ConstValue.dp4);
+  static const double popoverWidth = sidebarWidth - EzConstValue.dp16;
+  static const Offset popoverOffset = Offset(0, EzConstValue.dp4);
   static const Duration animationDuration = Duration(milliseconds: 200);
 
   // ************
@@ -29,11 +29,11 @@ class EzSidebarConsts {
   }
 
   static Color getPopoverBorderColor(ColorScheme colorScheme) {
-    return ConstLayout.getMainBorderColor(colorScheme).withOpacity(0.95);
+    return EzConstLayout.getMainBorderColor(colorScheme).withOpacity(0.95);
   }
 
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
-    return ConstLayout.getSecondaryBackgroundColor(colorScheme);
+    return EzConstLayout.getSecondaryBackgroundColor(colorScheme);
   }
 
   static Color getIndicatorColor(ColorScheme colorScheme) {
@@ -61,39 +61,39 @@ class EzSidebarConsts {
   // ************
 
   static const EdgeInsets sidebarPadding = EdgeInsets.symmetric(
-    vertical: ConstValue.dp8,
+    vertical: EzConstValue.dp8,
   );
 
   static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
-    horizontal: ConstValue.dp8,
+    horizontal: EzConstValue.dp8,
   );
 
   static const EdgeInsets contentPadding = EdgeInsets.symmetric(
-    horizontal: ConstValue.dp16,
-    vertical: ConstValue.dp8,
+    horizontal: EzConstValue.dp16,
+    vertical: EzConstValue.dp8,
   );
 
-  static const EdgeInsets headerPadding = EdgeInsets.all(ConstValue.dp16);
-  static const EdgeInsets footerPadding = EdgeInsets.all(ConstValue.dp8);
+  static const EdgeInsets headerPadding = EdgeInsets.all(EzConstValue.dp16);
+  static const EdgeInsets footerPadding = EdgeInsets.all(EzConstValue.dp8);
 
   static const EdgeInsets indicatorVerticalPadding = EdgeInsets.symmetric(
-    vertical: ConstValue.dp8,
+    vertical: EzConstValue.dp8,
   );
 
   // ************
   // Divider
   // ************
 
-  static const double dividerThickness = ConstValue.dp1;
+  static const double dividerThickness = EzConstValue.dp1;
 
   // ************
   // Sidebar Item
   // ************
 
-  static const double itemBorderRadius = ConstValue.dp8;
+  static const double itemBorderRadius = EzConstValue.dp8;
   static const double itemBorderSmoothing = 0.4;
   static const int _itemOverlayOpacity = 20;
-  static const double sidebarItemIconSize = ConstValue.dp24;
+  static const double sidebarItemIconSize = EzConstValue.dp24;
   static const BlendMode sidebarItemIconBlendMode = BlendMode.srcIn;
 
   static const TextStyle sidebarItemTextStyle = TextStyle(
@@ -113,5 +113,5 @@ class EzSidebarConsts {
   // Avatar
   // ***************
 
-  static const double avatarSize = ConstValue.dp36;
+  static const double avatarSize = EzConstValue.dp36;
 }

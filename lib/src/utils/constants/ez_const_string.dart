@@ -1,6 +1,6 @@
 /// Constant string for parameter.
-class ConstString {
-  ConstString._();
+class EzConstString {
+  EzConstString._();
 
   /// Main restoration id.
   static const String mainRestorationId = 'main';

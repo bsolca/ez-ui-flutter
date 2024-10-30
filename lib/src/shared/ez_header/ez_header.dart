@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impostor/src/shared/ez_sub_header/ez_sub_header.dart';
-import 'package:impostor/src/utils/constants/const_value.dart';
+import 'package:impostor/src/utils/constants/ez_const_value.dart';
 
 enum _HeaderSize {
   displaySmall,
@@ -48,7 +48,7 @@ class EzHeader extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ConstrainedBox(
-          constraints: const BoxConstraints(minHeight: ConstValue.dp36),
+          constraints: const BoxConstraints(minHeight: EzConstValue.dp36),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(

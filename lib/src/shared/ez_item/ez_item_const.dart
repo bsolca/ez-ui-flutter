@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:impostor/src/utils/constants/const_value.dart';
 import 'package:impostor/src/utils/constants/ez_const_color_getter.dart';
+import 'package:impostor/src/utils/constants/ez_const_value.dart';
 
 /// Constants and utility methods used in the EzItem widget.
 class EzItemConsts {
@@ -12,7 +12,7 @@ class EzItemConsts {
   // Global Sidebar Constants
   // ***************
 
-  static const Duration animationDuration = ConstValue.animationDuration;
+  static const Duration animationDuration = EzConstValue.animationDuration;
 
   // ************
   // Colors
@@ -39,16 +39,16 @@ class EzItemConsts {
   // ************
 
   static const EdgeInsets contentPadding = EdgeInsets.only(
-    left: ConstValue.dp16,
-    top: ConstValue.dp8,
-    bottom: ConstValue.dp8,
+    left: EzConstValue.dp16,
+    top: EzConstValue.dp8,
+    bottom: EzConstValue.dp8,
   );
 
   static const EdgeInsets itemIconPadding = EdgeInsets.only(
-    right: ConstValue.dp16,
+    right: EzConstValue.dp16,
   );
 
-  static const double sidebarItemIconSize = ConstValue.dp24;
+  static const double sidebarItemIconSize = EzConstValue.dp24;
 
   // ************
   // Sidebar Item

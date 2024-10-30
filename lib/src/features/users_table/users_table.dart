@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:impostor/src/features/user/model/user_model.codegen.dart';
 import 'package:impostor/src/features/users_table/model/users_table_column_enum.dart';
 import 'package:impostor/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
+import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 import 'package:impostor/src/utils/log/logger.dart';
 import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
@@ -86,7 +86,7 @@ class _UsersTableState extends ConsumerState<UsersTable> {
                         label: Container(
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.symmetric(
-                            horizontal: ConstLayout.spacer,
+                            horizontal: EzConstLayout.spacer,
                           ),
                           child: Text(UsersTableColumnEnum.firstName.name),
                         ),
@@ -95,12 +95,12 @@ class _UsersTableState extends ConsumerState<UsersTable> {
                   : UsersTableColumnEnum.values.map((name) {
                       return GridColumn(
                         columnName: name.name,
-                        minimumWidth: ConstLayout.minColumnWidth,
+                        minimumWidth: EzConstLayout.minColumnWidth,
                         width: columnWidths[name.name] ?? double.nan,
                         label: Container(
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.symmetric(
-                            horizontal: ConstLayout.spacer,
+                            horizontal: EzConstLayout.spacer,
                           ),
                           child: Text(name.name),
                         ),
@@ -189,7 +189,7 @@ class _UserDataSource extends DataGridSource {
         if (cell.columnName == UsersTableColumnEnum.id.name) {
           return Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.symmetric(horizontal: ConstLayout.spacer),
+            padding: const EdgeInsets.symmetric(horizontal: EzConstLayout.spacer),
             child: Text(
               cell.value.toString(),
               style: const TextStyle(color: Colors.red),
@@ -198,7 +198,7 @@ class _UserDataSource extends DataGridSource {
         }
         return Container(
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: ConstLayout.spacer),
+          padding: const EdgeInsets.symmetric(horizontal: EzConstLayout.spacer),
           child: EzHighlightedText(
             cell.value.toString(),
             maxLines: 3,

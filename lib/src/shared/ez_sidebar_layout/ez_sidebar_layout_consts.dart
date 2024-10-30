@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
+import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 
 /// Constants and utility methods used in the EzSidebarLayout widget.
 class EzSidebarLayoutConsts {
@@ -16,7 +16,7 @@ class EzSidebarLayoutConsts {
 
   /// Content container margin
   static const EdgeInsets contentMargin = EdgeInsets.all(
-    ConstLayout.spacerSmall,
+    EzConstLayout.spacerSmall,
   );
 
   /// Content container border radius
@@ -34,17 +34,17 @@ class EzSidebarLayoutConsts {
 
   /// Returns the background color of layout based on the color scheme.
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
-    return ConstLayout.getSecondaryBackgroundColor(colorScheme);
+    return EzConstLayout.getSecondaryBackgroundColor(colorScheme);
   }
 
   /// Returns the content area color based on the color scheme.
   static Color getContentColor(ColorScheme colorScheme) {
-    return ConstLayout.getBackgroundColor(colorScheme);
+    return EzConstLayout.getBackgroundColor(colorScheme);
   }
 
   /// Returns the border color of the content area based on the color scheme.
   static Color getContentBorderColor(ColorScheme colorScheme) {
-    return ConstLayout.getMainBorderColor(colorScheme);
+    return EzConstLayout.getMainBorderColor(colorScheme);
   }
 
   // ***************

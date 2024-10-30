@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:hive/hive.dart';
 import 'package:impostor/src/features/user_settings/data/user_settings_repository.codegen.dart';
 import 'package:impostor/src/features/user_settings/model/user_settings.codegen.dart';
-import 'package:impostor/src/utils/constants/const_string.dart';
+import 'package:impostor/src/utils/constants/ez_const_string.dart';
 
 /// Hive user settings repository implementation.
 class UserSettingsRepositoryHive implements UserSettingsRepository {
@@ -15,10 +15,10 @@ class UserSettingsRepositoryHive implements UserSettingsRepository {
 
   @override
   Future<UserSettings> getUserSettings() async {
-    var settings = userSettingsBox.get(ConstString.hiveUserSettings);
+    var settings = userSettingsBox.get(EzConstString.hiveUserSettings);
     if (settings == null) {
       settings = jsonEncode(UserSettings.defaultSettings().toJson());
-      await userSettingsBox.put(ConstString.hiveUserSettings, settings);
+      await userSettingsBox.put(EzConstString.hiveUserSettings, settings);
     }
     final decoded = jsonDecode(settings);
 
@@ -32,7 +32,7 @@ class UserSettingsRepositoryHive implements UserSettingsRepository {
   @override
   Future<void> saveUserSettings(UserSettings userSettings) async {
     await userSettingsBox.put(
-      ConstString.hiveUserSettings,
+      EzConstString.hiveUserSettings,
       jsonEncode(userSettings.toJson()),
     );
   }

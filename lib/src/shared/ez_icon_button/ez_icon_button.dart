@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
+import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 
 /// A customizable icon button with a smaller hover and click effect.
 class EzIconButton extends StatefulWidget {
@@ -78,8 +78,8 @@ class _EzIconButtonState extends State<EzIconButton> {
           padding: const EdgeInsets.all(8),
           child: ClipSmoothRect(
             radius: SmoothBorderRadius(
-              cornerRadius: ConstLayout.borderRadiusSmall,
-              cornerSmoothing: ConstLayout.cornerSmoothing,
+              cornerRadius: EzConstLayout.borderRadiusSmall,
+              cornerSmoothing: EzConstLayout.cornerSmoothing,
             ),
             child: Container(
               width: iconSize,

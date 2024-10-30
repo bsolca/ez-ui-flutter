@@ -11,9 +11,9 @@ UserService userService(UserServiceRef ref) {
 }
 
 class UserService {
-  final UserRepository _repository;
 
   UserService(this._repository);
+  final UserRepository _repository;
 
   /// Retrieves a list of users from the repository.
   Stream<List<UserModel>> getUsersStream() {
