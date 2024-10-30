@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:impostor/src/features/auth/auth_state.codegen.dart';
+import 'package:impostor/src/features/auth/auth_screen.dart';
 import 'package:impostor/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:impostor/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:impostor/src/screens/home_screen/home_screen.dart';
@@ -21,6 +23,9 @@ part 'go_router_provider.codegen.g.dart';
 
 /// Routes for the app.
 enum AppRoute {
+  /// Authentication screen.
+  auth,
+
   /// App entry point.
   home,
 
@@ -58,6 +63,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
   final rootNavigatorKey = GlobalKey<NavigatorState>();
   final shellNavigatorKey = GlobalKey<NavigatorState>();
   final shellSettingsKey = GlobalKey<NavigatorState>();
+  final authState = ref.watch(authStateProvider);
 
   final goRouter = GoRouter(
     navigatorKey: rootNavigatorKey,
@@ -66,6 +72,12 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
       return null;
     },
     routes: [
+      GoRoutePageScaffold(
+        path: '/auth',
+        name: AppRoute.auth.name,
+        parentNavigatorKey: rootNavigatorKey,
+        body: const AuthScreen(),
+      ),
       ShellRoute(
         navigatorKey: shellNavigatorKey,
         pageBuilder: (context, state, child) {
@@ -76,6 +88,27 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
               body: child,
             ),
           );
+        },
+        redirect: (context, state) {
+          // While the auth state is loading, return null (no redirection)
+          if (authState.isLoading) return null;
+
+          // Check if the user is logged in
+          final isLoggedIn = authState.value ?? false;
+          final isGoingToAuth = state.uri.toString() == '/auth';
+
+          // Redirect to /auth if not logged in and not already there
+          if (!isLoggedIn && !isGoingToAuth) {
+            return '/auth';
+          }
+
+          // Redirect to home if trying to access /auth when already logged in
+          if (isLoggedIn && isGoingToAuth) {
+            return '/';
+          }
+
+          // No redirect
+          return null;
         },
         routes: [
           GoRoutePageScaffold(

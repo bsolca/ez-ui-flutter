@@ -1,0 +1,57 @@
+// lib/src/features/auth/service/auth_service.codegen.dart
+
+import 'package:impostor/src/features/auth/data/auth_repository.dart';
+import 'package:impostor/src/features/auth/data/auth_repository_provider.codegen.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+part 'auth_service.codegen.g.dart';
+
+/// AuthService handles authentication-related business logic, using the AuthRepository.
+class AuthService {
+  /// Creates an instance of AuthService with the provided AuthRepository.
+  AuthService(this._authRepository);
+
+  final AuthRepository _authRepository;
+
+  /// Signs up a new user with the provided email, password, and name.
+  Future<void> signUp({
+    required String email,
+    required String password,
+    required String firstName,
+    required String lastName,
+  }) async {
+    await _authRepository.signUp(
+      email: email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+    );
+  }
+
+  /// Logs in a user with the provided email and password.
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
+    await _authRepository.login(
+      email: email,
+      password: password,
+    );
+  }
+
+  /// Logs out the current user.
+  Future<void> logout() async {
+    await _authRepository.logout();
+  }
+
+  /// Gets the current user from the AuthRepository.
+  User? get currentUser => _authRepository.currentUser;
+}
+
+/// Provider for AuthService, initialized with the appropriate AuthRepository.
+@riverpod
+AuthService authService(AuthServiceRef ref) {
+  final authRepository = ref.watch(authRepositoryProvider);
+  return AuthService(authRepository);
+}

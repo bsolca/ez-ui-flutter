@@ -62,6 +62,7 @@ flutter:
     - assets/images/avatar/
     - assets/images/medals/
     - assets/flag_icons/
+    - .env
   fonts:
     - family: Prototype
       fonts:

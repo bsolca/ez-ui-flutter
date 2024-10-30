@@ -6,7 +6,7 @@ part of 'hive_provider.codegen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$hiveIdBoxHash() => r'd2d03f43e6167b54d522eaa7bfd4cca4ea179a08';
+String _$hiveIdBoxHash() => r'62e0ba0b22c0e0d196019ceec96e57bb6e232a08';
 
 /// The provider that provides the id in storage.
 ///
@@ -23,7 +23,7 @@ final hiveIdBoxProvider = Provider<Box<String?>>.internal(
 
 typedef HiveIdBoxRef = ProviderRef<Box<String?>>;
 String _$hiveUserSettingsBoxHash() =>
-    r'c72baad718fd3e769cda62446c66dcd5ee330776';
+    r'1ce293a594e6735cb13a7ee8fb2482cd26a31adf';
 
 /// The provider that provides the user settings box.
 ///
