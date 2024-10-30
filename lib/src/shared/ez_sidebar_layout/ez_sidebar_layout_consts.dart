@@ -15,10 +15,8 @@ class EzSidebarLayoutConsts {
   static const EdgeInsets sidebarPadding = EzSidebarConsts.sidebarPadding;
 
   /// Content container margin
-  static const EdgeInsets contentMargin = EdgeInsets.only(
-    top: 8,
-    bottom: 8,
-    right: 8,
+  static const EdgeInsets contentMargin = EdgeInsets.all(
+    ConstLayout.spacerSmall,
   );
 
   /// Content container border radius

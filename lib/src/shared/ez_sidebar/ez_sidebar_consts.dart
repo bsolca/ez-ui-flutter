@@ -61,7 +61,7 @@ class EzSidebarConsts {
   // ************
 
   static const EdgeInsets sidebarPadding = EdgeInsets.symmetric(
-    vertical: 8,
+    vertical: ConstValue.dp8,
   );
 
   static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
