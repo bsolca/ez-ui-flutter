@@ -1,7 +1,5 @@
 // lib/src/features/auth/data/auth_repository.dart
 
-import 'package:supabase_flutter/supabase_flutter.dart';
-
 /// Interface class for authentication repository.
 abstract interface class AuthRepository {
   /// Sign up a user with email, password, first and last names.
@@ -22,5 +20,5 @@ abstract interface class AuthRepository {
   Future<void> logout();
 
   /// Get the currently logged-in user, if any.
-  User? get currentUser;
+  String? get userId;
 }

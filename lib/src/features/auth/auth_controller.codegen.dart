@@ -2,7 +2,6 @@
 
 import 'package:impostor/src/features/auth/service/auth_service.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'auth_controller.codegen.g.dart';
 
@@ -66,5 +65,5 @@ class AuthController extends _$AuthController {
   }
 
   /// Get the current authenticated user, if any.
-  User? get currentUser => _authService.currentUser;
+  String? get userId => _authService.userId;
 }

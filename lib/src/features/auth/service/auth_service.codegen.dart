@@ -3,7 +3,6 @@
 import 'package:impostor/src/features/auth/data/auth_repository.dart';
 import 'package:impostor/src/features/auth/data/auth_repository_provider.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'auth_service.codegen.g.dart';
 
@@ -46,7 +45,7 @@ class AuthService {
   }
 
   /// Gets the current user from the AuthRepository.
-  User? get currentUser => _authRepository.currentUser;
+  String? get userId => _authRepository.userId;
 }
 
 /// Provider for AuthService, initialized with the appropriate AuthRepository.

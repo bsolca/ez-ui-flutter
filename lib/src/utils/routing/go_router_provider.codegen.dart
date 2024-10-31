@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/features/auth/auth_state.codegen.dart';
+import 'package:impostor/src/features/auth_state/auth_state.codegen.dart';
 import 'package:impostor/src/features/auth/auth_screen.dart';
 import 'package:impostor/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:impostor/src/features/user_settings/ui/user_settings_screen.dart';
