@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/features/user/model/user_model.codegen.dart';
+import 'package:impostor/src/features/user_fake/model/user_model.codegen.dart';
 import 'package:impostor/src/features/users_table/model/users_table_column_enum.dart';
 import 'package:impostor/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
 import 'package:impostor/src/utils/constants/ez_const_layout.dart';

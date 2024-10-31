@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:impostor/src/features/user/model/user_model.codegen.dart';
+import 'package:impostor/src/features/user_fake/model/user_model.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 

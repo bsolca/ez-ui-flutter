@@ -1,5 +1,5 @@
-import 'package:impostor/src/features/user/data/user_repository.codegen.dart';
-import 'package:impostor/src/features/user/model/user_model.codegen.dart';
+import 'package:impostor/src/features/user_fake/data/user_repository.codegen.dart';
+import 'package:impostor/src/features/user_fake/model/user_model.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_service.codegen.g.dart';
