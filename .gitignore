@@ -10,8 +10,7 @@
 .history
 .svn/
 .firebase/
-# env file
-.env
+
 # IntelliJ related
 *.iml
 *.ipr
