@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:ez_fit_app/src/features/user_settings/data/user_settings_repository.codegen.dart';
+import 'package:ez_fit_app/src/features/user_settings/model/user_settings.codegen.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_string.dart';
 import 'package:hive/hive.dart';
-import 'package:impostor/src/features/user_settings/data/user_settings_repository.codegen.dart';
-import 'package:impostor/src/features/user_settings/model/user_settings.codegen.dart';
-import 'package:impostor/src/utils/constants/ez_const_string.dart';
 
 /// Hive user settings repository implementation.
 class UserSettingsRepositoryHive implements UserSettingsRepository {

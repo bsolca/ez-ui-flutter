@@ -1,5 +1,5 @@
+import 'package:ez_fit_app/src/features/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/features/sidebar/sidebar.dart';
 
 /// Scaffold widget for the app.
 class EzAppScaffold extends StatelessWidget {

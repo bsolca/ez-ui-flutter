@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/constants/ez_const_value.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 
 /// To be used in the router pages as a starter for a new screen.
 class EzScaffoldBody extends ConsumerWidget {

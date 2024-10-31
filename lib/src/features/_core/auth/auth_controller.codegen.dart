@@ -1,6 +1,6 @@
 // lib/src/features/auth/presentation/auth_controller.dart
 
-import 'package:impostor/src/features/_core/auth/service/auth_service.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/auth/service/auth_service.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_controller.codegen.g.dart';

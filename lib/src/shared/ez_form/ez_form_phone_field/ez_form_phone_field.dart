@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 /// Ez Phone number field for forms.

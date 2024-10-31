@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/shared/ez_item/ez_item_const.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:impostor/src/shared/ez_item/ez_item_const.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 
 /// A [EzItem] widget that represents a single item in the sidebar.
 ///

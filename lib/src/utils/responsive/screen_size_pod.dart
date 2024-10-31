@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/responsive/layout_size_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/responsive/layout_size_enum.dart';
 
 /// A [StateNotifier] that notifies its listeners when the screen size changes.
 ///

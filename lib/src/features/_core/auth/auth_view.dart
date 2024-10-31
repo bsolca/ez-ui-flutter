@@ -1,14 +1,14 @@
+import 'package:ez_fit_app/src/features/_core/auth/auth_controller.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
+import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
+import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
+import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/features/_core/auth/auth_controller.codegen.dart';
-import 'package:impostor/src/shared/ez_button/ez_button.dart';
-import 'package:impostor/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
-import 'package:impostor/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
-import 'package:impostor/src/shared/ez_header/ez_header.dart';
-import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
-import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
 
 /// Provider to manage the toggle state between login and register modes
 final _isLoginProvider = StateProvider<bool>((ref) => true);
@@ -56,7 +56,7 @@ class _AuthScreenState extends ConsumerState<AuthView> {
       state.whenOrNull(
         error: (error, _) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${error.toString()}')),
+            SnackBar(content: Text('Error: $error')),
           );
         },
         data: (_) {

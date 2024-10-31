@@ -1,6 +1,6 @@
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_smooth_border_radius.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_smooth_rectangle_border.dart';
 import 'package:flutter/widgets.dart';
-import 'package:impostor/src/shared/ez_squircle/src/ez_smooth_border_radius.dart';
-import 'package:impostor/src/shared/ez_squircle/src/ez_smooth_rectangle_border.dart';
 
 /// A widget that clips its child using a smooth rectangular border.
 ///

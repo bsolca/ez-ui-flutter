@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ez_fit_app/src/features/user_fake/model/user_model.codegen.dart';
+import 'package:ez_fit_app/src/features/users_table/model/users_table_column_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
+import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/features/user_fake/model/user_model.codegen.dart';
-import 'package:impostor/src/features/users_table/model/users_table_column_enum.dart';
-import 'package:impostor/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
-import 'package:impostor/src/utils/log/logger.dart';
-import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of users.

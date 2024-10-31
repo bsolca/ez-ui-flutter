@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_header/ez_header.dart';
-import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 
 /// User screen for "/users/:id" route.
 class UserScreen extends ConsumerWidget {

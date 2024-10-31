@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_button/model/ez_button_enum.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/constants/ez_const_value.dart';
 
 /// A customizable button that extends [RawMaterialButton] for ease of use.
 class EzButton extends StatelessWidget {

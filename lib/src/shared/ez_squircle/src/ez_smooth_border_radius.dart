@@ -1,8 +1,7 @@
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_path_smooth_corners.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_smooth_radius.dart';
 import 'package:flutter/rendering.dart';
-
-import 'package:impostor/src/shared/ez_squircle/src/ez_path_smooth_corners.dart';
-import 'package:impostor/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
-import 'package:impostor/src/shared/ez_squircle/src/ez_smooth_radius.dart';
 
 /// A border radius with smooth, customizable corners.
 ///

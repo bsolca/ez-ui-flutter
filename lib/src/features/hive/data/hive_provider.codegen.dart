@@ -1,5 +1,5 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_string.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:impostor/src/utils/constants/ez_const_string.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'hive_provider.codegen.g.dart';

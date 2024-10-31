@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:ez_fit_app/src/features/user_settings/service/user_settings_service.codegen.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:impostor/src/features/user_settings/service/user_settings_service.codegen.dart';
-import 'package:impostor/src/utils/log/logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'get_locale.codegen.g.dart';

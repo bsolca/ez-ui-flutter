@@ -1,15 +1,15 @@
 import 'dart:math';
 
+import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
+import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_item/ez_sidebar_item.dart';
+import 'package:ez_fit_app/src/shared/ez_popover/ez_popover.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/responsive/presentation/responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
-import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
-import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// Footer section of the sidebar.
 ///

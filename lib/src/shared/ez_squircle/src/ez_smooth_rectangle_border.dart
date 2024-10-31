@@ -1,6 +1,6 @@
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
 
 /// Defines the alignment of the border relative to the edge of a shape.
 enum BorderAlign {

@@ -1,10 +1,10 @@
+import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_icon_button/ez_icon_button.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_icon_button/ez_icon_button.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 
 /// Styled text form field.
 class EzTextFormField extends ConsumerWidget {

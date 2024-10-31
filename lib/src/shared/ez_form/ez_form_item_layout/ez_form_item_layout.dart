@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
+import 'package:ez_fit_app/src/utils/responsive/presentation/responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
-import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 class EzFormItemLayout extends StatelessWidget {
   const EzFormItemLayout({

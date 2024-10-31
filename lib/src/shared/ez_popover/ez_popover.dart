@@ -1,5 +1,5 @@
+import 'package:ez_fit_app/src/shared/ez_popover/ez_popover_const.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_popover/ez_popover_const.dart';
 
 /// Represents a popover with a list of items.
 class EzPopover extends StatelessWidget {

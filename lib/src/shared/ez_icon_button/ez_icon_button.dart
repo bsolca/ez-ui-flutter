@@ -1,6 +1,6 @@
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 
 /// A customizable icon button with a smaller hover and click effect.
 class EzIconButton extends StatefulWidget {

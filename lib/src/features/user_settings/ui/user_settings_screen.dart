@@ -1,15 +1,15 @@
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_file_uploader/ez_file_uploader.dart';
+import 'package:ez_fit_app/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
+import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
+import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_button/ez_button.dart';
-import 'package:impostor/src/shared/ez_button/model/ez_button_enum.dart';
-import 'package:impostor/src/shared/ez_file_uploader/ez_file_uploader.dart';
-import 'package:impostor/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
-import 'package:impostor/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
-import 'package:impostor/src/shared/ez_header/ez_header.dart';
-import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 
 /// A screen that displays the user settings.
 class UserSettingsScreen extends ConsumerWidget {

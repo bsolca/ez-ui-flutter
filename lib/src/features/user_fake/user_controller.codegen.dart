@@ -1,6 +1,6 @@
 
-import 'package:impostor/src/features/user_fake/model/user_model.codegen.dart';
-import 'package:impostor/src/features/user_fake/service/user_service.codegen.dart';
+import 'package:ez_fit_app/src/features/user_fake/model/user_model.codegen.dart';
+import 'package:ez_fit_app/src/features/user_fake/service/user_service.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_controller.codegen.g.dart';

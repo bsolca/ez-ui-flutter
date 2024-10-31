@@ -1,5 +1,5 @@
+import 'package:ez_fit_app/src/shared/ez_divider/ez_divider_const.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_divider/ez_divider_const.dart';
 
 /// Divider used between sidebar items in the layout or the popover.
 class EzDivider extends StatelessWidget {

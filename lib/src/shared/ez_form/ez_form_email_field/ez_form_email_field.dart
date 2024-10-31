@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
 
 /// Ez Email field for forms.
 class EzFormEmailField extends ConsumerWidget {

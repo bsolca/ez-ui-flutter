@@ -1,5 +1,5 @@
+import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_header/ez_header.dart';
 
 /// Use under a [EzHeader] to display a sub title.
 class EzSubHeader extends StatelessWidget {

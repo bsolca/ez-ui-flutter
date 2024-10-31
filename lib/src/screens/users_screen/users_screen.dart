@@ -1,18 +1,18 @@
 import 'dart:async';
 
+import 'package:ez_fit_app/src/features/user_fake/user_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/users_table/users_table.dart';
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
+import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/features/user_fake/user_controller.codegen.dart';
-import 'package:impostor/src/features/users_table/users_table.dart';
-import 'package:impostor/src/shared/ez_button/ez_button.dart';
-import 'package:impostor/src/shared/ez_header/ez_header.dart';
-import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
-import 'package:impostor/src/shared/ez_text_form_field/ez_text_form_field.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
-import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// Screen that displays a list of users.

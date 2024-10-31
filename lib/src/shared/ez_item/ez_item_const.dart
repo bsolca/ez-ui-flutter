@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs
 
+import 'package:ez_fit_app/src/utils/constants/ez_const_color_getter.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/utils/constants/ez_const_color_getter.dart';
-import 'package:impostor/src/utils/constants/ez_const_value.dart';
 
 /// Constants and utility methods used in the EzItem widget.
 class EzItemConsts {

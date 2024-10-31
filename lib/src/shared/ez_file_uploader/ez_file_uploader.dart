@@ -1,9 +1,9 @@
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/ez_const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
-import 'package:impostor/src/utils/log/logger.dart';
 import 'package:super_drag_and_drop/super_drag_and_drop.dart';
 
 /// A file uploader widget.

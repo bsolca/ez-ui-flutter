@@ -1,4 +1,4 @@
-import 'package:impostor/src/utils/responsive/layout_size_enum.dart';
+import 'package:ez_fit_app/src/utils/responsive/layout_size_enum.dart';
 
 /// Force a layout size.
 abstract interface class ResponsiveForce {

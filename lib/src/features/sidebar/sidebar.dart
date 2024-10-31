@@ -1,16 +1,16 @@
+import 'package:ez_fit_app/src/features/sidebar/sidebar_item_brightness.dart';
+import 'package:ez_fit_app/src/features/sidebar/sidebar_item_language.dart';
+import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar_layout/ez_sidebar_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/features/sidebar/sidebar_item_brightness.dart';
-import 'package:impostor/src/features/sidebar/sidebar_item_language.dart';
-import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
-import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 
 /// Sidebar widget of the dashboard app.
 @immutable

@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/shared/ez_sub_header/ez_sub_header.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_sub_header/ez_sub_header.dart';
-import 'package:impostor/src/utils/constants/ez_const_value.dart';
 
 enum _HeaderSize {
   displaySmall,
