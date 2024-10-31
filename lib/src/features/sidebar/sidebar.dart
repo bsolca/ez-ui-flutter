@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/_core/auth/service/auth_service.codegen.dart';
 import 'package:ez_fit_app/src/features/sidebar/sidebar_item_brightness.dart';
 import 'package:ez_fit_app/src/features/sidebar/sidebar_item_language.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
@@ -48,26 +49,11 @@ class Sidebar extends ConsumerWidget {
             icon: HeroIcon.cog8Tooth,
             onTap: () => print('Settings Tapped'),
           ),
-          EzSidebarPopoverItemData.regular(
-            text: 'Settings',
-            icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Settings Tapped'),
-          ),
           const EzSidebarPopoverItemData.separator(),
           EzSidebarPopoverItemData.regular(
-            text: 'Settings',
-            icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Settings Tapped'),
-          ),
-          EzSidebarPopoverItemData.regular(
-            text: 'Settings',
-            icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Settings Tapped'),
-          ),
-          EzSidebarPopoverItemData.regular(
-            text: 'Settings',
-            icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Settings Tapped'),
+            text: 'Logout',
+            icon: HeroIcon.arrowRightStartOnRectangle,
+            onTap: ref.read(authServiceProvider).logout,
           ),
         ],
       ),
