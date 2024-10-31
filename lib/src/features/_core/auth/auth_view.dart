@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/features/auth/auth_controller.codegen.dart';
+import 'package:impostor/src/features/_core/auth/auth_controller.codegen.dart';
 import 'package:impostor/src/shared/ez_button/ez_button.dart';
 import 'package:impostor/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
 import 'package:impostor/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
@@ -11,18 +11,18 @@ import 'package:impostor/src/utils/constants/ez_const_layout.dart';
 import 'package:impostor/src/utils/extension/list_extension.dart';
 
 /// Provider to manage the toggle state between login and register modes
-final isLoginProvider = StateProvider<bool>((ref) => true);
+final _isLoginProvider = StateProvider<bool>((ref) => true);
 
-/// Auth screen for "/auth" route.
-class AuthScreen extends ConsumerStatefulWidget {
-  /// Auth screen for "/auth" route.
-  const AuthScreen({super.key});
+/// Auth view for "/auth" route.
+class AuthView extends ConsumerStatefulWidget {
+  /// Auth view for "/auth" route.
+  const AuthView({super.key});
 
   @override
-  ConsumerState<AuthScreen> createState() => _AuthScreenState();
+  ConsumerState<AuthView> createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends ConsumerState<AuthScreen> {
+class _AuthScreenState extends ConsumerState<AuthView> {
   late final TextEditingController firstNameController;
   late final TextEditingController lastNameController;
   late final TextEditingController emailController;
@@ -49,7 +49,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     // Watch the provider to determine if we are in login or register mode
-    final isLogin = ref.watch(isLoginProvider);
+    final isLogin = ref.watch(_isLoginProvider);
     final authState = ref.watch(authControllerProvider);
 
     ref.listen<AsyncValue<void>>(authControllerProvider, (_, state) {
@@ -86,7 +86,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                 child: TextButton(
                   onPressed: () {
                     // Toggle login/register state
-                    ref.read(isLoginProvider.notifier).state = !isLogin;
+                    ref.read(_isLoginProvider.notifier).state = !isLogin;
                   },
                   child: Text(
                     isLogin
@@ -137,17 +137,17 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                     if (isLogin) {
                       // Call login method
                       ref.read(authControllerProvider.notifier).login(
-                            email: emailController.text,
-                            password: passwordController.text,
-                          );
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
                     } else {
                       // Call register method
                       ref.read(authControllerProvider.notifier).signUp(
-                            firstName: firstNameController.text,
-                            lastName: lastNameController.text,
-                            email: emailController.text,
-                            password: passwordController.text,
-                          );
+                        firstName: firstNameController.text,
+                        lastName: lastNameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
                     }
                   },
                   text: isLogin ? 'Login' : 'Register',

@@ -1,7 +1,7 @@
 // lib/src/features/auth/service/auth_service.codegen.dart
 
-import 'package:impostor/src/features/auth/data/auth_repository.dart';
-import 'package:impostor/src/features/auth/data/auth_repository_provider.codegen.dart';
+import 'package:impostor/src/features/_core/auth/data/auth_repository.dart';
+import 'package:impostor/src/features/_core/auth/data/auth_repository_provider.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_service.codegen.g.dart';
