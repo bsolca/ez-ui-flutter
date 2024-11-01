@@ -3,6 +3,7 @@ import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/shared/ez_image/ez_image.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
@@ -77,6 +78,11 @@ class _AuthScreenState extends ConsumerState<AuthView> {
           child: ListView(
             shrinkWrap: true,
             children: [
+              EzImage(
+                width: 200,
+                height: 300,
+                'assets/images/characters/subscribe_char.png',
+              ),
               EzHeader.displayMedium(
                 isLogin ? 'Login' : 'Register',
               ),
