@@ -78,7 +78,7 @@ class _AuthScreenState extends ConsumerState<AuthView> {
           child: ListView(
             shrinkWrap: true,
             children: [
-              EzImage(
+              const EzImage(
                 width: 200,
                 height: 300,
                 'assets/images/characters/subscribe_char.png',
