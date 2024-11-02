@@ -1,17 +1,23 @@
 import 'package:ez_fit_app/src/features/_core/auth/auth_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/user_settings/ui/controller/user_settings_brightness_controller.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_email_field/ez_form_email_field.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/shared/ez_icon/ez_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_image/ez_image.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:ez_fit_app/src/utils/ez_toast/ez_toast.dart';
+import 'package:ez_fit_app/src/utils/localization/get_locale.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AuthView extends ConsumerStatefulWidget {
   const AuthView({super.key});
@@ -57,17 +63,17 @@ class _AuthScreenState extends ConsumerState<AuthView> {
         error: (error, _) {
           EzToast.show(
             context: context,
-            title: 'Error',
+            type: EzToastType.error,
+            title: ref.loc.authScreenErrorTitle,
             description: error.toString(),
-            icon: const Icon(HeroIcon.arrowRight),
           );
         },
         data: (_) {
           EzToast.show(
             context: context,
-            title: 'Error',
-            description:
-                isLogin ? 'Login Successful' : 'Registration Successful',
+            description: isLogin
+                ? ref.loc.authScreenLoginSuccessful
+                : ref.loc.authScreenRegistrationSuccessful,
             icon: const Icon(HeroIcon.arrowRight),
           );
         },
@@ -87,8 +93,17 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                   height: 300,
                   'assets/images/characters/subscribe_char.png',
                 ),
+                Wrap(
+                  alignment: WrapAlignment.end,
+                  children: [
+                    _languageButton(ref),
+                    _brightnessButton(ref),
+                  ],
+                ),
                 EzHeader.displayMedium(
-                  isLogin ? 'Login' : 'Register',
+                  isLogin
+                      ? ref.loc.authScreenLogin
+                      : ref.loc.authScreenRegister,
                 ),
                 // Toggle between login and register
                 Align(
@@ -97,8 +112,8 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                     onPressed: () => setState(() => isLogin = !isLogin),
                     child: Text(
                       isLogin
-                          ? "Don't have an account? Register"
-                          : 'Already have an account? Login',
+                          ? ref.loc.authScreenToggleRegister
+                          : ref.loc.authScreenToggleLogin,
                     ),
                   ),
                 ),
@@ -106,18 +121,18 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                 if (!isLogin) ...[
                   EzFormItemLayout(
                     key: const Key('first_name_field'),
-                    itemLabel: 'First Name',
+                    itemLabel: ref.loc.authScreenFirstName,
                     child: EzTextFormField(
-                      hintText: 'First Name',
+                      hintText: 'John',
                       controller: firstNameController,
                       // You can add validators here if needed
                     ),
                   ),
                   EzFormItemLayout(
                     key: const Key('last_name_field'),
-                    itemLabel: 'Last Name',
+                    itemLabel: ref.loc.authScreenLastName,
                     child: EzTextFormField(
-                      hintText: 'Last Name',
+                      hintText: 'Doe',
                       controller: lastNameController,
                       // You can add validators here if needed
                     ),
@@ -125,7 +140,7 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                 ],
                 EzFormItemLayout(
                   key: const Key('email_field'),
-                  itemLabel: 'Email',
+                  itemLabel: ref.loc.authScreenEmail,
                   child: EzFormEmailField(
                     hintText: 'john.doe@example.com',
                     controller: emailController,
@@ -134,7 +149,7 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                 ),
                 EzFormItemLayout(
                   key: const Key('password_field'),
-                  itemLabel: 'Password',
+                  itemLabel: ref.loc.authScreenPassword,
                   child: EzTextFormField(
                     hintText: '********',
                     obscureText: true,
@@ -142,44 +157,44 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Password is required';
+                        return ref.loc.authScreenErrorDescription;
                       }
                       return null;
                     },
                   ),
                 ),
                 const SizedBox(height: EzConstLayout.spacerSmall),
-                if (authState.isLoading)
-                  const Center(child: CircularProgressIndicator())
-                else
-                  EzButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        if (isLogin) {
-                          // Call login method
-                          ref.read(authControllerProvider.notifier).login(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                        } else {
-                          // Call register method
-                          ref.read(authControllerProvider.notifier).signUp(
-                                firstName: firstNameController.text,
-                                lastName: lastNameController.text,
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                        }
+                EzButton(
+                  isLoading: authState.isLoading,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      if (isLogin) {
+                        // Call login method
+                        ref.read(authControllerProvider.notifier).login(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                       } else {
-                        EzToast.show(
-                          context: context,
-                          type: EzToastType.error,
-                          description: 'Please fill all required fields.',
-                        );
+                        // Call register method
+                        ref.read(authControllerProvider.notifier).signUp(
+                              firstName: firstNameController.text,
+                              lastName: lastNameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                       }
-                    },
-                    text: isLogin ? 'Login' : 'Register',
-                  ),
+                    } else {
+                      EzToast.show(
+                        context: context,
+                        type: EzToastType.error,
+                        description: ref.loc.authScreenErrorDescription,
+                      );
+                    }
+                  },
+                  text: isLogin
+                      ? ref.loc.authScreenLogin
+                      : ref.loc.authScreenRegister,
+                ),
               ].withSpaceBetween(height: EzConstLayout.spacerSmall),
             ),
           ),
@@ -187,4 +202,66 @@ class _AuthScreenState extends ConsumerState<AuthView> {
       ),
     );
   }
+}
+
+Widget _languageButton(WidgetRef ref) {
+  final locale = ref.watch(getLocaleProvider);
+  final isEnglish = locale.toLanguageTag() == 'en';
+  final switchToIcon = isEnglish ? EzIcons.flagUs : EzIcons.flagFr;
+
+  return EzButton(
+    type: EzButtonType.link,
+    text: ref.loc.changeLanguage,
+    prefixWidget: SvgPicture.asset(switchToIcon.path),
+    onPressed: () async {
+      await ref.read(getLocaleProvider.notifier).setLanguageCode(
+            isEnglish ? 'fr' : 'en',
+          );
+    },
+  );
+}
+
+Widget _brightnessButton(WidgetRef ref) {
+  final brightness = ref.watch(userSettingsBrightnessControllerProvider);
+  return brightness.when(
+    data: (brightness) {
+      final brightnessNotifier = ref.read(
+        userSettingsBrightnessControllerProvider.notifier,
+      );
+
+      var switchToText = ref.loc.switchSystem;
+      var switchToIcon = HeroIcon.computerDesktop;
+
+      if (brightness == Brightness.light) {
+        switchToText = ref.loc.switchLight;
+        switchToIcon = HeroIcon.moon;
+      } else if (brightness == Brightness.dark) {
+        switchToText = ref.loc.switchDark;
+        switchToIcon = HeroIcon.sun;
+      }
+
+      return EzButton(
+        text: switchToText,
+        type: EzButtonType.link,
+        prefixWidget: Icon(switchToIcon),
+        onPressed: () async {
+          if (brightness == Brightness.light) {
+            await brightnessNotifier.setBrightness(Brightness.dark);
+          } else if (brightness == Brightness.dark) {
+            await brightnessNotifier.setBrightness(null);
+          } else {
+            await brightnessNotifier.setBrightness(Brightness.light);
+          }
+        },
+      );
+    },
+    error: (error, _) => throw error,
+    loading: () => EzButton(
+      text: '${ref.loc.loading}...',
+      prefixWidget: const Icon(HeroIcon.computerDesktop),
+      isLoading: true,
+      type: EzButtonType.link,
+      onPressed: null,
+    ),
+  );
 }

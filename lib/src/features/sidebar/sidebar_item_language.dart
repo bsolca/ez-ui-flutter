@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Builds an EzSidebarItemData configured for language switching.
 class SidebarItemLanguage {
   /// Builds an EzSidebarItemData configured for language switching.
-  static EzSidebarItemData build(WidgetRef ref, BuildContext context) {
+  static EzSidebarItemData build(WidgetRef ref) {
     final locale = ref.watch(getLocaleProvider);
     final isEnglish = locale.toLanguageTag() == 'en';
     final switchToIcon = isEnglish ? EzIcons.flagUs : EzIcons.flagFr;

@@ -17,6 +17,8 @@ class EzIconButton extends StatefulWidget {
     this.size,
   });
 
+
+
   /// The icon to display inside the button.
   final IconData icon;
 

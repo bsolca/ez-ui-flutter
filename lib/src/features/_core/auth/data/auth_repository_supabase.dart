@@ -21,6 +21,8 @@ class AuthRepositorySupabase implements AuthRepository {
         password: password,
         data: {'first_name': firstName, 'last_name': lastName},
       );
+    } on AuthException catch (e) {
+      throw Exception(e.message);
     } catch (e) {
       throw Exception('Failed to sign up: $e');
     }
@@ -33,6 +35,8 @@ class AuthRepositorySupabase implements AuthRepository {
   }) async {
     try {
       await _client.auth.signInWithPassword(email: email, password: password);
+    } on AuthException catch (e) {
+      throw Exception(e.message);
     } catch (e) {
       throw Exception('Failed to log in: $e');
     }

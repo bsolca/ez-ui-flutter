@@ -93,8 +93,8 @@ class Sidebar extends ConsumerWidget {
           icon: HeroIcon.userGroup,
           onTap: () => context.goNamed(AppRoute.colorSchemePreview.name),
         ),
-        SidebarItemLanguage.build(ref, context),
-        SidebarItemBrightness.build(ref, context),
+        SidebarItemLanguage.build(ref),
+        SidebarItemBrightness.build(ref),
       ],
       content: child,
     );

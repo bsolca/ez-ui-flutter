@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Builds an EzSidebarItemData configured for brightness switching.
 class SidebarItemBrightness {
   /// Builds an EzSidebarItemData configured for brightness switching.
-  static EzSidebarItemData build(WidgetRef ref, BuildContext context) {
+  static EzSidebarItemData build(WidgetRef ref) {
     final brightness = ref.watch(userSettingsBrightnessControllerProvider);
     return brightness.when(
       data: (brightness) {
