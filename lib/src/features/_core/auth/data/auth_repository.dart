@@ -21,4 +21,13 @@ abstract interface class AuthRepository {
 
   /// Get the currently logged-in user, if any.
   String? get userId;
+
+  /// Get username of the currently logged-in user, if any method.
+  Future<String?> get firstName;
+
+  /// Get username of the currently logged-in user, if any method.
+  Future<String?> get lastName;
+
+  /// Get email of the currently logged-in user, if any.
+  Future<String?> get email;
 }

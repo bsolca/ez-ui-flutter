@@ -5,18 +5,28 @@ import 'package:flutter/material.dart';
 class EzAppScaffold extends StatelessWidget {
   /// Scaffold widget for the app.
   const EzAppScaffold({
-    required this.body,
     super.key,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.body,
   });
 
-  /// The widget to display in the body of the scaffold.
+  final String firstName;
+  final String lastName;
+  final String email;
   final Widget body;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Sidebar(child: body),
+      body: Sidebar(
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        child: body,
+      ),
     );
   }
 }

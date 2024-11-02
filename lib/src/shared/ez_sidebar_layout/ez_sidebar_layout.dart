@@ -129,7 +129,6 @@ class _EzSidebarLayoutState extends ConsumerState<EzSidebarLayout> {
               EzSidebarFooter(
                 name: widget.footerData.name,
                 email: widget.footerData.email,
-                onTap: widget.footerData.onTap,
                 items: widget.footerData.items,
                 avatarUrl: widget.footerData.avatarUrl,
               ),

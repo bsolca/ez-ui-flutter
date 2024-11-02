@@ -2,7 +2,6 @@ import 'package:ez_fit_app/src/shared/ez_icon/ez_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:ez_fit_app/src/utils/localization/get_locale.codegen.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Builds an EzSidebarItemData configured for language switching.

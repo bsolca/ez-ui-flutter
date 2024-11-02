@@ -22,7 +22,6 @@ class EzSidebarFooter extends StatelessWidget {
     Key? key,
     required String name,
     required String email,
-    required VoidCallback onTap,
     required String? avatarUrl,
     required List<EzSidebarPopoverItemData> items,
   }) {
@@ -31,7 +30,6 @@ class EzSidebarFooter extends StatelessWidget {
       data: EzSidebarFooterData(
         name: name,
         email: email,
-        onTap: onTap,
         avatarUrl: avatarUrl,
         items: items,
       ),
@@ -80,7 +78,6 @@ class EzSidebarFooter extends StatelessWidget {
           child: InkWell(
             splashFactory: NoSplash.splashFactory,
             onTap: () {
-              _data.onTap();
               if (menuController.isOpen) {
                 menuController.close();
               } else {

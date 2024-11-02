@@ -4,8 +4,8 @@ import 'package:ez_fit_app/src/features/_core/auth/data/auth_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepositorySupabase implements AuthRepository {
-
   AuthRepositorySupabase(this._client);
+
   final SupabaseClient _client;
 
   @override
@@ -49,4 +49,33 @@ class AuthRepositorySupabase implements AuthRepository {
 
   @override
   String? get userId => _client.auth.currentUser?.id;
+
+  @override
+  Future<String?> get email {
+    final user = _client.auth.currentUser;
+    if (user == null) {
+      return Future.value();
+    }
+    return Future.value(user.email);
+  }
+
+  @override
+  Future<String?> get firstName {
+    final user = _client.auth.currentUser;
+    final lastName = user?.userMetadata?['last_name'];
+    if (user == null || lastName == null || lastName is! String) {
+      return Future.value();
+    }
+    return Future.value(lastName);
+  }
+
+  @override
+  Future<String?> get lastName {
+    final user = _client.auth.currentUser;
+    final firstName = user?.userMetadata?['first_name'];
+    if (user == null || firstName == null || firstName is! String) {
+      return Future.value();
+    }
+    return Future.value(firstName);
+  }
 }

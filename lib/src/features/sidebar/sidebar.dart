@@ -17,10 +17,18 @@ import 'package:go_router/go_router.dart';
 @immutable
 class Sidebar extends ConsumerWidget {
   /// Creates the sidebar widget of the dashboard app.
-  const Sidebar({super.key, required this.child});
+  const Sidebar({
+    super.key,
+    required this.lastName,
+    required this.firstName,
+    required this.email,
+    required this.child,
+  });
 
-  /// Content of the sidebar.
   final Widget child;
+  final String lastName;
+  final String firstName;
+  final String email;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,9 +46,8 @@ class Sidebar extends ConsumerWidget {
         ],
       ),
       footerData: EzSidebarFooterData(
-        name: 'Benjamin Sx',
-        email: 'benjamin@ez.io',
-        onTap: () => print('Footer Tapped'),
+        name: '$firstName $lastName',
+        email: email,
         avatarUrl: null,
         items: [
           EzSidebarPopoverItemData.regular(

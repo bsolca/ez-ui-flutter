@@ -46,6 +46,19 @@ class AuthService {
 
   /// Gets the current user from the AuthRepository.
   String? get userId => _authRepository.userId;
+
+
+  /// Get username of the currently logged-in user, if any.
+  Future<String?> get firstName async =>
+      _authRepository.firstName;
+
+  /// Get username of the currently logged-in user, if any.
+  Future<String?> get lastName async =>
+      _authRepository.lastName;
+
+  /// Get email of the currently logged-in user, if any.
+  Future<String?> get email async =>
+      _authRepository.email;
 }
 
 /// Provider for AuthService, initialized with the appropriate AuthRepository.

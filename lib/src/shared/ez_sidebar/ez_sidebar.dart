@@ -132,7 +132,6 @@ class EzSidebar extends ConsumerWidget {
             EzSidebarFooter(
               name: footerData.name,
               email: footerData.email,
-              onTap: footerData.onTap,
               items: footerData.items,
               avatarUrl: footerData.avatarUrl,
             ),

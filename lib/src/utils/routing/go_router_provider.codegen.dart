@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/_core/auth/service/auth_service.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/auth_state/auth_state.codegen.dart';
 import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
@@ -84,8 +85,28 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
           // ShellRoute should ideally build the shell only once
           return NoTransitionPage(
             key: state.pageKey,
-            child: EzAppScaffold(
-              body: child,
+            child: FutureBuilder(
+              future: Future.wait([
+                ref.read(authServiceProvider).firstName,
+                ref.read(authServiceProvider).lastName,
+                ref.read(authServiceProvider).email,
+              ]),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+
+                return EzAppScaffold(
+                  firstName: snapshot.data![0] as String,
+                  lastName: snapshot.data![1] as String,
+                  email: snapshot.data![2] as String,
+                  body: child,
+                );
+              },
             ),
           );
         },

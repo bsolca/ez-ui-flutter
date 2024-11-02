@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
