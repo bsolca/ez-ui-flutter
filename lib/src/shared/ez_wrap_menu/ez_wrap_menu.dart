@@ -99,7 +99,7 @@ class _EzWrapMenuState extends ConsumerState<EzWrapMenu> {
                 item.onPressed();
               },
               text: item.text,
-              prefixWidget: Icon(item.icon),
+              prefixWidget: item.icon != null ? Icon(item.icon) : null,
               type: isSelected ? EzButtonType.regular : EzButtonType.link,
             );
           }),

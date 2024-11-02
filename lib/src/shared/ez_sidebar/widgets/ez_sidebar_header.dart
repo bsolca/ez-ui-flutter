@@ -17,7 +17,6 @@ class EzSidebarHeader extends StatelessWidget {
   factory EzSidebarHeader({
     Key? key,
     required String appName,
-    required VoidCallback onTap,
     required String? avatarUrl,
     required List<EzSidebarPopoverItemData> items,
   }) {
@@ -25,7 +24,6 @@ class EzSidebarHeader extends StatelessWidget {
       key: key,
       data: EzSidebarHeaderData(
         appName: appName,
-        onTap: onTap,
         avatarUrl: avatarUrl,
         items: items,
       ),
@@ -92,14 +90,15 @@ class EzSidebarHeader extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             splashFactory: NoSplash.splashFactory,
-            onTap: () {
-              _data.onTap();
-              if (menuController.isOpen) {
-                menuController.close();
-              } else {
-                menuController.open();
-              }
-            },
+            onTap: _data.items.isEmpty
+                ? null
+                : () {
+                    if (menuController.isOpen) {
+                      menuController.close();
+                    } else {
+                      menuController.open();
+                    }
+                  },
             overlayColor: WidgetStateProperty.all(
               EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
             ),
@@ -135,11 +134,12 @@ class EzSidebarHeader extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
-                    Icon(
-                      HeroIcon.chevronDown,
-                      color: colorScheme.primary,
-                      size: EzSidebarConsts.sidebarItemIconSize,
-                    ),
+                    if (_data.items.isNotEmpty)
+                      Icon(
+                        HeroIcon.chevronDown,
+                        color: colorScheme.primary,
+                        size: EzSidebarConsts.sidebarItemIconSize,
+                      ),
                   ],
                 ),
               ),

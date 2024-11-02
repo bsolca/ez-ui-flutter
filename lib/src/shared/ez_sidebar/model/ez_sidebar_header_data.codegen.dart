@@ -11,7 +11,6 @@ class EzSidebarHeaderData with _$EzSidebarHeaderData {
   /// A data model representing the header section of the sidebar.
   const factory EzSidebarHeaderData({
     required String appName,
-    required VoidCallback onTap,
     required String? avatarUrl,
     required List<EzSidebarPopoverItemData> items,
   }) = _EzSidebarHeaderData;

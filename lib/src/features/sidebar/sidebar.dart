@@ -26,16 +26,15 @@ class Sidebar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return EzSidebarLayout(
       // key: sidebarKey, // Removed
-      headerData: EzSidebarHeaderData(
+      headerData: const EzSidebarHeaderData(
         appName: 'Ez Dashboard',
-        onTap: () => print('Header Tapped'),
         avatarUrl: null,
         items: [
-          EzSidebarPopoverItemData.regular(
-            text: 'Settings',
-            icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Settings Tapped'),
-          ),
+          // EzSidebarPopoverItemData.regular(
+          //   text: 'Settings',
+          //   icon: HeroIcon.cog8Tooth,
+          //   onTap: () => print('Settings Tapped'),
+          // ),
         ],
       ),
       footerData: EzSidebarFooterData(
@@ -45,9 +44,9 @@ class Sidebar extends ConsumerWidget {
         avatarUrl: null,
         items: [
           EzSidebarPopoverItemData.regular(
-            text: 'Settings',
+            text: 'Work in progress message too long',
             icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Settings Tapped'),
+            onTap: () => print('Work in progress'),
           ),
           const EzSidebarPopoverItemData.separator(),
           EzSidebarPopoverItemData.regular(

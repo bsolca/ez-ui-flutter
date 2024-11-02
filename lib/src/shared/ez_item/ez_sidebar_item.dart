@@ -102,11 +102,13 @@ class _EzItemState extends State<EzItem> {
                           size: EzItemConsts.sidebarItemIconSize,
                         ),
                       ),
-                    Text(
-                      widget.text,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: EzItemConsts.sidebarItemTextStyle,
+                    Flexible(
+                      child: Text(
+                        widget.text,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: EzItemConsts.sidebarItemTextStyle,
+                      ),
                     ),
                   ],
                 ),

@@ -74,7 +74,6 @@ class EzSidebar extends ConsumerWidget {
       child: Column(
         children: [
           EzSidebarHeader(
-            onTap: headerData.onTap,
             appName: headerData.appName,
             avatarUrl: headerData.avatarUrl,
             items: headerData.items,
