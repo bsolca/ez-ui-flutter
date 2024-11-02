@@ -1,5 +1,6 @@
 import 'package:ez_fit_app/src/shared/ez_sidebar/ez_sidebar_consts.dart';
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_color_getter.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 
@@ -34,17 +35,17 @@ class EzSidebarLayoutConsts {
 
   /// Returns the background color of layout based on the color scheme.
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
-    return EzConstLayout.getSecondaryBackgroundColor(colorScheme);
+    return EzConstsColorsGetter.getSecondaryBackgroundColor(colorScheme);
   }
 
   /// Returns the content area color based on the color scheme.
   static Color getContentColor(ColorScheme colorScheme) {
-    return EzConstLayout.getBackgroundColor(colorScheme);
+    return EzConstsColorsGetter.getBackgroundColor(colorScheme);
   }
 
   /// Returns the border color of the content area based on the color scheme.
   static Color getContentBorderColor(ColorScheme colorScheme) {
-    return EzConstLayout.getMainBorderColor(colorScheme);
+    return EzConstsColorsGetter.getMainBorderColor(colorScheme);
   }
 
   // ***************

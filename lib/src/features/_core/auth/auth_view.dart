@@ -13,9 +13,7 @@ import 'package:ez_fit_app/src/utils/ez_toast/ez_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Auth view for "/auth" route.
 class AuthView extends ConsumerStatefulWidget {
-  /// Auth view for "/auth" route.
   const AuthView({super.key});
 
   @override
@@ -28,7 +26,6 @@ class _AuthScreenState extends ConsumerState<AuthView> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
-  // Create a GlobalKey to manage the form state
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool isLogin = true;

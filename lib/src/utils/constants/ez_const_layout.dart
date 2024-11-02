@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +18,7 @@ class EzConstLayout {
   static const double cornerSmoothing = EzConstValue.dp05;
   static const double itemBorderRadius = EzConstValue.dp8;
   static const double itemBorderSmoothing = EzConstValue.dp05;
+
   static ShapeBorder getShapeBorder() {
     return EzSmoothRectangleBorder(
       borderRadius: EzSmoothBorderRadius(
@@ -28,10 +27,11 @@ class EzConstLayout {
       ),
     );
   }
+
   static EzSmoothBorderRadius getBorderRadius() => EzSmoothBorderRadius(
-    cornerRadius: borderRadius,
-    cornerSmoothing: itemBorderSmoothing,
-  );
+        cornerRadius: borderRadius,
+        cornerSmoothing: itemBorderSmoothing,
+      );
 
   // Button and Icon Sizes
   static const double buttonHeight = EzConstValue.dp48;
@@ -55,19 +55,5 @@ class EzConstLayout {
   static const double itemHeight = EzConstValue.dp40;
   static const double medalSize = EzConstValue.dp48;
 
-  // Colors
-  static Color getBackgroundColor(ColorScheme colorScheme) =>
-      colorScheme.brightness == Brightness.dark
-          ? colorScheme.surfaceContainerHigh
-          : colorScheme.surface;
 
-  static Color getMainBorderColor(ColorScheme colorScheme) =>
-      colorScheme.brightness == Brightness.dark
-          ? colorScheme.surfaceContainer
-          : colorScheme.surfaceContainerHighest;
-
-  static Color getSecondaryBackgroundColor(ColorScheme colorScheme) =>
-      colorScheme.brightness == Brightness.dark
-          ? colorScheme.surface
-          : colorScheme.surfaceContainer;
 }

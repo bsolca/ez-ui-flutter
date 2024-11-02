@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_color_getter.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
+
 // ez_sidebar_consts.dart
 import 'package:flutter/material.dart';
 
@@ -29,11 +30,13 @@ class EzSidebarConsts {
   }
 
   static Color getPopoverBorderColor(ColorScheme colorScheme) {
-    return EzConstLayout.getMainBorderColor(colorScheme).withOpacity(0.95);
+    return EzConstsColorsGetter.getMainBorderColor(colorScheme).withOpacity(
+      0.95,
+    );
   }
 
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
-    return EzConstLayout.getSecondaryBackgroundColor(colorScheme);
+    return EzConstsColorsGetter.getSecondaryBackgroundColor(colorScheme);
   }
 
   static Color getIndicatorColor(ColorScheme colorScheme) {
