@@ -37,10 +37,10 @@ dependencies:
   riverpod_annotation: ^2.3.3
   rxdart: ^0.28.0
   share_plus: ^10.0.2
-  short_uuids: ^2.0.0
   supabase_flutter: ^2.8.0
-  super_drag_and_drop: ^0.7.0
+  super_drag_and_drop: ^0.8.24
   syncfusion_flutter_datagrid: ^27.1.53
+  toastification: ^2.3.0
   vector_math: ^2.1.4
   web_smooth_scroll: ^1.1.0
 

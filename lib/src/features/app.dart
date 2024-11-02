@@ -32,7 +32,9 @@ class App extends ConsumerWidget {
                 ),
                 fontFamily: 'Inter',
               ),
-              onGenerateTitle: (BuildContext context) => 'ez_fit_app'.hardcoded,
+              onGenerateTitle: (BuildContext context) {
+                return 'ez_fit_app'.hardcoded;
+              },
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               localeResolutionCallback: (

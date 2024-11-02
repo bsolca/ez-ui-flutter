@@ -53,12 +53,12 @@ class EzSidebarLayoutConsts {
 
   /// Returns the shape border for the content area using SmoothRectangleBorder.
   static ShapeBorder getContentShapeBorder(ColorScheme colorScheme) {
-    return SmoothRectangleBorder(
+    return EzSmoothRectangleBorder(
       side: BorderSide(
         color: getContentBorderColor(colorScheme),
         width: contentBorderWidth,
       ),
-      borderRadius: SmoothBorderRadius(
+      borderRadius: EzSmoothBorderRadius(
         cornerRadius: contentBorderRadius,
         cornerSmoothing: contentBorderSmoothing,
       ),

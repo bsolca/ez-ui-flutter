@@ -76,8 +76,8 @@ class _EzIconButtonState extends State<EzIconButton> {
         }),
         child: Padding(
           padding: const EdgeInsets.all(8),
-          child: ClipSmoothRect(
-            radius: SmoothBorderRadius(
+          child: EzClipSmoothRect(
+            radius: EzSmoothBorderRadius(
               cornerRadius: EzConstLayout.borderRadiusSmall,
               cornerSmoothing: EzConstLayout.cornerSmoothing,
             ),

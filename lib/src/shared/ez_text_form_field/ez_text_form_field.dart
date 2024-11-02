@@ -88,13 +88,13 @@ class EzTextFormField extends ConsumerWidget {
     final isWithButton = buttonText != null && onButtonPressed != null;
     const radius = EzConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
-        ? const SmoothBorderRadius.horizontal(
-            left: SmoothRadius(
+        ? const EzSmoothBorderRadius.horizontal(
+            left: EzSmoothRadius(
               cornerRadius: radius,
               cornerSmoothing: EzConstLayout.cornerSmoothing,
             ),
           )
-        : SmoothBorderRadius(
+        : EzSmoothBorderRadius(
             cornerRadius: radius,
             cornerSmoothing: EzConstLayout.cornerSmoothing,
           );
@@ -179,12 +179,12 @@ class EzTextFormField extends ConsumerWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.primaryContainer,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: SmoothBorderRadius.only(
-                        topRight: SmoothRadius(
+                      borderRadius: EzSmoothBorderRadius.only(
+                        topRight: EzSmoothRadius(
                           cornerRadius: radius,
                           cornerSmoothing: EzConstLayout.cornerSmoothing,
                         ),
-                        bottomRight: SmoothRadius(
+                        bottomRight: EzSmoothRadius(
                           cornerRadius: radius,
                           cornerSmoothing: EzConstLayout.cornerSmoothing,
                         ),

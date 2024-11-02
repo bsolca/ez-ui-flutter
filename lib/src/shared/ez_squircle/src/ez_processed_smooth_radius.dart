@@ -7,7 +7,7 @@ import 'package:vector_math/vector_math.dart' as vector;
 /// A class for processing smooth radii based on given dimensions.
 ///
 /// This class calculates and stores the values necessary to create smooth
-/// corners using [SmoothRadius] for both width and height of a rectangle.
+/// corners using [EzSmoothRadius] for both width and height of a rectangle.
 ///
 /// The article from Figma's blog:
 /// https://www.figma.com/blog/desperately-seeking-squircles/
@@ -15,14 +15,14 @@ import 'package:vector_math/vector_math.dart' as vector;
 /// The original code:
 /// https://github.com/MartinRGB/squircles_Approximation/blob/bf29714aab58c54329f3ca130ffa16d39a2ff08c/js/rounded-corners.js#L64
 @immutable
-class ProcessedSmoothRadius {
+class EzProcessedSmoothRadius {
 
-  /// Factory constructor for [ProcessedSmoothRadius].
+  /// Factory constructor for [EzProcessedSmoothRadius].
   ///
-  /// Takes a [SmoothRadius], [width], and [height], and processes it to
+  /// Takes a [EzSmoothRadius], [width], and [height], and processes it to
   /// calculate the necessary properties for smooth corner generation.
-  factory ProcessedSmoothRadius(
-      SmoothRadius radius, {
+  factory EzProcessedSmoothRadius(
+      EzSmoothRadius radius, {
         required double width,
         required double height,
       }) {
@@ -65,7 +65,7 @@ class ProcessedSmoothRadius {
     final b = (p - circularSectionLength - c - d) / 3;
     final a = 2 * b;
 
-    return ProcessedSmoothRadius._(
+    return EzProcessedSmoothRadius._(
       a: a,
       b: b,
       c: c,
@@ -73,7 +73,7 @@ class ProcessedSmoothRadius {
       p: p,
       width: width,
       height: height,
-      radius: SmoothRadius(
+      radius: EzSmoothRadius(
         cornerRadius: cornerRadius,
         cornerSmoothing: radius.cornerSmoothing,
       ),
@@ -82,9 +82,9 @@ class ProcessedSmoothRadius {
   }
   /// Creates a processed smooth radius object with necessary calculations.
   ///
-  /// Takes [SmoothRadius] and dimensions [width] and [height] as input,
+  /// Takes [EzSmoothRadius] and dimensions [width] and [height] as input,
   /// processing the required parameters like angles and arc lengths.
-  const ProcessedSmoothRadius._({
+  const EzProcessedSmoothRadius._({
     required this.a,
     required this.b,
     required this.c,
@@ -96,8 +96,8 @@ class ProcessedSmoothRadius {
     required this.circularSectionLength,
   });
 
-  /// The processed [SmoothRadius].
-  final SmoothRadius radius;
+  /// The processed [EzSmoothRadius].
+  final EzSmoothRadius radius;
 
   /// First control point offset for the cubic bezier curve.
   final double a;
@@ -124,17 +124,17 @@ class ProcessedSmoothRadius {
   final double height;
 
 
-  /// Retrieves the corner radius value from the [SmoothRadius].
+  /// Retrieves the corner radius value from the [EzSmoothRadius].
   double get cornerRadius => radius.cornerRadius;
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (runtimeType != other.runtimeType) return false;
-    if (other is SmoothRadius) {
+    if (other is EzSmoothRadius) {
       return other == radius;
     }
-    if (other is ProcessedSmoothRadius) {
+    if (other is EzProcessedSmoothRadius) {
       return other.radius == radius;
     }
 

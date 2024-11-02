@@ -4,14 +4,14 @@ import 'package:flutter/widgets.dart';
 
 /// A widget that clips its child using a smooth rectangular border.
 ///
-/// [ClipSmoothRect] clips a widget using a [SmoothRectangleBorder] with a
-/// customizable [SmoothBorderRadius] for the corners. This widget utilizes
+/// [EzClipSmoothRect] clips a widget using a [EzSmoothRectangleBorder] with a
+/// customizable [EzSmoothBorderRadius] for the corners. This widget utilizes
 /// [ClipPath] to perform the clipping operation.
 ///
 /// ### Parameters:
-/// - [child]: The widget to be clipped by the [SmoothRectangleBorder].
+/// - [child]: The widget to be clipped by the [EzSmoothRectangleBorder].
 /// - [radius]: Defines the corner radius of the border using
-///   [SmoothBorderRadius]. Default is [SmoothBorderRadius.zero], meaning
+///   [EzSmoothBorderRadius]. Default is [EzSmoothBorderRadius.zero], meaning
 ///   no rounding.
 /// - [clipBehavior]: Determines how the widget should be clipped. The default
 ///   value is [Clip.antiAlias], which applies anti-aliasing for smoother
@@ -27,32 +27,32 @@ import 'package:flutter/widgets.dart';
 ///
 /// This widget is useful when you want smooth, rounded corners for rectangular
 /// widgets with control over the radius using the smooth squircle shape.
-class ClipSmoothRect extends StatelessWidget {
-  /// Creates a [ClipSmoothRect] widget.
+class EzClipSmoothRect extends StatelessWidget {
+  /// Creates a [EzClipSmoothRect] widget.
   ///
   /// Requires the [child] to be clipped and allows customization for [radius]
   /// and [clipBehavior].
-  const ClipSmoothRect({
+  const EzClipSmoothRect({
     super.key,
     required this.child,
-    this.radius = SmoothBorderRadius.zero,
+    this.radius = EzSmoothBorderRadius.zero,
     this.clipBehavior = Clip.antiAlias,
   });
 
-  /// Border radius of the clipped rectangle, specified as [SmoothBorderRadius].
-  final SmoothBorderRadius radius;
+  /// Border radius of the clipped rectangle, specified as [EzSmoothBorderRadius].
+  final EzSmoothBorderRadius radius;
 
   /// Defines how the widget should be clipped. Default is [Clip.antiAlias].
   final Clip clipBehavior;
 
-  /// The widget to be clipped by the [SmoothRectangleBorder].
+  /// The widget to be clipped by the [EzSmoothRectangleBorder].
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return ClipPath.shape(
       clipBehavior: clipBehavior,
-      shape: SmoothRectangleBorder(
+      shape: EzSmoothRectangleBorder(
         borderRadius: radius,
       ),
       child: child,

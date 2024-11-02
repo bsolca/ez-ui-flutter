@@ -17,12 +17,12 @@ enum BorderAlign {
 /// A rectangular border with smooth, customizable corners.
 ///
 /// The border's alignment can be adjusted via [BorderAlign], and the corner
-/// radius can be controlled with [SmoothBorderRadius].
-class SmoothRectangleBorder extends OutlinedBorder {
+/// radius can be controlled with [EzSmoothBorderRadius].
+class EzSmoothRectangleBorder extends OutlinedBorder {
   /// A rectangular border with smooth, customizable corners.
-  const SmoothRectangleBorder({
+  const EzSmoothRectangleBorder({
     super.side,
-    this.borderRadius = SmoothBorderRadius.zero,
+    this.borderRadius = EzSmoothBorderRadius.zero,
     this.borderAlign = BorderAlign.inside,
   });
 
@@ -30,7 +30,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
   ///
   /// Negative radius values are clamped to 0.0 by [getInnerPath] and
   /// [getOuterPath].
-  final SmoothBorderRadius borderRadius;
+  final EzSmoothBorderRadius borderRadius;
 
   /// Defines how the border is aligned relative to the shape's edge.
   final BorderAlign borderAlign;
@@ -49,7 +49,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
 
   @override
   ShapeBorder scale(double t) {
-    return SmoothRectangleBorder(
+    return EzSmoothRectangleBorder(
       side: side.scale(t),
       borderRadius: borderRadius * t,
     );
@@ -57,10 +57,10 @@ class SmoothRectangleBorder extends OutlinedBorder {
 
   @override
   ShapeBorder? lerpFrom(ShapeBorder? a, double t) {
-    if (a is SmoothRectangleBorder) {
-      return SmoothRectangleBorder(
+    if (a is EzSmoothRectangleBorder) {
+      return EzSmoothRectangleBorder(
         side: BorderSide.lerp(a.side, side, t),
-        borderRadius: SmoothBorderRadius.lerp(a.borderRadius, borderRadius, t)!,
+        borderRadius: EzSmoothBorderRadius.lerp(a.borderRadius, borderRadius, t)!,
       );
     }
     return super.lerpFrom(a, t);
@@ -68,10 +68,10 @@ class SmoothRectangleBorder extends OutlinedBorder {
 
   @override
   ShapeBorder? lerpTo(ShapeBorder? b, double t) {
-    if (b is SmoothRectangleBorder) {
-      return SmoothRectangleBorder(
+    if (b is EzSmoothRectangleBorder) {
+      return EzSmoothRectangleBorder(
         side: BorderSide.lerp(side, b.side, t),
-        borderRadius: SmoothBorderRadius.lerp(borderRadius, b.borderRadius, t)!,
+        borderRadius: EzSmoothBorderRadius.lerp(borderRadius, b.borderRadius, t)!,
       );
     }
     return super.lerpTo(b, t);
@@ -93,16 +93,16 @@ class SmoothRectangleBorder extends OutlinedBorder {
       switch (borderAlign) {
         case BorderAlign.inside:
           return borderRadius -
-              SmoothBorderRadius.all(
-                SmoothRadius(
+              EzSmoothBorderRadius.all(
+                EzSmoothRadius(
                   cornerRadius: side.width,
                   cornerSmoothing: 1,
                 ),
               );
         case BorderAlign.center:
           return borderRadius -
-              SmoothBorderRadius.all(
-                SmoothRadius(
+              EzSmoothBorderRadius.all(
+                EzSmoothRadius(
                   cornerRadius: side.width / 2,
                   cornerSmoothing: 1,
                 ),
@@ -127,7 +127,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
 
   Path _getPath(
     Rect rect,
-    SmoothBorderRadius radius, {
+    EzSmoothBorderRadius radius, {
     TextDirection? textDirection,
   }) {
     if ([radius.bottomLeft, radius.bottomRight, radius.topLeft, radius.topRight]
@@ -139,12 +139,12 @@ class SmoothRectangleBorder extends OutlinedBorder {
   }
 
   @override
-  SmoothRectangleBorder copyWith({
+  EzSmoothRectangleBorder copyWith({
     BorderSide? side,
-    SmoothBorderRadius? borderRadius,
+    EzSmoothBorderRadius? borderRadius,
     BorderAlign? borderAlign,
   }) {
-    return SmoothRectangleBorder(
+    return EzSmoothRectangleBorder(
       side: side ?? this.side,
       borderRadius: borderRadius ?? this.borderRadius,
       borderAlign: borderAlign ?? this.borderAlign,
@@ -172,8 +172,8 @@ class SmoothRectangleBorder extends OutlinedBorder {
           switch (borderAlign) {
             case BorderAlign.inside:
               return borderRadius -
-                  SmoothBorderRadius.all(
-                    SmoothRadius(
+                  EzSmoothBorderRadius.all(
+                    EzSmoothRadius(
                       cornerRadius: side.width / 2,
                       cornerSmoothing: 1,
                     ),
@@ -182,8 +182,8 @@ class SmoothRectangleBorder extends OutlinedBorder {
               return borderRadius;
             case BorderAlign.outside:
               return borderRadius +
-                  SmoothBorderRadius.all(
-                    SmoothRadius(
+                  EzSmoothBorderRadius.all(
+                    EzSmoothRadius(
                       cornerRadius: side.width / 2,
                       cornerSmoothing: 1,
                     ),
@@ -207,7 +207,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
   @override
   bool operator ==(Object other) {
     if (other.runtimeType != runtimeType) return false;
-    return other is SmoothRectangleBorder &&
+    return other is EzSmoothRectangleBorder &&
         other.side == side &&
         other.borderRadius == borderRadius &&
         other.borderAlign == borderAlign;

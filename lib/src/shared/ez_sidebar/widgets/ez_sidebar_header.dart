@@ -151,9 +151,9 @@ class EzSidebarHeader extends StatelessWidget {
   }
 
   Widget _buildClipSmoothRect({required Widget child}) {
-    return ClipSmoothRect(
-      radius: const SmoothBorderRadius.all(
-        SmoothRadius(
+    return EzClipSmoothRect(
+      radius: const EzSmoothBorderRadius.all(
+        EzSmoothRadius(
           cornerRadius: EzSidebarConsts.itemBorderRadius,
           cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
         ),

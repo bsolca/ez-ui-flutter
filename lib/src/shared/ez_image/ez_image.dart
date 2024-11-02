@@ -9,8 +9,8 @@ class EzImage extends StatelessWidget {
     super.key,
     this.width,
     this.height,
-    this.borderRadius = const SmoothBorderRadius.all(
-      SmoothRadius(cornerRadius: 20, cornerSmoothing: 0.4),
+    this.borderRadius = const EzSmoothBorderRadius.all(
+      EzSmoothRadius(cornerRadius: 20, cornerSmoothing: 0.4),
     ),
   });
 
@@ -24,11 +24,11 @@ class EzImage extends StatelessWidget {
   final double? height;
 
   /// Border radius of the image
-  final SmoothBorderRadius borderRadius;
+  final EzSmoothBorderRadius borderRadius;
 
   @override
   Widget build(BuildContext context) {
-    return ClipSmoothRect(
+    return EzClipSmoothRect(
       radius: borderRadius,
       child: Image.asset(
         imagePath,

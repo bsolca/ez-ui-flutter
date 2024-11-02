@@ -101,8 +101,8 @@ class EzSidebarConsts {
   );
 
   static ShapeBorder getSidebarItemShapeBorder() {
-    return SmoothRectangleBorder(
-      borderRadius: SmoothBorderRadius(
+    return EzSmoothRectangleBorder(
+      borderRadius: EzSmoothBorderRadius(
         cornerRadius: itemBorderRadius,
         cornerSmoothing: itemBorderSmoothing,
       ),

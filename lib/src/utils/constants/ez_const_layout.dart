@@ -18,6 +18,20 @@ class EzConstLayout {
   static const double borderRadiusSmall = EzConstValue.dp8;
   static const double borderRadius = EzConstValue.dp16;
   static const double cornerSmoothing = EzConstValue.dp05;
+  static const double itemBorderRadius = EzConstValue.dp8;
+  static const double itemBorderSmoothing = EzConstValue.dp05;
+  static ShapeBorder getShapeBorder() {
+    return EzSmoothRectangleBorder(
+      borderRadius: EzSmoothBorderRadius(
+        cornerRadius: itemBorderRadius,
+        cornerSmoothing: itemBorderSmoothing,
+      ),
+    );
+  }
+  static EzSmoothBorderRadius getBorderRadius() => EzSmoothBorderRadius(
+    cornerRadius: borderRadius,
+    cornerSmoothing: itemBorderSmoothing,
+  );
 
   // Button and Icon Sizes
   static const double buttonHeight = EzConstValue.dp48;
@@ -56,17 +70,4 @@ class EzConstLayout {
       colorScheme.brightness == Brightness.dark
           ? colorScheme.surface
           : colorScheme.surfaceContainer;
-
-  // Radius
-  static const double itemBorderRadius = EzConstValue.dp8;
-  static const double itemBorderSmoothing = 0.4;
-
-  static ShapeBorder getShapeBorder() {
-    return SmoothRectangleBorder(
-      borderRadius: SmoothBorderRadius(
-        cornerRadius: itemBorderRadius,
-        cornerSmoothing: itemBorderSmoothing,
-      ),
-    );
-  }
 }

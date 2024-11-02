@@ -70,13 +70,8 @@ class _EzItemState extends State<EzItem> {
         decoration: ShapeDecoration(
           shape: EzConstLayout.getShapeBorder(),
         ),
-        child: ClipSmoothRect(
-          radius: const SmoothBorderRadius.all(
-            SmoothRadius(
-              cornerRadius: EzConstLayout.itemBorderRadius,
-              cornerSmoothing: EzConstLayout.itemBorderSmoothing,
-            ),
-          ),
+        child: EzClipSmoothRect(
+          radius: EzConstLayout.getBorderRadius(),
           child: Material(
             color: Colors.transparent,
             child: InkWell(

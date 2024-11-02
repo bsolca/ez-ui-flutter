@@ -62,9 +62,9 @@ class _EzFileUploaderState extends State<EzFileUploader> {
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: ShapeDecoration(
-            shape: SmoothRectangleBorder(
+            shape: EzSmoothRectangleBorder(
               side: BorderSide(color: Theme.of(context).colorScheme.outline),
-              borderRadius: SmoothBorderRadius(
+              borderRadius: EzSmoothBorderRadius(
                 cornerRadius: EzConstLayout.borderRadius,
                 cornerSmoothing: EzConstLayout.cornerSmoothing,
               ),

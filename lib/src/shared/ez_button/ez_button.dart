@@ -64,12 +64,12 @@ class EzButton extends StatelessWidget {
     );
   }
 
-  SmoothRectangleBorder _buildShape(BuildContext context) {
+  EzSmoothRectangleBorder _buildShape(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return SmoothRectangleBorder(
+    return EzSmoothRectangleBorder(
       side: _getBorderSide(colorScheme),
-      borderRadius: SmoothBorderRadius(
+      borderRadius: EzSmoothBorderRadius(
         cornerRadius: EzConstLayout.borderRadiusSmall,
         cornerSmoothing: EzConstLayout.cornerSmoothing,
       ),
