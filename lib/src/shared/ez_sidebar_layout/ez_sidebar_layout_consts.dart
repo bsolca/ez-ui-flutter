@@ -40,7 +40,7 @@ class EzSidebarLayoutConsts {
 
   /// Returns the content area color based on the color scheme.
   static Color getContentColor(ColorScheme colorScheme) {
-    return EzConstsColorsGetter.getBackgroundColor(colorScheme);
+    return EzConstsColorsGetter.getMainBorderColor(colorScheme);
   }
 
   /// Returns the border color of the content area based on the color scheme.
