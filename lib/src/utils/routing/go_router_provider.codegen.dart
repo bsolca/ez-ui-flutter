@@ -85,28 +85,12 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
           // ShellRoute should ideally build the shell only once
           return NoTransitionPage(
             key: state.pageKey,
-            child: FutureBuilder(
-              future: Future.wait([
-                ref.read(authServiceProvider).firstName,
-                ref.read(authServiceProvider).lastName,
-                ref.read(authServiceProvider).email,
-              ]),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState != ConnectionState.done) {
-                  return const Scaffold(
-                    body: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-
-                return EzAppScaffold(
-                  firstName: snapshot.data![0] as String,
-                  lastName: snapshot.data![1] as String,
-                  email: snapshot.data![2] as String,
-                  body: child,
-                );
-              },
+            // NOTE: We are using dummy content for the user.
+            child: EzAppScaffold(
+              firstName: 'Benjamin',
+              lastName: 'S.',
+              email: 'benjamin@fitapp.x',
+              body: child,
             ),
           );
         },
