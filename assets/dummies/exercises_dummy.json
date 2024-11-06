@@ -1,0 +1,746 @@
+[
+  {
+    "id": "d2c0d566-5957-4df6-9d0b-7dba0c001099",
+    "name": "Push-Up",
+    "imageUrl": "https://www.pexels.com/photo/man-doing-push-ups-260352/",
+    "videoUrl": "https://www.youtube.com/watch?v=_l3ySVKYVJ8",
+    "tags": [
+      "fitness",
+      "strength",
+      "upper body"
+    ],
+    "description": "A bodyweight exercise that targets the chest, shoulders, and triceps."
+  },
+  {
+    "id": "344d3f51-a379-4382-abf8-cd1e4addb898",
+    "name": "Squat",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-squats-416778/",
+    "videoUrl": "https://www.youtube.com/watch?v=aclHkVaku9U",
+    "tags": [
+      "fitness",
+      "strength",
+      "lower body"
+    ],
+    "description": "A fundamental exercise that strengthens the legs and glutes."
+  },
+  {
+    "id": "c8f187db-409f-4445-ace2-461b64268115",
+    "name": "Plank",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-plank-exercise-4056723/",
+    "videoUrl": "https://www.youtube.com/watch?v=pSHjTRCQxIw",
+    "tags": [
+      "fitness",
+      "core",
+      "stability"
+    ],
+    "description": "An isometric core exercise that enhances stability and endurance."
+  },
+  {
+    "id": "0dee21e8-2e6c-4c64-bc89-b313f23ec042",
+    "name": "Burpee",
+    "imageUrl": "https://www.pexels.com/photo/man-doing-burpees-1552249/",
+    "videoUrl": "https://www.youtube.com/watch?v=TU8QYVW0gDU",
+    "tags": [
+      "fitness",
+      "cardio",
+      "full body"
+    ],
+    "description": "A full-body exercise that combines a squat, push-up, and jump."
+  },
+  {
+    "id": "3a59b553-bc73-47e0-98e3-1f3e75ce8e6c",
+    "name": "Lunge",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-lunges-4662438/",
+    "videoUrl": "https://www.youtube.com/watch?v=QOVaHwm-Q6U",
+    "tags": [
+      "fitness",
+      "strength",
+      "lower body"
+    ],
+    "description": "A lower-body exercise that targets the quadriceps and glutes."
+  },
+  {
+    "id": "0ba20d49-8e89-41d1-a387-2a9397180670",
+    "name": "Bicep Curl",
+    "imageUrl": "https://www.pexels.com/photo/man-doing-bicep-curls-2261485/",
+    "videoUrl": "https://www.youtube.com/watch?v=ykJmrZ5v0Oo",
+    "tags": [
+      "fitness",
+      "strength",
+      "upper body"
+    ],
+    "description": "An exercise that isolates the biceps for muscle development."
+  },
+  {
+    "id": "e78bc4a7-b770-4902-a684-4cf63e3f1d9c",
+    "name": "Mountain Climber",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-mountain-climbers-3823068/",
+    "videoUrl": "https://www.youtube.com/watch?v=nmwgirgXLYM",
+    "tags": [
+      "fitness",
+      "cardio",
+      "core"
+    ],
+    "description": "A dynamic exercise that increases heart rate and core strength."
+  },
+  {
+    "id": "15cfa2af-1788-40c7-a3c5-c236464e65d8",
+    "name": "Warrior II",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-warrior-ii-3823038/",
+    "videoUrl": "https://www.youtube.com/watch?v=7A2Gv4jh1mA",
+    "tags": [
+      "yoga",
+      "strength",
+      "balance"
+    ],
+    "description": "A standing pose that enhances strength and stability in the legs."
+  },
+  {
+    "id": "a3faa7cc-fd9b-442a-9eda-c4ac544594e3",
+    "name": "Tree Pose",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-tree-pose-3823037/",
+    "videoUrl": "https://www.youtube.com/watch?v=Jd8v3gL2dAk",
+    "tags": [
+      "yoga",
+      "balance",
+      "focus"
+    ],
+    "description": "A balancing pose that improves concentration and core strength."
+  },
+  {
+    "id": "6c8843d2-406e-473a-913a-0e83285f1f59",
+    "name": "Child's Pose",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-childs-pose-3823036/",
+    "videoUrl": "https://www.youtube.com/watch?v=Zb6Rrd1QzqI",
+    "tags": [
+      "yoga",
+      "relaxation",
+      "stretching"
+    ],
+    "description": "A resting pose that gently stretches the back and shoulders."
+  },
+  {
+    "id": "e1a3f4a6-8a3f-4a15-96b2-3c55b8c0f4a5",
+    "name": "Bridge Pose",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-bridge-pose-3823035/",
+    "videoUrl": "https://www.youtube.com/watch?v=0Fx8f4xG4DE",
+    "tags": [
+      "yoga",
+      "strength",
+      "back"
+    ],
+    "description": "A backbend that strengthens the spine and opens the chest."
+  },
+  {
+    "id": "17",
+    "name": "Cat-Cow Stretch",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-cat-cow-stretch-3823034/",
+    "videoUrl": "https://www.youtube.com/watch?v=kqnua4rHVVA",
+    "tags": [
+      "yoga",
+      "flexibility",
+      "spine"
+    ],
+    "description": "A gentle flow between two poses that warms up the spine."
+  },
+  {
+    "id": "18",
+    "name": "Seated Forward Bend",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-seated-forward-bend-3823033/",
+    "videoUrl": "https://www.youtube.com/watch?v=7A2Gv4jh1mA",
+    "tags": [
+      "yoga",
+      "stretching",
+      "hamstrings"
+    ],
+    "description": "A seated pose that stretches the hamstrings and lower back."
+  },
+  {
+    "id": "19",
+    "name": "Triangle Pose",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-triangle-pose-3823032/",
+    "videoUrl": "https://www.youtube.com/watch?v=Jd8v3gL2dAk",
+    "tags": [
+      "yoga",
+      "balance",
+      "flexibility"
+    ],
+    "description": "A standing pose that stretches the legs and torso, and opens the hips."
+  },
+  {
+    "id": "20",
+    "name": "Corpse Pose",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-corpse-pose-3823031/",
+    "videoUrl": "https://www.youtube.com/watch?v=Zb6Rrd1QzqI",
+    "tags": [
+      "yoga",
+      "relaxation",
+      "meditation"
+    ],
+    "description": "A resting pose that promotes relaxation and stress relief."
+  },
+  {
+    "id": "21",
+    "name": "Plié",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-plie-3823030/",
+    "videoUrl": "https://www.youtube.com/watch?v=0Fx8f4xG4DE",
+    "tags": [
+      "ballet",
+      "strength",
+      "legs"
+    ],
+    "description": "A fundamental ballet movement that strengthens the legs and improves posture."
+  },
+  {
+    "id": "22",
+    "name": "Tendu",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-tendu-3823029/",
+    "videoUrl": "https://www.youtube.com/watch?v=kqnua4rHVVA",
+    "tags": [
+      "ballet",
+      "flexibility",
+      "feet"
+    ],
+    "description": "A movement that stretches the foot and leg, enhancing flexibility."
+  },
+  {
+    "id": "23",
+    "name": "Arabesque",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-arabesque-3823028/",
+    "videoUrl": "https://www.youtube.com/watch?v=7A2Gv4jh1mA",
+    "tags": [
+      "ballet",
+      "balance",
+      "grace"
+    ],
+    "description": "A pose where one leg is extended behind the body, improving balance and grace."
+  },
+  {
+    "id": "24",
+    "name": "Pirouette",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-pirouette-3823027/",
+    "videoUrl": "https://www.youtube.com/watch?v=Jd8v3gL2dAk",
+    "tags": [
+      "ballet",
+      "turn",
+      "coordination"
+    ],
+    "description": "A spinning movement performed on one foot, enhancing coordination."
+  },
+  {
+    "id": "25",
+    "name": "Grand Jeté",
+    "imageUrl": "https://www.pexels.com/photo/woman-doing-grand-jete-3823026/",
+    "videoUrl": "https://www.youtube.com/watch?v=Zb6Rrd1QzqI",
+    "tags": [
+      "ballet",
+      "jump",
+      "power"
+    ],
+    "description": "A large leap forward, showcasing power and flexibility."
+  },
+  {
+    "id": "26",
+    "name": "Salsa Basic Step",
+    "imageUrl": "https://www.pexels.com/photo/couple-doing-salsa-basic-step-3823025/",
+    "videoUrl": "https://www.youtube.com/watch?v=0Fx8f4xG4DE",
+    "tags": [
+      "salsa",
+      "dance",
+      "rhythm"
+    ],
+    "description": "The foundational step in salsa dancing, establishing rhythm and timing."
+  },
+  {
+    "id": "27",
+    "name": "Cross Body Lead",
+    "imageUrl": "https://www.pexels.com/photo/couple-doing-cross-body-lead-3823024/",
+    "videoUrl": "https://www.youtube.com/watch?v=kqnua4rHVVA",
+    "tags": [
+      "salsa",
+      "dance",
+      "partner"
+    ],
+    "description": "A move where the leader guides the follower across their body, changing positions."
+  },
+  {
+    "id": "28",
+    "name": "Salsa Turn",
+    "imageUrl": "https://www.pexels.com/photo/couple-doing-salsa-turn-3823023/",
+    "videoUrl": "https://www.youtube.com/watch?v=7A2Gv4jh1mA",
+    "tags": [
+      "salsa",
+      "dance",
+      "spin"
+    ],
+    "description": "A spinning movement adding flair and complexity to the dance."
+  },
+  {
+    "id": "29",
+    "name": "Cumbia Step",
+    "imageUrl": "https://www.pexels.com/photo/couple-doing-cumbia-step-3823022/",
+    "videoUrl": "https://www.youtube.com/watch?v=Jd8v3gL2dAk",
+    "tags": [
+      "salsa",
+      "dance",
+      "variation"
+    ],
+    "description": "A side-to-side step influenced by Cumbia, adding variety to salsa."
+  },
+  {
+    "id": "31",
+    "name": "Hamstring Stretch",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-hamstring-stretch-3823020/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "flexibility",
+      "stretching",
+      "legs"
+    ],
+    "description": "A stretch targeting the hamstrings to improve flexibility and reduce muscle tightness."
+  },
+  {
+    "id": "32",
+    "name": "Quadriceps Stretch",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-quadriceps-stretch-3823019/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "flexibility",
+      "stretching",
+      "thighs"
+    ],
+    "description": "A stretch focusing on the front thigh muscles to enhance flexibility."
+  },
+  {
+    "id": "33",
+    "name": "Shoulder Stretch",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-shoulder-stretch-3823018/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "flexibility",
+      "stretching",
+      "shoulders"
+    ],
+    "description": "A stretch that relieves tension and increases flexibility in the shoulder area."
+  },
+  {
+    "id": "34",
+    "name": "Triceps Stretch",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-triceps-stretch-3823017/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "flexibility",
+      "stretching",
+      "arms"
+    ],
+    "description": "A stretch aimed at the triceps to improve arm flexibility and reduce stiffness."
+  },
+  {
+    "id": "35",
+    "name": "Calf Stretch",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-calf-stretch-3823016/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "flexibility",
+      "stretching",
+      "calves"
+    ],
+    "description": "A stretch that targets the calf muscles, enhancing lower leg flexibility."
+  },
+  {
+    "id": "36",
+    "name": "Pull-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-pull-up-3823015/",
+    "videoUrl": "https://www.youtube.com/watch?v=eGo4IYlbE5g",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "upper body"
+    ],
+    "description": "An upper-body exercise that strengthens the back, shoulders, and arms."
+  },
+  {
+    "id": "37",
+    "name": "Dips",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-dips-3823014/",
+    "videoUrl": "https://www.youtube.com/watch?v=2z8JmcrW-As",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "triceps"
+    ],
+    "description": "An exercise focusing on the triceps, chest, and shoulders."
+  },
+  {
+    "id": "38",
+    "name": "Muscle-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-muscle-up-3823013/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "full body"
+    ],
+    "description": "A compound movement combining a pull-up and dip, targeting multiple muscle groups."
+  },
+  {
+    "id": "39",
+    "name": "Handstand Push-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-handstand-push-up-3823012/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "shoulders"
+    ],
+    "description": "An advanced exercise that builds shoulder and triceps strength."
+  },
+  {
+    "id": "40",
+    "name": "Front Lever",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-front-lever-3823011/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "core"
+    ],
+    "description": "A static hold that develops core and upper-body strength."
+  },
+  {
+    "id": "41",
+    "name": "Box Jump",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-box-jump-3823010/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "power",
+      "legs"
+    ],
+    "description": "An explosive movement that enhances leg power and coordination."
+  },
+  {
+    "id": "42",
+    "name": "Kettlebell Swing",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-kettlebell-swing-3823009/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "full body"
+    ],
+    "description": "A dynamic exercise that targets the posterior chain and improves cardiovascular fitness."
+  },
+  {
+    "id": "43",
+    "name": "Wall Ball Shot",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-wall-ball-shot-3823008/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "power",
+      "full body"
+    ],
+    "description": "A full-body exercise that combines a squat and overhead throw."
+  },
+  {
+    "id": "44",
+    "name": "Double Under",
+    "imageUrl": "https://www.pexels.com/photo/person-doing-double-under-3823007/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "cardio",
+      "coordination"
+    ],
+    "description": "A jump rope exercise where the rope passes under the feet twice per jump."
+  },
+  {
+    "id": "46",
+    "name": "Snatch",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-snatch-3823005/",
+    "videoUrl": "https://www.youtube.com/watch?v=4eYSpIz2FjU",
+    "tags": [
+      "crossfit",
+      "power",
+      "full body"
+    ],
+    "description": "A dynamic lift that moves the barbell from ground to overhead in one motion."
+  },
+  {
+    "id": "47",
+    "name": "Clean and Jerk",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-clean-and-jerk-3823004/",
+    "videoUrl": "https://www.youtube.com/watch?v=6TlbDQUWs0s",
+    "tags": [
+      "crossfit",
+      "strength",
+      "full body"
+    ],
+    "description": "A two-part lift involving a clean to the shoulders followed by an overhead press."
+  },
+  {
+    "id": "48",
+    "name": "Overhead Squat",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-overhead-squat-3823003/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "stability"
+    ],
+    "description": "A squat performed with the barbell held overhead, enhancing balance and flexibility."
+  },
+  {
+    "id": "49",
+    "name": "Turkish Get-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-turkish-get-up-3823002/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "mobility"
+    ],
+    "description": "A complex movement that improves strength and mobility by transitioning from lying to standing while holding a weight overhead."
+  },
+  {
+    "id": "50",
+    "name": "Handstand Walk",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-handstand-walk-3823001/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "balance",
+      "upper body"
+    ],
+    "description": "An advanced skill involving walking on hands, enhancing balance and shoulder strength."
+  },
+  {
+    "id": "51",
+    "name": "Pistol Squat",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-pistol-squat-3823000/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "balance"
+    ],
+    "description": "A single-leg squat that builds leg strength and balance."
+  },
+  {
+    "id": "52",
+    "name": "L-Sit",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-l-sit-3822999/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "core",
+      "strength"
+    ],
+    "description": "An isometric hold that strengthens the core and hip flexors."
+  },
+  {
+    "id": "53",
+    "name": "Planche",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-planche-3822998/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "balance"
+    ],
+    "description": "An advanced move where the body is held parallel to the ground, requiring significant strength and balance."
+  },
+  {
+    "id": "54",
+    "name": "Back Lever",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-back-lever-3822997/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "core"
+    ],
+    "description": "A static hold that develops core and shoulder strength."
+  },
+  {
+    "id": "55",
+    "name": "Human Flag",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-human-flag-3822996/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "balance"
+    ],
+    "description": "A feat of strength where the body is held horizontally while gripping a vertical object."
+  },
+  {
+    "id": "56",
+    "name": "Butterfly Pull-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-butterfly-pull-up-3822995/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "upper body"
+    ],
+    "description": "A kipping pull-up variation that allows for faster, more efficient reps."
+  },
+  {
+    "id": "57",
+    "name": "GHD Sit-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-ghd-sit-up-3822994/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "core",
+      "strength"
+    ],
+    "description": "A sit-up performed on a Glute-Ham Developer, increasing range of motion and core engagement."
+  },
+  {
+    "id": "58",
+    "name": "Rope Climb",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-rope-climb-3822993/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "upper body"
+    ],
+    "description": "An exercise that builds upper body strength and coordination by climbing a rope."
+  },
+  {
+    "id": "59",
+    "name": "Toes-to-Bar",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-toes-to-bar-3822992/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "core",
+      "strength"
+    ],
+    "description": "An exercise where the toes touch the bar from a hanging position, engaging the core."
+  },
+  {
+    "id": "61",
+    "name": "Ring Dip",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-ring-dip-3822990/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "upper body"
+    ],
+    "description": "An upper-body exercise performed on gymnastic rings, targeting the triceps, chest, and shoulders."
+  },
+  {
+    "id": "62",
+    "name": "Pistol Squat",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-pistol-squat-3822989/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "balance"
+    ],
+    "description": "A single-leg squat that builds leg strength and balance."
+  },
+  {
+    "id": "63",
+    "name": "L-Sit",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-l-sit-3822988/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "core",
+      "strength"
+    ],
+    "description": "An isometric hold that strengthens the core and hip flexors."
+  },
+  {
+    "id": "64",
+    "name": "Planche",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-planche-3822987/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "balance"
+    ],
+    "description": "An advanced move where the body is held parallel to the ground, requiring significant strength and balance."
+  },
+  {
+    "id": "65",
+    "name": "Back Lever",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-back-lever-3822986/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "core"
+    ],
+    "description": "A static hold that develops core and shoulder strength."
+  },
+  {
+    "id": "66",
+    "name": "Human Flag",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-human-flag-3822985/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "calisthenics",
+      "strength",
+      "balance"
+    ],
+    "description": "A feat of strength where the body is held horizontally while gripping a vertical object."
+  },
+  {
+    "id": "67",
+    "name": "Butterfly Pull-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-butterfly-pull-up-3822984/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "upper body"
+    ],
+    "description": "A kipping pull-up variation that allows for faster, more efficient reps."
+  },
+  {
+    "id": "68",
+    "name": "GHD Sit-Up",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-ghd-sit-up-3822983/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "core",
+      "strength"
+    ],
+    "description": "A sit-up performed on a Glute-Ham Developer, increasing range of motion and core engagement."
+  },
+  {
+    "id": "69",
+    "name": "Rope Climb",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-rope-climb-3822982/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "strength",
+      "upper body"
+    ],
+    "description": "An exercise that builds upper body strength and coordination by climbing a rope."
+  },
+  {
+    "id": "70",
+    "name": "Toes-to-Bar",
+    "imageUrl": "https://www.pexels.com/photo/person-performing-toes-to-bar-3822981/",
+    "videoUrl": "https://www.youtube.com/watch?v=1iUY5VgW8yU",
+    "tags": [
+      "crossfit",
+      "core",
+      "strength"
+    ],
+    "description": "An exercise where the toes touch the bar from a hanging position, engaging the core."
+  }
+]
