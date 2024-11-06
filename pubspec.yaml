@@ -59,6 +59,7 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
+    - assets/dummy/
     - assets/images/characters/
     - assets/flag_icons/
     - .env

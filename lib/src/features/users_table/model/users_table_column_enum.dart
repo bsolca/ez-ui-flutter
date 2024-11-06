@@ -5,5 +5,5 @@ enum UsersTableColumnEnum {
   lastName,
   email,
   birthDate,
-  address
+  address,
 }

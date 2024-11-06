@@ -23,7 +23,7 @@ class ExerciseRepositoryDummy implements ExerciseRepository {
   Future<List<ExerciseModel>> getExercises() async {
     try {
       final response = await rootBundle.loadString(
-        'assets/dummies/exercises_dummy.json',
+        'assets/dummy/exercises_dummy.json',
       );
       final data = jsonDecode(response);
       if (data is List<dynamic>) {

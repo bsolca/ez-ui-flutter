@@ -1,8 +1,8 @@
-import 'package:ez_fit_app/src/features/_core/auth/service/auth_service.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/auth_state/auth_state.codegen.dart';
 import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:ez_fit_app/src/screens/auth_screen/auth_screen.dart';
+import 'package:ez_fit_app/src/screens/exercises_screen/exercises_screen.dart';
 import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
 import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
 import 'package:ez_fit_app/src/screens/users_screen/users_screen.dart';
@@ -22,40 +22,21 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'go_router_provider.codegen.g.dart';
 
-/// Routes for the app.
 enum AppRoute {
-  /// Authentication screen.
   auth,
-
-  /// App entry point.
-  home,
-
-  /// Setting Profile of the logged in user.
-  settingsUserProfile,
-
-  /// Setting Notifications of the logged in user.
-  settingsNotifications,
-
-  /// Setting Preferences of the logged in user.
-  settingsPreferences,
-
-  /// Setting Plan and Billing of the logged in user.
-  settingsPlanAndBilling,
-
-  /// List of users.
-  usersUsers,
-
-  /// Create or go to a specific user.
-  usersUser,
-
-  /// List of groups.
-  usersGroups,
-
-  /// Page showcasing color scheme colors.
   colorSchemePreview,
-
-  /// Page for unauthorized access.
+  exercises,
+  exercise,
+  home,
+  settingsNotifications,
+  settingsPlanAndBilling,
+  settingsPreferences,
+  settingsUserProfile,
+  todo,
   unauthorized,
+  usersGroups,
+  usersUser,
+  usersUsers,
 }
 
 /// Provider for [GoRouter].
@@ -243,6 +224,12 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             name: AppRoute.usersGroups.name,
             parentNavigatorKey: shellNavigatorKey,
             body: const Center(child: Text('Groups')),
+          ),
+          GoRoutePageScaffold(
+            path: '/exercises',
+            name: AppRoute.exercises.name,
+            parentNavigatorKey: shellNavigatorKey,
+            body: const ExercisesScreen(),
           ),
           // ColorSchemePreview
           GoRoutePageScaffold(
