@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/responsive/layout_size_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/responsive/layout_size_enum.dart';
 
 /// A [StateNotifier] that notifies its listeners when the screen size changes.
 ///
@@ -13,8 +13,8 @@ class ScreenSizeNotifier extends StateNotifier<LayoutSize> {
 
   /// Updates the [LayoutSize] based on the [newSize].
   void update(Size newSize) {
-    const maxCompact = ConstLayout.maxWidthCompact;
-    const maxMedium = ConstLayout.maxWidthMedium;
+    const maxCompact = EzConstLayout.maxWidthCompact;
+    const maxMedium = EzConstLayout.maxWidthMedium;
 
     if (newSize.width < maxCompact && state != LayoutSize.compact) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -37,11 +37,11 @@ class ScreenSizeNotifier extends StateNotifier<LayoutSize> {
   double get padding {
     switch (state) {
       case LayoutSize.compact:
-        return ConstLayout.spacer;
+        return EzConstLayout.spacer;
       case LayoutSize.medium:
-        return ConstLayout.spacerMedium;
+        return EzConstLayout.spacerMedium;
       case LayoutSize.expanded:
-        return ConstLayout.spacerMedium;
+        return EzConstLayout.spacerMedium;
     }
   }
 }

@@ -1,5 +1,5 @@
-import 'package:impostor/src/utils/routing/data/location_provider.codegen.dart';
-import 'package:impostor/src/utils/routing/model/url_param.codegen.dart';
+import 'package:ez_fit_app/src/utils/routing/data/location_provider.codegen.dart';
+import 'package:ez_fit_app/src/utils/routing/model/url_param.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'url_param_repository.codegen.g.dart';

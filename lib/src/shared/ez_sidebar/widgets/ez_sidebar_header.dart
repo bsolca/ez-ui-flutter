@@ -1,13 +1,13 @@
 // ez_sidebar_header.dart
+import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
+import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_item/ez_sidebar_item.dart';
+import 'package:ez_fit_app/src/shared/ez_popover/ez_popover.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
-import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
-import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
 
 /// A [EzSidebarHeader] widget that displays the header section of the sidebar.
 ///
@@ -17,7 +17,6 @@ class EzSidebarHeader extends StatelessWidget {
   factory EzSidebarHeader({
     Key? key,
     required String appName,
-    required VoidCallback onTap,
     required String? avatarUrl,
     required List<EzSidebarPopoverItemData> items,
   }) {
@@ -25,7 +24,6 @@ class EzSidebarHeader extends StatelessWidget {
       key: key,
       data: EzSidebarHeaderData(
         appName: appName,
-        onTap: onTap,
         avatarUrl: avatarUrl,
         items: items,
       ),
@@ -92,14 +90,15 @@ class EzSidebarHeader extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             splashFactory: NoSplash.splashFactory,
-            onTap: () {
-              _data.onTap();
-              if (menuController.isOpen) {
-                menuController.close();
-              } else {
-                menuController.open();
-              }
-            },
+            onTap: _data.items.isEmpty
+                ? null
+                : () {
+                    if (menuController.isOpen) {
+                      menuController.close();
+                    } else {
+                      menuController.open();
+                    }
+                  },
             overlayColor: WidgetStateProperty.all(
               EzSidebarConsts.getSidebarItemOverlayColor(colorScheme),
             ),
@@ -135,11 +134,12 @@ class EzSidebarHeader extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
-                    Icon(
-                      HeroIcon.chevronDown,
-                      color: colorScheme.primary,
-                      size: EzSidebarConsts.sidebarItemIconSize,
-                    ),
+                    if (_data.items.isNotEmpty)
+                      Icon(
+                        HeroIcon.chevronDown,
+                        color: colorScheme.primary,
+                        size: EzSidebarConsts.sidebarItemIconSize,
+                      ),
                   ],
                 ),
               ),
@@ -151,9 +151,9 @@ class EzSidebarHeader extends StatelessWidget {
   }
 
   Widget _buildClipSmoothRect({required Widget child}) {
-    return ClipSmoothRect(
-      radius: const SmoothBorderRadius.all(
-        SmoothRadius(
+    return EzClipSmoothRect(
+      radius: const EzSmoothBorderRadius.all(
+        EzSmoothRadius(
           cornerRadius: EzSidebarConsts.itemBorderRadius,
           cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
         ),

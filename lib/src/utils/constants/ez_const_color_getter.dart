@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/material.dart';
 
-/// Constants and utility methods for getting common colors used across the application.
 class EzConstsColorsGetter {
   EzConstsColorsGetter._();
 

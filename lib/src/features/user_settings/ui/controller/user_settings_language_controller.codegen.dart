@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:impostor/src/features/user_settings/model/user_settings.codegen.dart';
-import 'package:impostor/src/features/user_settings/service/user_settings_service.codegen.dart';
+import 'package:ez_fit_app/src/features/user_settings/model/user_settings.codegen.dart';
+import 'package:ez_fit_app/src/features/user_settings/service/user_settings_service.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_settings_language_controller.codegen.g.dart';

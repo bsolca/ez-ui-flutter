@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 /// A radius with a [cornerRadius] and [cornerSmoothing].
 @immutable
-class SmoothRadius extends Radius {
+class EzSmoothRadius extends Radius {
   /// Creates a radius with the given [cornerRadius] and [cornerSmoothing].
-  const SmoothRadius({
+  const EzSmoothRadius({
     required double cornerRadius,
     required this.cornerSmoothing,
   }) : super.circular(cornerRadius);
 
-  /// Constructor that linearly interpolates between two [SmoothRadius] values.
+  /// Constructor that linearly interpolates between two [EzSmoothRadius] values.
   ///
-  /// If either value is null, it substitutes with [SmoothRadius.zero].
-  SmoothRadius.lerp(SmoothRadius a, SmoothRadius b, double t)
+  /// If either value is null, it substitutes with [EzSmoothRadius.zero].
+  EzSmoothRadius.lerp(EzSmoothRadius a, EzSmoothRadius b, double t)
       : this(
     cornerRadius: lerpDouble(a.cornerRadius, b.cornerRadius, t) ?? 0,
     cornerSmoothing: lerpDouble(a.cornerSmoothing, b.cornerSmoothing, t) ?? 0,
@@ -26,7 +26,7 @@ class SmoothRadius extends Radius {
   double get cornerRadius => x;
 
   /// A zero radius with no smoothing.
-  static const zero = SmoothRadius(
+  static const zero = EzSmoothRadius(
     cornerRadius: 0,
     cornerSmoothing: 0,
   );
@@ -35,7 +35,7 @@ class SmoothRadius extends Radius {
   ///
   /// Returns a [Radius] with negated distances.
   @override
-  Radius operator -() => SmoothRadius(
+  Radius operator -() => EzSmoothRadius(
         cornerRadius: -cornerRadius,
         cornerSmoothing: cornerSmoothing,
       );
@@ -45,13 +45,13 @@ class SmoothRadius extends Radius {
   /// Returns a [Radius] subtracting both the [x] and [y] values.
   @override
   Radius operator -(Radius other) {
-    if (other is SmoothRadius) {
-      return SmoothRadius(
+    if (other is EzSmoothRadius) {
+      return EzSmoothRadius(
         cornerRadius: cornerRadius - other.cornerRadius,
         cornerSmoothing: (cornerSmoothing + other.cornerSmoothing) / 2,
       );
     }
-    return SmoothRadius(
+    return EzSmoothRadius(
       cornerRadius: cornerRadius - other.x,
       cornerSmoothing: cornerSmoothing,
     );
@@ -62,13 +62,13 @@ class SmoothRadius extends Radius {
   /// Returns a [Radius] adding both the [x] and [y] values.
   @override
   Radius operator +(Radius other) {
-    if (other is SmoothRadius) {
-      return SmoothRadius(
+    if (other is EzSmoothRadius) {
+      return EzSmoothRadius(
         cornerRadius: cornerRadius + other.cornerRadius,
         cornerSmoothing: (cornerSmoothing + other.cornerSmoothing) / 2,
       );
     }
-    return SmoothRadius(
+    return EzSmoothRadius(
       cornerRadius: cornerRadius + other.x,
       cornerSmoothing: cornerSmoothing,
     );
@@ -76,28 +76,28 @@ class SmoothRadius extends Radius {
 
   /// Multiplies both [x] and [y] values by the given operand.
   @override
-  SmoothRadius operator *(double operand) => SmoothRadius(
+  EzSmoothRadius operator *(double operand) => EzSmoothRadius(
         cornerRadius: cornerRadius * operand,
         cornerSmoothing: cornerSmoothing * operand,
       );
 
   /// Divides both [x] and [y] values by the given operand.
   @override
-  SmoothRadius operator /(double operand) => SmoothRadius(
+  EzSmoothRadius operator /(double operand) => EzSmoothRadius(
         cornerRadius: cornerRadius / operand,
         cornerSmoothing: cornerSmoothing / operand,
       );
 
   /// Integer division of both [x] and [y] values.
   @override
-  SmoothRadius operator ~/(double operand) => SmoothRadius(
+  EzSmoothRadius operator ~/(double operand) => EzSmoothRadius(
         cornerRadius: (cornerRadius ~/ operand).toDouble(),
         cornerSmoothing: (cornerSmoothing ~/ operand).toDouble(),
       );
 
   /// Modulo operator for both [x] and [y] values.
   @override
-  SmoothRadius operator %(double operand) => SmoothRadius(
+  EzSmoothRadius operator %(double operand) => EzSmoothRadius(
         cornerRadius: cornerRadius % operand,
         cornerSmoothing: cornerSmoothing % operand,
       );
@@ -107,7 +107,7 @@ class SmoothRadius extends Radius {
     if (identical(this, other)) return true;
     if (runtimeType != other.runtimeType) return false;
 
-    return other is SmoothRadius &&
+    return other is EzSmoothRadius &&
         other.cornerRadius == cornerRadius &&
         other.cornerSmoothing == cornerSmoothing;
   }

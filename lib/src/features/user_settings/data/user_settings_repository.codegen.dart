@@ -1,6 +1,6 @@
-import 'package:impostor/src/features/hive/data/hive_provider.codegen.dart';
-import 'package:impostor/src/features/user_settings/data/user_settings_repository_hive.dart';
-import 'package:impostor/src/features/user_settings/model/user_settings.codegen.dart';
+import 'package:ez_fit_app/src/features/hive/data/hive_provider.codegen.dart';
+import 'package:ez_fit_app/src/features/user_settings/data/user_settings_repository_hive.dart';
+import 'package:ez_fit_app/src/features/user_settings/model/user_settings.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_settings_repository.codegen.g.dart';

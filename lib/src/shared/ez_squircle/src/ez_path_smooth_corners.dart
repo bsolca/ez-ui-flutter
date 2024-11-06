@@ -1,19 +1,19 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
-import 'package:impostor/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
 
 /// Extension for adding smooth corners to a [Path].
 ///
 /// This extension provides methods to add smooth top-right, top-left,
 /// bottom-right, and bottom-left corners to a [Path] using a
-/// [ProcessedSmoothRadius] for corner calculations.
+/// [EzProcessedSmoothRadius] for corner calculations.
 extension PathSmoothCornersExtensions on Path {
   /// Adds a smooth top-right corner to the path.
   ///
-  /// Uses [ProcessedSmoothRadius] to calculate the curve and arc for the
+  /// Uses [EzProcessedSmoothRadius] to calculate the curve and arc for the
   /// top-right corner of the rectangle defined by [rect].
-  void addSmoothTopRight(ProcessedSmoothRadius radius, Rect rect) {
+  void addSmoothTopRight(EzProcessedSmoothRadius radius, Rect rect) {
     final width = rect.width;
     final height = rect.height;
     if (radius.radius.cornerRadius > 0) {
@@ -60,9 +60,9 @@ extension PathSmoothCornersExtensions on Path {
 
   /// Adds a smooth bottom-right corner to the path.
   ///
-  /// Uses [ProcessedSmoothRadius] to calculate the curve and arc for the
+  /// Uses [EzProcessedSmoothRadius] to calculate the curve and arc for the
   /// bottom-right corner of the rectangle defined by [rect].
-  void addSmoothBottomRight(ProcessedSmoothRadius radius, Rect rect) {
+  void addSmoothBottomRight(EzProcessedSmoothRadius radius, Rect rect) {
     final width = rect.width;
     final height = rect.height;
     if (radius.radius.cornerRadius > 0) {
@@ -106,9 +106,9 @@ extension PathSmoothCornersExtensions on Path {
 
   /// Adds a smooth bottom-left corner to the path.
   ///
-  /// Uses [ProcessedSmoothRadius] to calculate the curve and arc for the
+  /// Uses [EzProcessedSmoothRadius] to calculate the curve and arc for the
   /// bottom-left corner of the rectangle defined by [rect].
-  void addSmoothBottomLeft(ProcessedSmoothRadius radius, Rect rect) {
+  void addSmoothBottomLeft(EzProcessedSmoothRadius radius, Rect rect) {
     final width = rect.width;
     final height = rect.height;
     if (radius.radius.cornerRadius > 0) {
@@ -152,9 +152,9 @@ extension PathSmoothCornersExtensions on Path {
 
   /// Adds a smooth top-left corner to the path.
   ///
-  /// Uses [ProcessedSmoothRadius] to calculate the curve and arc for the
+  /// Uses [EzProcessedSmoothRadius] to calculate the curve and arc for the
   /// top-left corner of the rectangle defined by [rect].
-  void addSmoothTopLeft(ProcessedSmoothRadius radius, Rect rect) {
+  void addSmoothTopLeft(EzProcessedSmoothRadius radius, Rect rect) {
     final width = rect.width;
     final height = rect.height;
     if (radius.radius.cornerRadius > 0) {

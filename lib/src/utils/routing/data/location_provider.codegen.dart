@@ -1,4 +1,4 @@
-import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
+import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'location_provider.codegen.g.dart';

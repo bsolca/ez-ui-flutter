@@ -1,7 +1,8 @@
+import 'package:ez_fit_app/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_color_getter.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
 
 /// Constants and utility methods used in the EzSidebarLayout widget.
 class EzSidebarLayoutConsts {
@@ -16,7 +17,7 @@ class EzSidebarLayoutConsts {
 
   /// Content container margin
   static const EdgeInsets contentMargin = EdgeInsets.all(
-    ConstLayout.spacerSmall,
+    EzConstLayout.spacerSmall,
   );
 
   /// Content container border radius
@@ -34,17 +35,17 @@ class EzSidebarLayoutConsts {
 
   /// Returns the background color of layout based on the color scheme.
   static Color getSidebarBackgroundColor(ColorScheme colorScheme) {
-    return ConstLayout.getSecondaryBackgroundColor(colorScheme);
+    return EzConstsColorsGetter.getSecondaryBackgroundColor(colorScheme);
   }
 
   /// Returns the content area color based on the color scheme.
   static Color getContentColor(ColorScheme colorScheme) {
-    return ConstLayout.getBackgroundColor(colorScheme);
+    return EzConstsColorsGetter.getBackgroundColor(colorScheme);
   }
 
   /// Returns the border color of the content area based on the color scheme.
   static Color getContentBorderColor(ColorScheme colorScheme) {
-    return ConstLayout.getMainBorderColor(colorScheme);
+    return EzConstsColorsGetter.getMainBorderColor(colorScheme);
   }
 
   // ***************
@@ -53,12 +54,12 @@ class EzSidebarLayoutConsts {
 
   /// Returns the shape border for the content area using SmoothRectangleBorder.
   static ShapeBorder getContentShapeBorder(ColorScheme colorScheme) {
-    return SmoothRectangleBorder(
+    return EzSmoothRectangleBorder(
       side: BorderSide(
         color: getContentBorderColor(colorScheme),
         width: contentBorderWidth,
       ),
-      borderRadius: SmoothBorderRadius(
+      borderRadius: EzSmoothBorderRadius(
         cornerRadius: contentBorderRadius,
         cornerSmoothing: contentBorderSmoothing,
       ),

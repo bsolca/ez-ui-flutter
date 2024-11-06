@@ -1,40 +1,39 @@
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_path_smooth_corners.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_smooth_radius.dart';
 import 'package:flutter/rendering.dart';
-
-import 'package:impostor/src/shared/ez_squircle/src/ez_path_smooth_corners.dart';
-import 'package:impostor/src/shared/ez_squircle/src/ez_processed_smooth_radius.dart';
-import 'package:impostor/src/shared/ez_squircle/src/ez_smooth_radius.dart';
 
 /// A border radius with smooth, customizable corners.
 ///
-/// [SmoothBorderRadius] allows you to apply smooth radius values for each
+/// [EzSmoothBorderRadius] allows you to apply smooth radius values for each
 /// corner of a rectangle, enabling more natural curves and transitions.
-class SmoothBorderRadius extends BorderRadius {
-  /// Creates a [SmoothBorderRadius] with the same [cornerRadius] and
+class EzSmoothBorderRadius extends BorderRadius {
+  /// Creates a [EzSmoothBorderRadius] with the same [cornerRadius] and
   /// [cornerSmoothing] for all corners.
-  SmoothBorderRadius({
+  EzSmoothBorderRadius({
     required double cornerRadius,
     double cornerSmoothing = 0,
   }) : this.only(
-          topLeft: SmoothRadius(
+          topLeft: EzSmoothRadius(
             cornerRadius: cornerRadius,
             cornerSmoothing: cornerSmoothing,
           ),
-          topRight: SmoothRadius(
+          topRight: EzSmoothRadius(
             cornerRadius: cornerRadius,
             cornerSmoothing: cornerSmoothing,
           ),
-          bottomLeft: SmoothRadius(
+          bottomLeft: EzSmoothRadius(
             cornerRadius: cornerRadius,
             cornerSmoothing: cornerSmoothing,
           ),
-          bottomRight: SmoothRadius(
+          bottomRight: EzSmoothRadius(
             cornerRadius: cornerRadius,
             cornerSmoothing: cornerSmoothing,
           ),
         );
 
-  /// Creates a [SmoothBorderRadius] where all corners use the same [radius].
-  const SmoothBorderRadius.all(SmoothRadius radius)
+  /// Creates a [EzSmoothBorderRadius] where all corners use the same [radius].
+  const EzSmoothBorderRadius.all(EzSmoothRadius radius)
       : this.only(
           topLeft: radius,
           topRight: radius,
@@ -42,13 +41,13 @@ class SmoothBorderRadius extends BorderRadius {
           bottomRight: radius,
         );
 
-  /// Creates a vertically symmetric [SmoothBorderRadius].
+  /// Creates a vertically symmetric [EzSmoothBorderRadius].
   ///
   /// The [top] and [bottom] radii are applied to both the left and right
   /// sides of the respective vertical edges.
-  const SmoothBorderRadius.vertical({
-    SmoothRadius top = SmoothRadius.zero,
-    SmoothRadius bottom = SmoothRadius.zero,
+  const EzSmoothBorderRadius.vertical({
+    EzSmoothRadius top = EzSmoothRadius.zero,
+    EzSmoothRadius bottom = EzSmoothRadius.zero,
   }) : this.only(
           topLeft: top,
           topRight: top,
@@ -56,13 +55,13 @@ class SmoothBorderRadius extends BorderRadius {
           bottomRight: bottom,
         );
 
-  /// Creates a horizontally symmetric [SmoothBorderRadius].
+  /// Creates a horizontally symmetric [EzSmoothBorderRadius].
   ///
   /// The [left] and [right] radii are applied to both the top and bottom
   /// sides of the respective horizontal edges.
-  const SmoothBorderRadius.horizontal({
-    SmoothRadius left = SmoothRadius.zero,
-    SmoothRadius right = SmoothRadius.zero,
+  const EzSmoothBorderRadius.horizontal({
+    EzSmoothRadius left = EzSmoothRadius.zero,
+    EzSmoothRadius right = EzSmoothRadius.zero,
   }) : this.only(
           topLeft: left,
           topRight: right,
@@ -70,15 +69,15 @@ class SmoothBorderRadius extends BorderRadius {
           bottomRight: right,
         );
 
-  /// Creates a [SmoothBorderRadius] with individually specified corners.
+  /// Creates a [EzSmoothBorderRadius] with individually specified corners.
   ///
-  /// This constructor allows for different [SmoothRadius] values for each
+  /// This constructor allows for different [EzSmoothRadius] values for each
   /// corner.
-  const SmoothBorderRadius.only({
-    SmoothRadius topLeft = SmoothRadius.zero,
-    SmoothRadius topRight = SmoothRadius.zero,
-    SmoothRadius bottomLeft = SmoothRadius.zero,
-    SmoothRadius bottomRight = SmoothRadius.zero,
+  const EzSmoothBorderRadius.only({
+    EzSmoothRadius topLeft = EzSmoothRadius.zero,
+    EzSmoothRadius topRight = EzSmoothRadius.zero,
+    EzSmoothRadius bottomLeft = EzSmoothRadius.zero,
+    EzSmoothRadius bottomRight = EzSmoothRadius.zero,
   }) : _topLeft = topLeft,
         _topRight = topRight,
         _bottomLeft = bottomLeft,
@@ -90,44 +89,44 @@ class SmoothBorderRadius extends BorderRadius {
         bottomRight: bottomRight,
       );
 
-  /// Returns a copy of this [SmoothBorderRadius] with updated values.
+  /// Returns a copy of this [EzSmoothBorderRadius] with updated values.
   ///
   /// You can replace individual corner radii with new values.
   @override
-  SmoothBorderRadius copyWith({
+  EzSmoothBorderRadius copyWith({
     Radius? topLeft,
     Radius? topRight,
     Radius? bottomLeft,
     Radius? bottomRight,
   }) {
-    return SmoothBorderRadius.only(
-      topLeft: topLeft is SmoothRadius ? topLeft : this.topLeft,
-      topRight: topRight is SmoothRadius ? topRight : this.topRight,
-      bottomLeft: bottomLeft is SmoothRadius ? bottomLeft : this.bottomLeft,
-      bottomRight: bottomRight is SmoothRadius ? bottomRight : this.bottomRight,
+    return EzSmoothBorderRadius.only(
+      topLeft: topLeft is EzSmoothRadius ? topLeft : this.topLeft,
+      topRight: topRight is EzSmoothRadius ? topRight : this.topRight,
+      bottomLeft: bottomLeft is EzSmoothRadius ? bottomLeft : this.bottomLeft,
+      bottomRight: bottomRight is EzSmoothRadius ? bottomRight : this.bottomRight,
     );
   }
 
 
   /// A border radius with zero radii for all corners.
-  static const SmoothBorderRadius zero =
-      SmoothBorderRadius.all(SmoothRadius.zero);
+  static const EzSmoothBorderRadius zero =
+      EzSmoothBorderRadius.all(EzSmoothRadius.zero);
 
   @override
-  SmoothRadius get topLeft => _topLeft;
-  final SmoothRadius _topLeft;
+  EzSmoothRadius get topLeft => _topLeft;
+  final EzSmoothRadius _topLeft;
 
   @override
-  SmoothRadius get topRight => _topRight;
-  final SmoothRadius _topRight;
+  EzSmoothRadius get topRight => _topRight;
+  final EzSmoothRadius _topRight;
 
   @override
-  SmoothRadius get bottomLeft => _bottomLeft;
-  final SmoothRadius _bottomLeft;
+  EzSmoothRadius get bottomLeft => _bottomLeft;
+  final EzSmoothRadius _bottomLeft;
 
   @override
-  SmoothRadius get bottomRight => _bottomRight;
-  final SmoothRadius _bottomRight;
+  EzSmoothRadius get bottomRight => _bottomRight;
+  final EzSmoothRadius _bottomRight;
 
   /// Generates a [Path] for the rectangle with smooth corners.
   ///
@@ -140,28 +139,28 @@ class SmoothBorderRadius extends BorderRadius {
     final result = Path();
 
     /// Calculate only if the values differ
-    final processedTopLeft = ProcessedSmoothRadius(
+    final processedTopLeft = EzProcessedSmoothRadius(
       topLeft,
       width: width,
       height: height,
     );
     final processedBottomLeft = topLeft == bottomLeft
         ? processedTopLeft
-        : ProcessedSmoothRadius(
+        : EzProcessedSmoothRadius(
             bottomLeft,
             width: width,
             height: height,
           );
     final processedBottomRight = bottomLeft == bottomRight
         ? processedBottomLeft
-        : ProcessedSmoothRadius(
+        : EzProcessedSmoothRadius(
             bottomRight,
             width: width,
             height: height,
           );
     final processedTopRight = topRight == bottomRight
         ? processedBottomRight
-        : ProcessedSmoothRadius(
+        : EzProcessedSmoothRadius(
             topRight,
             width: width,
             height: height,
@@ -180,43 +179,43 @@ class SmoothBorderRadius extends BorderRadius {
 
   @override
   BorderRadiusGeometry subtract(BorderRadiusGeometry other) {
-    if (other is SmoothBorderRadius) return this - other;
+    if (other is EzSmoothBorderRadius) return this - other;
     return super.subtract(other);
   }
 
   @override
   BorderRadiusGeometry add(BorderRadiusGeometry other) {
-    if (other is SmoothBorderRadius) return this + other;
+    if (other is EzSmoothBorderRadius) return this + other;
     return super.add(other);
   }
 
-  /// Subtracts two [SmoothBorderRadius] objects.
+  /// Subtracts two [EzSmoothBorderRadius] objects.
   ///
   /// Returns the result of subtracting the radii of the corners.
   @override
-  SmoothBorderRadius operator -(BorderRadius other) {
-    if (other is SmoothBorderRadius) {
-      return SmoothBorderRadius.only(
-        topLeft: (topLeft - other.topLeft) as SmoothRadius,
-        topRight: (topRight - other.topRight) as SmoothRadius,
-        bottomLeft: (bottomLeft - other.bottomLeft) as SmoothRadius,
-        bottomRight: (bottomRight - other.bottomRight) as SmoothRadius,
+  EzSmoothBorderRadius operator -(BorderRadius other) {
+    if (other is EzSmoothBorderRadius) {
+      return EzSmoothBorderRadius.only(
+        topLeft: (topLeft - other.topLeft) as EzSmoothRadius,
+        topRight: (topRight - other.topRight) as EzSmoothRadius,
+        bottomLeft: (bottomLeft - other.bottomLeft) as EzSmoothRadius,
+        bottomRight: (bottomRight - other.bottomRight) as EzSmoothRadius,
       );
     }
     return this;
   }
 
-  /// Adds two [SmoothBorderRadius] objects.
+  /// Adds two [EzSmoothBorderRadius] objects.
   ///
   /// Returns the result of adding the radii of the corners.
   @override
-  SmoothBorderRadius operator +(BorderRadius other) {
-    if (other is SmoothBorderRadius) {
-      return SmoothBorderRadius.only(
-        topLeft: (topLeft + other.topLeft) as SmoothRadius,
-        topRight: (topRight + other.topRight) as SmoothRadius,
-        bottomLeft: (bottomLeft + other.bottomLeft) as SmoothRadius,
-        bottomRight: (bottomRight + other.bottomRight) as SmoothRadius,
+  EzSmoothBorderRadius operator +(BorderRadius other) {
+    if (other is EzSmoothBorderRadius) {
+      return EzSmoothBorderRadius.only(
+        topLeft: (topLeft + other.topLeft) as EzSmoothRadius,
+        topRight: (topRight + other.topRight) as EzSmoothRadius,
+        bottomLeft: (bottomLeft + other.bottomLeft) as EzSmoothRadius,
+        bottomRight: (bottomRight + other.bottomRight) as EzSmoothRadius,
       );
     }
     return this;
@@ -224,21 +223,21 @@ class SmoothBorderRadius extends BorderRadius {
 
   /// Negates the corner radii.
   ///
-  /// Returns the [SmoothBorderRadius] with each corner negated.
+  /// Returns the [EzSmoothBorderRadius] with each corner negated.
   @override
-  SmoothBorderRadius operator -() {
-    return SmoothBorderRadius.only(
-      topLeft: (-topLeft) as SmoothRadius,
-      topRight: (-topRight) as SmoothRadius,
-      bottomLeft: (-bottomLeft) as SmoothRadius,
-      bottomRight: (-bottomRight) as SmoothRadius,
+  EzSmoothBorderRadius operator -() {
+    return EzSmoothBorderRadius.only(
+      topLeft: (-topLeft) as EzSmoothRadius,
+      topRight: (-topRight) as EzSmoothRadius,
+      bottomLeft: (-bottomLeft) as EzSmoothRadius,
+      bottomRight: (-bottomRight) as EzSmoothRadius,
     );
   }
 
-  /// Scales each corner of the [SmoothBorderRadius] by a factor.
+  /// Scales each corner of the [EzSmoothBorderRadius] by a factor.
   @override
-  SmoothBorderRadius operator *(double other) {
-    return SmoothBorderRadius.only(
+  EzSmoothBorderRadius operator *(double other) {
+    return EzSmoothBorderRadius.only(
       topLeft: topLeft * other,
       topRight: topRight * other,
       bottomLeft: bottomLeft * other,
@@ -246,10 +245,10 @@ class SmoothBorderRadius extends BorderRadius {
     );
   }
 
-  /// Divides each corner of the [SmoothBorderRadius] by a factor.
+  /// Divides each corner of the [EzSmoothBorderRadius] by a factor.
   @override
-  SmoothBorderRadius operator /(double other) {
-    return SmoothBorderRadius.only(
+  EzSmoothBorderRadius operator /(double other) {
+    return EzSmoothBorderRadius.only(
       topLeft: topLeft / other,
       topRight: topRight / other,
       bottomLeft: bottomLeft / other,
@@ -257,12 +256,12 @@ class SmoothBorderRadius extends BorderRadius {
     );
   }
 
-  /// Linearly interpolate between two [SmoothBorderRadius] values.
+  /// Linearly interpolate between two [EzSmoothBorderRadius] values.
   ///
   /// If either value is null, this function interpolates from zero.
-  static SmoothBorderRadius? lerp(
-    SmoothBorderRadius? a,
-    SmoothBorderRadius? b,
+  static EzSmoothBorderRadius? lerp(
+    EzSmoothBorderRadius? a,
+    EzSmoothBorderRadius? b,
     double t,
   ) {
     final tmpA = a;
@@ -271,11 +270,11 @@ class SmoothBorderRadius extends BorderRadius {
     if (tmpA == null) return b! * t;
     if (tmpB == null) return tmpA * (1.0 - t);
 
-    return SmoothBorderRadius.only(
-      topLeft: SmoothRadius.lerp(tmpA.topLeft, tmpB.topLeft, t),
-      topRight: SmoothRadius.lerp(tmpA.topRight, tmpB.topRight, t),
-      bottomLeft: SmoothRadius.lerp(tmpA.bottomLeft, tmpB.bottomLeft, t),
-      bottomRight: SmoothRadius.lerp(tmpA.bottomRight, tmpB.bottomRight, t),
+    return EzSmoothBorderRadius.only(
+      topLeft: EzSmoothRadius.lerp(tmpA.topLeft, tmpB.topLeft, t),
+      topRight: EzSmoothRadius.lerp(tmpA.topRight, tmpB.topRight, t),
+      bottomLeft: EzSmoothRadius.lerp(tmpA.bottomLeft, tmpB.bottomLeft, t),
+      bottomRight: EzSmoothRadius.lerp(tmpA.bottomRight, tmpB.bottomRight, t),
     );
   }
 

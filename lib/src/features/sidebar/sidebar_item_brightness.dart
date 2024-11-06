@@ -1,16 +1,16 @@
 // sidebar_item_brightness.dart
 
+import 'package:ez_fit_app/src/features/user_settings/ui/controller/user_settings_brightness_controller.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/features/user_settings/ui/controller/user_settings_brightness_controller.codegen.dart';
-import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 
 /// Builds an EzSidebarItemData configured for brightness switching.
 class SidebarItemBrightness {
   /// Builds an EzSidebarItemData configured for brightness switching.
-  static EzSidebarItemData build(WidgetRef ref, BuildContext context) {
+  static EzSidebarItemData build(WidgetRef ref) {
     final brightness = ref.watch(userSettingsBrightnessControllerProvider);
     return brightness.when(
       data: (brightness) {

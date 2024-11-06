@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:impostor/src/features/user/model/user_model.codegen.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:ez_fit_app/src/features/user_fake/model/user_model.codegen.dart';
+import 'package:http/http.dart' as http;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_repository.codegen.g.dart';
 

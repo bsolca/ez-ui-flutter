@@ -1,26 +1,32 @@
+import 'package:ez_fit_app/src/features/_core/auth/service/auth_service.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/auth_state/auth_state.codegen.dart';
+import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
+import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
+import 'package:ez_fit_app/src/screens/auth_screen/auth_screen.dart';
+import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
+import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
+import 'package:ez_fit_app/src/screens/users_screen/users_screen.dart';
+import 'package:ez_fit_app/src/shared/ez_app_scaffold/ez_app_scaffold.dart';
+import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
+import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
+import 'package:ez_fit_app/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
+import 'package:ez_fit_app/src/shared/ez_wrap_menu/ez_wrap_menu.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
+import 'package:ez_fit_app/src/utils/routing/data/location_provider.codegen.dart';
+import 'package:ez_fit_app/src/utils/routing/presentation/go_route_page_scaffold.dart';
+import 'package:ez_fit_app/src/utils/routing/presentation/not_found_screen.dart';
+import 'package:ez_fit_app/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/features/color_scheme_preview/color_scheme_preview.dart';
-import 'package:impostor/src/features/user_settings/ui/user_settings_screen.dart';
-import 'package:impostor/src/screens/home_screen/home_screen.dart';
-import 'package:impostor/src/screens/user_screen/user_screen.dart';
-import 'package:impostor/src/screens/users_screen/users_screen.dart';
-import 'package:impostor/src/shared/ez_app_scaffold/ez_app_scaffold.dart';
-import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
-import 'package:impostor/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
-import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
-import 'package:impostor/src/shared/ez_wrap_menu/ez_wrap_menu.dart';
-import 'package:impostor/src/utils/log/logger.dart';
-import 'package:impostor/src/utils/routing/data/location_provider.codegen.dart';
-import 'package:impostor/src/utils/routing/presentation/go_route_page_scaffold.dart';
-import 'package:impostor/src/utils/routing/presentation/not_found_screen.dart';
-import 'package:impostor/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'go_router_provider.codegen.g.dart';
 
 /// Routes for the app.
 enum AppRoute {
+  /// Authentication screen.
+  auth,
+
   /// App entry point.
   home,
 
@@ -58,6 +64,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
   final rootNavigatorKey = GlobalKey<NavigatorState>();
   final shellNavigatorKey = GlobalKey<NavigatorState>();
   final shellSettingsKey = GlobalKey<NavigatorState>();
+  final authState = ref.watch(authStateProvider);
 
   final goRouter = GoRouter(
     navigatorKey: rootNavigatorKey,
@@ -66,16 +73,63 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
       return null;
     },
     routes: [
+      GoRoutePageScaffold(
+        path: '/auth',
+        name: AppRoute.auth.name,
+        parentNavigatorKey: rootNavigatorKey,
+        body: const AuthScreen(),
+      ),
       ShellRoute(
         navigatorKey: shellNavigatorKey,
         pageBuilder: (context, state, child) {
           // ShellRoute should ideally build the shell only once
           return NoTransitionPage(
             key: state.pageKey,
-            child: EzAppScaffold(
-              body: child,
+            child: FutureBuilder(
+              future: Future.wait([
+                ref.read(authServiceProvider).firstName,
+                ref.read(authServiceProvider).lastName,
+                ref.read(authServiceProvider).email,
+              ]),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+
+                return EzAppScaffold(
+                  firstName: snapshot.data![0] as String,
+                  lastName: snapshot.data![1] as String,
+                  email: snapshot.data![2] as String,
+                  body: child,
+                );
+              },
             ),
           );
+        },
+        redirect: (context, state) {
+          // While the auth state is loading, return null (no redirection)
+          if (authState.isLoading) return null;
+
+          // Check if the user is logged in
+          final isLoggedIn = authState.value ?? false;
+          final isGoingToAuth = state.uri.toString() == '/auth';
+
+          // Redirect to /auth if not logged in and not already there
+          if (!isLoggedIn && !isGoingToAuth) {
+            return '/auth';
+          }
+
+          // Redirect to home if trying to access /auth when already logged in
+          if (isLoggedIn && isGoingToAuth) {
+            return '/';
+          }
+
+          // No redirect
+          return null;
         },
         routes: [
           GoRoutePageScaffold(

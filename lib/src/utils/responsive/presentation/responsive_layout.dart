@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/utils/responsive/domain/responsive_force.dart';
+import 'package:ez_fit_app/src/utils/responsive/layout_size_enum.dart';
+import 'package:ez_fit_app/src/utils/responsive/screen_size_pod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/utils/responsive/domain/responsive_force.dart';
-import 'package:impostor/src/utils/responsive/layout_size_enum.dart';
-import 'package:impostor/src/utils/responsive/screen_size_pod.dart';
 
 /// A widget that displays a different widget based on the current [LayoutSize].
 class ResponsiveLayout extends ConsumerWidget implements ResponsiveForce {

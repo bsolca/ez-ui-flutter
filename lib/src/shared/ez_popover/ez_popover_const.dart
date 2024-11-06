@@ -1,5 +1,5 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/utils/constants/const_value.dart';
 
 /// Constants and utility methods used in the EzPopover widget.
 class EzPopoverConsts {
@@ -7,7 +7,7 @@ class EzPopoverConsts {
 
   /// A padding with 8dp horizontally and 16dp vertically.
   static const EdgeInsets allPadding = EdgeInsets.symmetric(
-    horizontal: ConstValue.dp8,
-    vertical: ConstValue.dp16,
+    horizontal: EzConstValue.dp8,
+    vertical: EzConstValue.dp16,
   );
 }

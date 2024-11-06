@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EzSidebarFooterData {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  VoidCallback get onTap => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
   List<EzSidebarPopoverItemData> get items =>
       throw _privateConstructorUsedError;
@@ -39,7 +38,6 @@ abstract class $EzSidebarFooterDataCopyWith<$Res> {
   $Res call(
       {String name,
       String email,
-      VoidCallback onTap,
       String? avatarUrl,
       List<EzSidebarPopoverItemData> items});
 }
@@ -61,7 +59,6 @@ class _$EzSidebarFooterDataCopyWithImpl<$Res, $Val extends EzSidebarFooterData>
   $Res call({
     Object? name = null,
     Object? email = null,
-    Object? onTap = null,
     Object? avatarUrl = freezed,
     Object? items = null,
   }) {
@@ -74,10 +71,6 @@ class _$EzSidebarFooterDataCopyWithImpl<$Res, $Val extends EzSidebarFooterData>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      onTap: null == onTap
-          ? _value.onTap
-          : onTap // ignore: cast_nullable_to_non_nullable
-              as VoidCallback,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -101,7 +94,6 @@ abstract class _$$EzSidebarFooterDataImplCopyWith<$Res>
   $Res call(
       {String name,
       String email,
-      VoidCallback onTap,
       String? avatarUrl,
       List<EzSidebarPopoverItemData> items});
 }
@@ -121,7 +113,6 @@ class __$$EzSidebarFooterDataImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? email = null,
-    Object? onTap = null,
     Object? avatarUrl = freezed,
     Object? items = null,
   }) {
@@ -134,10 +125,6 @@ class __$$EzSidebarFooterDataImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      onTap: null == onTap
-          ? _value.onTap
-          : onTap // ignore: cast_nullable_to_non_nullable
-              as VoidCallback,
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -156,7 +143,6 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
   const _$EzSidebarFooterDataImpl(
       {required this.name,
       required this.email,
-      required this.onTap,
       required this.avatarUrl,
       required final List<EzSidebarPopoverItemData> items})
       : _items = items;
@@ -165,8 +151,6 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
   final String name;
   @override
   final String email;
-  @override
-  final VoidCallback onTap;
   @override
   final String? avatarUrl;
   final List<EzSidebarPopoverItemData> _items;
@@ -179,7 +163,7 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
 
   @override
   String toString() {
-    return 'EzSidebarFooterData(name: $name, email: $email, onTap: $onTap, avatarUrl: $avatarUrl, items: $items)';
+    return 'EzSidebarFooterData(name: $name, email: $email, avatarUrl: $avatarUrl, items: $items)';
   }
 
   @override
@@ -189,14 +173,13 @@ class _$EzSidebarFooterDataImpl implements _EzSidebarFooterData {
             other is _$EzSidebarFooterDataImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.onTap, onTap) || other.onTap == onTap) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, onTap, avatarUrl,
+  int get hashCode => Object.hash(runtimeType, name, email, avatarUrl,
       const DeepCollectionEquality().hash(_items));
 
   /// Create a copy of EzSidebarFooterData
@@ -213,7 +196,6 @@ abstract class _EzSidebarFooterData implements EzSidebarFooterData {
   const factory _EzSidebarFooterData(
           {required final String name,
           required final String email,
-          required final VoidCallback onTap,
           required final String? avatarUrl,
           required final List<EzSidebarPopoverItemData> items}) =
       _$EzSidebarFooterDataImpl;
@@ -222,8 +204,6 @@ abstract class _EzSidebarFooterData implements EzSidebarFooterData {
   String get name;
   @override
   String get email;
-  @override
-  VoidCallback get onTap;
   @override
   String? get avatarUrl;
   @override

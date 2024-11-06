@@ -1,11 +1,11 @@
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_item/ez_sidebar_item.dart';
+import 'package:ez_fit_app/src/shared/ez_popover/ez_popover.dart';
+import 'package:ez_fit_app/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
+import 'package:ez_fit_app/src/utils/responsive/presentation/responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_button/ez_button.dart';
-import 'package:impostor/src/shared/ez_button/model/ez_button_enum.dart';
-import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
-import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
-import 'package:impostor/src/shared/ez_wrap_menu/data/ez_wrapper_tiem.dart';
-import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// A widget that displays a list of items in a wrap menu.
 class EzWrapMenu extends ConsumerStatefulWidget {
@@ -99,7 +99,7 @@ class _EzWrapMenuState extends ConsumerState<EzWrapMenu> {
                 item.onPressed();
               },
               text: item.text,
-              prefixIcon: item.icon,
+              prefixWidget: item.icon != null ? Icon(item.icon) : null,
               type: isSelected ? EzButtonType.regular : EzButtonType.link,
             );
           }),

@@ -1,12 +1,12 @@
+import 'package:ez_fit_app/src/shared/ez_sidebar/ez_sidebar.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/widgets/ez_sidebar_footer.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts.dart';
+import 'package:ez_fit_app/src/utils/responsive/presentation/responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_header_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/widgets/ez_sidebar_footer.dart';
-import 'package:impostor/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts.dart';
-import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// A layout widget that includes a sidebar and a main content area.
 ///
@@ -129,7 +129,6 @@ class _EzSidebarLayoutState extends ConsumerState<EzSidebarLayout> {
               EzSidebarFooter(
                 name: widget.footerData.name,
                 email: widget.footerData.email,
-                onTap: widget.footerData.onTap,
                 items: widget.footerData.items,
                 avatarUrl: widget.footerData.avatarUrl,
               ),

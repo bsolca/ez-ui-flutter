@@ -1,5 +1,5 @@
-name: impostor
-description: Impostor game.
+name: ez_fit_app
+description: Fitness app for coaches and athletes
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 0.1.0
@@ -18,6 +18,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^4.3.0
+  flutter_dotenv: ^5.2.1
   flutter_launcher_icons: ^0.14.1
   flutter_localizations:
     sdk: flutter
@@ -36,9 +37,10 @@ dependencies:
   riverpod_annotation: ^2.3.3
   rxdart: ^0.28.0
   share_plus: ^10.0.2
-  short_uuids: ^2.0.0
-  super_drag_and_drop: ^0.7.0
+  supabase_flutter: ^2.8.0
+  super_drag_and_drop: ^0.8.24
   syncfusion_flutter_datagrid: ^27.1.53
+  toastification: ^2.3.0
   vector_math: ^2.1.4
   web_smooth_scroll: ^1.1.0
 
@@ -57,9 +59,9 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/images/avatar/
-    - assets/images/medals/
+    - assets/images/characters/
     - assets/flag_icons/
+    - .env
   fonts:
     - family: Prototype
       fonts:

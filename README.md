@@ -1,4 +1,4 @@
-# Ez Dashboard
+# EzFitApp
 
 An easy-to-use dashboard app for Flutter.
 
@@ -10,6 +10,16 @@ The `isCompactScreen` function can be used to check if the screen is in compact 
 final isCompact = ref.isCompactScreen;
 ```
 
+## Environment Variables
+
+Ensure that you have set the following environment variables for Supabase:
+
+```sh
+export SUPABASE_URL='your-supabase-url'
+export SUPABASE_ANON_KEY='your-supabase-anon-key'
+```
+
+These variables are used to configure the Supabase client in your project.
 
 ## Generating Icons
 

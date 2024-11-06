@@ -1,44 +1,37 @@
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_button/model/ez_button_enum.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/constants/const_value.dart';
 
-/// A customizable button that extends [RawMaterialButton] for ease of use.
 class EzButton extends StatelessWidget {
-  /// Creates a [EzButton] with customizable properties.
   const EzButton({
     super.key,
     this.type = EzButtonType.regular,
     required this.onPressed,
     required this.text,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixWidget,
+    this.suffixWidget,
     this.textColor,
+    this.isLoading = false,
   });
 
-  /// The callback that gets called when the button is pressed.
   final VoidCallback? onPressed;
-
-  /// Text displayed on the button.
   final String text;
-
-  /// Optional text color.
   final Color? textColor;
-
-  /// Type of the button (private enum).
   final EzButtonType type;
-
-  /// Prefix icon of the button.
-  final IconData? prefixIcon;
-
-  /// Suffix icon of the button.
-  final IconData? suffixIcon;
+  final Widget? prefixWidget;
+  final Widget? suffixWidget;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
+    final prefixWidget = this.prefixWidget;
+    final suffixWidget = this.suffixWidget;
+
     return RawMaterialButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       shape: _buildShape(context),
       padding: _getPadding(),
       hoverColor: _getHoverColor(context),
@@ -53,25 +46,42 @@ class EzButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (prefixIcon != null) Icon(prefixIcon),
-          Text(
-            text,
-            style: _getTextStyle(context),
+          if (prefixWidget != null) prefixWidget,
+          Flexible(
+            child: Text(
+              text,
+              style: _getTextStyle(context),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
           ),
-          if (suffixIcon != null) Icon(suffixIcon),
-        ],
+          if (isLoading)
+            SizedBox(
+              width: 16,
+              height: 16,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  textColor ??
+                      _getDefaultTextColor(Theme.of(context).colorScheme),
+                ),
+              ),
+            ),
+          if (suffixWidget != null && !isLoading) suffixWidget,
+        ].withSpaceBetween(
+          width: EzConstLayout.spacer,
+        ),
       ),
     );
   }
 
-  SmoothRectangleBorder _buildShape(BuildContext context) {
+  EzSmoothRectangleBorder _buildShape(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return SmoothRectangleBorder(
+    return EzSmoothRectangleBorder(
       side: _getBorderSide(colorScheme),
-      borderRadius: SmoothBorderRadius(
-        cornerRadius: ConstLayout.borderRadiusSmall,
-        cornerSmoothing: ConstLayout.cornerSmoothing,
+      borderRadius: EzSmoothBorderRadius(
+        cornerRadius: EzConstLayout.borderRadiusSmall,
+        cornerSmoothing: EzConstLayout.cornerSmoothing,
       ),
     );
   }
@@ -91,8 +101,8 @@ class EzButton extends StatelessWidget {
 
   EdgeInsets _getPadding() {
     return const EdgeInsets.symmetric(
-      vertical: ConstValue.dp8,
-      horizontal: ConstValue.dp16,
+      vertical: EzConstValue.dp8,
+      horizontal: EzConstValue.dp16,
     );
   }
 
@@ -124,7 +134,7 @@ class EzButton extends StatelessWidget {
   }
 
   MouseCursor _getMouseCursor() {
-    return onPressed == null
+    return (onPressed == null || isLoading)
         ? SystemMouseCursors.forbidden
         : SystemMouseCursors.click;
   }
@@ -133,9 +143,9 @@ class EzButton extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Theme.of(context).textTheme.bodyMedium?.copyWith(
-      color: textColor ?? _getDefaultTextColor(colorScheme),
-      fontWeight: FontWeight.bold,
-    );
+          color: textColor ?? _getDefaultTextColor(colorScheme),
+          fontWeight: FontWeight.bold,
+        );
   }
 
   Color _getDefaultTextColor(ColorScheme colorScheme) {

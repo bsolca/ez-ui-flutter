@@ -1,9 +1,9 @@
+import 'package:ez_fit_app/src/utils/extension/type_extension.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/utils/extension/type_extension.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
-import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 
 /// Simple not found screen used for 404 errors (page not found on web)
 class NotFoundScreen extends ConsumerWidget {

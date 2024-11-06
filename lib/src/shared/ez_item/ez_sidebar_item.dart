@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/shared/ez_item/ez_item_const.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:impostor/src/shared/ez_item/ez_item_const.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
 
 /// A [EzItem] widget that represents a single item in the sidebar.
 ///
@@ -68,15 +68,10 @@ class _EzItemState extends State<EzItem> {
       child: AnimatedContainer(
         duration: EzItemConsts.animationDuration,
         decoration: ShapeDecoration(
-          shape: ConstLayout.getShapeBorder(),
+          shape: EzConstLayout.getShapeBorder(),
         ),
-        child: ClipSmoothRect(
-          radius: const SmoothBorderRadius.all(
-            SmoothRadius(
-              cornerRadius: ConstLayout.itemBorderRadius,
-              cornerSmoothing: ConstLayout.itemBorderSmoothing,
-            ),
-          ),
+        child: EzClipSmoothRect(
+          radius: EzConstLayout.getBorderRadius(),
           child: Material(
             color: Colors.transparent,
             child: InkWell(
@@ -107,11 +102,13 @@ class _EzItemState extends State<EzItem> {
                           size: EzItemConsts.sidebarItemIconSize,
                         ),
                       ),
-                    Text(
-                      widget.text,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: EzItemConsts.sidebarItemTextStyle,
+                    Flexible(
+                      child: Text(
+                        widget.text,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: EzItemConsts.sidebarItemTextStyle,
+                      ),
                     ),
                   ],
                 ),

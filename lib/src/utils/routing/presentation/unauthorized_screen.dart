@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/utils/extension/type_extension.dart';
+import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor/src/utils/extension/type_extension.dart';
-import 'package:impostor/src/utils/routing/go_router_provider.codegen.dart';
 
 /// Unauthorized screen when a player can not join the game.
 class UnauthorizedScreen extends ConsumerWidget {

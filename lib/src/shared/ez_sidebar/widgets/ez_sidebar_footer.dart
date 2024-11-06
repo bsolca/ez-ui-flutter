@@ -1,15 +1,15 @@
 import 'dart:math';
 
+import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
+import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_item/ez_sidebar_item.dart';
+import 'package:ez_fit_app/src/shared/ez_popover/ez_popover.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/ez_sidebar_consts.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
+import 'package:ez_fit_app/src/utils/responsive/presentation/responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/shared/ez_divider/ez_divider.dart';
-import 'package:impostor/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:impostor/src/shared/ez_item/ez_sidebar_item.dart';
-import 'package:impostor/src/shared/ez_popover/ez_popover.dart';
-import 'package:impostor/src/shared/ez_sidebar/ez_sidebar_consts.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_footer_data.codegen.dart';
-import 'package:impostor/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
-import 'package:impostor/src/shared/ez_squircle/ez_squircle.dart';
-import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 /// Footer section of the sidebar.
 ///
@@ -22,7 +22,6 @@ class EzSidebarFooter extends StatelessWidget {
     Key? key,
     required String name,
     required String email,
-    required VoidCallback onTap,
     required String? avatarUrl,
     required List<EzSidebarPopoverItemData> items,
   }) {
@@ -31,7 +30,6 @@ class EzSidebarFooter extends StatelessWidget {
       data: EzSidebarFooterData(
         name: name,
         email: email,
-        onTap: onTap,
         avatarUrl: avatarUrl,
         items: items,
       ),
@@ -80,7 +78,6 @@ class EzSidebarFooter extends StatelessWidget {
           child: InkWell(
             splashFactory: NoSplash.splashFactory,
             onTap: () {
-              _data.onTap();
               if (menuController.isOpen) {
                 menuController.close();
               } else {
@@ -156,9 +153,9 @@ class EzSidebarFooter extends StatelessWidget {
 
   /// Builds a rounded rectangle clip for the provided [child] widget.
   Widget _buildClipSmoothRect({required Widget child}) {
-    return ClipSmoothRect(
-      radius: const SmoothBorderRadius.all(
-        SmoothRadius(
+    return EzClipSmoothRect(
+      radius: const EzSmoothBorderRadius.all(
+        EzSmoothRadius(
           cornerRadius: EzSidebarConsts.itemBorderRadius,
           cornerSmoothing: EzSidebarConsts.itemBorderSmoothing,
         ),

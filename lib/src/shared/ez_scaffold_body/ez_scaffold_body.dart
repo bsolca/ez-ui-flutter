@@ -1,8 +1,8 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
+import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/constants/const_value.dart';
-import 'package:impostor/src/utils/extension/widget_ref_extension.dart';
 
 /// To be used in the router pages as a starter for a new screen.
 class EzScaffoldBody extends ConsumerWidget {
@@ -25,11 +25,11 @@ class EzScaffoldBody extends ConsumerWidget {
         alignment: Alignment.topCenter,
         child: Container(
           constraints: const BoxConstraints(
-            maxWidth: ConstValue.dp1024,
+            maxWidth: EzConstValue.dp1024,
           ),
           padding: EdgeInsets.symmetric(
-            vertical: ConstLayout.spacerSmall,
-            horizontal: isCompact ? ConstLayout.spacer : ConstValue.dp64,
+            vertical: EzConstLayout.spacerSmall,
+            horizontal: isCompact ? EzConstLayout.spacer : EzConstValue.dp64,
           ),
           child: child,
         ),

@@ -1,6 +1,6 @@
+import 'package:ez_fit_app/src/utils/localization/get_locale.codegen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:impostor/src/utils/localization/get_locale.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_local.codegen.g.dart';

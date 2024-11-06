@@ -1,7 +1,7 @@
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
+import 'package:ez_fit_app/src/utils/responsive/presentation/responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:impostor/src/utils/constants/const_layout.dart';
-import 'package:impostor/src/utils/extension/list_extension.dart';
-import 'package:impostor/src/utils/responsive/presentation/responsive_layout.dart';
 
 class EzFormItemLayout extends StatelessWidget {
   const EzFormItemLayout({
@@ -43,7 +43,7 @@ class EzFormItemLayout extends StatelessWidget {
                         children[1],
                         children[2],
                       ].withSpaceBetween(
-                        height: ConstLayout.spacerSmall,
+                        height: EzConstLayout.spacerSmall,
                       ),
                     )
                   : children[1],
@@ -54,7 +54,7 @@ class EzFormItemLayout extends StatelessWidget {
       compact: (_, children) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: children!.withSpaceBetween(height: ConstLayout.spacerSmall),
+          children: children!.withSpaceBetween(height: EzConstLayout.spacerSmall),
         );
       },
       children: [
