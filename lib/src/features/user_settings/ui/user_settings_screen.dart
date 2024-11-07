@@ -46,9 +46,20 @@ class UserSettingsScreen extends ConsumerWidget {
             runSpacing: EzConstLayout.spacer,
             spacing: EzConstLayout.spacer,
             children: [
-              const CircleAvatar(
-                radius: EzConstLayout.avatarSmallSize,
-                child: Text('Ez'),
+              Container(
+                width: EzConstLayout.avatarSmallSize * 2,
+                height: EzConstLayout.avatarSmallSize * 2,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Theme.of(context).primaryColor, // Border color
+                    width: 1, // Border width
+                  ),
+                ),
+                child: const CircleAvatar(
+                  radius: EzConstLayout.avatarSmallSize,
+                  child: Text('Ez'),
+                ),
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
