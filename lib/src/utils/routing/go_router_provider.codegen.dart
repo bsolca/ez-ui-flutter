@@ -2,6 +2,7 @@ import 'package:ez_fit_app/src/features/_core/auth_state/auth_state.codegen.dart
 import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:ez_fit_app/src/screens/auth_screen/auth_screen.dart';
+import 'package:ez_fit_app/src/screens/exercise_screen/exercise_screen.dart';
 import 'package:ez_fit_app/src/screens/exercises_screen/exercises_screen.dart';
 import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
 import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
@@ -230,6 +231,17 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             name: AppRoute.exercises.name,
             parentNavigatorKey: shellNavigatorKey,
             body: const ExercisesScreen(),
+          ),
+          GoRoute(
+            path: '/exercises/:id',
+            name: AppRoute.exercise.name,
+            pageBuilder: (context, state) {
+              final id = state.pathParameters['id'];
+              return NoTransitionPage(
+                key: ValueKey('${AppRoute.usersUsers.name}/$id'),
+                child: ExerciseScreen(id: id ?? 'new'),
+              );
+            },
           ),
           // ColorSchemePreview
           GoRoutePageScaffold(
