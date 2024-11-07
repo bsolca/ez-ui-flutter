@@ -125,11 +125,8 @@ class EzTextFormField extends ConsumerWidget {
         isDense: true,
         // To have 40 height to respect ConstLayout.itemHeight
         contentPadding: const EdgeInsets.all(14),
-        fillColor: Theme.of(context).colorScheme.surfaceContainer,
+        fillColor: Theme.of(context).colorScheme.surfaceContainerLow,
         filled: true,
-        hoverColor: Theme.of(context).brightness == Brightness.light
-            ? null
-            : Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
           borderRadius: borderRadius,
           borderSide: BorderSide(
