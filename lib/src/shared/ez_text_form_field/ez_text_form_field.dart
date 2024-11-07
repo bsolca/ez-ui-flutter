@@ -202,6 +202,11 @@ class EzTextFormField extends ConsumerWidget {
             ],
           )
         : fieldWidget;
-    return textFormFieldWidget;
+
+    // Padding to fix the borders being cut by other widgets.
+    return Padding(
+      padding: const EdgeInsets.all(0.3),
+      child: textFormFieldWidget,
+    );
   }
 }
