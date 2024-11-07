@@ -44,10 +44,10 @@ class EzConstsColorsGetter {
   static Color getMainBorderColor(ColorScheme colorScheme) =>
       colorScheme.brightness == Brightness.dark
           ? colorScheme.surfaceContainer
-          : colorScheme.surfaceContainerHighest;
+          : colorScheme.surfaceContainer;
 
   static Color getSecondaryBackgroundColor(ColorScheme colorScheme) =>
       colorScheme.brightness == Brightness.dark
           ? colorScheme.surface
-          : colorScheme.surfaceContainer;
+          : colorScheme.surfaceContainerHighest;
 }
