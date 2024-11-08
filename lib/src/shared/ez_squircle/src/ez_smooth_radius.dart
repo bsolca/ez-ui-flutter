@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 
 /// A radius with a [cornerRadius] and [cornerSmoothing].
@@ -12,7 +13,7 @@ class EzSmoothRadius extends Radius {
 
   /// Constructor that linearly interpolates between two [EzSmoothRadius] values.
   ///
-  /// If either value is null, it substitutes with [EzSmoothRadius.zero].
+  /// If either value is null, it substitutes with [EzSmoothRadius.basic].
   EzSmoothRadius.lerp(EzSmoothRadius a, EzSmoothRadius b, double t)
       : this(
     cornerRadius: lerpDouble(a.cornerRadius, b.cornerRadius, t) ?? 0,
@@ -26,9 +27,9 @@ class EzSmoothRadius extends Radius {
   double get cornerRadius => x;
 
   /// A zero radius with no smoothing.
-  static const zero = EzSmoothRadius(
-    cornerRadius: 0,
-    cornerSmoothing: 0,
+  static const basic = EzSmoothRadius(
+    cornerRadius: EzConstLayout.borderRadiusSmall,
+    cornerSmoothing: EzConstLayout.cornerSmoothing,
   );
 
   /// Unary negation operator.

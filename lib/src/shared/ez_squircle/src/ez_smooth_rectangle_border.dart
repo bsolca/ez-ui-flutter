@@ -22,7 +22,7 @@ class EzSmoothRectangleBorder extends OutlinedBorder {
   /// A rectangular border with smooth, customizable corners.
   const EzSmoothRectangleBorder({
     super.side,
-    this.borderRadius = EzSmoothBorderRadius.zero,
+    this.borderRadius = EzSmoothBorderRadius.basic,
     this.borderAlign = BorderAlign.inside,
   });
 

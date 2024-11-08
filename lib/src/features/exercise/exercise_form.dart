@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/exercise/exercise_form/exercise_form_image_url.dart';
 import 'package:ez_fit_app/src/features/exercise/model/exercise_model.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_file_uploader/ez_file_uploader.dart';
@@ -7,6 +8,7 @@ import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/utils/ez_image_url_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -34,6 +36,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
   final tagsController = TextEditingController();
   late Future<void> Function() saveExercise;
   bool loading = false;
+  String tmpImageUrl = '';
 
   @override
   void initState() {
@@ -67,6 +70,11 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           videoUrlController.text = value.videoUrl ?? '';
           descriptionController.text = value.description;
           tagsController.text = value.tags.join(', ');
+          tmpImageUrl = EzImageUrlPlaceholder.generate(
+            text: nameController.text,
+            width: 200,
+            height: 200,
+          );
         }
         setState(() => loading = false);
       });
@@ -75,7 +83,6 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
 
   @override
   Widget build(BuildContext context) {
-
     return ListView(
       shrinkWrap: true,
       children: [
@@ -119,7 +126,11 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           itemLabel: ref.loc.exerciseFormImageUrl,
           child: Skeletonizer(
             enabled: loading,
-            child: EzFileUploader(
+            child: ExerciseFormImageUrl(
+              key: ValueKey('imageUrl'),
+              // NOTE: We use fake image instead of
+              // imageUrl: imageUrlController.text,
+              imageUrl: tmpImageUrl,
               onFilesSelected: (files) {
                 if (files.isNotEmpty) {
                   imageUrlController.text = '${files.first.path}';

@@ -54,7 +54,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final exercisesStream = ref.watch(exerciseControllerProvider);
+    final exercisesStream = ref.watch(exerciseListControllerProvider);
 
     return EzScaffoldBody(
       child: Column(
@@ -88,14 +88,17 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                 exercises: exercises.where((e) {
                   bool isIn(String? value) =>
                       value?.toLowerCase().contains(
-                        _searchText.toLowerCase(),
-                      ) ??
-                          false;
+                            _searchText.toLowerCase(),
+                          ) ??
+                      false;
 
                   return isIn(e.name) ||
                       isIn(e.description) ||
-                      e.tags.any((tag) =>
-                          tag.toLowerCase().contains(_searchText.toLowerCase()));
+                      e.tags.any(
+                        (tag) => tag.toLowerCase().contains(
+                              _searchText.toLowerCase(),
+                            ),
+                      );
                 }).toList(),
                 dataGridController: dataGridController,
                 searchText: _searchText,
