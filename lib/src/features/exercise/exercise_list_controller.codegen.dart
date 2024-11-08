@@ -4,11 +4,11 @@ import 'package:ez_fit_app/src/features/exercise/service/exercise_service.codege
 import 'package:ez_fit_app/src/features/user_fake/model/user_model.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'exercise_controller.codegen.g.dart';
+part 'exercise_list_controller.codegen.g.dart';
 
 /// Controller for the [UserModel].
 @riverpod
-class ExerciseController extends _$ExerciseController {
+class ExerciseListController extends _$ExerciseListController {
   @override
   Future<List<ExerciseModel>> build() {
     final userService = ref.read(exerciseServiceProvider);
