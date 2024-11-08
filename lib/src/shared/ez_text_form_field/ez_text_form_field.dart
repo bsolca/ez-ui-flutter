@@ -22,6 +22,7 @@ class EzTextFormField extends ConsumerWidget {
     this.autofocus = false,
     this.obscureText = false,
     this.isClearable = false,
+    this.maxLines,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -41,7 +42,7 @@ class EzTextFormField extends ConsumerWidget {
     this.isClearable = false,
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
-  });
+  })  : maxLines = 1;
 
   /// Mandatory hint text.
   final String hintText;
@@ -82,6 +83,9 @@ class EzTextFormField extends ConsumerWidget {
   /// Callback to be called when the button is pressed.
   final VoidCallback? onButtonPressed;
 
+  /// Max lines of the text form field.
+  final int? maxLines;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonText = this.buttonText;
@@ -109,6 +113,7 @@ class EzTextFormField extends ConsumerWidget {
       maxLength: maxLength,
       obscureText: obscureText,
       onEditingComplete: onEditingComplete,
+      maxLines: maxLines ?? 1,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: Theme.of(context).colorScheme.onSecondaryContainer,
           ),
