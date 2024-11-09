@@ -4,9 +4,11 @@ import 'package:ez_fit_app/src/shared/ez_highlighted_text/ez_highlighted_text.da
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of exercises.
@@ -17,7 +19,13 @@ class ExercisesTable extends ConsumerStatefulWidget {
     required this.exercises,
     required this.dataGridController,
     required this.searchText,
-  });
+  }) : isLoading = false;
+
+  ExercisesTable.loading({super.key})
+      : isLoading = true,
+        exercises = const [],
+        dataGridController = DataGridController(),
+        searchText = null;
 
   /// The list of exercises.
   final List<ExerciseModel> exercises;
@@ -27,6 +35,8 @@ class ExercisesTable extends ConsumerStatefulWidget {
 
   /// Text searched by the user and is highlighted in the table.
   final String? searchText;
+
+  final bool isLoading;
 
   @override
   ConsumerState<ExercisesTable> createState() => _ExercisesTableState();
@@ -38,82 +48,97 @@ class _ExercisesTableState extends ConsumerState<ExercisesTable> {
   @override
   Widget build(BuildContext context) {
     final isCompact = ref.isCompactScreen;
+    final faker = Faker();
     final exerciseDataSource = _ExerciseDataSource(
-      exercises: widget.exercises,
+      exercises: widget.isLoading
+          ? List.generate(50, (index) {
+              return ExerciseModel(
+                id: faker.guid.guid(),
+                name: faker.lorem.words(2).join(' '),
+                imageUrl: faker.internet.httpsUrl(),
+                videoUrl: faker.internet.httpsUrl(),
+                tags: faker.lorem.words(3),
+                description: faker.lorem.sentences(2).join(' '),
+              );
+            })
+          : widget.exercises,
       isCompact: isCompact,
       searchText: widget.searchText,
     );
 
-    return widget.exercises.isEmpty
+    return widget.exercises.isEmpty && !widget.isLoading
         ? Center(child: Text(ref.loc.noExercisesFound))
-        : SelectionArea(
-      child: SfDataGrid(
-        source: exerciseDataSource,
-        allowColumnsResizing: true,
-        controller: widget.dataGridController,
-        onSelectionChanging:
-            (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
-          return true;
-        },
-        onColumnResizeStart: (ColumnResizeStartDetails details) {
-          // Disable resizing for the first and last columns if needed.
-          if (details.columnIndex == 0 ||
-              details.columnIndex ==
-                  ExerciseTableColumnEnum.values.length - 1) {
-            return false;
-          }
-          return true;
-        },
-        onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
-          setState(() {
-            columnWidths[details.column.columnName] = details.width;
-          });
-          return true;
-        },
-        columnWidthMode: ColumnWidthMode.lastColumnFill,
-        onCellTap: (DataGridCellTapDetails details) {
-          if (details.rowColumnIndex.rowIndex > 0) {
-            final rowIndex = details.rowColumnIndex.rowIndex - 1;
-            if (rowIndex < widget.exercises.length) {
-              final exercise = widget.exercises[rowIndex];
-              final exerciseId = exercise.id;
+        : Skeletonizer(
+            enabled: widget.isLoading,
+            child: SelectionArea(
+              child: SfDataGrid(
+                source: exerciseDataSource,
+                allowColumnsResizing: true,
+                controller: widget.dataGridController,
+                onSelectionChanging: (List<DataGridRow> addedRows,
+                    List<DataGridRow> removedRows) {
+                  return true;
+                },
+                onColumnResizeStart: (ColumnResizeStartDetails details) {
+                  // Disable resizing for the first and last columns if needed.
+                  if (details.columnIndex == 0 ||
+                      details.columnIndex ==
+                          ExerciseTableColumnEnum.values.length - 1) {
+                    return false;
+                  }
+                  return true;
+                },
+                onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
+                  setState(() {
+                    columnWidths[details.column.columnName] = details.width;
+                  });
+                  return true;
+                },
+                columnWidthMode: ColumnWidthMode.lastColumnFill,
+                onCellTap: (DataGridCellTapDetails details) {
+                  if (details.rowColumnIndex.rowIndex > 0) {
+                    final rowIndex = details.rowColumnIndex.rowIndex - 1;
+                    if (rowIndex < widget.exercises.length) {
+                      final exercise = widget.exercises[rowIndex];
+                      final exerciseId = exercise.id;
 
-              context.goNamed(
-                AppRoute.exercise.name,
-                pathParameters: {'id': exerciseId},
-              );
-            }
-          }
-        },
-        columns: isCompact
-            ? [
-          GridColumn(
-            columnName: ExerciseTableColumnEnum.name.name,
-            label: Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.symmetric(
-                horizontal: EzConstLayout.spacer,
+                      context.goNamed(
+                        AppRoute.exercise.name,
+                        pathParameters: {'id': exerciseId},
+                      );
+                    }
+                  }
+                },
+                columns: isCompact
+                    ? [
+                        GridColumn(
+                          columnName: ExerciseTableColumnEnum.name.name,
+                          label: Container(
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: EzConstLayout.spacer,
+                            ),
+                            child: Text(ExerciseTableColumnEnum.name.name),
+                          ),
+                        ),
+                      ]
+                    : ExerciseTableColumnEnum.values.map((column) {
+                        return GridColumn(
+                          columnName: column.name,
+                          minimumWidth: EzConstLayout.minColumnWidth,
+                          width: columnWidths[column.name] ?? double.nan,
+                          label: Container(
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: EzConstLayout.spacer,
+                            ),
+                            child: Text(column.name),
+                          ),
+                        );
+                      }).toList(),
               ),
-              child: Text(ExerciseTableColumnEnum.name.name),
-            ),
-          ),
-        ]
-            : ExerciseTableColumnEnum.values.map((column) {
-          return GridColumn(
-            columnName: column.name,
-            minimumWidth: EzConstLayout.minColumnWidth,
-            width: columnWidths[column.name] ?? double.nan,
-            label: Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.symmetric(
-                horizontal: EzConstLayout.spacer,
-              ),
-              child: Text(column.name),
             ),
           );
-        }).toList(),
-      ),
-    );
   }
 }
 
@@ -125,7 +150,7 @@ class _ExerciseDataSource extends DataGridSource {
     required this.searchText,
   }) {
     _exercises = exercises.map<DataGridRow>(
-          (exercise) {
+      (exercise) {
         if (isCompact) {
           // Return a single column with the exercise name.
           return DataGridRow(
@@ -145,7 +170,7 @@ class _ExerciseDataSource extends DataGridSource {
                 value: exercise.id,
               ),
               ...ExerciseTableColumnEnum.values.map<DataGridCell>(
-                    (column) {
+                (column) {
                   switch (column) {
                     case ExerciseTableColumnEnum.name:
                       return DataGridCell<String>(
@@ -182,7 +207,8 @@ class _ExerciseDataSource extends DataGridSource {
   @override
   DataGridRowAdapter buildRow(DataGridRow row) {
     // Skip the 'id' cell since it's used internally.
-    final cells = row.getCells().where((cell) => cell.columnName != 'id').toList();
+    final cells =
+        row.getCells().where((cell) => cell.columnName != 'id').toList();
     return DataGridRowAdapter(
       cells: cells.map<Widget>((cell) {
         return Container(

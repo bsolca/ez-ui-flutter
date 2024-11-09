@@ -18,6 +18,18 @@ class ExerciseService {
   Future<ExerciseModel?> getExerciseById(String id) async {
     return _exerciseRepository.getExerciseById(id);
   }
+
+  Future<void> deleteExercise(String id) async {
+    return _exerciseRepository.deleteExercise(id);
+  }
+
+  Future<void> updateExercise(ExerciseModel exercise) async {
+    return _exerciseRepository.updateExercise(exercise);
+  }
+
+  Future<void> createExercise(ExerciseModel exercise) async {
+    return _exerciseRepository.createExercise(exercise);
+  }
 }
 
 @riverpod

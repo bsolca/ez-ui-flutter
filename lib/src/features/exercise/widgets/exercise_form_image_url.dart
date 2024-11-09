@@ -6,8 +6,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ExerciseFormImageUrl extends StatelessWidget {
-  const ExerciseFormImageUrl({
+class ExerciseFormImage extends StatelessWidget {
+  const ExerciseFormImage({
     super.key,
     required this.imageUrl,
     required this.onFilesSelected,

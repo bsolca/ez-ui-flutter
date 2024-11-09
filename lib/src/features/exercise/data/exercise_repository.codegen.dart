@@ -8,6 +8,12 @@ abstract interface class ExerciseRepository {
   Future<ExerciseModel?> getExerciseById(String id);
 
   Future<List<ExerciseModel>> getExercises();
+
+  Future<void> updateExercise(ExerciseModel exercise);
+
+  Future<void> createExercise(ExerciseModel exercise);
+
+  Future<void> deleteExercise(String id);
 }
 
 /// Exercise repository provider.

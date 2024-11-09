@@ -239,7 +239,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
               final id = state.pathParameters['id'];
               return NoTransitionPage(
                 key: ValueKey('${AppRoute.usersUsers.name}/$id'),
-                child: ExerciseScreen(id: id ?? 'new'),
+                child: ExerciseScreen(exerciseId: id ?? 'new'),
               );
             },
           ),

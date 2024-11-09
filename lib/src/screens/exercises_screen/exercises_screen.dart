@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ez_fit_app/src/features/exercise/exercise_list_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/exercise/controller/exercise_list_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/exercises_table.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
@@ -103,7 +103,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                 dataGridController: dataGridController,
                 searchText: _searchText,
               ),
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: ExercisesTable.loading,
               error: (error, stack) => Center(child: Text('Error: $error')),
             ),
           ),

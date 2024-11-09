@@ -1,5 +1,8 @@
-import 'package:ez_fit_app/src/features/exercise/exercise_form/exercise_form_image_url.dart';
+import 'package:ez_fit_app/src/features/exercise/controller/exercise_save_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/model/exercise_model.codegen.dart';
+import 'package:ez_fit_app/src/features/exercise/widgets/exercise_form_delete_button.dart';
+import 'package:ez_fit_app/src/features/exercise/widgets/exercise_form_image_url.dart';
+import 'package:ez_fit_app/src/screens/exercise_screen/exercises_screen_get_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_file_uploader/ez_file_uploader.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
@@ -16,12 +19,10 @@ import 'package:skeletonizer/skeletonizer.dart';
 class ExerciseForm extends ConsumerStatefulWidget {
   const ExerciseForm({
     super.key,
-    required this.loadExercise,
-    required this.onSave,
+    required this.exerciseId,
   });
 
-  final Future<ExerciseModel?> Function()? loadExercise;
-  final Future<void> Function(ExerciseModel) onSave;
+  final String exerciseId;
 
   @override
   ConsumerState<ExerciseForm> createState() => _ExerciseFormState();
@@ -35,12 +36,16 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
   final descriptionController = TextEditingController();
   final tagsController = TextEditingController();
   late Future<void> Function() saveExercise;
-  bool loading = false;
+  bool loadingData = false;
+  bool loadingMethod = false;
   String tmpImageUrl = '';
 
   @override
   void initState() {
-    final loadExercise = widget.loadExercise;
+    final getExerciseController = ref.watch(
+      exercisesScreenGetExerciseControllerProvider(widget.exerciseId),
+    );
+    final loadExercise = getExerciseController;
     saveExercise = () async {
       final newExercise = ExerciseModel(
         id: idController.text,
@@ -52,17 +57,16 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
         tags: tagsController.text.split(',').map((tag) => tag.trim()).toList(),
         description: descriptionController.text,
       );
-
-      await widget.onSave(newExercise);
-      // Handle save action (e.g., save to database or state)
-      // Add your save logic here
+      await ref.read(exerciseSaveControllerProvider.notifier).saveExercise(
+            newExercise,
+          );
     };
 
     super.initState();
 
     // if loadExercise is null then no need to load data
     if (loadExercise != null) {
-      setState(() => loading = true);
+      setState(() => loadingData = true);
       loadExercise().then((value) {
         if (value != null) {
           nameController.text = value.name;
@@ -76,7 +80,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
             height: 200,
           );
         }
-        setState(() => loading = false);
+        setState(() => loadingData = false);
       });
     }
   }
@@ -91,7 +95,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           itemLabel: ref.loc.exerciseFormName,
           itemDescription: ref.loc.exerciseFormNameDescription,
           child: Skeletonizer(
-            enabled: loading,
+            enabled: loadingData,
             child: EzTextFormField(
               hintText: ref.loc.exerciseFormNameHint,
               controller: nameController,
@@ -102,7 +106,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           itemLabel: ref.loc.exerciseFormTags,
           itemDescription: ref.loc.exerciseFormTagsDescription,
           child: Skeletonizer(
-            enabled: loading,
+            enabled: loadingData,
             child: EzTextFormField(
               hintText: ref.loc.exerciseFormTagsHint,
               controller: tagsController,
@@ -113,7 +117,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           itemLabel: ref.loc.exerciseFormDescription,
           itemDescription: ref.loc.exerciseFormDescriptionDescription,
           child: Skeletonizer(
-            enabled: loading,
+            enabled: loadingData,
             child: EzTextFormField(
               hintText: ref.loc.exerciseFormDescriptionHint,
               controller: descriptionController,
@@ -123,11 +127,10 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
         ),
         EzHeader.displayMedium(ref.loc.exerciseFormMediaHeader),
         EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormImageUrl,
+          itemLabel: ref.loc.exerciseFormImage,
           child: Skeletonizer(
-            enabled: loading,
-            child: ExerciseFormImageUrl(
-              key: ValueKey('imageUrl'),
+            enabled: loadingData,
+            child: ExerciseFormImage(
               // NOTE: We use fake image instead of
               // imageUrl: imageUrlController.text,
               imageUrl: tmpImageUrl,
@@ -140,9 +143,9 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           ),
         ),
         EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormVideoUrl,
+          itemLabel: ref.loc.exerciseFormVideo,
           child: Skeletonizer(
-            enabled: loading,
+            enabled: loadingData,
             child: EzFileUploader(
               onFilesSelected: (files) {
                 if (files.isNotEmpty) {
@@ -153,9 +156,10 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           ),
         ),
         EzButton(
-          onPressed: loading ? null : saveExercise,
+          onPressed: loadingData ? null : saveExercise,
           text: ref.loc.save,
         ),
+        ExerciseFormDeleteButton(idController.text),
       ].withSpaceBetween(height: EzConstLayout.spacerSmall),
     );
   }
