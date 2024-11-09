@@ -23,6 +23,7 @@ class EzTextFormField extends ConsumerWidget {
     this.obscureText = false,
     this.isClearable = false,
     this.maxLines,
+    this.enable = true,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -40,9 +41,10 @@ class EzTextFormField extends ConsumerWidget {
     this.autofocus = false,
     this.obscureText = false,
     this.isClearable = false,
+    this.enable = true,
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
-  })  : maxLines = 1;
+  }) : maxLines = 1;
 
   /// Mandatory hint text.
   final String hintText;
@@ -86,6 +88,8 @@ class EzTextFormField extends ConsumerWidget {
   /// Max lines of the text form field.
   final int? maxLines;
 
+  final bool enable;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonText = this.buttonText;
@@ -103,65 +107,71 @@ class EzTextFormField extends ConsumerWidget {
             cornerSmoothing: EzConstLayout.cornerSmoothing,
           );
 
-    final fieldWidget = TextFormField(
-      controller: controller,
-      autofocus: autofocus,
-      focusNode: focusNode,
-      inputFormatters: inputFormatters,
-      validator: validator,
-      autovalidateMode: autovalidateMode,
-      maxLength: maxLength,
-      obscureText: obscureText,
-      onEditingComplete: onEditingComplete,
-      maxLines: maxLines ?? 1,
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSecondaryContainer,
-          ),
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSecondaryContainer
-                  .withOpacity(
-                    0.5,
-                  ),
+    final fieldWidget = Opacity(
+      opacity: enable ? 1 : EzConstLayout.disabledOpacity,
+      child: TextFormField(
+        enabled: enable,
+        mouseCursor:
+            enable ? SystemMouseCursors.text : SystemMouseCursors.forbidden,
+        controller: controller,
+        autofocus: autofocus,
+        focusNode: focusNode,
+        inputFormatters: inputFormatters,
+        validator: validator,
+        autovalidateMode: autovalidateMode,
+        maxLength: maxLength,
+        obscureText: obscureText,
+        onEditingComplete: onEditingComplete,
+        maxLines: maxLines ?? 1,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),
-        isDense: true,
-        // To have 40 height to respect ConstLayout.itemHeight
-        contentPadding: const EdgeInsets.all(14),
-        fillColor: Theme.of(context).colorScheme.surfaceContainerHigh,
-        filled: true,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
-            width: 0.5,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSecondaryContainer
+                    .withOpacity(
+                      0.5,
+                    ),
+              ),
+          isDense: true,
+          // To have 40 height to respect ConstLayout.itemHeight
+          contentPadding: const EdgeInsets.all(14),
+          fillColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+              width: 0.5,
+            ),
           ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.error,
-            width: 0.5,
+          errorBorder: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+              width: 0.5,
+            ),
           ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.error,
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+            ),
           ),
+          border: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide.none,
+          ),
+          suffixIcon: isClearable && controller.text.isNotEmpty
+              ? EzIconButton(
+                  icon: HeroIcon.xMark,
+                  onPressed: controller.clear,
+                )
+              : null,
         ),
-        border: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide.none,
-        ),
-        suffixIcon: isClearable && controller.text.isNotEmpty
-            ? EzIconButton(
-                icon: HeroIcon.xMark,
-                onPressed: controller.clear,
-              )
-            : null,
       ),
     );
 
@@ -181,16 +191,7 @@ class EzTextFormField extends ConsumerWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.primaryContainer,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: EzSmoothBorderRadius.only(
-                        topRight: EzSmoothRadius(
-                          cornerRadius: radius,
-                          cornerSmoothing: EzConstLayout.cornerSmoothing,
-                        ),
-                        bottomRight: EzSmoothRadius(
-                          cornerRadius: radius,
-                          cornerSmoothing: EzConstLayout.cornerSmoothing,
-                        ),
-                      ),
+                      borderRadius: EzSmoothBorderRadius.basic,
                     ),
                   ),
                   child: Center(
