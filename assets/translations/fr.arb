@@ -49,6 +49,7 @@
   "exerciseFormVideoUrl": "URL de la vidéo",
   "exerciseFormTags": "Mots-clés",
   "exerciseFormDescription": "Description",
+  "exerciseDelete": "Supprimer l'exercice",
   "@_end__EXERCISE": {},
   "system": "Système",
   "switchDark": "Basculer (Sombre)",

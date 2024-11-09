@@ -42,7 +42,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
 
   @override
   void initState() {
-    final getExerciseController = ref.watch(
+    final getExerciseController = ref.read(
       exercisesScreenGetExerciseControllerProvider(widget.exerciseId),
     );
     final loadExercise = getExerciseController;

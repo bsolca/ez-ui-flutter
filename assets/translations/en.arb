@@ -56,6 +56,7 @@
   "exerciseFormDescriptionHint": "An isometric core exercise that enhances stability and endurance.",
   "exerciseFormDescriptionDescription": "Describe the exercise in a few words",
   "exerciseFormMediaHeader": "Media",
+  "exerciseDelete": "Delete Exercise",
   "@_end__EXERCISE": {},
   "system": "System",
   "switchDark": "Switch (Dark)",

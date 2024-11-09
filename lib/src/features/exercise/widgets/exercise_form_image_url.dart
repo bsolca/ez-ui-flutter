@@ -19,10 +19,8 @@ class ExerciseFormImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageUrl.isEmpty) {
-      return Container(
-        width: 200,
-        height: 200,
-        color: Colors.grey[300],
+      return EzFileUploader(
+        onFilesSelected: onFilesSelected,
       );
     }
     return Column(
