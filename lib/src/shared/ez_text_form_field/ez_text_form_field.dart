@@ -93,9 +93,9 @@ class EzTextFormField extends ConsumerWidget {
     const radius = EzConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
         ? const EzSmoothBorderRadius.horizontal(
-            left: EzSmoothRadius(
-              cornerRadius: radius,
-              cornerSmoothing: EzConstLayout.cornerSmoothing,
+            right: EzSmoothRadius(
+              cornerRadius: 0,
+              cornerSmoothing: 0,
             ),
           )
         : EzSmoothBorderRadius(
