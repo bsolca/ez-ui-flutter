@@ -1,5 +1,6 @@
 import 'package:ez_fit_app/src/features/exercise/data/exercise_repository_dummy.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/model/exercise_model.codegen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'exercise_repository.codegen.g.dart';
@@ -18,6 +19,6 @@ abstract interface class ExerciseRepository {
 
 /// Exercise repository provider.
 @riverpod
-ExerciseRepository exerciseRepository(ExerciseRepositoryRef ref) {
+ExerciseRepository exerciseRepository(Ref ref) {
   return ExerciseRepositoryDummy();
 }

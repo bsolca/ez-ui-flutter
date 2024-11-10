@@ -7,7 +7,7 @@ part of 'exercise_save_controller.codegen.dart';
 // **************************************************************************
 
 String _$exerciseSaveControllerHash() =>
-    r'3e50b90eaa58483ca1efd41342a409c2772346ba';
+    r'd2e6b71f229e63f4c70149fde0412c0d551e438e';
 
 /// Controller specifically for handling saving or updating exercises.
 ///
@@ -26,4 +26,4 @@ final exerciseSaveControllerProvider =
 
 typedef _$ExerciseSaveController = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

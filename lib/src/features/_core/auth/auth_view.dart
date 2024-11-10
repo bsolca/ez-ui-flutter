@@ -255,7 +255,7 @@ Widget _brightnessButton(WidgetRef ref) {
         },
       );
     },
-    error: (error, _) => throw error,
+    error: (error, _) => Text(error.toString()),
     loading: () => EzButton(
       text: '${ref.loc.loading}...',
       prefixWidget: const Icon(HeroIcon.computerDesktop),

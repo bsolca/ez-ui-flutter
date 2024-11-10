@@ -7,7 +7,7 @@ part of 'local_name_controller.codegen.dart';
 // **************************************************************************
 
 String _$localNameControllerHash() =>
-    r'c88efb802656b2690c1565c1b5f70db3c0a6080e';
+    r'e1310bfe9cbb4e49688d26f4e30473c36887f226';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -155,6 +155,8 @@ class LocalNameControllerProvider extends AutoDisposeProvider<String> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin LocalNameControllerRef on AutoDisposeProviderRef<String> {
   /// The parameter `tag` of this provider.
   String get tag;
@@ -168,4 +170,4 @@ class _LocalNameControllerProviderElement
   String get tag => (origin as LocalNameControllerProvider).tag;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

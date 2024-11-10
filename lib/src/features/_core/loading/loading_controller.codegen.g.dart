@@ -8,7 +8,7 @@ part of 'loading_controller.codegen.dart';
 
 String _$loadingControllerHash() => r'100f17836e97a4736de20a717626826112e0e386';
 
-/// General loading controller to use in other controllers.
+/// Main loading controller to use in other controllers.
 ///
 /// final isGeneralLoading = ref.watch(loadingControllerProvider);
 /// To start:
@@ -31,4 +31,4 @@ final loadingControllerProvider =
 
 typedef _$LoadingController = Notifier<bool>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

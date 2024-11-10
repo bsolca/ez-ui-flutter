@@ -60,7 +60,11 @@ class EzSmoothRectangleBorder extends OutlinedBorder {
     if (a is EzSmoothRectangleBorder) {
       return EzSmoothRectangleBorder(
         side: BorderSide.lerp(a.side, side, t),
-        borderRadius: EzSmoothBorderRadius.lerp(a.borderRadius, borderRadius, t)!,
+        borderRadius: EzSmoothBorderRadius.lerp(
+          a.borderRadius,
+          borderRadius,
+          t,
+        )!,
       );
     }
     return super.lerpFrom(a, t);
@@ -71,7 +75,11 @@ class EzSmoothRectangleBorder extends OutlinedBorder {
     if (b is EzSmoothRectangleBorder) {
       return EzSmoothRectangleBorder(
         side: BorderSide.lerp(side, b.side, t),
-        borderRadius: EzSmoothBorderRadius.lerp(borderRadius, b.borderRadius, t)!,
+        borderRadius: EzSmoothBorderRadius.lerp(
+          borderRadius,
+          b.borderRadius,
+          t,
+        )!,
       );
     }
     return super.lerpTo(b, t);

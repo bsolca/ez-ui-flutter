@@ -7,7 +7,7 @@ part of 'exercise_delete_controller.codegen.dart';
 // **************************************************************************
 
 String _$exerciseDeleteControllerHash() =>
-    r'40bc2298f3ba3c5c4d5c1751995b964f3a0ba441';
+    r'750469d84dd52bdeea140cb8d38a805e0e6b6938';
 
 /// Controller specifically for handling deletion of exercises.
 ///
@@ -26,4 +26,4 @@ final exerciseDeleteControllerProvider =
 
 typedef _$ExerciseDeleteController = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

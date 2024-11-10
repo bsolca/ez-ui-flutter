@@ -8,6 +8,7 @@ import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -53,7 +54,6 @@ class UserSettingsScreen extends ConsumerWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: Theme.of(context).primaryColor, // Border color
-                    width: 1, // Border width
                   ),
                 ),
                 child: const CircleAvatar(
@@ -92,7 +92,7 @@ class UserSettingsScreen extends ConsumerWidget {
           itemLabel: ref.loc.settingScreenCoverPhoto,
           child: EzFileUploader(
             onFilesSelected: (files) {
-              print('Files selected: $files');
+              logInfo('Files selected: $files');
             },
           ),
         ),

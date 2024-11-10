@@ -189,7 +189,9 @@ class _UserDataSource extends DataGridSource {
         if (cell.columnName == UsersTableColumnEnum.id.name) {
           return Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.symmetric(horizontal: EzConstLayout.spacer),
+            padding: const EdgeInsets.symmetric(
+              horizontal: EzConstLayout.spacer,
+            ),
             child: Text(
               cell.value.toString(),
               style: const TextStyle(color: Colors.red),
@@ -198,7 +200,9 @@ class _UserDataSource extends DataGridSource {
         }
         return Container(
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: EzConstLayout.spacer),
+          padding: const EdgeInsets.symmetric(
+            horizontal: EzConstLayout.spacer,
+          ),
           child: EzHighlightedText(
             cell.value.toString(),
             maxLines: 3,

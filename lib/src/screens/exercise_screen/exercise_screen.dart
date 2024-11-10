@@ -21,7 +21,7 @@ class ExerciseScreen extends ConsumerWidget {
             child: SingleChildScrollView(
               child: ExerciseForm(exerciseId: exerciseId,),
             ),
-          )
+          ),
         ],
       ),
     );

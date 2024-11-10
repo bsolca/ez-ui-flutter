@@ -78,16 +78,16 @@ class EzSmoothBorderRadius extends BorderRadius {
     EzSmoothRadius topRight = EzSmoothRadius.basic,
     EzSmoothRadius bottomLeft = EzSmoothRadius.basic,
     EzSmoothRadius bottomRight = EzSmoothRadius.basic,
-  }) : _topLeft = topLeft,
+  })  : _topLeft = topLeft,
         _topRight = topRight,
         _bottomLeft = bottomLeft,
         _bottomRight = bottomRight,
         super.only(
-        topLeft: topLeft,
-        topRight: topRight,
-        bottomLeft: bottomLeft,
-        bottomRight: bottomRight,
-      );
+          topLeft: topLeft,
+          topRight: topRight,
+          bottomLeft: bottomLeft,
+          bottomRight: bottomRight,
+        );
 
   /// Returns a copy of this [EzSmoothBorderRadius] with updated values.
   ///
@@ -103,10 +103,10 @@ class EzSmoothBorderRadius extends BorderRadius {
       topLeft: topLeft is EzSmoothRadius ? topLeft : this.topLeft,
       topRight: topRight is EzSmoothRadius ? topRight : this.topRight,
       bottomLeft: bottomLeft is EzSmoothRadius ? bottomLeft : this.bottomLeft,
-      bottomRight: bottomRight is EzSmoothRadius ? bottomRight : this.bottomRight,
+      bottomRight:
+          bottomRight is EzSmoothRadius ? bottomRight : this.bottomRight,
     );
   }
-
 
   /// A border radius with zero radii for all corners.
   static const EzSmoothBorderRadius basic =

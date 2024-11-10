@@ -76,7 +76,7 @@ class _ExercisesTableState extends ConsumerState<ExercisesTable> {
                 allowColumnsResizing: true,
                 controller: widget.dataGridController,
                 onSelectionChanging: (List<DataGridRow> addedRows,
-                    List<DataGridRow> removedRows) {
+                    List<DataGridRow> removedRows,) {
                   return true;
                 },
                 onColumnResizeStart: (ColumnResizeStartDetails details) {

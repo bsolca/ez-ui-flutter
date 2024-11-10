@@ -39,13 +39,11 @@ class EzClipSmoothRect extends StatelessWidget {
     this.clipBehavior = Clip.antiAlias,
   });
 
-  /// Border radius of the clipped rectangle, specified as [EzSmoothBorderRadius].
   final EzSmoothBorderRadius radius;
 
   /// Defines how the widget should be clipped. Default is [Clip.antiAlias].
   final Clip clipBehavior;
 
-  /// The widget to be clipped by the [EzSmoothRectangleBorder].
   final Widget child;
 
   @override

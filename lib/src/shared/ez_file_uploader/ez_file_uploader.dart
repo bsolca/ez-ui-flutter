@@ -12,7 +12,7 @@ class EzFileUploader extends StatefulWidget {
   const EzFileUploader({
     super.key,
     this.onFilesSelected,
-    this.child
+    this.child,
   });
 
   /// Called when files are selected

@@ -2,6 +2,7 @@
 
 import 'package:ez_fit_app/src/features/_core/auth/data/auth_repository.dart';
 import 'package:ez_fit_app/src/features/_core/auth/data/auth_repository_provider.codegen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_service.codegen.g.dart';
@@ -53,7 +54,7 @@ class AuthService {
 }
 
 @riverpod
-AuthService authService(AuthServiceRef ref) {
+AuthService authService(Ref ref) {
   final authRepository = ref.watch(authRepositoryProvider);
   return AuthService(authRepository);
 }

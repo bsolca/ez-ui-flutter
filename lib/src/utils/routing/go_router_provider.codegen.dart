@@ -19,6 +19,7 @@ import 'package:ez_fit_app/src/utils/routing/presentation/go_route_page_scaffold
 import 'package:ez_fit_app/src/utils/routing/presentation/not_found_screen.dart';
 import 'package:ez_fit_app/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -43,7 +44,7 @@ enum AppRoute {
 
 /// Provider for [GoRouter].
 @riverpod
-Raw<GoRouter> goRouter(GoRouterRef ref) {
+Raw<GoRouter> goRouter(Ref ref) {
   final rootNavigatorKey = GlobalKey<NavigatorState>();
   final shellNavigatorKey = GlobalKey<NavigatorState>();
   final shellSettingsKey = GlobalKey<NavigatorState>();

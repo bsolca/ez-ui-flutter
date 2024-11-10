@@ -7,7 +7,7 @@ part of 'exercise_repository.codegen.dart';
 // **************************************************************************
 
 String _$exerciseRepositoryHash() =>
-    r'a4ef2b289a4d03f3075c7f8d20af6ec8c5d0d706';
+    r'b2edc2389ae28970826f439c26b6e2776ad56546';
 
 /// Exercise repository provider.
 ///
@@ -24,6 +24,8 @@ final exerciseRepositoryProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ExerciseRepositoryRef = AutoDisposeProviderRef<ExerciseRepository>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -6,7 +6,7 @@ part of 'exercise_service.codegen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$exerciseServiceHash() => r'59554d8193bf45e5ff6a8fc3e07a2075a2961e90';
+String _$exerciseServiceHash() => r'ad897c168e896d0a8c74633e15f9c189e105a150';
 
 /// See also [exerciseService].
 @ProviderFor(exerciseService)
@@ -20,6 +20,8 @@ final exerciseServiceProvider = AutoDisposeProvider<ExerciseService>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ExerciseServiceRef = AutoDisposeProviderRef<ExerciseService>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

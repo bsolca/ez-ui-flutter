@@ -11,7 +11,7 @@ class EzSmoothRadius extends Radius {
     required this.cornerSmoothing,
   }) : super.circular(cornerRadius);
 
-  /// Constructor that linearly interpolates between two [EzSmoothRadius] values.
+  /// Linearly interpolates between two [EzSmoothRadius] values.
   ///
   /// If either value is null, it substitutes with [EzSmoothRadius.basic].
   EzSmoothRadius.lerp(EzSmoothRadius a, EzSmoothRadius b, double t)

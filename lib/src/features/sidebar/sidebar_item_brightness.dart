@@ -4,6 +4,7 @@ import 'package:ez_fit_app/src/features/user_settings/ui/controller/user_setting
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_item_data.codegen.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,7 +34,6 @@ class SidebarItemBrightness {
           text: switchToText,
           icon: switchToIcon,
           onTap: () async {
-
             if (brightness == Brightness.light) {
               await brightnessNotifier.setBrightness(Brightness.dark);
             } else if (brightness == Brightness.dark) {
@@ -44,7 +44,10 @@ class SidebarItemBrightness {
           },
         );
       },
-      error: (error, _) => throw error,
+      error: (error, _) => EzSidebarItemData.regular(
+        text: error.toString(),
+        onTap: () => logError(error.toString()),
+      ),
       loading: () => EzSidebarItemData.bottom(
         text: '${ref.loc.loading}...',
         icon: HeroIcon.computerDesktop,

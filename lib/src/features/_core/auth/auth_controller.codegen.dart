@@ -63,7 +63,4 @@ class AuthController extends _$AuthController {
       state = AsyncValue.error(e, StackTrace.current);
     }
   }
-
-  /// Get the current authenticated user, if any.
-  String? get userId => _authService.userId;
 }

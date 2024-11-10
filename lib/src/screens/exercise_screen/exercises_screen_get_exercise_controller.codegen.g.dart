@@ -7,7 +7,7 @@ part of 'exercises_screen_get_exercise_controller.codegen.dart';
 // **************************************************************************
 
 String _$exercisesScreenGetExerciseControllerHash() =>
-    r'ec3c0088fe918bbf3933a1071151d07f9bc7197a';
+    r'92cc1fc2650806906ca13136c8387767e8ae74ed';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -151,6 +151,8 @@ class ExercisesScreenGetExerciseControllerProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ExercisesScreenGetExerciseControllerRef
     on AutoDisposeProviderRef<Future<ExerciseModel?> Function()?> {
   /// The parameter `id` of this provider.
@@ -166,4 +168,4 @@ class _ExercisesScreenGetExerciseControllerProviderElement
   String? get id => (origin as ExercisesScreenGetExerciseControllerProvider).id;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
