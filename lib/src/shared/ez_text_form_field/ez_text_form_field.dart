@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/shared/ez_disable/ez_disable.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_icon_button/ez_icon_button.dart';
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
@@ -23,7 +24,7 @@ class EzTextFormField extends ConsumerWidget {
     this.obscureText = false,
     this.isClearable = false,
     this.maxLines,
-    this.enable = true,
+    this.disabled = false,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -41,54 +42,26 @@ class EzTextFormField extends ConsumerWidget {
     this.autofocus = false,
     this.obscureText = false,
     this.isClearable = false,
-    this.enable = true,
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
+    this.disabled = false,
   }) : maxLines = 1;
 
-  /// Mandatory hint text.
   final String hintText;
-
-  /// Controller of the text form field.
   final TextEditingController controller;
-
-  /// Input formatters of the text form field.
   final List<TextInputFormatter>? inputFormatters;
-
-  /// Focus node of the text form field.
   final FocusNode? focusNode;
-
-  /// {@macro flutter.widgets.editableText.onEditingComplete}
   final void Function()? onEditingComplete;
-
-  /// Validator of the text form field.
   final String? Function(String?)? validator;
-
-  /// Auto validate mode of the text form field.
   final AutovalidateMode? autovalidateMode;
-
-  /// Max length of the text form field.
   final int? maxLength;
-
-  /// Whether the text form field is autofocus or not.
   final bool autofocus;
-
-  /// Whether the text form field obscure text or not.
   final bool obscureText;
-
-  /// Whether the text form field is clearable or not.
   final bool isClearable;
-
-  /// Widget to be displayed inside the button.
   final String? buttonText;
-
-  /// Callback to be called when the button is pressed.
   final VoidCallback? onButtonPressed;
-
-  /// Max lines of the text form field.
   final int? maxLines;
-
-  final bool enable;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -107,12 +80,9 @@ class EzTextFormField extends ConsumerWidget {
             cornerSmoothing: EzConstLayout.cornerSmoothing,
           );
 
-    final fieldWidget = Opacity(
-      opacity: enable ? 1 : EzConstLayout.disabledOpacity,
+    final fieldWidget = EzDisable(
+      disabled: disabled,
       child: TextFormField(
-        enabled: enable,
-        mouseCursor:
-            enable ? SystemMouseCursors.text : SystemMouseCursors.forbidden,
         controller: controller,
         autofocus: autofocus,
         focusNode: focusNode,

@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/controller/exercise_delete_controller.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
@@ -16,6 +17,7 @@ class ExerciseFormDeleteButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Watching the loading state of the ExerciseFormDeleteController
     final deleteState = ref.watch(exerciseDeleteControllerProvider);
+    final isGeneralLoading = ref.watch(loadingControllerProvider);
     final isLoading = deleteState.isLoading;
 
     return EzButton(
@@ -23,7 +25,7 @@ class ExerciseFormDeleteButton extends ConsumerWidget {
       textColor: Theme.of(context).colorScheme.error,
       type: EzButtonType.outlined,
       isLoading: isLoading,
-      onPressed: isLoading
+      onPressed: isLoading || isGeneralLoading
           ? null
           : () async {
               final controller = ref.read(

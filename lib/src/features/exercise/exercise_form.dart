@@ -1,9 +1,8 @@
-import 'package:ez_fit_app/src/features/exercise/controller/exercise_save_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/model/exercise_model.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/widgets/exercise_form_delete_button.dart';
 import 'package:ez_fit_app/src/features/exercise/widgets/exercise_form_image_url.dart';
+import 'package:ez_fit_app/src/features/exercise/widgets/exercise_form_save_button.dart';
 import 'package:ez_fit_app/src/screens/exercise_screen/exercises_screen_get_exercise_controller.codegen.dart';
-import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_file_uploader/ez_file_uploader.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
@@ -35,7 +34,6 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
   final videoUrlController = TextEditingController();
   final descriptionController = TextEditingController();
   final tagsController = TextEditingController();
-  late Future<void> Function() saveExercise;
   bool loadingData = false;
   bool loadingMethod = false;
   String tmpImageUrl = '';
@@ -46,21 +44,6 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
       exercisesScreenGetExerciseControllerProvider(widget.exerciseId),
     );
     final loadExercise = getExerciseController;
-    saveExercise = () async {
-      final newExercise = ExerciseModel(
-        id: idController.text,
-        name: nameController.text,
-        imageUrl:
-            imageUrlController.text.isNotEmpty ? imageUrlController.text : null,
-        videoUrl:
-            videoUrlController.text.isNotEmpty ? videoUrlController.text : null,
-        tags: tagsController.text.split(',').map((tag) => tag.trim()).toList(),
-        description: descriptionController.text,
-      );
-      await ref.read(exerciseSaveControllerProvider.notifier).saveExercise(
-            newExercise,
-          );
-    };
 
     super.initState();
 
@@ -155,9 +138,22 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
             ),
           ),
         ),
-        EzButton(
-          onPressed: loadingData ? null : saveExercise,
-          text: ref.loc.save,
+        ExerciseFormSaveButton(
+          ExerciseModel(
+            id: idController.text,
+            name: nameController.text,
+            imageUrl: imageUrlController.text.isNotEmpty
+                ? imageUrlController.text
+                : null,
+            videoUrl: videoUrlController.text.isNotEmpty
+                ? videoUrlController.text
+                : null,
+            tags: tagsController.text
+                .split(',')
+                .map((tag) => tag.trim())
+                .toList(),
+            description: descriptionController.text,
+          ),
         ),
         ExerciseFormDeleteButton(idController.text),
       ].withSpaceBetween(height: EzConstLayout.spacerSmall),

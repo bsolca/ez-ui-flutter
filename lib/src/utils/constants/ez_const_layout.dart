@@ -58,5 +58,5 @@ class EzConstLayout {
 
   // Disabled Opacity
   // A commonly used opacity value for disabled elements in Material Design
-  static const double disabledOpacity = 0.38;
+  static const double disabledOpacity = 0.62;
 }

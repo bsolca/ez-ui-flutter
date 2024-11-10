@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/features/_core/auth_state/auth_state.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:ez_fit_app/src/screens/auth_screen/auth_screen.dart';
@@ -79,6 +80,7 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
         redirect: (context, state) {
           // While the auth state is loading, return null (no redirection)
           if (authState.isLoading) return null;
+          ref.read(loadingControllerProvider.notifier).stopLoading();
 
           // Check if the user is logged in
           final isLoggedIn = authState.value ?? false;
