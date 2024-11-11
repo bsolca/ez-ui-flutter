@@ -52,6 +52,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
       setState(() => loadingData = true);
       loadExercise().then((value) {
         if (value != null) {
+          idController.text = value.id;
           nameController.text = value.name;
           imageUrlController.text = value.imageUrl ?? '';
           videoUrlController.text = value.videoUrl ?? '';
@@ -155,7 +156,10 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
             description: descriptionController.text,
           ),
         ),
-        ExerciseFormDeleteButton(idController.text),
+        ExerciseFormDeleteButton(
+          exerciseId: widget.exerciseId,
+          exerciseName: nameController.text,
+        ),
       ].withSpaceBetween(height: EzConstLayout.spacerSmall),
     );
   }

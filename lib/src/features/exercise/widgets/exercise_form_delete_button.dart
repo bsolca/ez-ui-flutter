@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ExerciseFormDeleteButton extends ConsumerWidget {
-  const ExerciseFormDeleteButton(this.exerciseId, {
+  const ExerciseFormDeleteButton({
     super.key,
+    required this.exerciseId,
+    required this.exerciseName,
   });
 
   final String exerciseId;
+  final String exerciseName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +34,7 @@ class ExerciseFormDeleteButton extends ConsumerWidget {
               final controller = ref.read(
                 exerciseDeleteControllerProvider.notifier,
               );
-              await controller.deleteExercise(exerciseId);
+              await controller.deleteExercise(exerciseId, exerciseName);
             },
     );
   }

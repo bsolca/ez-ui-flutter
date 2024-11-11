@@ -7,7 +7,7 @@ part of 'exercise_delete_controller.codegen.dart';
 // **************************************************************************
 
 String _$exerciseDeleteControllerHash() =>
-    r'750469d84dd52bdeea140cb8d38a805e0e6b6938';
+    r'b2358e381b090616c95f6a7aa6304d8e91e66b72';
 
 /// Controller specifically for handling deletion of exercises.
 ///

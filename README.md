@@ -13,6 +13,19 @@ The `isCompactScreen` function can be used to check if the screen is in compact 
 final isCompact = ref.isCompactScreen;
 ```
 
+### General loading state
+Use to disable other actions while the general loading state is active.
+
+```dart
+final isGeneralLoading = ref.watch(loadingControllerProvider);
+```
+to start or stop the general loading state use
+
+```dart
+ref.read(loadingControllerProvider.notifier).startLoading();
+ref.read(loadingControllerProvider.notifier).stopLoading();
+```
+
 ## 🌳 Environment Variables
 
 Ensure that you have set the following environment variables for Supabase:

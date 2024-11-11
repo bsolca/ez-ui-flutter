@@ -1,5 +1,6 @@
-import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/service/exercise_service.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_async_value/ez_async_value.dart';
+import 'package:ez_fit_app/src/utils/localization/app_local.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'exercise_delete_controller.codegen.g.dart';
@@ -13,20 +14,15 @@ class ExerciseDeleteController extends _$ExerciseDeleteController {
   }
 
   /// Delete a specific exercise by its ID.
-  Future<void> deleteExercise(String id) async {
-    final loadingPod = ref.read(loadingControllerProvider.notifier);
+  Future<void> deleteExercise(String id, String name) async {
     state = const AsyncValue.loading();
-    loadingPod.startLoading();
-
-    final exerciseService = ref.read(exerciseServiceProvider);
-
-    try {
-      state = await AsyncValue.guard(() async {
-        await exerciseService.deleteExercise(id);
-      });
-
-    } finally {
-      loadingPod.stopLoading();
-    }
+    state = await EzAsyncValue.guard(
+      ref: ref,
+      successToastMessage: ref.read(appLocalProvider).successfullyDeleted(name),
+      errorToastMessage: (e) => e.toString(),
+      future: () async {
+        await ref.read(exerciseServiceProvider).deleteExercise(id);
+      },
+    );
   }
 }
