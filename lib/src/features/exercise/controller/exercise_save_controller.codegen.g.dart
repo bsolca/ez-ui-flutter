@@ -7,7 +7,7 @@ part of 'exercise_save_controller.codegen.dart';
 // **************************************************************************
 
 String _$exerciseSaveControllerHash() =>
-    r'd2e6b71f229e63f4c70149fde0412c0d551e438e';
+    r'9b9ec7db1bd1a39236c6179b7dd5cebe190d72a3';
 
 /// Controller specifically for handling saving or updating exercises.
 ///

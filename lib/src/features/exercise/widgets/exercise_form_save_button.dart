@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ExerciseFormSaveButton extends ConsumerWidget {
-  const ExerciseFormSaveButton(this.exercise, {
+  const ExerciseFormSaveButton(
+    this.exercise, {
     super.key,
   });
 
@@ -20,17 +21,18 @@ class ExerciseFormSaveButton extends ConsumerWidget {
     final isGeneralLoading = ref.watch(loadingControllerProvider);
     final isLoading = saveState.isLoading;
 
+
     return EzButton(
       text: ref.loc.save,
       isLoading: isLoading,
       onPressed: isLoading || isGeneralLoading
           ? null
           : () async {
-        final controller = ref.read(
-          exerciseSaveControllerProvider.notifier,
-        );
-        await controller.saveExercise(exercise);
-      },
+              final controller = ref.read(
+                exerciseSaveControllerProvider.notifier,
+              );
+              await controller.saveExercise(exercise);
+            },
     );
   }
 }
