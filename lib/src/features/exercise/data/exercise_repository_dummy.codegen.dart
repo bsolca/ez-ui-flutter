@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:ez_fit_app/src/features/exercise/data/exercise_repository.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/model/exercise_model.codegen.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/services.dart';
 
 class ExerciseRepositoryDummy implements ExerciseRepository {
@@ -22,7 +23,7 @@ class ExerciseRepositoryDummy implements ExerciseRepository {
 
   @override
   Future<List<ExerciseModel>> getExercises() async {
-    await Future<void>.delayed(const Duration(seconds: 2));
+    await Future<void>.delayed(EzConstValue.asyncDuration);
     try {
       final response = await rootBundle.loadString(
         'assets/dummy/exercises_dummy.json',
