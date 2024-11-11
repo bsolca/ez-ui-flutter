@@ -21,6 +21,7 @@
   "profile": "Profile",
   "save": "Save",
   "search": "Search",
+  "required": "Required",
   "@_SETTINGS_SCREEN": {},
   "settingScreenSettings": "Settings",
   "settingScreenPersonalInformation": "Personal information",

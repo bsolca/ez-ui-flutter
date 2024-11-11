@@ -11,11 +11,14 @@ class ExerciseFormSaveButton extends ConsumerWidget {
     this.exercise, {
     super.key,
     required this.isDisabled,
+    required this.formKey,
   });
 
   final ExerciseModel exercise;
 
   final bool isDisabled;
+
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,6 +33,7 @@ class ExerciseFormSaveButton extends ConsumerWidget {
       onPressed: isLoading || isGeneralLoading || isDisabled
           ? null
           : () async {
+              if (formKey.currentState?.validate() != true) return;
               final controller = ref.read(
                 exerciseSaveControllerProvider.notifier,
               );

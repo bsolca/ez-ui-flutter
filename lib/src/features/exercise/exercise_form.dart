@@ -34,6 +34,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
   final videoUrlController = TextEditingController();
   final descriptionController = TextEditingController();
   final tagsController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   bool loadingData = false;
   bool loadingMethod = false;
   String tmpImageUrl = '';
@@ -71,99 +72,106 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        EzHeader.displayMedium(ref.loc.exerciseFormHeader),
-        EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormName,
-          itemDescription: ref.loc.exerciseFormNameDescription,
-          child: Skeletonizer(
-            enabled: loadingData,
-            child: EzTextFormField(
-              hintText: ref.loc.exerciseFormNameHint,
-              controller: nameController,
+    return Form(
+      key: formKey,
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          EzHeader.displayMedium(ref.loc.exerciseFormHeader),
+          EzFormItemLayout(
+            itemLabel: ref.loc.exerciseFormName,
+            itemDescription: ref.loc.exerciseFormNameDescription,
+            child: Skeletonizer(
+              enabled: loadingData,
+              child: EzTextFormField(
+                hintText: ref.loc.exerciseFormNameHint,
+                controller: nameController,
+                validator: (v) {
+                  return v?.isNotEmpty ?? false ? null : ref.loc.required;
+                },
+              ),
             ),
           ),
-        ),
-        EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormTags,
-          itemDescription: ref.loc.exerciseFormTagsDescription,
-          child: Skeletonizer(
-            enabled: loadingData,
-            child: EzTextFormField(
-              hintText: ref.loc.exerciseFormTagsHint,
-              controller: tagsController,
+          EzFormItemLayout(
+            itemLabel: ref.loc.exerciseFormTags,
+            itemDescription: ref.loc.exerciseFormTagsDescription,
+            child: Skeletonizer(
+              enabled: loadingData,
+              child: EzTextFormField(
+                hintText: ref.loc.exerciseFormTagsHint,
+                controller: tagsController,
+              ),
             ),
           ),
-        ),
-        EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormDescription,
-          itemDescription: ref.loc.exerciseFormDescriptionDescription,
-          child: Skeletonizer(
-            enabled: loadingData,
-            child: EzTextFormField(
-              hintText: ref.loc.exerciseFormDescriptionHint,
-              controller: descriptionController,
-              maxLines: 3,
+          EzFormItemLayout(
+            itemLabel: ref.loc.exerciseFormDescription,
+            itemDescription: ref.loc.exerciseFormDescriptionDescription,
+            child: Skeletonizer(
+              enabled: loadingData,
+              child: EzTextFormField(
+                hintText: ref.loc.exerciseFormDescriptionHint,
+                controller: descriptionController,
+                maxLines: 3,
+              ),
             ),
           ),
-        ),
-        EzHeader.displayMedium(ref.loc.exerciseFormMediaHeader),
-        EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormImage,
-          child: Skeletonizer(
-            enabled: loadingData,
-            child: ExerciseFormImage(
-              // NOTE: We use fake image instead of
-              // imageUrl: imageUrlController.text,
-              imageUrl: tmpImageUrl,
-              onFilesSelected: (files) {
-                if (files.isNotEmpty) {
-                  imageUrlController.text = '${files.first.path}';
-                }
-              },
+          EzHeader.displayMedium(ref.loc.exerciseFormMediaHeader),
+          EzFormItemLayout(
+            itemLabel: ref.loc.exerciseFormImage,
+            child: Skeletonizer(
+              enabled: loadingData,
+              child: ExerciseFormImage(
+                // NOTE: We use fake image instead of
+                // imageUrl: imageUrlController.text,
+                imageUrl: tmpImageUrl,
+                onFilesSelected: (files) {
+                  if (files.isNotEmpty) {
+                    imageUrlController.text = '${files.first.path}';
+                  }
+                },
+              ),
             ),
           ),
-        ),
-        EzFormItemLayout(
-          itemLabel: ref.loc.exerciseFormVideo,
-          child: Skeletonizer(
-            enabled: loadingData,
-            child: EzFileUploader(
-              onFilesSelected: (files) {
-                if (files.isNotEmpty) {
-                  videoUrlController.text = '${files.first.path}';
-                }
-              },
+          EzFormItemLayout(
+            itemLabel: ref.loc.exerciseFormVideo,
+            child: Skeletonizer(
+              enabled: loadingData,
+              child: EzFileUploader(
+                onFilesSelected: (files) {
+                  if (files.isNotEmpty) {
+                    videoUrlController.text = '${files.first.path}';
+                  }
+                },
+              ),
             ),
           ),
-        ),
-        ExerciseFormSaveButton(
-          isDisabled: loadingData,
-          ExerciseModel(
-            id: idController.text,
-            name: nameController.text,
-            imageUrl: imageUrlController.text.isNotEmpty
-                ? imageUrlController.text
-                : null,
-            videoUrl: videoUrlController.text.isNotEmpty
-                ? videoUrlController.text
-                : null,
-            tags: tagsController.text
-                .split(',')
-                .map((tag) => tag.trim())
-                .toList(),
-            description: descriptionController.text,
-          ),
-        ),
-        if (widget.exerciseId.isNotEmpty && widget.exerciseId != 'new')
-          ExerciseFormDeleteButton(
+          ExerciseFormSaveButton(
+            formKey: formKey,
             isDisabled: loadingData,
-            exerciseId: widget.exerciseId,
-            exerciseName: nameController.text,
+            ExerciseModel(
+              id: idController.text,
+              name: nameController.text,
+              imageUrl: imageUrlController.text.isNotEmpty
+                  ? imageUrlController.text
+                  : null,
+              videoUrl: videoUrlController.text.isNotEmpty
+                  ? videoUrlController.text
+                  : null,
+              tags: tagsController.text
+                  .split(',')
+                  .map((tag) => tag.trim())
+                  .toList(),
+              description: descriptionController.text,
+            ),
           ),
-      ].withSpaceBetween(height: EzConstLayout.spacerSmall),
+          if (widget.exerciseId.isNotEmpty && widget.exerciseId != 'new')
+            ExerciseFormDeleteButton(
+              isDisabled: loadingData,
+              exerciseId: widget.exerciseId,
+              exerciseName: nameController.text,
+            ),
+        ].withSpaceBetween(height: EzConstLayout.spacerSmall),
+      ),
     );
   }
 }

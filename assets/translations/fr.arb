@@ -24,6 +24,7 @@
   "successfullyCreated": "{exerciseName} vient d'etre crée.",
   "successfullyUpdated": "{exerciseName} vient d'etre mis à jour.",
   "successfullyDeleted": "{exerciseName} vient d'etre supprimée.",
+  "required": "Champ obligatoire",
   "@_SETTINGS_SCREEN": {},
   "settingScreenSettings": "Paramètres",
   "settingScreenPersonalInformation": "Informations personnelles",
