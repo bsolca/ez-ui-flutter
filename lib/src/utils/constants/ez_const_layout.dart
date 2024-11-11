@@ -56,4 +56,7 @@ class EzConstLayout {
   static const double medalSize = EzConstValue.dp48;
 
 
+  // Disabled Opacity
+  // A commonly used opacity value for disabled elements in Material Design
+  static const double disabledOpacity = 0.62;
 }

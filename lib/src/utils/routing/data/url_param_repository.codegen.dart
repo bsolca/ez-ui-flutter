@@ -1,12 +1,13 @@
 import 'package:ez_fit_app/src/utils/routing/data/location_provider.codegen.dart';
 import 'package:ez_fit_app/src/utils/routing/model/url_param.codegen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'url_param_repository.codegen.g.dart';
 
 /// Return the [UrlParams] from the current location.
 @riverpod
-UrlParams urlParamRepository(UrlParamRepositoryRef ref) {
+UrlParams urlParamRepository(Ref ref) {
   final location = ref.watch(locationRepositoryProvider);
 
   if (location.isEmpty) {

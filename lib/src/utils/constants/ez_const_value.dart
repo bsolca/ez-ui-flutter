@@ -2,6 +2,7 @@ class EzConstValue {
   EzConstValue._();
 
   static const Duration animationDuration = Duration(milliseconds: 300);
+  static const Duration asyncDuration = Duration.zero;
   static const double dp05 = 0.5;
   static const double dp1 = 1;
   static const double dp4 = 4;

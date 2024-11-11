@@ -7,7 +7,7 @@ part of 'url_param_repository.codegen.dart';
 // **************************************************************************
 
 String _$urlParamRepositoryHash() =>
-    r'850acf3c1e5025f1951d429862d58c3c0b7ad71f';
+    r'1ca0b31def63b32857dbfd0ecde1f301178614df';
 
 /// Return the [UrlParams] from the current location.
 ///
@@ -23,6 +23,8 @@ final urlParamRepositoryProvider = AutoDisposeProvider<UrlParams>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef UrlParamRepositoryRef = AutoDisposeProviderRef<UrlParams>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

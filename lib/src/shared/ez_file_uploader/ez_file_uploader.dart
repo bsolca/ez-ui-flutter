@@ -12,10 +12,13 @@ class EzFileUploader extends StatefulWidget {
   const EzFileUploader({
     super.key,
     this.onFilesSelected,
+    this.child,
   });
 
   /// Called when files are selected
   final void Function(List<PlatformFile> files)? onFilesSelected;
+
+  final Widget? child;
 
   @override
   State<EzFileUploader> createState() => _EzFileUploaderState();
@@ -33,12 +36,16 @@ class _EzFileUploaderState extends State<EzFileUploader> {
           ..clear()
           ..addAll(result.files);
         logAction('File picked: "${selectedFiles.first.name}"');
+        widget.onFilesSelected?.call(selectedFiles);
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final child = widget.child;
+    final onFilesSelected = widget.onFilesSelected;
+
     return DropRegion(
       formats: Formats.standardFormats,
       hitTestBehavior: HitTestBehavior.opaque,
@@ -56,8 +63,8 @@ class _EzFileUploaderState extends State<EzFileUploader> {
       },
       child: InkWell(
         splashFactory: NoSplash.splashFactory,
-        onTap: pickFiles,
-        child: Container(
+        onTap: onFilesSelected == null ? null : pickFiles,
+        child: child ?? Container(
           margin: const EdgeInsets.all(1),
           width: double.infinity,
           padding: const EdgeInsets.all(16),

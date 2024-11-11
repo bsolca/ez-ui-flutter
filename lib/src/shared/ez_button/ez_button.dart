@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_disable/ez_disable.dart';
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
@@ -30,45 +31,48 @@ class EzButton extends StatelessWidget {
     final prefixWidget = this.prefixWidget;
     final suffixWidget = this.suffixWidget;
 
-    return RawMaterialButton(
-      onPressed: isLoading ? null : onPressed,
-      shape: _buildShape(context),
-      padding: _getPadding(),
-      hoverColor: _getHoverColor(context),
-      splashColor: Colors.transparent,
-      fillColor: _getFillColor(context),
-      focusElevation: 0,
-      hoverElevation: 0,
-      highlightElevation: 0,
-      elevation: 0,
-      highlightColor: Colors.transparent,
-      mouseCursor: _getMouseCursor(),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (prefixWidget != null) prefixWidget,
-          Flexible(
-            child: Text(
-              text,
-              style: _getTextStyle(context),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-          ),
-          if (isLoading)
-            SizedBox(
-              width: 16,
-              height: 16,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  textColor ??
-                      _getDefaultTextColor(Theme.of(context).colorScheme),
-                ),
+    return EzDisable.main(
+      disabled: isLoading || onPressed == null,
+      child: RawMaterialButton(
+        onPressed: onPressed,
+        shape: _buildShape(context),
+        padding: _getPadding(),
+        hoverColor: _getHoverColor(context),
+        splashColor: Colors.transparent,
+        fillColor: _getFillColor(context),
+        focusElevation: 0,
+        hoverElevation: 0,
+        highlightElevation: 0,
+        elevation: 0,
+        highlightColor: Colors.transparent,
+        mouseCursor: _getMouseCursor(),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (prefixWidget != null) prefixWidget,
+            Flexible(
+              child: Text(
+                text,
+                style: _getTextStyle(context),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
             ),
-          if (suffixWidget != null && !isLoading) suffixWidget,
-        ].withSpaceBetween(
-          width: EzConstLayout.spacer,
+            if (isLoading)
+              SizedBox(
+                width: 16,
+                height: 16,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    textColor ??
+                        _getDefaultTextColor(Theme.of(context).colorScheme),
+                  ),
+                ),
+              ),
+            if (suffixWidget != null && !isLoading) suffixWidget,
+          ].withSpaceBetween(
+            width: EzConstLayout.spacer,
+          ),
         ),
       ),
     );

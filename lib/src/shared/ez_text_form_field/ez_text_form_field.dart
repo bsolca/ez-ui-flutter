@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/shared/ez_disable/ez_disable.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_icon_button/ez_icon_button.dart';
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
@@ -22,6 +23,8 @@ class EzTextFormField extends ConsumerWidget {
     this.autofocus = false,
     this.obscureText = false,
     this.isClearable = false,
+    this.maxLines,
+    this.disabled = false,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -41,46 +44,24 @@ class EzTextFormField extends ConsumerWidget {
     this.isClearable = false,
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
-  });
+    this.disabled = false,
+  }) : maxLines = 1;
 
-  /// Mandatory hint text.
   final String hintText;
-
-  /// Controller of the text form field.
   final TextEditingController controller;
-
-  /// Input formatters of the text form field.
   final List<TextInputFormatter>? inputFormatters;
-
-  /// Focus node of the text form field.
   final FocusNode? focusNode;
-
-  /// {@macro flutter.widgets.editableText.onEditingComplete}
   final void Function()? onEditingComplete;
-
-  /// Validator of the text form field.
   final String? Function(String?)? validator;
-
-  /// Auto validate mode of the text form field.
   final AutovalidateMode? autovalidateMode;
-
-  /// Max length of the text form field.
   final int? maxLength;
-
-  /// Whether the text form field is autofocus or not.
   final bool autofocus;
-
-  /// Whether the text form field obscure text or not.
   final bool obscureText;
-
-  /// Whether the text form field is clearable or not.
   final bool isClearable;
-
-  /// Widget to be displayed inside the button.
   final String? buttonText;
-
-  /// Callback to be called when the button is pressed.
   final VoidCallback? onButtonPressed;
+  final int? maxLines;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -89,9 +70,9 @@ class EzTextFormField extends ConsumerWidget {
     const radius = EzConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
         ? const EzSmoothBorderRadius.horizontal(
-            left: EzSmoothRadius(
-              cornerRadius: radius,
-              cornerSmoothing: EzConstLayout.cornerSmoothing,
+            right: EzSmoothRadius(
+              cornerRadius: 0,
+              cornerSmoothing: 0,
             ),
           )
         : EzSmoothBorderRadius(
@@ -99,67 +80,68 @@ class EzTextFormField extends ConsumerWidget {
             cornerSmoothing: EzConstLayout.cornerSmoothing,
           );
 
-    final fieldWidget = TextFormField(
-      controller: controller,
-      autofocus: autofocus,
-      focusNode: focusNode,
-      inputFormatters: inputFormatters,
-      validator: validator,
-      autovalidateMode: autovalidateMode,
-      maxLength: maxLength,
-      obscureText: obscureText,
-      onEditingComplete: onEditingComplete,
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSecondaryContainer,
-          ),
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSecondaryContainer
-                  .withOpacity(
-                    0.5,
-                  ),
+    final fieldWidget = EzDisable(
+      disabled: disabled,
+      child: TextFormField(
+        controller: controller,
+        autofocus: autofocus,
+        focusNode: focusNode,
+        inputFormatters: inputFormatters,
+        validator: validator,
+        autovalidateMode: autovalidateMode,
+        maxLength: maxLength,
+        obscureText: obscureText,
+        onEditingComplete: onEditingComplete,
+        maxLines: maxLines ?? 1,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),
-        isDense: true,
-        // To have 40 height to respect ConstLayout.itemHeight
-        contentPadding: const EdgeInsets.all(14),
-        fillColor: Theme.of(context).colorScheme.surfaceContainer,
-        filled: true,
-        hoverColor: Theme.of(context).brightness == Brightness.light
-            ? null
-            : Theme.of(context).colorScheme.surfaceContainer,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
-            width: 0.5,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSecondaryContainer
+                    .withOpacity(
+                      0.5,
+                    ),
+              ),
+          isDense: true,
+          // To have 40 height to respect ConstLayout.itemHeight
+          contentPadding: const EdgeInsets.all(14),
+          fillColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+              width: 0.5,
+            ),
           ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.error,
-            width: 0.5,
+          errorBorder: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+              width: 0.5,
+            ),
           ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.error,
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+            ),
           ),
+          border: OutlineInputBorder(
+            borderRadius: borderRadius,
+            borderSide: BorderSide.none,
+          ),
+          suffixIcon: isClearable && controller.text.isNotEmpty
+              ? EzIconButton(
+                  icon: HeroIcon.xMark,
+                  onPressed: controller.clear,
+                )
+              : null,
         ),
-        border: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide.none,
-        ),
-        suffixIcon: isClearable && controller.text.isNotEmpty
-            ? EzIconButton(
-                icon: HeroIcon.xMark,
-                onPressed: controller.clear,
-              )
-            : null,
       ),
     );
 
@@ -179,16 +161,7 @@ class EzTextFormField extends ConsumerWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.primaryContainer,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: EzSmoothBorderRadius.only(
-                        topRight: EzSmoothRadius(
-                          cornerRadius: radius,
-                          cornerSmoothing: EzConstLayout.cornerSmoothing,
-                        ),
-                        bottomRight: EzSmoothRadius(
-                          cornerRadius: radius,
-                          cornerSmoothing: EzConstLayout.cornerSmoothing,
-                        ),
-                      ),
+                      borderRadius: EzSmoothBorderRadius.basic,
                     ),
                   ),
                   child: Center(
@@ -202,6 +175,11 @@ class EzTextFormField extends ConsumerWidget {
             ],
           )
         : fieldWidget;
-    return textFormFieldWidget;
+
+    // Padding to fix the borders being cut by other widgets.
+    return Padding(
+      padding: const EdgeInsets.all(0.3),
+      child: textFormFieldWidget,
+    );
   }
 }

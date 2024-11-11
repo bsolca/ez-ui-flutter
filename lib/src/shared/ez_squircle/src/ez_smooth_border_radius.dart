@@ -46,8 +46,8 @@ class EzSmoothBorderRadius extends BorderRadius {
   /// The [top] and [bottom] radii are applied to both the left and right
   /// sides of the respective vertical edges.
   const EzSmoothBorderRadius.vertical({
-    EzSmoothRadius top = EzSmoothRadius.zero,
-    EzSmoothRadius bottom = EzSmoothRadius.zero,
+    EzSmoothRadius top = EzSmoothRadius.basic,
+    EzSmoothRadius bottom = EzSmoothRadius.basic,
   }) : this.only(
           topLeft: top,
           topRight: top,
@@ -60,8 +60,8 @@ class EzSmoothBorderRadius extends BorderRadius {
   /// The [left] and [right] radii are applied to both the top and bottom
   /// sides of the respective horizontal edges.
   const EzSmoothBorderRadius.horizontal({
-    EzSmoothRadius left = EzSmoothRadius.zero,
-    EzSmoothRadius right = EzSmoothRadius.zero,
+    EzSmoothRadius left = EzSmoothRadius.basic,
+    EzSmoothRadius right = EzSmoothRadius.basic,
   }) : this.only(
           topLeft: left,
           topRight: right,
@@ -74,20 +74,20 @@ class EzSmoothBorderRadius extends BorderRadius {
   /// This constructor allows for different [EzSmoothRadius] values for each
   /// corner.
   const EzSmoothBorderRadius.only({
-    EzSmoothRadius topLeft = EzSmoothRadius.zero,
-    EzSmoothRadius topRight = EzSmoothRadius.zero,
-    EzSmoothRadius bottomLeft = EzSmoothRadius.zero,
-    EzSmoothRadius bottomRight = EzSmoothRadius.zero,
-  }) : _topLeft = topLeft,
+    EzSmoothRadius topLeft = EzSmoothRadius.basic,
+    EzSmoothRadius topRight = EzSmoothRadius.basic,
+    EzSmoothRadius bottomLeft = EzSmoothRadius.basic,
+    EzSmoothRadius bottomRight = EzSmoothRadius.basic,
+  })  : _topLeft = topLeft,
         _topRight = topRight,
         _bottomLeft = bottomLeft,
         _bottomRight = bottomRight,
         super.only(
-        topLeft: topLeft,
-        topRight: topRight,
-        bottomLeft: bottomLeft,
-        bottomRight: bottomRight,
-      );
+          topLeft: topLeft,
+          topRight: topRight,
+          bottomLeft: bottomLeft,
+          bottomRight: bottomRight,
+        );
 
   /// Returns a copy of this [EzSmoothBorderRadius] with updated values.
   ///
@@ -103,14 +103,14 @@ class EzSmoothBorderRadius extends BorderRadius {
       topLeft: topLeft is EzSmoothRadius ? topLeft : this.topLeft,
       topRight: topRight is EzSmoothRadius ? topRight : this.topRight,
       bottomLeft: bottomLeft is EzSmoothRadius ? bottomLeft : this.bottomLeft,
-      bottomRight: bottomRight is EzSmoothRadius ? bottomRight : this.bottomRight,
+      bottomRight:
+          bottomRight is EzSmoothRadius ? bottomRight : this.bottomRight,
     );
   }
 
-
   /// A border radius with zero radii for all corners.
-  static const EzSmoothBorderRadius zero =
-      EzSmoothBorderRadius.all(EzSmoothRadius.zero);
+  static const EzSmoothBorderRadius basic =
+      EzSmoothBorderRadius.all(EzSmoothRadius.basic);
 
   @override
   EzSmoothRadius get topLeft => _topLeft;

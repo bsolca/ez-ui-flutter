@@ -8,6 +8,7 @@ import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_item_data.code
 import 'package:ez_fit_app/src/shared/ez_sidebar/model/ez_sidebar_popover_item_data.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_sidebar_layout/ez_sidebar_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
+import 'package:ez_fit_app/src/utils/log/logger.dart';
 import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -53,7 +54,7 @@ class Sidebar extends ConsumerWidget {
           EzSidebarPopoverItemData.regular(
             text: 'Work in progress message too long',
             icon: HeroIcon.cog8Tooth,
-            onTap: () => print('Work in progress'),
+            onTap: () => logInfo('Work in progress'),
           ),
           const EzSidebarPopoverItemData.separator(),
           EzSidebarPopoverItemData.regular(
@@ -92,6 +93,12 @@ class Sidebar extends ConsumerWidget {
           text: ref.loc.groups,
           icon: HeroIcon.userGroup,
           onTap: () => context.goNamed(AppRoute.usersGroups.name),
+        ),
+        EzSidebarItemData.heading(text: ref.loc.library),
+        EzSidebarItemData.regular(
+          text: ref.loc.exercises,
+          icon: Icons.fitness_center_outlined,
+          onTap: () => context.goNamed(AppRoute.exercises.name),
         ),
         const EzSidebarItemData.heading(text: 'Tools'),
         EzSidebarItemData.regular(

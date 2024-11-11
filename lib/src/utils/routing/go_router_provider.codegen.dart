@@ -1,8 +1,10 @@
-import 'package:ez_fit_app/src/features/_core/auth/service/auth_service.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/auth_state/auth_state.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:ez_fit_app/src/screens/auth_screen/auth_screen.dart';
+import 'package:ez_fit_app/src/screens/exercise_screen/exercise_screen.dart';
+import 'package:ez_fit_app/src/screens/exercises_screen/exercises_screen.dart';
 import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
 import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
 import 'package:ez_fit_app/src/screens/users_screen/users_screen.dart';
@@ -17,50 +19,32 @@ import 'package:ez_fit_app/src/utils/routing/presentation/go_route_page_scaffold
 import 'package:ez_fit_app/src/utils/routing/presentation/not_found_screen.dart';
 import 'package:ez_fit_app/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'go_router_provider.codegen.g.dart';
 
-/// Routes for the app.
 enum AppRoute {
-  /// Authentication screen.
   auth,
-
-  /// App entry point.
-  home,
-
-  /// Setting Profile of the logged in user.
-  settingsUserProfile,
-
-  /// Setting Notifications of the logged in user.
-  settingsNotifications,
-
-  /// Setting Preferences of the logged in user.
-  settingsPreferences,
-
-  /// Setting Plan and Billing of the logged in user.
-  settingsPlanAndBilling,
-
-  /// List of users.
-  usersUsers,
-
-  /// Create or go to a specific user.
-  usersUser,
-
-  /// List of groups.
-  usersGroups,
-
-  /// Page showcasing color scheme colors.
   colorSchemePreview,
-
-  /// Page for unauthorized access.
+  exercises,
+  exercise,
+  home,
+  settingsNotifications,
+  settingsPlanAndBilling,
+  settingsPreferences,
+  settingsUserProfile,
+  todo,
   unauthorized,
+  usersGroups,
+  usersUser,
+  usersUsers,
 }
 
 /// Provider for [GoRouter].
 @riverpod
-Raw<GoRouter> goRouter(GoRouterRef ref) {
+Raw<GoRouter> goRouter(Ref ref) {
   final rootNavigatorKey = GlobalKey<NavigatorState>();
   final shellNavigatorKey = GlobalKey<NavigatorState>();
   final shellSettingsKey = GlobalKey<NavigatorState>();
@@ -85,34 +69,19 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
           // ShellRoute should ideally build the shell only once
           return NoTransitionPage(
             key: state.pageKey,
-            child: FutureBuilder(
-              future: Future.wait([
-                ref.read(authServiceProvider).firstName,
-                ref.read(authServiceProvider).lastName,
-                ref.read(authServiceProvider).email,
-              ]),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState != ConnectionState.done) {
-                  return const Scaffold(
-                    body: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-
-                return EzAppScaffold(
-                  firstName: snapshot.data![0] as String,
-                  lastName: snapshot.data![1] as String,
-                  email: snapshot.data![2] as String,
-                  body: child,
-                );
-              },
+            // NOTE: We are using dummy content for the user.
+            child: EzAppScaffold(
+              firstName: 'Benjamin',
+              lastName: 'S.',
+              email: 'benjamin@fitapp.x',
+              body: child,
             ),
           );
         },
         redirect: (context, state) {
           // While the auth state is loading, return null (no redirection)
           if (authState.isLoading) return null;
+          ref.read(loadingControllerProvider.notifier).stopLoading();
 
           // Check if the user is logged in
           final isLoggedIn = authState.value ?? false;
@@ -259,6 +228,23 @@ Raw<GoRouter> goRouter(GoRouterRef ref) {
             name: AppRoute.usersGroups.name,
             parentNavigatorKey: shellNavigatorKey,
             body: const Center(child: Text('Groups')),
+          ),
+          GoRoutePageScaffold(
+            path: '/exercises',
+            name: AppRoute.exercises.name,
+            parentNavigatorKey: shellNavigatorKey,
+            body: const ExercisesScreen(),
+          ),
+          GoRoute(
+            path: '/exercises/:id',
+            name: AppRoute.exercise.name,
+            pageBuilder: (context, state) {
+              final id = state.pathParameters['id'];
+              return NoTransitionPage(
+                key: ValueKey('${AppRoute.usersUsers.name}/$id'),
+                child: ExerciseScreen(exerciseId: id ?? ''),
+              );
+            },
           ),
           // ColorSchemePreview
           GoRoutePageScaffold(

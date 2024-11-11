@@ -63,7 +63,7 @@ class _AuthScreenState extends ConsumerState<AuthView> {
         error: (error, _) {
           EzToast.show(
             context: context,
-            type: EzToastType.error,
+            type: EzEventType.error,
             title: ref.loc.authScreenErrorTitle,
             description: error.toString(),
           );
@@ -186,7 +186,7 @@ class _AuthScreenState extends ConsumerState<AuthView> {
                     } else {
                       EzToast.show(
                         context: context,
-                        type: EzToastType.error,
+                        type: EzEventType.error,
                         description: ref.loc.authScreenErrorDescription,
                       );
                     }
@@ -255,7 +255,7 @@ Widget _brightnessButton(WidgetRef ref) {
         },
       );
     },
-    error: (error, _) => throw error,
+    error: (error, _) => Text(error.toString()),
     loading: () => EzButton(
       text: '${ref.loc.loading}...',
       prefixWidget: const Icon(HeroIcon.computerDesktop),

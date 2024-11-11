@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 
 /// Custom enums to define the type and style of the toastification
-enum EzToastType {
+enum EzEventType {
   info,
   warning,
   error,
@@ -16,7 +16,7 @@ class EzToast {
     required BuildContext context,
     String? title,
     required String description,
-    EzToastType type = EzToastType.info,
+    EzEventType type = EzEventType.info,
     Widget? icon,
     bool dragToClose = true,
   }) {
@@ -28,7 +28,7 @@ class EzToast {
       title: Text(
         title ?? _mapEzToastType(type).name.toCapitalized(),
       ),
-      description: Text(description),
+      description: SelectableText(description),
       alignment: Alignment.bottomRight,
       autoCloseDuration: const Duration(seconds: 4),
       applyBlurEffect: false,
@@ -41,15 +41,15 @@ class EzToast {
   }
 
   /// Helper method to map EzToastType to ToastificationType
-  static ToastificationType _mapEzToastType(EzToastType type) {
+  static ToastificationType _mapEzToastType(EzEventType type) {
     switch (type) {
-      case EzToastType.info:
+      case EzEventType.info:
         return ToastificationType.info;
-      case EzToastType.warning:
+      case EzEventType.warning:
         return ToastificationType.warning;
-      case EzToastType.error:
+      case EzEventType.error:
         return ToastificationType.error;
-      case EzToastType.success:
+      case EzEventType.success:
         return ToastificationType.success;
     }
   }

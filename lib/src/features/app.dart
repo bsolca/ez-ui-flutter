@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:ez_fit_app/src/features/user_settings/ui/controller/user_settings_brightness_controller.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_event_handler/ez_event_handler.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_string.dart';
 import 'package:ez_fit_app/src/utils/extension/type_extension.dart';
 import 'package:ez_fit_app/src/utils/localization/get_locale.codegen.dart';
@@ -44,6 +45,11 @@ class App extends ConsumerWidget {
                 return ref
                     .read(getLocaleProvider.notifier)
                     .localeResolutionCallback(deviceLocale, supportedLocales);
+              },
+              builder: (context, child) {
+                final c = child;
+                if (c == null) return throw Exception('Child is null');
+                return EzEventHandler(child: c);
               },
               routerConfig: ref.watch(goRouterProvider),
             ),

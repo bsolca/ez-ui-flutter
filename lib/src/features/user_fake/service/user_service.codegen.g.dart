@@ -6,7 +6,7 @@ part of 'user_service.codegen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userServiceHash() => r'a53929ce202016c79e7499b3863e2820a7fd8cfa';
+String _$userServiceHash() => r'bacff59dbbfc795eddfc5a88ff85edc5dc1c1355';
 
 /// See also [userService].
 @ProviderFor(userService)
@@ -19,6 +19,8 @@ final userServiceProvider = AutoDisposeProvider<UserService>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef UserServiceRef = AutoDisposeProviderRef<UserService>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

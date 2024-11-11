@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ez_fit_app/src/features/user_fake/model/user_model.codegen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,7 +9,7 @@ part 'user_repository.codegen.g.dart';
 
 /// Repository class for the [UserModel].
 @riverpod
-UserRepository userRepository(UserRepositoryRef ref) {
+UserRepository userRepository(Ref ref) {
   return UserRepository();
 }
 

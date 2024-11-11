@@ -30,8 +30,11 @@ void logAction(String action) {
 }
 
 /// Logs errors.
-void logError(String reason) {
-  const Logger('🚨', 'error').error(reason);
+void logError(String reason, {bool includeStackTrace = true}) {
+  const Logger('🚨', 'error').error(
+    reason,
+    includeStackTrace: includeStackTrace,
+  );
 }
 
 /// Log information.

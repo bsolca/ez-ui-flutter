@@ -7,7 +7,7 @@ part of 'user_settings_repository.codegen.dart';
 // **************************************************************************
 
 String _$userSettingsRepositoryHash() =>
-    r'b7868fbcf648e2506bf5209b54d012e92e152f05';
+    r'0f9c010ab84735be63ec164ce2584909d5d1cca2';
 
 /// User settings repository provider.
 ///
@@ -24,7 +24,9 @@ final userSettingsRepositoryProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef UserSettingsRepositoryRef
     = AutoDisposeProviderRef<UserSettingsRepository>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

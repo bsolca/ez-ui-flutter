@@ -11,7 +11,7 @@ import 'package:flutter/widgets.dart';
 /// ### Parameters:
 /// - [child]: The widget to be clipped by the [EzSmoothRectangleBorder].
 /// - [radius]: Defines the corner radius of the border using
-///   [EzSmoothBorderRadius]. Default is [EzSmoothBorderRadius.zero], meaning
+///   [EzSmoothBorderRadius]. Default is [EzSmoothBorderRadius.basic], meaning
 ///   no rounding.
 /// - [clipBehavior]: Determines how the widget should be clipped. The default
 ///   value is [Clip.antiAlias], which applies anti-aliasing for smoother
@@ -35,17 +35,15 @@ class EzClipSmoothRect extends StatelessWidget {
   const EzClipSmoothRect({
     super.key,
     required this.child,
-    this.radius = EzSmoothBorderRadius.zero,
+    this.radius = EzSmoothBorderRadius.basic,
     this.clipBehavior = Clip.antiAlias,
   });
 
-  /// Border radius of the clipped rectangle, specified as [EzSmoothBorderRadius].
   final EzSmoothBorderRadius radius;
 
   /// Defines how the widget should be clipped. Default is [Clip.antiAlias].
   final Clip clipBehavior;
 
-  /// The widget to be clipped by the [EzSmoothRectangleBorder].
   final Widget child;
 
   @override
