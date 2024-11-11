@@ -21,6 +21,8 @@
   "profile": "Profil",
   "save": "Sauvegarder",
   "search": "Recherche",
+  "successfullyCreated": "{exerciseName} vient d'etre crée",
+  "successfullyUpdated": "{exerciseName} vient d'etre mis à jour",
   "@_SETTINGS_SCREEN": {},
   "settingScreenSettings": "Paramètres",
   "settingScreenPersonalInformation": "Informations personnelles",

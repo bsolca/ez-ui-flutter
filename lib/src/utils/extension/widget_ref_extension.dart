@@ -9,6 +9,8 @@ extension ExtWidgetRef on WidgetRef {
   /// Returns the translated string for the current locale.
   AppLocalizations get loc => watch(appLocalProvider);
 
+  AppLocalizations get locRead => read(appLocalProvider);
+
   /// Returns the padding for the current screen size.
   double get padding => watch(screenSizePod.notifier).padding;
 

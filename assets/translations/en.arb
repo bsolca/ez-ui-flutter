@@ -40,6 +40,8 @@
   "settingScreenDangerZone": "Danger zone",
   "settingScreenDangerZoneAccountDeletion": "Account deletion",
   "settingScreenDangerZoneDescription": "This will immediately delete all of your data. This action is not reversible, so please continue with caution.",
+  "successfullyCreated": "Successfully created {exerciseName}.",
+  "successfullyUpdated": "Successfully updated {exerciseName}.",
   "@_end__SETTINGS_SCREEN": {},
   "@_EXERCISE": {},
   "exerciseFormScreenTitle": "Exercise Form",
