@@ -1,9 +1,9 @@
-import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/model/exercise_model.codegen.dart';
 import 'package:ez_fit_app/src/features/exercise/service/exercise_service.codegen.dart';
-import 'package:ez_fit_app/src/shared/ez_event_handler/ez_event_controller.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_async_value/ez_async_value.dart';
 import 'package:ez_fit_app/src/utils/localization/app_local.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'exercise_save_controller.codegen.g.dart';
 
 /// Controller specifically for handling saving or updating exercises.
@@ -16,31 +16,24 @@ class ExerciseSaveController extends _$ExerciseSaveController {
 
   /// Save or update a specific exercise.
   Future<void> saveExercise(ExerciseModel exercise) async {
-    final loadingPod = ref.read(loadingControllerProvider.notifier);
-    final ezEventPod = ref.read(ezEventControllerProvider.notifier);
     final exerciseService = ref.read(exerciseServiceProvider);
+    final isCreateExercise = exercise.id.isEmpty || exercise.id == 'new';
+    final successMessage = isCreateExercise
+        ? ref.read(appLocalProvider).successfullyCreated(exercise.name)
+        : ref.read(appLocalProvider).successfullyUpdated(exercise.name);
 
     state = const AsyncValue.loading();
-    loadingPod.startLoading();
-
-
-    state = await AsyncValue.guard(() async {
-      if (exercise.id.isEmpty || exercise.id == 'new') {
-        await exerciseService.createExercise(exercise);
-        await ezEventPod.sendSuccessToast(
-          ref.read(appLocalProvider).successfullyCreated(exercise.name),
-        );
-      } else {
-        await exerciseService.updateExercise(exercise);
-        await ezEventPod.sendSuccessToast(
-          ref.read(appLocalProvider).successfullyUpdated(exercise.name),
-        );
-      }
-    }, (e) {
-      ezEventPod.sendErrorToast(e.toString());
-      return true;
-    });
-
-    loadingPod.stopLoading();
+    state = await EzAsyncValue.guard(
+      ref: ref,
+      successToastMessage: successMessage,
+      errorToastMessage: (e) => e.toString(),
+      future: () async {
+        if (isCreateExercise) {
+          await exerciseService.createExercise(exercise);
+        } else {
+          await exerciseService.updateExercise(exercise);
+        }
+      },
+    );
   }
 }
