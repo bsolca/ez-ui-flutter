@@ -19,7 +19,7 @@ class EzAsyncValue {
     try {
       final res = AsyncValue.data(await future());
       if (successToastMessage != null) {
-        await ezEventPod.sendErrorToast(successToastMessage);
+        await ezEventPod.sendSuccessToast(successToastMessage);
       }
       return res;
     } catch (err, stack) {
