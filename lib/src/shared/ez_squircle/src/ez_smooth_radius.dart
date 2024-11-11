@@ -28,7 +28,7 @@ class EzSmoothRadius extends Radius {
 
   /// A zero radius with no smoothing.
   static const basic = EzSmoothRadius(
-    cornerRadius: EzConstLayout.borderRadiusSmall,
+    cornerRadius: EzConstLayout.borderRadius,
     cornerSmoothing: EzConstLayout.cornerSmoothing,
   );
 
