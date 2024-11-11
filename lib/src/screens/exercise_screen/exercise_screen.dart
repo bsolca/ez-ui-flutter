@@ -19,7 +19,9 @@ class ExerciseScreen extends ConsumerWidget {
         children: [
           Flexible(
             child: SingleChildScrollView(
-              child: ExerciseForm(exerciseId: exerciseId,),
+              child: ExerciseForm(
+                exerciseId: exerciseId,
+              ),
             ),
           ),
         ],

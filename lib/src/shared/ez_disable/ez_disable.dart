@@ -14,8 +14,8 @@ class EzDisable extends ConsumerWidget {
   const EzDisable.main({
     super.key,
     required this.child,
-  })  : disabled = false,
-        _isMain = true;
+    this.disabled = false,
+  }) : _isMain = true;
 
   final Widget child;
 
@@ -26,7 +26,7 @@ class EzDisable extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDisabled =
-        _isMain ? ref.watch(loadingControllerProvider) : disabled;
+        _isMain ? ref.watch(loadingControllerProvider) || disabled : disabled;
 
     return MouseRegion(
       cursor: isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,

@@ -10,9 +10,12 @@ class ExerciseFormSaveButton extends ConsumerWidget {
   const ExerciseFormSaveButton(
     this.exercise, {
     super.key,
+    required this.isDisabled,
   });
 
   final ExerciseModel exercise;
+
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,11 +24,10 @@ class ExerciseFormSaveButton extends ConsumerWidget {
     final isGeneralLoading = ref.watch(loadingControllerProvider);
     final isLoading = saveState.isLoading;
 
-
     return EzButton(
       text: ref.loc.save,
       isLoading: isLoading,
-      onPressed: isLoading || isGeneralLoading
+      onPressed: isLoading || isGeneralLoading || isDisabled
           ? null
           : () async {
               final controller = ref.read(

@@ -74,8 +74,6 @@ class ExerciseRepositoryDummy implements ExerciseRepository {
       ];
       throw Exception(messages[random.nextInt(messages.length)]);
     }
-
-    return Future<void>.value();
   }
 
   @override
@@ -92,6 +90,5 @@ class ExerciseRepositoryDummy implements ExerciseRepository {
       ];
       throw Exception(messages[random.nextInt(messages.length)]);
     }
-    return Future<void>.value();
   }
 }

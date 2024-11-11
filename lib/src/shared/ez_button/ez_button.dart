@@ -32,6 +32,7 @@ class EzButton extends StatelessWidget {
     final suffixWidget = this.suffixWidget;
 
     return EzDisable.main(
+      disabled: isLoading || onPressed == null,
       child: RawMaterialButton(
         onPressed: onPressed,
         shape: _buildShape(context),

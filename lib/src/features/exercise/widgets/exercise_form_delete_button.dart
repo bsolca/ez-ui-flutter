@@ -11,10 +11,12 @@ class ExerciseFormDeleteButton extends ConsumerWidget {
     super.key,
     required this.exerciseId,
     required this.exerciseName,
+    required this.isDisabled,
   });
 
   final String exerciseId;
   final String exerciseName;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,14 +30,13 @@ class ExerciseFormDeleteButton extends ConsumerWidget {
       textColor: Theme.of(context).colorScheme.error,
       type: EzButtonType.outlined,
       isLoading: isLoading,
-      onPressed: isLoading || isGeneralLoading
+      onPressed: isLoading || isGeneralLoading || isDisabled
           ? null
-          : () async {
-              final controller = ref.read(
+          : () async => ref
+              .read(
                 exerciseDeleteControllerProvider.notifier,
-              );
-              await controller.deleteExercise(exerciseId, exerciseName);
-            },
+              )
+              .deleteExercise(exerciseId, exerciseName),
     );
   }
 }

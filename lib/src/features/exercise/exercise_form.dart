@@ -140,6 +140,7 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
           ),
         ),
         ExerciseFormSaveButton(
+          isDisabled: loadingData,
           ExerciseModel(
             id: idController.text,
             name: nameController.text,
@@ -156,10 +157,12 @@ class _ExerciseFormState extends ConsumerState<ExerciseForm> {
             description: descriptionController.text,
           ),
         ),
-        ExerciseFormDeleteButton(
-          exerciseId: widget.exerciseId,
-          exerciseName: nameController.text,
-        ),
+        if (widget.exerciseId.isNotEmpty && widget.exerciseId != 'new')
+          ExerciseFormDeleteButton(
+            isDisabled: loadingData,
+            exerciseId: widget.exerciseId,
+            exerciseName: nameController.text,
+          ),
       ].withSpaceBetween(height: EzConstLayout.spacerSmall),
     );
   }
