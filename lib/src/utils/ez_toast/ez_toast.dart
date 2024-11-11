@@ -28,7 +28,7 @@ class EzToast {
       title: Text(
         title ?? _mapEzToastType(type).name.toCapitalized(),
       ),
-      description: Text(description),
+      description: SelectableText(description),
       alignment: Alignment.bottomRight,
       autoCloseDuration: const Duration(seconds: 4),
       applyBlurEffect: false,
