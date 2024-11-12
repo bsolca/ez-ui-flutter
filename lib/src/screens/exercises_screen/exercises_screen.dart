@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:ez_fit_app/src/features/exercise/controller/exercise_list_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/exercise/exercises_table.dart';
+import 'package:ez_fit_app/src/features/exercise/exercise_table.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
@@ -84,7 +84,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
           ),
           Expanded(
             child: exercisesStream.when(
-              data: (exercises) => ExercisesTable(
+              data: (exercises) => ExerciseTable(
                 exercises: exercises.where((e) {
                   bool isIn(String? value) =>
                       value?.toLowerCase().contains(
@@ -103,7 +103,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                 dataGridController: dataGridController,
                 searchText: _searchText,
               ),
-              loading: ExercisesTable.loading,
+              loading: ExerciseTable.loading,
               error: (error, stack) => Center(child: Text('Error: $error')),
             ),
           ),

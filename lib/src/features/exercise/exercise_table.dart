@@ -12,16 +12,16 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 /// A [SfDataGrid] that displays a list of exercises.
-class ExercisesTable extends ConsumerStatefulWidget {
-  /// Creates an [ExercisesTable] widget.
-  const ExercisesTable({
+class ExerciseTable extends ConsumerStatefulWidget {
+  /// Creates an [ExerciseTable] widget.
+  const ExerciseTable({
     super.key,
     required this.exercises,
     required this.dataGridController,
     required this.searchText,
   }) : isLoading = false;
 
-  ExercisesTable.loading({super.key})
+  ExerciseTable.loading({super.key})
       : isLoading = true,
         exercises = const [],
         dataGridController = DataGridController(),
@@ -39,10 +39,10 @@ class ExercisesTable extends ConsumerStatefulWidget {
   final bool isLoading;
 
   @override
-  ConsumerState<ExercisesTable> createState() => _ExercisesTableState();
+  ConsumerState<ExerciseTable> createState() => _ExerciseTableState();
 }
 
-class _ExercisesTableState extends ConsumerState<ExercisesTable> {
+class _ExerciseTableState extends ConsumerState<ExerciseTable> {
   final Map<String, double> columnWidths = {};
 
   @override
