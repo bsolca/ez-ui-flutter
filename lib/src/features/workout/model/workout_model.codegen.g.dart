@@ -11,9 +11,7 @@ _$WorkoutModelImpl _$$WorkoutModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      stepIds:
-          (json['stepIds'] as List<dynamic>).map((e) => e as String).toList(),
+      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$WorkoutModelImplToJson(_$WorkoutModelImpl instance) =>
@@ -22,5 +20,4 @@ Map<String, dynamic> _$$WorkoutModelImplToJson(_$WorkoutModelImpl instance) =>
       'name': instance.name,
       'description': instance.description,
       'tags': instance.tags,
-      'stepIds': instance.stepIds,
     };

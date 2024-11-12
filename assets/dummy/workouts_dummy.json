@@ -1,16 +1,52 @@
 [
   {
-    "id": "workout1",
+    "id": "workout_001",
     "name": "Full Body Strength",
-    "description": "A full-body workout focused on strength and endurance.",
-    "tags": ["strength", "endurance", "full body"],
-    "stepIds": ["step1", "step2"]
+    "description": "A full-body workout focusing on strength development.",
+    "tags": [
+      "strength",
+      "full-body",
+      "beginner"
+    ]
   },
   {
-    "id": "workout2",
-    "name": "Upper Body Blast",
-    "description": "An intense upper-body workout.",
-    "tags": ["upper body", "strength"],
-    "stepIds": ["step1"]
+    "id": "workout_002",
+    "name": "Cardio Endurance",
+    "description": "A high-intensity cardio workout to boost endurance.",
+    "tags": [
+      "cardio",
+      "endurance",
+      "intermediate"
+    ]
+  },
+  {
+    "id": "workout_003",
+    "name": "HIIT Blast",
+    "description": "A high-intensity interval training session for fat loss.",
+    "tags": [
+      "HIIT",
+      "fat-loss",
+      "advanced"
+    ]
+  },
+  {
+    "id": "workout_004",
+    "name": "Yoga Flexibility",
+    "description": "Enhance your flexibility and balance with this yoga session.",
+    "tags": [
+      "yoga",
+      "flexibility",
+      "all-levels"
+    ]
+  },
+  {
+    "id": "workout_005",
+    "name": "Core Stability",
+    "description": "Strengthen your core muscles with targeted exercises.",
+    "tags": [
+      "core",
+      "stability",
+      "intermediate"
+    ]
   }
 ]

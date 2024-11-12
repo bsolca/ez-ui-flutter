@@ -57,7 +57,6 @@ class _WorkoutTableState extends ConsumerState<WorkoutTable> {
                 name: faker.lorem.words(2).join(' '),
                 description: faker.lorem.sentences(2).join(' '),
                 tags: faker.lorem.words(3),
-                stepIds: [],
               );
             })
           : widget.workouts,
@@ -181,7 +180,7 @@ class _WorkoutDataSource extends DataGridSource {
                     case WorkoutTableColumnEnum.tags:
                       return DataGridCell<String>(
                         columnName: column.name,
-                        value: workout.tags?.join(', '),
+                        value: workout.tags.join(', '),
                       );
                     case WorkoutTableColumnEnum.description:
                       return DataGridCell<String>(

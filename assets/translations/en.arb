@@ -96,6 +96,18 @@
   "workouts": "Workouts",
   "addWorkout": "Add Workout",
   "noWorkoutsFound": "No workouts found.",
+  "workoutFormHeader": "Workout information",
+  "workoutFormName": "Name",
+  "workoutFormNameDescription": "The more descriptive the name, the easier it is to find.",
+  "workoutFormNameHint": "Full Body Strength",
+  "workoutFormTags": "Tags",
+  "workoutFormTagsDescription": "Tags separated by commas",
+  "workoutFormTagsHint": "Strength, Endurance, Full Body, ...",
+  "workoutFormDescription": "Description",
+  "workoutFormDescriptionDescription": "Describe the workout in a few words",
+  "workoutFormDescriptionHint": "A full-body workout focused on strength and endurance.",
+  "workoutFormStepsHeader": "Steps",
+  "workoutDelete": "Delete Workout",
   "@_end__WORKOUT": {},
   "sortByLanguage": "Sort by language"
 }

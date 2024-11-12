@@ -11,11 +11,12 @@ class WorkoutStepModel with _$WorkoutStepModel {
   /// Workout step model to define each phase in a workout.
   const factory WorkoutStepModel({
     required String id, // Unique identifier for the step
+    required String workoutId, // ID of the workout this step belongs to
     required String name, // Name of the step, e.g., "Round 1"
-    String? description, // Optional description for this step
+    required String? description, // Optional description for this step
     required int setCount, // Number of times to repeat this step
-    DurationModel? restTime, // Optional rest time after completing this step
-    required List<String> workoutExerciseIds,
+    required DurationModel?
+        restTime, // Optional rest time after completing this step
   }) = _WorkoutStepModel;
 
   /// Creates a new workout step model from a JSON map.

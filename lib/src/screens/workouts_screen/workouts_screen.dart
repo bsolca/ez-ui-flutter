@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ez_fit_app/src/features/workout/controllers/workout_list_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout/controller/workout_list_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/workout_table.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
@@ -93,14 +93,12 @@ class _WorkoutsScreenState extends ConsumerState<WorkoutsScreen> {
                       false;
                   var isInTags = false;
 
-                  if (w.tags != null) {
-                    for (final tag in w.tags!) {
-                      if (tag
-                          .toLowerCase()
-                          .contains(_searchText.toLowerCase())) {
-                        isInTags = true;
-                        break;
-                      }
+                  for (final tag in w.tags) {
+                    if (tag
+                        .toLowerCase()
+                        .contains(_searchText.toLowerCase())) {
+                      isInTags = true;
+                      break;
                     }
                   }
 
@@ -110,7 +108,9 @@ class _WorkoutsScreenState extends ConsumerState<WorkoutsScreen> {
                 searchText: _searchText,
               ),
               loading: WorkoutTable.loading,
-              error: (error, stack) => Center(child: Text('Error: $error')),
+              error: (error, stack) => Center(
+                child: SelectableText('Error: $error'),
+              ),
             ),
           ),
         ].withSpaceBetween(

@@ -22,15 +22,15 @@ WorkoutStepModel _$WorkoutStepModelFromJson(Map<String, dynamic> json) {
 mixin _$WorkoutStepModel {
   String get id =>
       throw _privateConstructorUsedError; // Unique identifier for the step
+  String get workoutId =>
+      throw _privateConstructorUsedError; // ID of the workout this step belongs to
   String get name =>
       throw _privateConstructorUsedError; // Name of the step, e.g., "Round 1"
   String? get description =>
       throw _privateConstructorUsedError; // Optional description for this step
   int get setCount =>
       throw _privateConstructorUsedError; // Number of times to repeat this step
-  DurationModel? get restTime =>
-      throw _privateConstructorUsedError; // Optional rest time after completing this step
-  List<String> get workoutExerciseIds => throw _privateConstructorUsedError;
+  DurationModel? get restTime => throw _privateConstructorUsedError;
 
   /// Serializes this WorkoutStepModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,11 +50,11 @@ abstract class $WorkoutStepModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String workoutId,
       String name,
       String? description,
       int setCount,
-      DurationModel? restTime,
-      List<String> workoutExerciseIds});
+      DurationModel? restTime});
 
   $DurationModelCopyWith<$Res>? get restTime;
 }
@@ -75,16 +75,20 @@ class _$WorkoutStepModelCopyWithImpl<$Res, $Val extends WorkoutStepModel>
   @override
   $Res call({
     Object? id = null,
+    Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
     Object? setCount = null,
     Object? restTime = freezed,
-    Object? workoutExerciseIds = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      workoutId: null == workoutId
+          ? _value.workoutId
+          : workoutId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -102,10 +106,6 @@ class _$WorkoutStepModelCopyWithImpl<$Res, $Val extends WorkoutStepModel>
           ? _value.restTime
           : restTime // ignore: cast_nullable_to_non_nullable
               as DurationModel?,
-      workoutExerciseIds: null == workoutExerciseIds
-          ? _value.workoutExerciseIds
-          : workoutExerciseIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ) as $Val);
   }
 
@@ -134,11 +134,11 @@ abstract class _$$WorkoutStepModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      String workoutId,
       String name,
       String? description,
       int setCount,
-      DurationModel? restTime,
-      List<String> workoutExerciseIds});
+      DurationModel? restTime});
 
   @override
   $DurationModelCopyWith<$Res>? get restTime;
@@ -158,16 +158,20 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
     Object? setCount = null,
     Object? restTime = freezed,
-    Object? workoutExerciseIds = null,
   }) {
     return _then(_$WorkoutStepModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      workoutId: null == workoutId
+          ? _value.workoutId
+          : workoutId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -185,10 +189,6 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
           ? _value.restTime
           : restTime // ignore: cast_nullable_to_non_nullable
               as DurationModel?,
-      workoutExerciseIds: null == workoutExerciseIds
-          ? _value._workoutExerciseIds
-          : workoutExerciseIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ));
   }
 }
@@ -198,12 +198,11 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
 class _$WorkoutStepModelImpl implements _WorkoutStepModel {
   const _$WorkoutStepModelImpl(
       {required this.id,
+      required this.workoutId,
       required this.name,
-      this.description,
+      required this.description,
       required this.setCount,
-      this.restTime,
-      required final List<String> workoutExerciseIds})
-      : _workoutExerciseIds = workoutExerciseIds;
+      required this.restTime});
 
   factory _$WorkoutStepModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkoutStepModelImplFromJson(json);
@@ -211,6 +210,9 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
   @override
   final String id;
 // Unique identifier for the step
+  @override
+  final String workoutId;
+// ID of the workout this step belongs to
   @override
   final String name;
 // Name of the step, e.g., "Round 1"
@@ -222,20 +224,10 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
 // Number of times to repeat this step
   @override
   final DurationModel? restTime;
-// Optional rest time after completing this step
-  final List<String> _workoutExerciseIds;
-// Optional rest time after completing this step
-  @override
-  List<String> get workoutExerciseIds {
-    if (_workoutExerciseIds is EqualUnmodifiableListView)
-      return _workoutExerciseIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_workoutExerciseIds);
-  }
 
   @override
   String toString() {
-    return 'WorkoutStepModel(id: $id, name: $name, description: $description, setCount: $setCount, restTime: $restTime, workoutExerciseIds: $workoutExerciseIds)';
+    return 'WorkoutStepModel(id: $id, workoutId: $workoutId, name: $name, description: $description, setCount: $setCount, restTime: $restTime)';
   }
 
   @override
@@ -244,21 +236,21 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
         (other.runtimeType == runtimeType &&
             other is _$WorkoutStepModelImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.workoutId, workoutId) ||
+                other.workoutId == workoutId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.setCount, setCount) ||
                 other.setCount == setCount) &&
             (identical(other.restTime, restTime) ||
-                other.restTime == restTime) &&
-            const DeepCollectionEquality()
-                .equals(other._workoutExerciseIds, _workoutExerciseIds));
+                other.restTime == restTime));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, setCount,
-      restTime, const DeepCollectionEquality().hash(_workoutExerciseIds));
+  int get hashCode => Object.hash(
+      runtimeType, id, workoutId, name, description, setCount, restTime);
 
   /// Create a copy of WorkoutStepModel
   /// with the given fields replaced by the non-null parameter values.
@@ -280,11 +272,11 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
 abstract class _WorkoutStepModel implements WorkoutStepModel {
   const factory _WorkoutStepModel(
       {required final String id,
+      required final String workoutId,
       required final String name,
-      final String? description,
+      required final String? description,
       required final int setCount,
-      final DurationModel? restTime,
-      required final List<String> workoutExerciseIds}) = _$WorkoutStepModelImpl;
+      required final DurationModel? restTime}) = _$WorkoutStepModelImpl;
 
   factory _WorkoutStepModel.fromJson(Map<String, dynamic> json) =
       _$WorkoutStepModelImpl.fromJson;
@@ -292,15 +284,15 @@ abstract class _WorkoutStepModel implements WorkoutStepModel {
   @override
   String get id; // Unique identifier for the step
   @override
+  String get workoutId; // ID of the workout this step belongs to
+  @override
   String get name; // Name of the step, e.g., "Round 1"
   @override
   String? get description; // Optional description for this step
   @override
   int get setCount; // Number of times to repeat this step
   @override
-  DurationModel? get restTime; // Optional rest time after completing this step
-  @override
-  List<String> get workoutExerciseIds;
+  DurationModel? get restTime;
 
   /// Create a copy of WorkoutStepModel
   /// with the given fields replaced by the non-null parameter values.

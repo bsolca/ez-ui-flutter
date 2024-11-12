@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:ez_fit_app/src/features/workout/data/workout_repository.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/services.dart';
 
 class WorkoutRepositoryDummy implements WorkoutRepository {
@@ -14,7 +15,7 @@ class WorkoutRepositoryDummy implements WorkoutRepository {
 
   @override
   Future<List<WorkoutModel>> getWorkouts() async {
-    await Future<void>.delayed(const Duration(seconds: 1)); // Simulated delay
+    await Future<void>.delayed(EzConstValue.asyncDuration);
     try {
       final response =
           await rootBundle.loadString('assets/dummy/workouts_dummy.json');
@@ -24,10 +25,10 @@ class WorkoutRepositoryDummy implements WorkoutRepository {
           if (e is Map<String, dynamic>) {
             return WorkoutModel.fromJson(e);
           }
-          throw Exception('Invalid workout data');
+          throw Exception('Invalid workout data (not Map<String, dynamic>)');
         }).toList();
       }
-      throw Exception('Invalid workout data');
+      throw Exception('Invalid workout data it is not a list');
     } catch (e) {
       throw Exception('Failed to load workouts dummy: $e');
     }

@@ -358,14 +358,14 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
   const _$WorkoutExerciseModelImpl(
       {required this.id,
       required this.exerciseId,
-      this.reps,
-      this.duration,
-      this.load,
-      this.restTimeBetweenSets,
-      this.tempo,
-      this.distance,
-      this.intensity,
-      this.customNotes});
+      required this.reps,
+      required this.duration,
+      required this.load,
+      required this.restTimeBetweenSets,
+      required this.tempo,
+      required this.distance,
+      required this.intensity,
+      required this.customNotes});
 
   factory _$WorkoutExerciseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkoutExerciseModelImplFromJson(json);
@@ -455,14 +455,14 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
   const factory _WorkoutExerciseModel(
       {required final String id,
       required final String exerciseId,
-      final RepsModel? reps,
-      final DurationModel? duration,
-      final LoadModel? load,
-      final DurationModel? restTimeBetweenSets,
-      final TempoModel? tempo,
-      final DistanceModel? distance,
-      final IntensityModel? intensity,
-      final String? customNotes}) = _$WorkoutExerciseModelImpl;
+      required final RepsModel? reps,
+      required final DurationModel? duration,
+      required final LoadModel? load,
+      required final DurationModel? restTimeBetweenSets,
+      required final TempoModel? tempo,
+      required final DistanceModel? distance,
+      required final IntensityModel? intensity,
+      required final String? customNotes}) = _$WorkoutExerciseModelImpl;
 
   factory _WorkoutExerciseModel.fromJson(Map<String, dynamic> json) =
       _$WorkoutExerciseModelImpl.fromJson;

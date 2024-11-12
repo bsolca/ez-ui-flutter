@@ -10,9 +10,8 @@ class WorkoutModel with _$WorkoutModel {
   const factory WorkoutModel({
     required String id, // Unique identifier for the workout
     required String name, // Name of the workout
-    String? description, // Optional description for the workout
-    List<String>? tags, // Optional tags for categorization
-    required List<String> stepIds, // WorkoutStepModel IDs in the workout
+    required String? description, // Optional description for the workout
+    required List<String> tags,
   }) = _WorkoutModel;
 
   /// Creates a new workout model from a JSON map.

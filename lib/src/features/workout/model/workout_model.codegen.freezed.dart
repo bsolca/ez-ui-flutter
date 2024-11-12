@@ -25,9 +25,7 @@ mixin _$WorkoutModel {
   String get name => throw _privateConstructorUsedError; // Name of the workout
   String? get description =>
       throw _privateConstructorUsedError; // Optional description for the workout
-  List<String>? get tags =>
-      throw _privateConstructorUsedError; // Optional tags for categorization
-  List<String> get stepIds => throw _privateConstructorUsedError;
+  List<String> get tags => throw _privateConstructorUsedError;
 
   /// Serializes this WorkoutModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,12 +43,7 @@ abstract class $WorkoutModelCopyWith<$Res> {
           WorkoutModel value, $Res Function(WorkoutModel) then) =
       _$WorkoutModelCopyWithImpl<$Res, WorkoutModel>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String? description,
-      List<String>? tags,
-      List<String> stepIds});
+  $Res call({String id, String name, String? description, List<String> tags});
 }
 
 /// @nodoc
@@ -71,8 +64,7 @@ class _$WorkoutModelCopyWithImpl<$Res, $Val extends WorkoutModel>
     Object? id = null,
     Object? name = null,
     Object? description = freezed,
-    Object? tags = freezed,
-    Object? stepIds = null,
+    Object? tags = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,13 +79,9 @@ class _$WorkoutModelCopyWithImpl<$Res, $Val extends WorkoutModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      tags: freezed == tags
+      tags: null == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      stepIds: null == stepIds
-          ? _value.stepIds
-          : stepIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ) as $Val);
   }
@@ -107,12 +95,7 @@ abstract class _$$WorkoutModelImplCopyWith<$Res>
       __$$WorkoutModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String? description,
-      List<String>? tags,
-      List<String> stepIds});
+  $Res call({String id, String name, String? description, List<String> tags});
 }
 
 /// @nodoc
@@ -131,8 +114,7 @@ class __$$WorkoutModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? description = freezed,
-    Object? tags = freezed,
-    Object? stepIds = null,
+    Object? tags = null,
   }) {
     return _then(_$WorkoutModelImpl(
       id: null == id
@@ -147,13 +129,9 @@ class __$$WorkoutModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      tags: freezed == tags
+      tags: null == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      stepIds: null == stepIds
-          ? _value._stepIds
-          : stepIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -165,11 +143,9 @@ class _$WorkoutModelImpl implements _WorkoutModel {
   const _$WorkoutModelImpl(
       {required this.id,
       required this.name,
-      this.description,
-      final List<String>? tags,
-      required final List<String> stepIds})
-      : _tags = tags,
-        _stepIds = stepIds;
+      required this.description,
+      required final List<String> tags})
+      : _tags = tags;
 
   factory _$WorkoutModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WorkoutModelImplFromJson(json);
@@ -183,30 +159,18 @@ class _$WorkoutModelImpl implements _WorkoutModel {
   @override
   final String? description;
 // Optional description for the workout
-  final List<String>? _tags;
+  final List<String> _tags;
 // Optional description for the workout
   @override
-  List<String>? get tags {
-    final value = _tags;
-    if (value == null) return null;
+  List<String> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-// Optional tags for categorization
-  final List<String> _stepIds;
-// Optional tags for categorization
-  @override
-  List<String> get stepIds {
-    if (_stepIds is EqualUnmodifiableListView) return _stepIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stepIds);
+    return EqualUnmodifiableListView(_tags);
   }
 
   @override
   String toString() {
-    return 'WorkoutModel(id: $id, name: $name, description: $description, tags: $tags, stepIds: $stepIds)';
+    return 'WorkoutModel(id: $id, name: $name, description: $description, tags: $tags)';
   }
 
   @override
@@ -218,19 +182,13 @@ class _$WorkoutModelImpl implements _WorkoutModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._tags, _tags) &&
-            const DeepCollectionEquality().equals(other._stepIds, _stepIds));
+            const DeepCollectionEquality().equals(other._tags, _tags));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      const DeepCollectionEquality().hash(_tags),
-      const DeepCollectionEquality().hash(_stepIds));
+  int get hashCode => Object.hash(runtimeType, id, name, description,
+      const DeepCollectionEquality().hash(_tags));
 
   /// Create a copy of WorkoutModel
   /// with the given fields replaced by the non-null parameter values.
@@ -252,9 +210,8 @@ abstract class _WorkoutModel implements WorkoutModel {
   const factory _WorkoutModel(
       {required final String id,
       required final String name,
-      final String? description,
-      final List<String>? tags,
-      required final List<String> stepIds}) = _$WorkoutModelImpl;
+      required final String? description,
+      required final List<String> tags}) = _$WorkoutModelImpl;
 
   factory _WorkoutModel.fromJson(Map<String, dynamic> json) =
       _$WorkoutModelImpl.fromJson;
@@ -266,9 +223,7 @@ abstract class _WorkoutModel implements WorkoutModel {
   @override
   String? get description; // Optional description for the workout
   @override
-  List<String>? get tags; // Optional tags for categorization
-  @override
-  List<String> get stepIds;
+  List<String> get tags;
 
   /// Create a copy of WorkoutModel
   /// with the given fields replaced by the non-null parameter values.

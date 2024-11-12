@@ -6,7 +6,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'workout_service.codegen.g.dart';
 
 class WorkoutService {
-  const WorkoutService(this._workoutRepository);
+  const WorkoutService({
+    required WorkoutRepository workoutRepository,
+  }) : _workoutRepository = workoutRepository;
 
   final WorkoutRepository _workoutRepository;
 
@@ -33,7 +35,9 @@ class WorkoutService {
 
 @riverpod
 WorkoutService workoutService(Ref ref) {
-  final workoutRepository = ref.watch(workoutRepositoryProvider);
+  final workoutRepo = ref.watch(workoutRepositoryProvider);
 
-  return WorkoutService(workoutRepository);
+  return WorkoutService(
+    workoutRepository: workoutRepo,
+  );
 }

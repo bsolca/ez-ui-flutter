@@ -1,4 +1,5 @@
-import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
+import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout/workout_form.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,15 +14,12 @@ class WorkoutScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Eagerly initialize providers by watching it.
+    ref.watch(workoutStepsControllerProvider(workoutId));
+
     return EzScaffoldBody(
-      child: Column(
-        children: [
-          EzHeader.displayMedium(
-            workoutId == 'new'
-                ? 'Create new workout'
-                : "Workout of id '$workoutId'",
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: WorkoutForm(workoutId: workoutId),
       ),
     );
   }

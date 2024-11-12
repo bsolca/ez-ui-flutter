@@ -1,5 +1,5 @@
-import 'package:ez_fit_app/src/features/workout/data/workout_step_repository_dummy.codegen.dart';
-import 'package:ez_fit_app/src/features/workout/model/workout_step_model.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_step/data/workout_step_repository_dummy.codegen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -9,7 +9,7 @@ part 'workout_step_repository.codegen.g.dart';
 abstract class WorkoutStepRepository {
   Future<WorkoutStepModel?> getWorkoutStepById(String id);
 
-  Future<List<WorkoutStepModel>> getWorkoutSteps();
+  Future<List<WorkoutStepModel>> getWorkoutSteps(String workoutId);
 
   Future<void> updateWorkoutStep(WorkoutStepModel workoutStep);
 

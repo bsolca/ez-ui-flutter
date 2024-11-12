@@ -1,18 +1,100 @@
-[
-  {
-    "id": "step1",
-    "name": "Round 1",
-    "description": "First circuit of the workout.",
-    "setCount": 3,
-    "restTime": {"seconds": 120.0},
-    "workoutExerciseIds": ["exercise1", "exercise2"]
-  },
-  {
-    "id": "step2",
-    "name": "Round 2",
-    "description": "Second circuit focusing on endurance.",
-    "setCount": 2,
-    "restTime": {"seconds": 90.0},
-    "workoutExerciseIds": ["exercise1"]
-  }
-]
+{
+  "steps": [
+    {
+      "id": "step_001",
+      "workoutId": "workout_001",
+      "name": "Warm-Up",
+      "description": "Gentle warm-up to prepare the body.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_002",
+      "workoutId": "workout_001",
+      "name": "Strength Circuit",
+      "description": "Core strength exercises to build muscle.",
+      "setCount": 3,
+      "restTime": { "seconds": 90 }
+    },
+    {
+      "id": "step_003",
+      "workoutId": "workout_001",
+      "name": "Cooldown",
+      "description": "Stretching and relaxation exercises.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_004",
+      "workoutId": "workout_002",
+      "name": "Warm-Up",
+      "description": "Low-intensity exercises to get the heart rate up.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_005",
+      "workoutId": "workout_002",
+      "name": "Interval Circuit",
+      "description": "High-intensity intervals to maximize calorie burn.",
+      "setCount": 4,
+      "restTime": { "seconds": 60 }
+    },
+    {
+      "id": "step_006",
+      "workoutId": "workout_002",
+      "name": "Cooldown",
+      "description": "Stretching to aid recovery.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_007",
+      "workoutId": "workout_003",
+      "name": "Dynamic Warm-Up",
+      "description": "Prepare the body with dynamic movements.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_008",
+      "workoutId": "workout_003",
+      "name": "HIIT Circuit",
+      "description": "Intense exercises with short rest periods.",
+      "setCount": 5,
+      "restTime": { "seconds": 45 }
+    },
+    {
+      "id": "step_009",
+      "workoutId": "workout_003",
+      "name": "Final Burn",
+      "description": "Push your limits with the final set of exercises.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_010",
+      "workoutId": "workout_004",
+      "name": "Yoga Session",
+      "description": "A series of yoga poses to enhance flexibility.",
+      "setCount": 1,
+      "restTime": null
+    },
+    {
+      "id": "step_011",
+      "workoutId": "workout_005",
+      "name": "Core Activation",
+      "description": "Exercises to activate and engage core muscles.",
+      "setCount": 2,
+      "restTime": { "seconds": 60 }
+    },
+    {
+      "id": "step_012",
+      "workoutId": "workout_005",
+      "name": "Core Strengthening",
+      "description": "Targeted exercises to build core strength.",
+      "setCount": 3,
+      "restTime": { "seconds": 60 }
+    }
+  ]
+}
