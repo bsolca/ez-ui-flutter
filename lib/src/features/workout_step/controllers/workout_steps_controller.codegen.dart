@@ -19,23 +19,26 @@ class WorkoutStepsController extends _$WorkoutStepsController {
 
   /// Add a new step
   Future<void> addStep(WorkoutStepModel step) async {
-    state = AsyncValue.data([...state.value!, step]);
+    final steps = state.value ?? [];
+    state = AsyncValue.data([...steps, step]);
     await ref.read(workoutStepServiceProvider).saveWorkoutStep(step);
   }
 
   /// Edit an existing step
   Future<void> editStep(WorkoutStepModel updatedStep) async {
+    final steps = state.value ?? [];
     state = AsyncValue.data([
-      for (final step in state.value!)
-        if (step.id == updatedStep.id) updatedStep else step
+      for (final step in steps)
+        if (step.id == updatedStep.id) updatedStep else step,
     ]);
     await ref.read(workoutStepServiceProvider).updateWorkoutStep(updatedStep);
   }
 
   /// Remove a step
   Future<void> removeStep(String stepId) async {
+    final steps = state.value ?? [];
     state = AsyncValue.data(
-      state.value!.where((step) => step.id != stepId).toList(),
+      steps.where((step) => step.id != stepId).toList(),
     );
     await ref.read(workoutStepServiceProvider).deleteWorkoutStep(stepId);
   }
