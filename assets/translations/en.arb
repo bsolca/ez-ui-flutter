@@ -92,5 +92,10 @@
   "authScreenLoginSuccess": "Login Successful",
   "authScreenRegistrationSuccess": "Registration Successful",
   "@_end__AUTH_SCREEN": {},
+  "@_WORKOUT": {},
+  "workouts": "Workouts",
+  "addWorkout": "Add Workout",
+  "noWorkoutsFound": "No workouts found.",
+  "@_end__WORKOUT": {},
   "sortByLanguage": "Sort by language"
 }

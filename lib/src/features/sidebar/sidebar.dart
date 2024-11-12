@@ -100,6 +100,11 @@ class Sidebar extends ConsumerWidget {
           icon: Icons.fitness_center_outlined,
           onTap: () => context.goNamed(AppRoute.exercises.name),
         ),
+        EzSidebarItemData.regular(
+          text: ref.loc.workouts,
+          icon: Icons.fitness_center_outlined,
+          onTap: () => context.goNamed(AppRoute.workouts.name),
+        ),
         const EzSidebarItemData.heading(text: 'Tools'),
         EzSidebarItemData.regular(
           text: 'Color Scheme Preview',

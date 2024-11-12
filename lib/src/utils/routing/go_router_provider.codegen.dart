@@ -8,6 +8,7 @@ import 'package:ez_fit_app/src/screens/exercises_screen/exercises_screen.dart';
 import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
 import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
 import 'package:ez_fit_app/src/screens/users_screen/users_screen.dart';
+import 'package:ez_fit_app/src/screens/workouts_screen/workouts_screen.dart';
 import 'package:ez_fit_app/src/shared/ez_app_scaffold/ez_app_scaffold.dart';
 import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
@@ -28,8 +29,8 @@ part 'go_router_provider.codegen.g.dart';
 enum AppRoute {
   auth,
   colorSchemePreview,
-  exercises,
   exercise,
+  exercises,
   home,
   settingsNotifications,
   settingsPlanAndBilling,
@@ -40,6 +41,8 @@ enum AppRoute {
   usersGroups,
   usersUser,
   usersUsers,
+  workout,
+  workouts,
 }
 
 /// Provider for [GoRouter].
@@ -245,6 +248,12 @@ Raw<GoRouter> goRouter(Ref ref) {
                 child: ExerciseScreen(exerciseId: id ?? ''),
               );
             },
+          ),
+          GoRoutePageScaffold(
+            path: '/workouts',
+            name: AppRoute.workouts.name,
+            parentNavigatorKey: shellNavigatorKey,
+            body: const WorkoutsScreen(),
           ),
           // ColorSchemePreview
           GoRoutePageScaffold(
