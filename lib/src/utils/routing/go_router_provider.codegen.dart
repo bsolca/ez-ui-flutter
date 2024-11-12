@@ -8,6 +8,7 @@ import 'package:ez_fit_app/src/screens/exercises_screen/exercises_screen.dart';
 import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
 import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
 import 'package:ez_fit_app/src/screens/users_screen/users_screen.dart';
+import 'package:ez_fit_app/src/screens/workout/workout_screen.dart';
 import 'package:ez_fit_app/src/screens/workouts_screen/workouts_screen.dart';
 import 'package:ez_fit_app/src/shared/ez_app_scaffold/ez_app_scaffold.dart';
 import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
@@ -254,6 +255,18 @@ Raw<GoRouter> goRouter(Ref ref) {
             name: AppRoute.workouts.name,
             parentNavigatorKey: shellNavigatorKey,
             body: const WorkoutsScreen(),
+          ),
+          // workout with id
+          GoRoute(
+            path: '/workouts/:id',
+            name: AppRoute.workout.name,
+            pageBuilder: (context, state) {
+              final id = state.pathParameters['id'];
+              return NoTransitionPage(
+                key: ValueKey('${AppRoute.workouts.name}/$id'),
+                child: WorkoutScreen(workoutId: id ?? ''),
+              );
+            },
           ),
           // ColorSchemePreview
           GoRoutePageScaffold(
