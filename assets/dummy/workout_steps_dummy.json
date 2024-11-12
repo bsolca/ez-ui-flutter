@@ -1,0 +1,18 @@
+[
+  {
+    "id": "step1",
+    "name": "Round 1",
+    "description": "First circuit of the workout.",
+    "setCount": 3,
+    "restTime": {"seconds": 120.0},
+    "workoutExerciseIds": ["exercise1", "exercise2"]
+  },
+  {
+    "id": "step2",
+    "name": "Round 2",
+    "description": "Second circuit focusing on endurance.",
+    "setCount": 2,
+    "restTime": {"seconds": 90.0},
+    "workoutExerciseIds": ["exercise1"]
+  }
+]

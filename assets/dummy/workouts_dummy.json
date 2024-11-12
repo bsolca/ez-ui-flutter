@@ -1,0 +1,16 @@
+[
+  {
+    "id": "workout1",
+    "name": "Full Body Strength",
+    "description": "A full-body workout focused on strength and endurance.",
+    "tags": ["strength", "endurance", "full body"],
+    "stepIds": ["step1", "step2"]
+  },
+  {
+    "id": "workout2",
+    "name": "Upper Body Blast",
+    "description": "An intense upper-body workout.",
+    "tags": ["upper body", "strength"],
+    "stepIds": ["step1"]
+  }
+]

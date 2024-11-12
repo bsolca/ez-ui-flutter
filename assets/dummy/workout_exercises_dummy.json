@@ -1,0 +1,26 @@
+[
+  {
+    "id": "exercise1",
+    "exerciseId": "coreExercise1",
+    "reps": {"count": 10},
+    "duration": {"seconds": 60.0},
+    "load": {"amount": 20.0, "unit": "kg"},
+    "restTimeBetweenSets": {"seconds": 30.0},
+    "tempo": {"eccentric": 2.0, "pause": 1.0, "concentric": 2.0},
+    "distance": {"value": 200.0, "unit": "meters"},
+    "intensity": {"type": "rpe", "value": 7},
+    "customNotes": "Keep core tight throughout."
+  },
+  {
+    "id": "exercise2",
+    "exerciseId": "coreExercise2",
+    "reps": {"count": 15},
+    "duration": {"seconds": 45.0},
+    "load": {"amount": 15.0, "unit": "lbs"},
+    "restTimeBetweenSets": {"seconds": 20.0},
+    "tempo": {"eccentric": 3.0, "pause": 0.5, "concentric": 1.5},
+    "distance": null,
+    "intensity": {"type": "zone", "value": 3},
+    "customNotes": "Focus on control and form."
+  }
+]
