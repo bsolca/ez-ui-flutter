@@ -22,7 +22,7 @@ class WorkoutExerciseFormDeleteButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Watching the loading state of the WorkoutExerciseFormDeleteController
-    final deleteState = ref.watch(workoutExerciseControllerProvider);
+    final deleteState = ref.watch(workoutExerciseControllerProvider(workoutId));
     final isGeneralLoading = ref.watch(loadingControllerProvider);
     final isLoading = deleteState.isLoading;
 

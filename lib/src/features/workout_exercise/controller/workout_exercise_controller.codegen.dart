@@ -10,8 +10,15 @@ part 'workout_exercise_controller.codegen.g.dart';
 @riverpod
 class WorkoutExerciseController extends _$WorkoutExerciseController {
   @override
-  Future<void> build() async {
-    // Initial setup if needed; otherwise, no action needed on build.
+  Future<WorkoutExerciseModel?> build(String exerciseId) async {
+    state = const AsyncValue.loading();
+
+    state = await AsyncValue.guard(() async {
+      final workoutExerciseService = ref.read(workoutExerciseServiceProvider);
+      return workoutExerciseService.getWorkoutExerciseById(exerciseId);
+    });
+
+    return state.value;
   }
 
   /// Save or update a specific workout exercise.
@@ -45,9 +52,8 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
   /// Delete a specific workout exercise.
   Future<void> deleteWorkoutExercise(String workoutExerciseId) async {
     final workoutExerciseService = ref.read(workoutExerciseServiceProvider);
-    final successMessage = ref
-        .read(appLocalProvider)
-        .successfullyDeleted(workoutExerciseId);
+    final successMessage =
+        ref.read(appLocalProvider).successfullyDeleted(workoutExerciseId);
 
     state = const AsyncValue.loading();
     state = await EzAsyncValue.guard(

@@ -21,7 +21,9 @@ class WorkoutExerciseFormSaveButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Watching the loading state of the WorkoutExerciseSaveController
-    final saveState = ref.watch(workoutExerciseControllerProvider);
+    final saveState = ref.watch(
+      workoutExerciseControllerProvider(workoutExercise.id),
+    );
     final isGeneralLoading = ref.watch(loadingControllerProvider);
     final isLoading = saveState.isLoading;
 
@@ -33,7 +35,7 @@ class WorkoutExerciseFormSaveButton extends ConsumerWidget {
           : () async {
               if (formKey.currentState?.validate() != true) return;
               final controller = ref.read(
-                workoutExerciseControllerProvider.notifier,
+                workoutExerciseControllerProvider(workoutExercise.id).notifier,
               );
               await controller.saveWorkoutExercise(workoutExercise);
             },

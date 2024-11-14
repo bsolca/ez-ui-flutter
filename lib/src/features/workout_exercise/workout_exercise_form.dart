@@ -47,8 +47,7 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
   @override
   void initState() {
     super.initState();
-    // Logic to load data if editing an existing workout exercise
-    // Implement the logic here to populate the fields if workoutExerciseId is not 'new'
+
   }
 
   @override
