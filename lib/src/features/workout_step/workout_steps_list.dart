@@ -2,7 +2,6 @@ import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_c
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/widgets/workout_step_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
-import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
