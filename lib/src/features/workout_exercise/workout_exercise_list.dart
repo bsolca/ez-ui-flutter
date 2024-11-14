@@ -1,4 +1,6 @@
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,8 +23,19 @@ class WorkoutExerciseList extends ConsumerWidget {
           itemCount: exercises.length,
           itemBuilder: (context, index) {
             final exercise = exercises[index];
-            return ListTile(
-              title: Text(exercise.id),
+            return Padding(
+              padding: index != 0
+                  ? const EdgeInsets.only(
+                      top: EzConstLayout.spacerSmall,
+                    )
+                  : EdgeInsets.zero,
+              child: EzExpansionTile(
+                title: Text(exercise.id),
+                children: [
+                  const Text('Workout Exercise'),
+                  Text(exercise.exerciseId),
+                ],
+              ),
             );
           },
         );
