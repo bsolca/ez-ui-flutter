@@ -16,6 +16,13 @@ class WorkoutExerciseList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final exercises = ref.watch(workoutExerciseListControllerProvider(stepId));
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final tileBgColor = isLight
+        ? Theme.of(context).colorScheme.surfaceContainer
+        : Theme.of(context).colorScheme.surfaceContainerLow;
+    final bgChildrenColor = isLight
+        ? Theme.of(context).colorScheme.surfaceContainerLow
+        : Theme.of(context).colorScheme.surfaceContainer;
 
     return exercises.when(
       data: (exercises) {
@@ -31,6 +38,8 @@ class WorkoutExerciseList extends ConsumerWidget {
                     )
                   : EdgeInsets.zero,
               child: EzExpansionTile(
+                tileBgColor: tileBgColor,
+                bgChildrenColor: bgChildrenColor,
                 title: Text(exercise.id),
                 children: [
                   WorkoutExerciseForm(

@@ -8,6 +8,8 @@ class EzExpansionTile extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.trailing,
+    this.tileBgColor,
+    this.bgChildrenColor,
     required this.children,
   });
 
@@ -15,16 +17,11 @@ class EzExpansionTile extends StatelessWidget {
   final Widget? subtitle;
   final Widget? trailing;
   final List<Widget> children;
+  final Color? tileBgColor;
+  final Color? bgChildrenColor;
 
   @override
   Widget build(BuildContext context) {
-    final isLight = Theme.of(context).brightness == Brightness.light;
-    final tileBgColor = isLight
-        ? Theme.of(context).colorScheme.surfaceContainerHighest
-        : Theme.of(context).colorScheme.surfaceContainerHigh;
-    final bgChildrenColor = isLight
-        ? Theme.of(context).colorScheme.surfaceContainerHigh
-        : Theme.of(context).colorScheme.surfaceContainerHighest;
     return Theme(
       data: Theme.of(context).copyWith(
         splashColor: Colors.transparent,
@@ -41,7 +38,7 @@ class EzExpansionTile extends StatelessWidget {
         subtitle: subtitle,
         trailing: trailing,
         children: [
-          ColoredBox(
+          Container(
             color: bgChildrenColor,
             child: Padding(
               padding: const EdgeInsets.all(

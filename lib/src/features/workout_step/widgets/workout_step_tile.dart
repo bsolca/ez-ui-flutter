@@ -17,9 +17,19 @@ class WorkoutStepTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
+    final tileBgColor = isLight
+        ? Theme.of(context).colorScheme.surfaceContainerHighest
+        : Theme.of(context).colorScheme.surfaceContainerHigh;
+    final bgChildrenColor = isLight
+        ? Theme.of(context).colorScheme.surfaceContainerHigh
+        : Theme.of(context).colorScheme.surfaceContainerHighest;
+
     return EzExpansionTile(
       title: Text(step.name),
       subtitle: Text(step.description ?? ''),
+      tileBgColor: tileBgColor,
+      bgChildrenColor: bgChildrenColor,
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
