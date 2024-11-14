@@ -1,6 +1,7 @@
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_list.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,10 +17,9 @@ class WorkoutStepTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ExpansionTile(
+    return EzExpansionTile(
       title: Text(step.name),
       subtitle: Text(step.description ?? ''),
-      controlAffinity: ListTileControlAffinity.leading,
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

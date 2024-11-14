@@ -1,6 +1,8 @@
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/widgets/workout_step_tile.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -32,9 +34,16 @@ class WorkoutStepsList extends ConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: steps.length,
                 itemBuilder: (context, index) {
-                  return WorkoutStepTile(
-                    workoutId: workoutId,
-                    step: steps[index],
+                  return Padding(
+                    padding: index != steps.length - 1
+                        ? const EdgeInsets.only(
+                            bottom: EzConstLayout.spacerSmall,
+                          )
+                        : EdgeInsets.zero,
+                    child: WorkoutStepTile(
+                      workoutId: workoutId,
+                      step: steps[index],
+                    ),
                   );
                 },
               ),
