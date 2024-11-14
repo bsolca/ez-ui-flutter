@@ -10,7 +10,7 @@ class ExerciseRepositoryDummy implements ExerciseRepository {
   ExerciseRepositoryDummy();
 
   @override
-  Future<ExerciseModel?> getExerciseById(String id) async {
+  Future<ExerciseModel> getExerciseById(String id) async {
     try {
       final exercises = await getExercises();
       return exercises.firstWhere(

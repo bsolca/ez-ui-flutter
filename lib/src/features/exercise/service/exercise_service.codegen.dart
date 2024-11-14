@@ -16,7 +16,7 @@ class ExerciseService {
     return _exerciseRepository.getExercises();
   }
 
-  Future<ExerciseModel?> getExerciseById(String id) async {
+  Future<ExerciseModel> getExerciseById(String id) async {
     return _exerciseRepository.getExerciseById(id);
   }
 

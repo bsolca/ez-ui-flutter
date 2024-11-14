@@ -22,9 +22,11 @@ class WorkoutExerciseForm extends ConsumerStatefulWidget {
   const WorkoutExerciseForm({
     super.key,
     required this.workoutExerciseId,
+    this.isLoading = false,
   });
 
   final String workoutExerciseId;
+  final bool isLoading;
 
   @override
   ConsumerState<WorkoutExerciseForm> createState() =>
@@ -47,7 +49,7 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
   @override
   void initState() {
     super.initState();
-
+    loadingData = widget.isLoading;
   }
 
   @override

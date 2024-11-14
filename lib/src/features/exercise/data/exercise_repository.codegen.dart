@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'exercise_repository.codegen.g.dart';
 
 abstract interface class ExerciseRepository {
-  Future<ExerciseModel?> getExerciseById(String id);
+  Future<ExerciseModel> getExerciseById(String id);
 
   Future<List<ExerciseModel>> getExercises();
 

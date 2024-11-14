@@ -1,6 +1,6 @@
 [
   {
-    "id": "d2c0d566-5957-4df6-9d0b-7dba0c001099",
+    "id": "exercise_001",
     "name": "Push-Up",
     "imageUrl": "https://picsum.photos/seed/picsum/300/300",
     "videoUrl": "https://www.youtube.com/watch?v=_l3ySVKYVJ8",
@@ -12,7 +12,7 @@
     "description": "A bodyweight exercise that targets the chest, shoulders, and triceps."
   },
   {
-    "id": "344d3f51-a379-4382-abf8-cd1e4addb898",
+    "id": "exercise_003",
     "name": "Squat",
     "imageUrl": "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDkyNmNxZzZ2eGxpbXU5bmttbjFtcjhuMXNtcWw1MXQ2eDFodmRmcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/2NF7WDD0oqJRyfmwHK/giphy.gif",
     "videoUrl": "https://www.youtube.com/watch?v=aclHkVaku9U",
@@ -24,7 +24,19 @@
     "description": "A fundamental exercise that strengthens the legs and glutes."
   },
   {
-    "id": "c8f187db-409f-4445-ace2-461b64268115",
+    "id": "exercise_002",
+    "name": "Jump Jack",
+    "imageUrl": "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDkyNmNxZzZ2eGxpbXU5bmttbjFtcjhuMXNtcWw1MXQ2eDFodmRmcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/2NF7WDD0oqJRyfmwHK/giphy.gif",
+    "videoUrl": "https://www.youtube.com/watch?v=aclHkVaku9U",
+    "tags": [
+      "fitness",
+      "cardio",
+      "full body"
+    ],
+    "description": "A full-body exercise that combines jumping and jumping."
+  },
+  {
+    "id": "exercise_015",
     "name": "Plank",
     "imageUrl": "https://www.pexels.com/photo/woman-doing-plank-exercise-4056723/",
     "videoUrl": "https://www.youtube.com/watch?v=pSHjTRCQxIw",
@@ -36,7 +48,7 @@
     "description": "An isometric core exercise that enhances stability and endurance."
   },
   {
-    "id": "0dee21e8-2e6c-4c64-bc89-b313f23ec042",
+    "id": "exercise_016",
     "name": "Burpee",
     "imageUrl": "https://www.pexels.com/photo/man-doing-burpees-1552249/",
     "videoUrl": "https://www.youtube.com/watch?v=TU8QYVW0gDU",
