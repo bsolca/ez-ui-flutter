@@ -45,6 +45,7 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
         } else {
           await workoutExerciseService.updateWorkoutExercise(workoutExercise);
         }
+        return null;
       },
     );
   }
@@ -62,6 +63,7 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
       errorToastMessage: (e) => e.toString(),
       future: () async {
         await workoutExerciseService.deleteWorkoutExercise(workoutExerciseId);
+        return null;
       },
     );
   }
