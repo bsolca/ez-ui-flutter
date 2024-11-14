@@ -26,12 +26,19 @@ class WorkoutExerciseRepositoryDummy implements WorkoutExerciseRepository {
         // Convert each filtered exercise to WorkoutExerciseModel
         return filteredExercises.map((e) {
           if (e is Map<String, dynamic>) {
-            return WorkoutExerciseModel.fromJson(e);
+            try {
+              return WorkoutExerciseModel.fromJson(e);
+            } catch (e) {
+              throw Exception('Failed to parse workout exercise data: $e');
+            }
           }
           throw Exception('Invalid workout exercise data format');
         }).toList();
       }
-      throw Exception('Invalid workout exercise data structure');
+      throw Exception(
+        'Invalid workout exercise data structure '
+        'Expected List<dynamic>, but got ${data.runtimeType}',
+      );
     } catch (e) {
       throw Exception('Failed to load workout exercises dummy: $e');
     }

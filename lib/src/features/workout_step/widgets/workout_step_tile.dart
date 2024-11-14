@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_list.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +50,10 @@ class WorkoutStepTile extends ConsumerWidget {
           ),
         ],
       ),
-      children: const <Widget>[
-        ListTile(title: Text('This is tile number 3')),
+      children: [
+        WorkoutExerciseList(
+          stepId: step.id,
+        ),
       ],
     );
   }

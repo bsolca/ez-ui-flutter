@@ -16,7 +16,7 @@ class WorkoutExerciseService {
     return _workoutExerciseRepository.getWorkoutExercises(stepId);
   }
 
-  Future<void> saveWorkoutExercise(WorkoutExerciseModel exercise) async {
+  Future<void> createWorkoutExercise(WorkoutExerciseModel exercise) async {
     return _workoutExerciseRepository.createWorkoutExercise(exercise);
   }
 

@@ -25,6 +25,7 @@ class EzTextFormField extends ConsumerWidget {
     this.isClearable = false,
     this.maxLines,
     this.disabled = false,
+    this.keyboardType,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -45,6 +46,7 @@ class EzTextFormField extends ConsumerWidget {
     required String this.buttonText,
     required VoidCallback this.onButtonPressed,
     this.disabled = false,
+    this.keyboardType,
   }) : maxLines = 1;
 
   final String hintText;
@@ -62,6 +64,7 @@ class EzTextFormField extends ConsumerWidget {
   final VoidCallback? onButtonPressed;
   final int? maxLines;
   final bool disabled;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -93,6 +96,7 @@ class EzTextFormField extends ConsumerWidget {
         obscureText: obscureText,
         onEditingComplete: onEditingComplete,
         maxLines: maxLines ?? 1,
+        keyboardType: keyboardType,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),

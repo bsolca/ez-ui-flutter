@@ -1,251 +1,319 @@
-{
-  "exercises": [
-    {
-      "id": "exercise_001",
-      "stepId": "step_001",
-      "exerciseId": "exercise_pushups",
-      "reps": { "count": 15 },
-      "duration": null,
-      "load": null,
-      "restTimeBetweenSets": { "seconds": 30 },
-      "tempo": { "up": 2, "down": 2, "hold": 1 },
-      "distance": null,
-      "intensity": { "level": "low" },
-      "customNotes": "Focus on form and breathing."
+[
+  {
+    "id": "exercise_001",
+    "stepId": "step_001",
+    "exerciseId": "exercise_pushups",
+    "reps": {
+      "count": 15
     },
-    {
-      "id": "exercise_002",
-      "stepId": "step_001",
-      "exerciseId": "exercise_jumping_jacks",
-      "reps": null,
-      "duration": { "seconds": 60 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "moderate" },
-      "customNotes": "Maintain a steady pace."
+    "duration": null,
+    "load": null,
+    "restTimeBetweenSets": {
+      "seconds": 30
     },
-    {
-      "id": "exercise_003",
-      "stepId": "step_002",
-      "exerciseId": "exercise_squats",
-      "reps": { "count": 12 },
-      "duration": null,
-      "load": { "weight": 30, "unit": "kg" },
-      "restTimeBetweenSets": { "seconds": 60 },
-      "tempo": { "up": 2, "down": 2 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Keep your back straight and knees aligned."
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Focus on form and breathing."
+  },
+  {
+    "id": "exercise_002",
+    "stepId": "step_001",
+    "exerciseId": "exercise_jumping_jacks",
+    "reps": null,
+    "duration": {
+      "seconds": 60
     },
-    {
-      "id": "exercise_004",
-      "stepId": "step_002",
-      "exerciseId": "exercise_deadlift",
-      "reps": { "count": 10 },
-      "duration": null,
-      "load": { "weight": 40, "unit": "kg" },
-      "restTimeBetweenSets": { "seconds": 60 },
-      "tempo": { "up": 2, "down": 2 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Use controlled movements and engage your core."
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Maintain a steady pace."
+  },
+  {
+    "id": "exercise_003",
+    "stepId": "step_002",
+    "exerciseId": "exercise_squats",
+    "reps": {
+      "count": 12
     },
-    {
-      "id": "exercise_005",
-      "stepId": "step_003",
-      "exerciseId": "exercise_forward_bend",
-      "reps": null,
-      "duration": { "seconds": 60 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "low" },
-      "customNotes": "Hold the stretch and breathe deeply."
+    "duration": null,
+    "load": {
+      "weight": 30,
+      "unit": "kg"
     },
-    {
-      "id": "exercise_006",
-      "stepId": "step_004",
-      "exerciseId": "exercise_high_knees",
-      "reps": null,
-      "duration": { "seconds": 30 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": { "up": 1, "down": 1 },
-      "distance": null,
-      "intensity": { "level": "low" },
-      "customNotes": "Keep your knees high and arms pumping."
+    "restTimeBetweenSets": {
+      "seconds": 60
     },
-    {
-      "id": "exercise_007",
-      "stepId": "step_005",
-      "exerciseId": "exercise_sprints",
-      "reps": null,
-      "duration": { "seconds": 20 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": { "meters": 50 },
-      "intensity": { "level": "high" },
-      "customNotes": "Sprint with maximum effort."
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Keep your back straight and knees aligned."
+  },
+  {
+    "id": "exercise_004",
+    "stepId": "step_002",
+    "exerciseId": "exercise_deadlift",
+    "reps": {
+      "count": 10
     },
-    {
-      "id": "exercise_008",
-      "stepId": "step_005",
-      "exerciseId": "exercise_burpees",
-      "reps": { "count": 10 },
-      "duration": null,
-      "load": null,
-      "restTimeBetweenSets": { "seconds": 30 },
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Maintain explosive movements."
+    "duration": null,
+    "load": {
+      "weight": 40,
+      "unit": "kg"
     },
-    {
-      "id": "exercise_009",
-      "stepId": "step_006",
-      "exerciseId": "exercise_child_pose",
-      "reps": null,
-      "duration": { "seconds": 60 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "low" },
-      "customNotes": "Hold the pose and relax your muscles."
+    "restTimeBetweenSets": {
+      "seconds": 60
     },
-    {
-      "id": "exercise_010",
-      "stepId": "step_007",
-      "exerciseId": "exercise_mountain_climbers",
-      "reps": null,
-      "duration": { "seconds": 45 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": { "up": 1, "down": 1 },
-      "distance": null,
-      "intensity": { "level": "moderate" },
-      "customNotes": "Keep your core engaged."
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Use controlled movements and engage your core."
+  },
+  {
+    "id": "exercise_005",
+    "stepId": "step_003",
+    "exerciseId": "exercise_forward_bend",
+    "reps": null,
+    "duration": {
+      "seconds": 60
     },
-    {
-      "id": "exercise_011",
-      "stepId": "step_007",
-      "exerciseId": "exercise_arm_circles",
-      "reps": null,
-      "duration": { "seconds": 30 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "low" },
-      "customNotes": "Perform both forward and backward circles."
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Hold the stretch and breathe deeply."
+  },
+  {
+    "id": "exercise_006",
+    "stepId": "step_004",
+    "exerciseId": "exercise_high_knees",
+    "reps": null,
+    "duration": {
+      "seconds": 30
     },
-    {
-      "id": "exercise_012",
-      "stepId": "step_008",
-      "exerciseId": "exercise_jump_squats",
-      "reps": { "count": 12 },
-      "duration": null,
-      "load": null,
-      "restTimeBetweenSets": { "seconds": 20 },
-      "tempo": { "up": 1, "down": 1 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Land softly and maintain balance."
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Keep your knees high and arms pumping."
+  },
+  {
+    "id": "exercise_007",
+    "stepId": "step_005",
+    "exerciseId": "exercise_sprints",
+    "reps": null,
+    "duration": {
+      "seconds": 20
     },
-    {
-      "id": "exercise_013",
-      "stepId": "step_008",
-      "exerciseId": "exercise_push_press",
-      "reps": { "count": 10 },
-      "duration": null,
-      "load": { "weight": 20, "unit": "kg" },
-      "restTimeBetweenSets": { "seconds": 20 },
-      "tempo": { "up": 1, "down": 1 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Use your legs to help press the weight."
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": {
+      "meters": 50
     },
-    {
-      "id": "exercise_014",
-      "stepId": "step_008",
-      "exerciseId": "exercise_bicycle_crunches",
-      "reps": { "count": 15 },
-      "duration": null,
-      "load": null,
-      "restTimeBetweenSets": { "seconds": 20 },
-      "tempo": { "up": 2, "down": 2 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Keep a steady pace and focus on your core."
+    "intensity": null,
+    "customNotes": "Sprint with maximum effort."
+  },
+  {
+    "id": "exercise_008",
+    "stepId": "step_005",
+    "exerciseId": "exercise_burpees",
+    "reps": {
+      "count": 10
     },
-    {
-      "id": "exercise_015",
-      "stepId": "step_009",
-      "exerciseId": "exercise_plank",
-      "reps": null,
-      "duration": { "seconds": 90 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "moderate" },
-      "customNotes": "Maintain a straight line from head to heels."
+    "duration": null,
+    "load": null,
+    "restTimeBetweenSets": {
+      "seconds": 30
     },
-    {
-      "id": "exercise_016",
-      "stepId": "step_009",
-      "exerciseId": "exercise_burpees",
-      "reps": { "count": 15 },
-      "duration": null,
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": { "up": 1, "down": 1 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Explode upwards with each burpee."
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Maintain explosive movements."
+  },
+  {
+    "id": "exercise_009",
+    "stepId": "step_006",
+    "exerciseId": "exercise_child_pose",
+    "reps": null,
+    "duration": {
+      "seconds": 60
     },
-    {
-      "id": "exercise_017",
-      "stepId": "step_010",
-      "exerciseId": "exercise_downward_dog",
-      "reps": null,
-      "duration": { "seconds": 60 },
-      "load": null,
-      "restTimeBetweenSets": null,
-      "tempo": null,
-      "distance": null,
-      "intensity": { "level": "low" },
-      "customNotes": "Focus on deep breathing and stretching."
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Hold the pose and relax your muscles."
+  },
+  {
+    "id": "exercise_010",
+    "stepId": "step_007",
+    "exerciseId": "exercise_mountain_climbers",
+    "reps": null,
+    "duration": {
+      "seconds": 45
     },
-    {
-      "id": "exercise_018",
-      "stepId": "step_011",
-      "exerciseId": "exercise_plank_twists",
-      "reps": { "count": 12 },
-      "duration": null,
-      "load": null,
-      "restTimeBetweenSets": { "seconds": 30 },
-      "tempo": { "up": 1, "down": 1 },
-      "distance": null,
-      "intensity": { "level": "moderate" },
-      "customNotes": "Twist your hips side to side while maintaining a plank position."
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Keep your core engaged."
+  },
+  {
+    "id": "exercise_011",
+    "stepId": "step_007",
+    "exerciseId": "exercise_arm_circles",
+    "reps": null,
+    "duration": {
+      "seconds": 30
     },
-    {
-      "id": "exercise_019",
-      "stepId": "step_012",
-      "exerciseId": "exercise_russian_twists",
-      "reps": { "count": 20 },
-      "duration": null,
-      "load": { "weight": 5, "unit": "kg" },
-      "restTimeBetweenSets": { "seconds": 30 },
-      "tempo": { "up": 2, "down": 2 },
-      "distance": null,
-      "intensity": { "level": "high" },
-      "customNotes": "Keep your back straight and engage your core."
-    }
-  ]
-}
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Perform both forward and backward circles."
+  },
+  {
+    "id": "exercise_012",
+    "stepId": "step_008",
+    "exerciseId": "exercise_jump_squats",
+    "reps": {
+      "count": 12
+    },
+    "duration": null,
+    "load": null,
+    "restTimeBetweenSets": {
+      "seconds": 20
+    },
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Land softly and maintain balance."
+  },
+  {
+    "id": "exercise_013",
+    "stepId": "step_008",
+    "exerciseId": "exercise_push_press",
+    "reps": {
+      "count": 10
+    },
+    "duration": null,
+    "load": {
+      "weight": 20,
+      "unit": "kg"
+    },
+    "restTimeBetweenSets": {
+      "seconds": 20
+    },
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Use your legs to help press the weight."
+  },
+  {
+    "id": "exercise_014",
+    "stepId": "step_008",
+    "exerciseId": "exercise_bicycle_crunches",
+    "reps": {
+      "count": 15
+    },
+    "duration": null,
+    "load": null,
+    "restTimeBetweenSets": {
+      "seconds": 20
+    },
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Keep a steady pace and focus on your core."
+  },
+  {
+    "id": "exercise_015",
+    "stepId": "step_009",
+    "exerciseId": "exercise_plank",
+    "reps": null,
+    "duration": {
+      "seconds": 90
+    },
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Maintain a straight line from head to heels."
+  },
+  {
+    "id": "exercise_016",
+    "stepId": "step_009",
+    "exerciseId": "exercise_burpees",
+    "reps": {
+      "count": 15
+    },
+    "duration": null,
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Explode upwards with each burpee."
+  },
+  {
+    "id": "exercise_017",
+    "stepId": "step_010",
+    "exerciseId": "exercise_downward_dog",
+    "reps": null,
+    "duration": {
+      "seconds": 60
+    },
+    "load": null,
+    "restTimeBetweenSets": null,
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Focus on deep breathing and stretching."
+  },
+  {
+    "id": "exercise_018",
+    "stepId": "step_011",
+    "exerciseId": "exercise_plank_twists",
+    "reps": {
+      "count": 12
+    },
+    "duration": null,
+    "load": null,
+    "restTimeBetweenSets": {
+      "seconds": 30
+    },
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Twist your hips side to side while maintaining a plank position."
+  },
+  {
+    "id": "exercise_019",
+    "stepId": "step_012",
+    "exerciseId": "exercise_russian_twists",
+    "reps": {
+      "count": 20
+    },
+    "duration": null,
+    "load": {
+      "weight": 5,
+      "unit": "kg"
+    },
+    "restTimeBetweenSets": {
+      "seconds": 30
+    },
+    "tempo": null,
+    "distance": null,
+    "intensity": null,
+    "customNotes": "Keep your back straight and engage your core."
+  }
+]
