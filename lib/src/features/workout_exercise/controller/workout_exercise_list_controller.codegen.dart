@@ -7,13 +7,30 @@ part 'workout_exercise_list_controller.codegen.g.dart';
 @riverpod
 class WorkoutExerciseListController extends _$WorkoutExerciseListController {
   @override
-  Future<List<WorkoutExerciseModel>> build(String stepId) async {
-    final service = ref.read(workoutExerciseServiceProvider);
-    return service.getWorkoutExercises(stepId);
+  Future<List<WorkoutExerciseModel>?> build(String stepId) async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(
+      () async {
+        final service = ref.read(workoutExerciseServiceProvider);
+        return service.getWorkoutExercises(stepId);
+      },
+    );
+
+    return state.value;
   }
 
-  Future<void> deleteWorkoutExercise(WorkoutExerciseModel exercise) async {
-    final service = ref.read(workoutExerciseServiceProvider);
-    return service.deleteWorkoutExercise(exercise.id);
+  Future<void> deleteWorkoutExercise(String exerciseId) async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final service = ref.read(workoutExerciseServiceProvider);
+      await service.deleteWorkoutExercise(exerciseId);
+
+      final list = state.value;
+      if (list != null) {
+        list.removeWhere((e) => e.id == exerciseId);
+        state = AsyncValue.data(list);
+      }
+      return null;
+    });
   }
 }

@@ -1,6 +1,8 @@
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
+import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_step/service/workout_step_service.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +34,10 @@ class WorkoutExerciseList extends ConsumerWidget {
 
     return exercises.when(
       data: (exercises) {
+        if (exercises == null) {
+          // todo add Add button
+          return const SizedBox.shrink();
+        }
         return ListView.builder(
           shrinkWrap: true,
           itemCount: exercises.length,
@@ -58,7 +64,18 @@ class WorkoutExerciseList extends ConsumerWidget {
                     ),
                     error: (error, stackTrace) {
                       return EzExpansionTile.error(
-                        title: Text(error.toString()),
+                        title: const Text('Error - Loading an exercise'),
+                        subtitle: SelectableText(error.toString()),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () {
+                            ref
+                                .read(workoutExerciseListControllerProvider(
+                                        stepId)
+                                    .notifier)
+                                .deleteWorkoutExercise(exercise.id);
+                          },
+                        ),
                       );
                     },
                     loading: EzExpansionTile.loading,
@@ -68,15 +85,8 @@ class WorkoutExerciseList extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) => EzExpansionTile.error(
-        title: Text('Error - Loading stepId: ${stepId}'),
+        title: Text('Error - Loading stepId: $stepId'),
         subtitle: SelectableText(error.toString()),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete),
-          onPressed: () {
-            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-            print('TESTY: exercise id: ${error.toString()}');
-          },
-        ),
       ),
       loading: () => const Placeholder(),
     );
