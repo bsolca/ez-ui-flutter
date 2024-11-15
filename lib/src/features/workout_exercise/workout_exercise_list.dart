@@ -23,27 +23,13 @@ class WorkoutExerciseList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final exercises = ref.watch(workoutExerciseListControllerProvider(stepId));
-    final isLight = Theme
-        .of(context)
-        .brightness == Brightness.light;
+    final isLight = Theme.of(context).brightness == Brightness.light;
     final tileBgColor = isLight
-        ? Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainer
-        : Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainerLow;
+        ? Theme.of(context).colorScheme.surfaceContainer
+        : Theme.of(context).colorScheme.surfaceContainerLow;
     final bgChildrenColor = isLight
-        ? Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainerLow
-        : Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainer;
+        ? Theme.of(context).colorScheme.surfaceContainerLow
+        : Theme.of(context).colorScheme.surfaceContainer;
 
     return exercises.when(
       data: (exercises) {
@@ -53,48 +39,47 @@ class WorkoutExerciseList extends ConsumerWidget {
           itemBuilder: (context, index) {
             final exercise = exercises[index];
             return Padding(
-                padding: index != 0
-                    ? const EdgeInsets.only(
-                  top: EzConstLayout.spacerSmall,
-                )
-                    : EdgeInsets.zero,
-                child: ref
-                    .watch(
-                    workoutExerciseExerciseControllerProvider(exercise.id))
-                    .when(
-                  data: (e) =>
-                      EzExpansionTile(
-                        tileBgColor: tileBgColor,
-                        bgChildrenColor: bgChildrenColor,
-                        title: Text(e.name),
-                        children: [
-                          WorkoutExerciseForm(
-                            workoutExerciseId: exercise.id,
-                          ),
-                        ],
-                      ),
-                  error: (error, stackTrace) {
-                    return SelectableText(error.toString());
-                  },
-                  loading: () => Skeletonizer(
-                    child: EzExpansionTile(
+              padding: index != 0
+                  ? const EdgeInsets.only(
+                      top: EzConstLayout.spacerSmall,
+                    )
+                  : EdgeInsets.zero,
+              child: ref
+                  .watch(workoutExerciseExerciseControllerProvider(exercise.id))
+                  .when(
+                    data: (e) => EzExpansionTile(
                       tileBgColor: tileBgColor,
                       bgChildrenColor: bgChildrenColor,
-                      title: Text(faker.lorem.word()),
-                      children: const [
+                      title: Text(e.name),
+                      children: [
                         WorkoutExerciseForm(
-                          isLoading: true,
-                          workoutExerciseId: '1',
+                          workoutExerciseId: exercise.id,
                         ),
                       ],
                     ),
+                    error: (error, stackTrace) {
+                      return EzExpansionTile.error(
+                        title: Text(error.toString()),
+                      );
+                    },
+                    loading: EzExpansionTile.loading,
                   ),
-                ),
             );
           },
         );
       },
-      error: (error, stackTrace) => SelectableText(error.toString()),
+      error: (error, stackTrace) => EzExpansionTile.error(
+        title: Text('Error - Loading the exercise - Deletion is possible'),
+        subtitle: SelectableText(error.toString()),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete),
+          onPressed: () {
+            // ref
+            //   .read(workoutExerciseListControllerProvider.notifier)
+            //   .deleteWorkoutExercise(exercises[0].id);
+          },
+        )
+      ),
       loading: () => const Placeholder(),
     );
   }
