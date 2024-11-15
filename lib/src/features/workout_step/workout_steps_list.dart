@@ -30,7 +30,6 @@ class WorkoutStepsList extends ConsumerWidget {
             ] else ...[
               ListView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
                 itemCount: steps.length,
                 itemBuilder: (context, index) {
                   return Padding(

@@ -3,7 +3,6 @@ import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exer
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -69,16 +68,15 @@ class WorkoutExerciseList extends ConsumerWidget {
         );
       },
       error: (error, stackTrace) => EzExpansionTile.error(
-        title: Text('Error - Loading the exercise - Deletion is possible'),
+        title: Text('Error - Loading stepId: ${stepId}'),
         subtitle: SelectableText(error.toString()),
         trailing: IconButton(
           icon: const Icon(Icons.delete),
           onPressed: () {
-            // ref
-            //   .read(workoutExerciseListControllerProvider.notifier)
-            //   .deleteWorkoutExercise(exercises[0].id);
+            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+            print('TESTY: exercise id: ${error.toString()}');
           },
-        )
+        ),
       ),
       loading: () => const Placeholder(),
     );

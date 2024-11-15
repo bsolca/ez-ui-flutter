@@ -28,8 +28,8 @@ class WorkoutExerciseService {
     return _workoutExerciseRepository.updateWorkoutExercise(exercise);
   }
 
-  Future<void> deleteWorkoutExercise(String id) async {
-    return _workoutExerciseRepository.deleteWorkoutExercise(id);
+  Future<void> deleteWorkoutExercise(String workoutExerciseId) async {
+    return _workoutExerciseRepository.deleteWorkoutExercise(workoutExerciseId);
   }
 }
 

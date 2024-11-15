@@ -11,4 +11,9 @@ class WorkoutExerciseListController extends _$WorkoutExerciseListController {
     final service = ref.read(workoutExerciseServiceProvider);
     return service.getWorkoutExercises(stepId);
   }
+
+  Future<void> deleteWorkoutExercise(WorkoutExerciseModel exercise) async {
+    final service = ref.read(workoutExerciseServiceProvider);
+    return service.deleteWorkoutExercise(exercise.id);
+  }
 }
