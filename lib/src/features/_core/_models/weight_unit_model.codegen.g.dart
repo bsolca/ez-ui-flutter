@@ -8,18 +8,20 @@ part of 'weight_unit_model.codegen.dart';
 
 _$WeightUnitModelImpl _$$WeightUnitModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$WeightUnitModelImpl(
-      unit: $enumDecode(_$WeightUnitEnumMap, json['unit']),
+    $checkedCreate(
+      r'_$WeightUnitModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$WeightUnitModelImpl(
+          unit: $checkedConvert(
+              'unit', (v) => const WeightUnitConverter().fromJson(v as String)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$WeightUnitModelImplToJson(
         _$WeightUnitModelImpl instance) =>
     <String, dynamic>{
-      'unit': _$WeightUnitEnumMap[instance.unit]!,
+      'unit': const WeightUnitConverter().toJson(instance.unit),
     };
-
-const _$WeightUnitEnumMap = {
-  WeightUnit.kg: 'kg',
-  WeightUnit.lbs: 'lbs',
-  WeightUnit.percent: 'percent',
-};

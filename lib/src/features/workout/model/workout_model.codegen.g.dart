@@ -7,11 +7,19 @@ part of 'workout_model.codegen.dart';
 // **************************************************************************
 
 _$WorkoutModelImpl _$$WorkoutModelImplFromJson(Map<String, dynamic> json) =>
-    _$WorkoutModelImpl(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String?,
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+    $checkedCreate(
+      r'_$WorkoutModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$WorkoutModelImpl(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
+          tags: $checkedConvert('tags',
+              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$WorkoutModelImplToJson(_$WorkoutModelImpl instance) =>

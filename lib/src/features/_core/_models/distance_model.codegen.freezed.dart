@@ -20,7 +20,9 @@ DistanceModel _$DistanceModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DistanceModel {
-  double get value => throw _privateConstructorUsedError; // Distance value
+  @DefaultDoubleConverter()
+  double get value => throw _privateConstructorUsedError;
+  @DistanceUnitConverter()
   DistanceUnit get unit => throw _privateConstructorUsedError;
 
   /// Serializes this DistanceModel to a JSON map.
@@ -39,7 +41,9 @@ abstract class $DistanceModelCopyWith<$Res> {
           DistanceModel value, $Res Function(DistanceModel) then) =
       _$DistanceModelCopyWithImpl<$Res, DistanceModel>;
   @useResult
-  $Res call({double value, DistanceUnit unit});
+  $Res call(
+      {@DefaultDoubleConverter() double value,
+      @DistanceUnitConverter() DistanceUnit unit});
 }
 
 /// @nodoc
@@ -81,7 +85,9 @@ abstract class _$$DistanceModelImplCopyWith<$Res>
       __$$DistanceModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double value, DistanceUnit unit});
+  $Res call(
+      {@DefaultDoubleConverter() double value,
+      @DistanceUnitConverter() DistanceUnit unit});
 }
 
 /// @nodoc
@@ -116,15 +122,18 @@ class __$$DistanceModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DistanceModelImpl implements _DistanceModel {
-  const _$DistanceModelImpl({required this.value, required this.unit});
+  const _$DistanceModelImpl(
+      {@DefaultDoubleConverter() required this.value,
+      @DistanceUnitConverter() required this.unit});
 
   factory _$DistanceModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DistanceModelImplFromJson(json);
 
   @override
+  @DefaultDoubleConverter()
   final double value;
-// Distance value
   @override
+  @DistanceUnitConverter()
   final DistanceUnit unit;
 
   @override
@@ -163,15 +172,18 @@ class _$DistanceModelImpl implements _DistanceModel {
 
 abstract class _DistanceModel implements DistanceModel {
   const factory _DistanceModel(
-      {required final double value,
-      required final DistanceUnit unit}) = _$DistanceModelImpl;
+          {@DefaultDoubleConverter() required final double value,
+          @DistanceUnitConverter() required final DistanceUnit unit}) =
+      _$DistanceModelImpl;
 
   factory _DistanceModel.fromJson(Map<String, dynamic> json) =
       _$DistanceModelImpl.fromJson;
 
   @override
-  double get value; // Distance value
+  @DefaultDoubleConverter()
+  double get value;
   @override
+  @DistanceUnitConverter()
   DistanceUnit get unit;
 
   /// Create a copy of DistanceModel

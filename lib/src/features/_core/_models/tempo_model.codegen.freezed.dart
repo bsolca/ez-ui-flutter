@@ -20,10 +20,16 @@ TempoModel _$TempoModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TempoModel {
-  double get eccentric =>
-      throw _privateConstructorUsedError; // Duration for the eccentric (lowering) phase
-  double get pause =>
-      throw _privateConstructorUsedError; // Duration for the pause phase
+  /// Duration for the eccentric (lowering) phase
+  @DefaultDoubleConverter()
+  double get eccentric => throw _privateConstructorUsedError;
+
+  /// Duration for the concentric (lifting) phase
+  @DefaultDoubleConverter()
+  double get pause => throw _privateConstructorUsedError;
+
+  /// Duration for the concentric (lifting) phase
+  @DefaultDoubleConverter()
   double get concentric => throw _privateConstructorUsedError;
 
   /// Serializes this TempoModel to a JSON map.
@@ -42,7 +48,10 @@ abstract class $TempoModelCopyWith<$Res> {
           TempoModel value, $Res Function(TempoModel) then) =
       _$TempoModelCopyWithImpl<$Res, TempoModel>;
   @useResult
-  $Res call({double eccentric, double pause, double concentric});
+  $Res call(
+      {@DefaultDoubleConverter() double eccentric,
+      @DefaultDoubleConverter() double pause,
+      @DefaultDoubleConverter() double concentric});
 }
 
 /// @nodoc
@@ -89,7 +98,10 @@ abstract class _$$TempoModelImplCopyWith<$Res>
       __$$TempoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double eccentric, double pause, double concentric});
+  $Res call(
+      {@DefaultDoubleConverter() double eccentric,
+      @DefaultDoubleConverter() double pause,
+      @DefaultDoubleConverter() double concentric});
 }
 
 /// @nodoc
@@ -130,18 +142,26 @@ class __$$TempoModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TempoModelImpl implements _TempoModel {
   const _$TempoModelImpl(
-      {required this.eccentric, required this.pause, required this.concentric});
+      {@DefaultDoubleConverter() required this.eccentric,
+      @DefaultDoubleConverter() required this.pause,
+      @DefaultDoubleConverter() required this.concentric});
 
   factory _$TempoModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TempoModelImplFromJson(json);
 
+  /// Duration for the eccentric (lowering) phase
   @override
+  @DefaultDoubleConverter()
   final double eccentric;
-// Duration for the eccentric (lowering) phase
+
+  /// Duration for the concentric (lifting) phase
   @override
+  @DefaultDoubleConverter()
   final double pause;
-// Duration for the pause phase
+
+  /// Duration for the concentric (lifting) phase
   @override
+  @DefaultDoubleConverter()
   final double concentric;
 
   @override
@@ -183,18 +203,27 @@ class _$TempoModelImpl implements _TempoModel {
 
 abstract class _TempoModel implements TempoModel {
   const factory _TempoModel(
-      {required final double eccentric,
-      required final double pause,
-      required final double concentric}) = _$TempoModelImpl;
+          {@DefaultDoubleConverter() required final double eccentric,
+          @DefaultDoubleConverter() required final double pause,
+          @DefaultDoubleConverter() required final double concentric}) =
+      _$TempoModelImpl;
 
   factory _TempoModel.fromJson(Map<String, dynamic> json) =
       _$TempoModelImpl.fromJson;
 
+  /// Duration for the eccentric (lowering) phase
   @override
-  double get eccentric; // Duration for the eccentric (lowering) phase
+  @DefaultDoubleConverter()
+  double get eccentric;
+
+  /// Duration for the concentric (lifting) phase
   @override
-  double get pause; // Duration for the pause phase
+  @DefaultDoubleConverter()
+  double get pause;
+
+  /// Duration for the concentric (lifting) phase
   @override
+  @DefaultDoubleConverter()
   double get concentric;
 
   /// Create a copy of TempoModel

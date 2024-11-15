@@ -7,19 +7,22 @@ part of 'distance_model.codegen.dart';
 // **************************************************************************
 
 _$DistanceModelImpl _$$DistanceModelImplFromJson(Map<String, dynamic> json) =>
-    _$DistanceModelImpl(
-      value: (json['value'] as num).toDouble(),
-      unit: $enumDecode(_$DistanceUnitEnumMap, json['unit']),
+    $checkedCreate(
+      r'_$DistanceModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$DistanceModelImpl(
+          value: $checkedConvert(
+              'value', (v) => const DefaultDoubleConverter().fromJson(v)),
+          unit: $checkedConvert('unit',
+              (v) => const DistanceUnitConverter().fromJson(v as String)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$DistanceModelImplToJson(_$DistanceModelImpl instance) =>
     <String, dynamic>{
-      'value': instance.value,
-      'unit': _$DistanceUnitEnumMap[instance.unit]!,
+      'value': const DefaultDoubleConverter().toJson(instance.value),
+      'unit': const DistanceUnitConverter().toJson(instance.unit),
     };
-
-const _$DistanceUnitEnumMap = {
-  DistanceUnit.meters: 'meters',
-  DistanceUnit.kilometers: 'kilometers',
-  DistanceUnit.miles: 'miles',
-};

@@ -7,13 +7,21 @@ part of 'exercise_model.codegen.dart';
 // **************************************************************************
 
 _$ExerciseModelImpl _$$ExerciseModelImplFromJson(Map<String, dynamic> json) =>
-    _$ExerciseModelImpl(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String?,
-      videoUrl: json['videoUrl'] as String?,
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-      description: json['description'] as String,
+    $checkedCreate(
+      r'_$ExerciseModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ExerciseModelImpl(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          imageUrl: $checkedConvert('imageUrl', (v) => v as String?),
+          videoUrl: $checkedConvert('videoUrl', (v) => v as String?),
+          tags: $checkedConvert('tags',
+              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+          description: $checkedConvert('description', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ExerciseModelImplToJson(_$ExerciseModelImpl instance) =>

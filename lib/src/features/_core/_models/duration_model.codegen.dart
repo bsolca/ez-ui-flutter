@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/utils/converters/double_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'duration_model.codegen.freezed.dart';
@@ -8,7 +9,7 @@ part 'duration_model.codegen.g.dart';
 class DurationModel with _$DurationModel {
   /// Duration model to specify time in seconds.
   const factory DurationModel({
-    required double seconds, // Duration in seconds, allowing fractional values
+    @DefaultDoubleConverter() required double seconds,
   }) = _DurationModel;
 
   /// Creates a new duration model from a JSON map.

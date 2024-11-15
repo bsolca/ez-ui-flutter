@@ -20,6 +20,7 @@ DurationModel _$DurationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DurationModel {
+  @DefaultDoubleConverter()
   double get seconds => throw _privateConstructorUsedError;
 
   /// Serializes this DurationModel to a JSON map.
@@ -38,7 +39,7 @@ abstract class $DurationModelCopyWith<$Res> {
           DurationModel value, $Res Function(DurationModel) then) =
       _$DurationModelCopyWithImpl<$Res, DurationModel>;
   @useResult
-  $Res call({double seconds});
+  $Res call({@DefaultDoubleConverter() double seconds});
 }
 
 /// @nodoc
@@ -75,7 +76,7 @@ abstract class _$$DurationModelImplCopyWith<$Res>
       __$$DurationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double seconds});
+  $Res call({@DefaultDoubleConverter() double seconds});
 }
 
 /// @nodoc
@@ -105,12 +106,13 @@ class __$$DurationModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DurationModelImpl implements _DurationModel {
-  const _$DurationModelImpl({required this.seconds});
+  const _$DurationModelImpl({@DefaultDoubleConverter() required this.seconds});
 
   factory _$DurationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DurationModelImplFromJson(json);
 
   @override
+  @DefaultDoubleConverter()
   final double seconds;
 
   @override
@@ -147,13 +149,15 @@ class _$DurationModelImpl implements _DurationModel {
 }
 
 abstract class _DurationModel implements DurationModel {
-  const factory _DurationModel({required final double seconds}) =
+  const factory _DurationModel(
+          {@DefaultDoubleConverter() required final double seconds}) =
       _$DurationModelImpl;
 
   factory _DurationModel.fromJson(Map<String, dynamic> json) =
       _$DurationModelImpl.fromJson;
 
   @override
+  @DefaultDoubleConverter()
   double get seconds;
 
   /// Create a copy of DurationModel

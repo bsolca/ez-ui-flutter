@@ -8,15 +8,24 @@ part of 'workout_step_model.codegen.dart';
 
 _$WorkoutStepModelImpl _$$WorkoutStepModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$WorkoutStepModelImpl(
-      id: json['id'] as String,
-      workoutId: json['workoutId'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String?,
-      setCount: (json['setCount'] as num).toInt(),
-      restTime: json['restTime'] == null
-          ? null
-          : DurationModel.fromJson(json['restTime'] as Map<String, dynamic>),
+    $checkedCreate(
+      r'_$WorkoutStepModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$WorkoutStepModelImpl(
+          id: $checkedConvert('id', (v) => v as String),
+          workoutId: $checkedConvert('workoutId', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
+          setCount: $checkedConvert('setCount', (v) => (v as num).toInt()),
+          restTime: $checkedConvert(
+              'restTime',
+              (v) => v == null
+                  ? null
+                  : DurationModel.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$WorkoutStepModelImplToJson(

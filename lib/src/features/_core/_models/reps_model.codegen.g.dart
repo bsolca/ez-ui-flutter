@@ -7,11 +7,19 @@ part of 'reps_model.codegen.dart';
 // **************************************************************************
 
 _$RepsModelImpl _$$RepsModelImplFromJson(Map<String, dynamic> json) =>
-    _$RepsModelImpl(
-      count: (json['count'] as num).toInt(),
+    $checkedCreate(
+      r'_$RepsModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$RepsModelImpl(
+          count: $checkedConvert(
+              'count', (v) => const DefaultIntConverter().fromJson(v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$RepsModelImplToJson(_$RepsModelImpl instance) =>
     <String, dynamic>{
-      'count': instance.count,
+      'count': const DefaultIntConverter().toJson(instance.count),
     };

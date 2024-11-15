@@ -40,8 +40,8 @@
     },
     "duration": null,
     "load": {
-      "weight": 30,
-      "unit": "kg"
+      "amount": 30,
+      "unit": "kga"
     },
     "restTimeBetweenSets": {
       "seconds": 60
@@ -59,10 +59,7 @@
       "count": 10
     },
     "duration": null,
-    "load": {
-      "weight": 40,
-      "unit": "kg"
-    },
+    "load": null,
     "restTimeBetweenSets": {
       "seconds": 60
     },
@@ -205,10 +202,7 @@
       "count": 10
     },
     "duration": null,
-    "load": {
-      "weight": 20,
-      "unit": "kg"
-    },
+    "load": null,
     "restTimeBetweenSets": {
       "seconds": 20
     },
@@ -304,10 +298,7 @@
       "count": 20
     },
     "duration": null,
-    "load": {
-      "weight": 5,
-      "unit": "kg"
-    },
+    "load": null,
     "restTimeBetweenSets": {
       "seconds": 30
     },

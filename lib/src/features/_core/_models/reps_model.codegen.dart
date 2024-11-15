@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/utils/converters/int_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'reps_model.codegen.freezed.dart';
@@ -8,7 +9,7 @@ part 'reps_model.codegen.g.dart';
 class RepsModel with _$RepsModel {
   /// Repetitions model to specify the count of reps.
   const factory RepsModel({
-    required int count, // Number of repetitions
+    @DefaultIntConverter() required int count,
   }) = _RepsModel;
 
   /// Creates a new reps model from a JSON map.

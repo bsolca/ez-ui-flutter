@@ -7,9 +7,17 @@ part of 'load_model.codegen.dart';
 // **************************************************************************
 
 _$LoadModelImpl _$$LoadModelImplFromJson(Map<String, dynamic> json) =>
-    _$LoadModelImpl(
-      amount: (json['amount'] as num).toDouble(),
-      unit: $enumDecode(_$WeightUnitEnumMap, json['unit']),
+    $checkedCreate(
+      r'_$LoadModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$LoadModelImpl(
+          amount: $checkedConvert('amount', (v) => (v as num).toDouble()),
+          unit: $checkedConvert(
+              'unit', (v) => $enumDecode(_$WeightUnitEnumMap, v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$LoadModelImplToJson(_$LoadModelImpl instance) =>

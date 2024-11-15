@@ -20,8 +20,9 @@ IntensityModel _$IntensityModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$IntensityModel {
-  IntensityType get type =>
-      throw _privateConstructorUsedError; // Type of intensity (e.g., zone or RPE)
+  @IntensityTypeConverter()
+  IntensityType get type => throw _privateConstructorUsedError;
+  @DefaultIntConverter()
   int get value => throw _privateConstructorUsedError;
 
   /// Serializes this IntensityModel to a JSON map.
@@ -40,7 +41,9 @@ abstract class $IntensityModelCopyWith<$Res> {
           IntensityModel value, $Res Function(IntensityModel) then) =
       _$IntensityModelCopyWithImpl<$Res, IntensityModel>;
   @useResult
-  $Res call({IntensityType type, int value});
+  $Res call(
+      {@IntensityTypeConverter() IntensityType type,
+      @DefaultIntConverter() int value});
 }
 
 /// @nodoc
@@ -82,7 +85,9 @@ abstract class _$$IntensityModelImplCopyWith<$Res>
       __$$IntensityModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({IntensityType type, int value});
+  $Res call(
+      {@IntensityTypeConverter() IntensityType type,
+      @DefaultIntConverter() int value});
 }
 
 /// @nodoc
@@ -117,15 +122,18 @@ class __$$IntensityModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$IntensityModelImpl implements _IntensityModel {
-  const _$IntensityModelImpl({required this.type, required this.value});
+  const _$IntensityModelImpl(
+      {@IntensityTypeConverter() required this.type,
+      @DefaultIntConverter() required this.value});
 
   factory _$IntensityModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$IntensityModelImplFromJson(json);
 
   @override
+  @IntensityTypeConverter()
   final IntensityType type;
-// Type of intensity (e.g., zone or RPE)
   @override
+  @DefaultIntConverter()
   final int value;
 
   @override
@@ -165,15 +173,17 @@ class _$IntensityModelImpl implements _IntensityModel {
 
 abstract class _IntensityModel implements IntensityModel {
   const factory _IntensityModel(
-      {required final IntensityType type,
-      required final int value}) = _$IntensityModelImpl;
+      {@IntensityTypeConverter() required final IntensityType type,
+      @DefaultIntConverter() required final int value}) = _$IntensityModelImpl;
 
   factory _IntensityModel.fromJson(Map<String, dynamic> json) =
       _$IntensityModelImpl.fromJson;
 
   @override
-  IntensityType get type; // Type of intensity (e.g., zone or RPE)
+  @IntensityTypeConverter()
+  IntensityType get type;
   @override
+  @DefaultIntConverter()
   int get value;
 
   /// Create a copy of IntensityModel

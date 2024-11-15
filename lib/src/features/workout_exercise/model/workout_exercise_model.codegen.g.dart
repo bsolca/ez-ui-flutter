@@ -8,32 +8,52 @@ part of 'workout_exercise_model.codegen.dart';
 
 _$WorkoutExerciseModelImpl _$$WorkoutExerciseModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$WorkoutExerciseModelImpl(
-      id: json['id'] as String,
-      exerciseId: json['exerciseId'] as String,
-      reps: json['reps'] == null
-          ? null
-          : RepsModel.fromJson(json['reps'] as Map<String, dynamic>),
-      duration: json['duration'] == null
-          ? null
-          : DurationModel.fromJson(json['duration'] as Map<String, dynamic>),
-      load: json['load'] == null
-          ? null
-          : LoadModel.fromJson(json['load'] as Map<String, dynamic>),
-      restTimeBetweenSets: json['restTimeBetweenSets'] == null
-          ? null
-          : DurationModel.fromJson(
-              json['restTimeBetweenSets'] as Map<String, dynamic>),
-      tempo: json['tempo'] == null
-          ? null
-          : TempoModel.fromJson(json['tempo'] as Map<String, dynamic>),
-      distance: json['distance'] == null
-          ? null
-          : DistanceModel.fromJson(json['distance'] as Map<String, dynamic>),
-      intensity: json['intensity'] == null
-          ? null
-          : IntensityModel.fromJson(json['intensity'] as Map<String, dynamic>),
-      customNotes: json['customNotes'] as String?,
+    $checkedCreate(
+      r'_$WorkoutExerciseModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$WorkoutExerciseModelImpl(
+          id: $checkedConvert('id', (v) => v as String),
+          exerciseId: $checkedConvert('exerciseId', (v) => v as String),
+          reps: $checkedConvert(
+              'reps',
+              (v) => v == null
+                  ? null
+                  : RepsModel.fromJson(v as Map<String, dynamic>)),
+          duration: $checkedConvert(
+              'duration',
+              (v) => v == null
+                  ? null
+                  : DurationModel.fromJson(v as Map<String, dynamic>)),
+          load: $checkedConvert(
+              'load',
+              (v) => v == null
+                  ? null
+                  : LoadModel.fromJson(v as Map<String, dynamic>)),
+          restTimeBetweenSets: $checkedConvert(
+              'restTimeBetweenSets',
+              (v) => v == null
+                  ? null
+                  : DurationModel.fromJson(v as Map<String, dynamic>)),
+          tempo: $checkedConvert(
+              'tempo',
+              (v) => v == null
+                  ? null
+                  : TempoModel.fromJson(v as Map<String, dynamic>)),
+          distance: $checkedConvert(
+              'distance',
+              (v) => v == null
+                  ? null
+                  : DistanceModel.fromJson(v as Map<String, dynamic>)),
+          intensity: $checkedConvert(
+              'intensity',
+              (v) => v == null
+                  ? null
+                  : IntensityModel.fromJson(v as Map<String, dynamic>)),
+          customNotes: $checkedConvert('customNotes', (v) => v as String?),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$WorkoutExerciseModelImplToJson(

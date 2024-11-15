@@ -7,15 +7,25 @@ part of 'tempo_model.codegen.dart';
 // **************************************************************************
 
 _$TempoModelImpl _$$TempoModelImplFromJson(Map<String, dynamic> json) =>
-    _$TempoModelImpl(
-      eccentric: (json['eccentric'] as num).toDouble(),
-      pause: (json['pause'] as num).toDouble(),
-      concentric: (json['concentric'] as num).toDouble(),
+    $checkedCreate(
+      r'_$TempoModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$TempoModelImpl(
+          eccentric: $checkedConvert(
+              'eccentric', (v) => const DefaultDoubleConverter().fromJson(v)),
+          pause: $checkedConvert(
+              'pause', (v) => const DefaultDoubleConverter().fromJson(v)),
+          concentric: $checkedConvert(
+              'concentric', (v) => const DefaultDoubleConverter().fromJson(v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$TempoModelImplToJson(_$TempoModelImpl instance) =>
     <String, dynamic>{
-      'eccentric': instance.eccentric,
-      'pause': instance.pause,
-      'concentric': instance.concentric,
+      'eccentric': const DefaultDoubleConverter().toJson(instance.eccentric),
+      'pause': const DefaultDoubleConverter().toJson(instance.pause),
+      'concentric': const DefaultDoubleConverter().toJson(instance.concentric),
     };

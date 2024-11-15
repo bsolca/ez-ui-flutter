@@ -20,6 +20,7 @@ WeightUnitModel _$WeightUnitModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeightUnitModel {
+  @WeightUnitConverter()
   WeightUnit get unit => throw _privateConstructorUsedError;
 
   /// Serializes this WeightUnitModel to a JSON map.
@@ -38,7 +39,7 @@ abstract class $WeightUnitModelCopyWith<$Res> {
           WeightUnitModel value, $Res Function(WeightUnitModel) then) =
       _$WeightUnitModelCopyWithImpl<$Res, WeightUnitModel>;
   @useResult
-  $Res call({WeightUnit unit});
+  $Res call({@WeightUnitConverter() WeightUnit unit});
 }
 
 /// @nodoc
@@ -75,7 +76,7 @@ abstract class _$$WeightUnitModelImplCopyWith<$Res>
       __$$WeightUnitModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WeightUnit unit});
+  $Res call({@WeightUnitConverter() WeightUnit unit});
 }
 
 /// @nodoc
@@ -105,12 +106,13 @@ class __$$WeightUnitModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WeightUnitModelImpl implements _WeightUnitModel {
-  const _$WeightUnitModelImpl({required this.unit});
+  const _$WeightUnitModelImpl({@WeightUnitConverter() required this.unit});
 
   factory _$WeightUnitModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeightUnitModelImplFromJson(json);
 
   @override
+  @WeightUnitConverter()
   final WeightUnit unit;
 
   @override
@@ -148,13 +150,15 @@ class _$WeightUnitModelImpl implements _WeightUnitModel {
 }
 
 abstract class _WeightUnitModel implements WeightUnitModel {
-  const factory _WeightUnitModel({required final WeightUnit unit}) =
+  const factory _WeightUnitModel(
+          {@WeightUnitConverter() required final WeightUnit unit}) =
       _$WeightUnitModelImpl;
 
   factory _WeightUnitModel.fromJson(Map<String, dynamic> json) =
       _$WeightUnitModelImpl.fromJson;
 
   @override
+  @WeightUnitConverter()
   WeightUnit get unit;
 
   /// Create a copy of WeightUnitModel

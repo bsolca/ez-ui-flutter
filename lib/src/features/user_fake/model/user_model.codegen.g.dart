@@ -7,35 +7,47 @@ part of 'user_model.codegen.dart';
 // **************************************************************************
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
-    _$UserModelImpl(
-      id: (json['id'] as num).toInt(),
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      maidenName: json['maidenName'] as String?,
-      age: (json['age'] as num).toInt(),
-      gender: json['gender'] as String,
-      email: json['email'] as String,
-      phone: json['phone'] as String,
-      username: json['username'] as String,
-      password: json['password'] as String,
-      birthDate: json['birthDate'] as String?,
-      image: json['image'] as String?,
-      bloodGroup: json['bloodGroup'] as String,
-      height: (json['height'] as num).toDouble(),
-      weight: (json['weight'] as num).toDouble(),
-      eyeColor: json['eyeColor'] as String,
-      hair: HairModel.fromJson(json['hair'] as Map<String, dynamic>),
-      ip: json['ip'] as String,
-      address: AddressModel.fromJson(json['address'] as Map<String, dynamic>),
-      macAddress: json['macAddress'] as String,
-      university: json['university'] as String,
-      bank: BankModel.fromJson(json['bank'] as Map<String, dynamic>),
-      company: CompanyModel.fromJson(json['company'] as Map<String, dynamic>),
-      ein: json['ein'] as String,
-      ssn: json['ssn'] as String,
-      userAgent: json['userAgent'] as String,
-      crypto: CryptoModel.fromJson(json['crypto'] as Map<String, dynamic>),
-      role: json['role'] as String? ?? 'user',
+    $checkedCreate(
+      r'_$UserModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$UserModelImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          firstName: $checkedConvert('firstName', (v) => v as String),
+          lastName: $checkedConvert('lastName', (v) => v as String),
+          maidenName: $checkedConvert('maidenName', (v) => v as String?),
+          age: $checkedConvert('age', (v) => (v as num).toInt()),
+          gender: $checkedConvert('gender', (v) => v as String),
+          email: $checkedConvert('email', (v) => v as String),
+          phone: $checkedConvert('phone', (v) => v as String),
+          username: $checkedConvert('username', (v) => v as String),
+          password: $checkedConvert('password', (v) => v as String),
+          birthDate: $checkedConvert('birthDate', (v) => v as String?),
+          image: $checkedConvert('image', (v) => v as String?),
+          bloodGroup: $checkedConvert('bloodGroup', (v) => v as String),
+          height: $checkedConvert('height', (v) => (v as num).toDouble()),
+          weight: $checkedConvert('weight', (v) => (v as num).toDouble()),
+          eyeColor: $checkedConvert('eyeColor', (v) => v as String),
+          hair: $checkedConvert(
+              'hair', (v) => HairModel.fromJson(v as Map<String, dynamic>)),
+          ip: $checkedConvert('ip', (v) => v as String),
+          address: $checkedConvert('address',
+              (v) => AddressModel.fromJson(v as Map<String, dynamic>)),
+          macAddress: $checkedConvert('macAddress', (v) => v as String),
+          university: $checkedConvert('university', (v) => v as String),
+          bank: $checkedConvert(
+              'bank', (v) => BankModel.fromJson(v as Map<String, dynamic>)),
+          company: $checkedConvert('company',
+              (v) => CompanyModel.fromJson(v as Map<String, dynamic>)),
+          ein: $checkedConvert('ein', (v) => v as String),
+          ssn: $checkedConvert('ssn', (v) => v as String),
+          userAgent: $checkedConvert('userAgent', (v) => v as String),
+          crypto: $checkedConvert(
+              'crypto', (v) => CryptoModel.fromJson(v as Map<String, dynamic>)),
+          role: $checkedConvert('role', (v) => v as String? ?? 'user'),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -71,9 +83,16 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     };
 
 _$HairModelImpl _$$HairModelImplFromJson(Map<String, dynamic> json) =>
-    _$HairModelImpl(
-      color: json['color'] as String,
-      type: json['type'] as String,
+    $checkedCreate(
+      r'_$HairModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$HairModelImpl(
+          color: $checkedConvert('color', (v) => v as String),
+          type: $checkedConvert('type', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$HairModelImplToJson(_$HairModelImpl instance) =>
@@ -83,15 +102,22 @@ Map<String, dynamic> _$$HairModelImplToJson(_$HairModelImpl instance) =>
     };
 
 _$AddressModelImpl _$$AddressModelImplFromJson(Map<String, dynamic> json) =>
-    _$AddressModelImpl(
-      address: json['address'] as String,
-      city: json['city'] as String,
-      state: json['state'] as String,
-      stateCode: json['stateCode'] as String,
-      postalCode: json['postalCode'] as String,
-      coordinates: CoordinatesModel.fromJson(
-          json['coordinates'] as Map<String, dynamic>),
-      country: json['country'] as String,
+    $checkedCreate(
+      r'_$AddressModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$AddressModelImpl(
+          address: $checkedConvert('address', (v) => v as String),
+          city: $checkedConvert('city', (v) => v as String),
+          state: $checkedConvert('state', (v) => v as String),
+          stateCode: $checkedConvert('stateCode', (v) => v as String),
+          postalCode: $checkedConvert('postalCode', (v) => v as String),
+          coordinates: $checkedConvert('coordinates',
+              (v) => CoordinatesModel.fromJson(v as Map<String, dynamic>)),
+          country: $checkedConvert('country', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$AddressModelImplToJson(_$AddressModelImpl instance) =>
@@ -107,9 +133,16 @@ Map<String, dynamic> _$$AddressModelImplToJson(_$AddressModelImpl instance) =>
 
 _$CoordinatesModelImpl _$$CoordinatesModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$CoordinatesModelImpl(
-      lat: (json['lat'] as num).toDouble(),
-      lng: (json['lng'] as num).toDouble(),
+    $checkedCreate(
+      r'_$CoordinatesModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$CoordinatesModelImpl(
+          lat: $checkedConvert('lat', (v) => (v as num).toDouble()),
+          lng: $checkedConvert('lng', (v) => (v as num).toDouble()),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$CoordinatesModelImplToJson(
@@ -120,12 +153,19 @@ Map<String, dynamic> _$$CoordinatesModelImplToJson(
     };
 
 _$BankModelImpl _$$BankModelImplFromJson(Map<String, dynamic> json) =>
-    _$BankModelImpl(
-      cardExpire: json['cardExpire'] as String,
-      cardNumber: json['cardNumber'] as String,
-      cardType: json['cardType'] as String,
-      currency: json['currency'] as String,
-      iban: json['iban'] as String,
+    $checkedCreate(
+      r'_$BankModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$BankModelImpl(
+          cardExpire: $checkedConvert('cardExpire', (v) => v as String),
+          cardNumber: $checkedConvert('cardNumber', (v) => v as String),
+          cardType: $checkedConvert('cardType', (v) => v as String),
+          currency: $checkedConvert('currency', (v) => v as String),
+          iban: $checkedConvert('iban', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$BankModelImplToJson(_$BankModelImpl instance) =>
@@ -138,11 +178,19 @@ Map<String, dynamic> _$$BankModelImplToJson(_$BankModelImpl instance) =>
     };
 
 _$CompanyModelImpl _$$CompanyModelImplFromJson(Map<String, dynamic> json) =>
-    _$CompanyModelImpl(
-      department: json['department'] as String,
-      name: json['name'] as String,
-      title: json['title'] as String,
-      address: AddressModel.fromJson(json['address'] as Map<String, dynamic>),
+    $checkedCreate(
+      r'_$CompanyModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$CompanyModelImpl(
+          department: $checkedConvert('department', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          title: $checkedConvert('title', (v) => v as String),
+          address: $checkedConvert('address',
+              (v) => AddressModel.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$CompanyModelImplToJson(_$CompanyModelImpl instance) =>
@@ -154,10 +202,17 @@ Map<String, dynamic> _$$CompanyModelImplToJson(_$CompanyModelImpl instance) =>
     };
 
 _$CryptoModelImpl _$$CryptoModelImplFromJson(Map<String, dynamic> json) =>
-    _$CryptoModelImpl(
-      coin: json['coin'] as String,
-      wallet: json['wallet'] as String,
-      network: json['network'] as String,
+    $checkedCreate(
+      r'_$CryptoModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$CryptoModelImpl(
+          coin: $checkedConvert('coin', (v) => v as String),
+          wallet: $checkedConvert('wallet', (v) => v as String),
+          network: $checkedConvert('network', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$CryptoModelImplToJson(_$CryptoModelImpl instance) =>

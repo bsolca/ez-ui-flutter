@@ -20,6 +20,7 @@ RepsModel _$RepsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RepsModel {
+  @DefaultIntConverter()
   int get count => throw _privateConstructorUsedError;
 
   /// Serializes this RepsModel to a JSON map.
@@ -37,7 +38,7 @@ abstract class $RepsModelCopyWith<$Res> {
   factory $RepsModelCopyWith(RepsModel value, $Res Function(RepsModel) then) =
       _$RepsModelCopyWithImpl<$Res, RepsModel>;
   @useResult
-  $Res call({int count});
+  $Res call({@DefaultIntConverter() int count});
 }
 
 /// @nodoc
@@ -74,7 +75,7 @@ abstract class _$$RepsModelImplCopyWith<$Res>
       __$$RepsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count});
+  $Res call({@DefaultIntConverter() int count});
 }
 
 /// @nodoc
@@ -104,12 +105,13 @@ class __$$RepsModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RepsModelImpl implements _RepsModel {
-  const _$RepsModelImpl({required this.count});
+  const _$RepsModelImpl({@DefaultIntConverter() required this.count});
 
   factory _$RepsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RepsModelImplFromJson(json);
 
   @override
+  @DefaultIntConverter()
   final int count;
 
   @override
@@ -146,12 +148,14 @@ class _$RepsModelImpl implements _RepsModel {
 }
 
 abstract class _RepsModel implements RepsModel {
-  const factory _RepsModel({required final int count}) = _$RepsModelImpl;
+  const factory _RepsModel({@DefaultIntConverter() required final int count}) =
+      _$RepsModelImpl;
 
   factory _RepsModel.fromJson(Map<String, dynamic> json) =
       _$RepsModelImpl.fromJson;
 
   @override
+  @DefaultIntConverter()
   int get count;
 
   /// Create a copy of RepsModel

@@ -7,9 +7,17 @@ part of 'user_settings.codegen.dart';
 // **************************************************************************
 
 _$UserSettingsImpl _$$UserSettingsImplFromJson(Map<String, dynamic> json) =>
-    _$UserSettingsImpl(
-      brightness: $enumDecodeNullable(_$BrightnessEnumMap, json['brightness']),
-      languageCode: json['languageCode'] as String?,
+    $checkedCreate(
+      r'_$UserSettingsImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$UserSettingsImpl(
+          brightness: $checkedConvert(
+              'brightness', (v) => $enumDecodeNullable(_$BrightnessEnumMap, v)),
+          languageCode: $checkedConvert('languageCode', (v) => v as String?),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$UserSettingsImplToJson(_$UserSettingsImpl instance) =>

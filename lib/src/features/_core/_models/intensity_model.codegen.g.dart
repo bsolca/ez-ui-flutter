@@ -7,19 +7,23 @@ part of 'intensity_model.codegen.dart';
 // **************************************************************************
 
 _$IntensityModelImpl _$$IntensityModelImplFromJson(Map<String, dynamic> json) =>
-    _$IntensityModelImpl(
-      type: $enumDecode(_$IntensityTypeEnumMap, json['type']),
-      value: (json['value'] as num).toInt(),
+    $checkedCreate(
+      r'_$IntensityModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$IntensityModelImpl(
+          type: $checkedConvert('type',
+              (v) => const IntensityTypeConverter().fromJson(v as String)),
+          value: $checkedConvert(
+              'value', (v) => const DefaultIntConverter().fromJson(v)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$IntensityModelImplToJson(
         _$IntensityModelImpl instance) =>
     <String, dynamic>{
-      'type': _$IntensityTypeEnumMap[instance.type]!,
-      'value': instance.value,
+      'type': const IntensityTypeConverter().toJson(instance.type),
+      'value': const DefaultIntConverter().toJson(instance.value),
     };
-
-const _$IntensityTypeEnumMap = {
-  IntensityType.zone: 'zone',
-  IntensityType.rpe: 'rpe',
-};
