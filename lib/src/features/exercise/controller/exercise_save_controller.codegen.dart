@@ -27,7 +27,7 @@ class ExerciseSaveController extends _$ExerciseSaveController {
       ref: ref,
       successToastMessage: successMessage,
       errorToastMessage: (e) => e.toString(),
-      future: () async {
+      operation: () async {
         if (isCreateExercise) {
           await exerciseService.createExercise(exercise);
         } else {

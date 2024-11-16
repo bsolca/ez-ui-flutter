@@ -27,7 +27,7 @@ class WorkoutSaveController extends _$WorkoutSaveController {
       ref: ref,
       successToastMessage: successMessage,
       errorToastMessage: (e) => e.toString(),
-      future: () async {
+      operation: () async {
         if (isCreateWorkout) {
           await workoutService.createWorkout(workout);
         } else {

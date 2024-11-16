@@ -1,5 +1,6 @@
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/service/workout_step_service.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_async_value/ez_async_value.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'workout_steps_controller.codegen.g.dart';
@@ -35,11 +36,31 @@ class WorkoutStepsController extends _$WorkoutStepsController {
   }
 
   /// Remove a step
+  /// Remove a step
   Future<void> removeStep(String stepId) async {
-    final steps = state.value ?? [];
-    state = AsyncValue.data(
-      steps.where((step) => step.id != stepId).toList(),
+    await EzAsyncValue.guard(
+      ref: ref,
+      operation: () async {
+        // Call the service to delete the step
+        await ref.read(workoutStepServiceProvider).deleteWorkoutStep(stepId);
+      },
+      onSuccess: () {
+        // Update the state upon success
+        final currentState = state;
+        if (currentState is AsyncData<List<WorkoutStepModel>>) {
+          final currentSteps = currentState.value;
+          final updatedSteps = List<WorkoutStepModel>.from(currentSteps)
+            ..removeWhere((step) => step.id == stepId);
+          state = AsyncValue.data(updatedSteps);
+        }
+      },
+      onError: (error, stack) {
+        // Optionally handle state updates on error, or leave the state unchanged
+        // For example, you could log the error or update the state to an error state
+        // In this case, we're leaving the state unchanged
+      },
+      successToastMessage: 'Successfully deleted step',
+      errorToastMessage: (error) => 'Failed to delete step: $error',
     );
-    await ref.read(workoutStepServiceProvider).deleteWorkoutStep(stepId);
   }
 }

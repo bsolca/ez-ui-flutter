@@ -20,7 +20,7 @@ class WorkoutDeleteController extends _$WorkoutDeleteController {
       ref: ref,
       successToastMessage: ref.read(appLocalProvider).successfullyDeleted(name),
       errorToastMessage: (e) => e.toString(),
-      future: () async {
+      operation: () async {
         await ref.read(workoutServiceProvider).deleteWorkout(id);
       },
     );

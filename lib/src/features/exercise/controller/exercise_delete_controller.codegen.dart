@@ -20,7 +20,7 @@ class ExerciseDeleteController extends _$ExerciseDeleteController {
       ref: ref,
       successToastMessage: ref.read(appLocalProvider).successfullyDeleted(name),
       errorToastMessage: (e) => e.toString(),
-      future: () async {
+      operation: () async {
         await ref.read(exerciseServiceProvider).deleteExercise(id);
       },
     );

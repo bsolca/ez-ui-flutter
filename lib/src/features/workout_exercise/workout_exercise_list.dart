@@ -1,13 +1,10 @@
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
-import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_step/service/workout_step_service.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 // TODO delete exercise tile, controller etc
 // todo  Add a select exercise exercise

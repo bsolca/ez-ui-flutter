@@ -39,7 +39,7 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
       ref: ref,
       successToastMessage: successMessage,
       errorToastMessage: (e) => e.toString(),
-      future: () async {
+      operation: () async {
         if (isCreateWorkoutExercise) {
           await workoutExerciseService.createWorkoutExercise(workoutExercise);
         } else {
@@ -61,7 +61,7 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
       ref: ref,
       successToastMessage: successMessage,
       errorToastMessage: (e) => e.toString(),
-      future: () async {
+      operation: () async {
         await workoutExerciseService.deleteWorkoutExercise(workoutExerciseId);
         return null;
       },
