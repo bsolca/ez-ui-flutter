@@ -18,9 +18,7 @@ class WorkoutScreen extends ConsumerWidget {
     ref.watch(workoutStepsControllerProvider(workoutId));
 
     return EzScaffoldBody(
-      child: SingleChildScrollView(
-        child: WorkoutForm(workoutId: workoutId),
-      ),
+      child: WorkoutForm(workoutId: workoutId),
     );
   }
 }

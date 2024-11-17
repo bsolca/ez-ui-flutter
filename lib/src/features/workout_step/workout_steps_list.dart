@@ -21,31 +21,23 @@ class WorkoutStepsList extends ConsumerWidget {
 
     return steps.when(
       data: (steps) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (steps.isEmpty) ...[
-              const Text("No steps available"),
-            ] else ...[
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: steps.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: index != steps.length - 1
-                        ? const EdgeInsets.only(
-                            bottom: EzConstLayout.spacerSmall,
-                          )
-                        : EdgeInsets.zero,
-                    child: WorkoutStepTile(
-                      workoutId: workoutId,
-                      step: steps[index],
-                    ),
-                  );
-                },
+        if (steps.isEmpty) return const Text("No steps available");
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: steps.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: index != steps.length - 1
+                  ? const EdgeInsets.only(
+                      bottom: EzConstLayout.spacerSmall,
+                    )
+                  : EdgeInsets.zero,
+              child: WorkoutStepTile(
+                workoutId: workoutId,
+                step: steps[index],
               ),
-            ],
-          ],
+            );
+          },
         );
       },
       error: (error, stackTrace) {
