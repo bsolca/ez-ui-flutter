@@ -2,7 +2,12 @@ import 'package:ez_fit_app/src/features/workout/controller/workout_screen_get_wo
 import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_delete_button.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_save_button.dart';
+import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/workout_steps_list.dart';
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
+import 'package:ez_fit_app/src/shared/ez_divider/ez_divider.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
@@ -104,6 +109,28 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
             workoutId: widget.workoutId,
             loadingData: loadingData,
           ),
+          EzButton(
+            type: EzButtonType.outlined,
+            onPressed: () {
+              // Example of adding a new step
+              ref
+                  .read(
+                    workoutStepsControllerProvider(widget.workoutId).notifier,
+                  )
+                  .addStep(
+                    WorkoutStepModel(
+                      id: 'new-id-${DateTime.now().millisecondsSinceEpoch}',
+                      name: 'New Step ',
+                      description: 'Description for new step',
+                      setCount: 1,
+                      restTime: null,
+                      workoutId: widget.workoutId,
+                    ),
+                  );
+            },
+            text: 'Add Step',
+          ),
+          const EzDivider(),
           WorkoutFormSaveButton(
             formKey: formKey,
             isDisabled: loadingData,

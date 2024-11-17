@@ -1,5 +1,4 @@
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/widgets/workout_step_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
@@ -46,24 +45,6 @@ class WorkoutStepsList extends ConsumerWidget {
                 },
               ),
             ],
-            ElevatedButton(
-              onPressed: () {
-                // Example of adding a new step
-                ref
-                    .read(workoutStepsControllerProvider(workoutId).notifier)
-                    .addStep(
-                      WorkoutStepModel(
-                        id: 'new-step-${steps.length + 1}',
-                        name: 'New Step ${steps.length + 1}',
-                        description: 'Description for new step',
-                        setCount: 1,
-                        restTime: null,
-                        workoutId: workoutId,
-                      ),
-                    );
-              },
-              child: const Text("Add Step"),
-            ),
           ],
         );
       },
