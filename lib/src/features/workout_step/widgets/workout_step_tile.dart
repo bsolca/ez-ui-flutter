@@ -1,7 +1,10 @@
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_list.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
+import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -64,7 +67,19 @@ class WorkoutStepTile extends ConsumerWidget {
         WorkoutExerciseList(
           stepId: step.id,
         ),
-      ],
+        Row(
+          children: [
+            Expanded(
+              child: EzButton(
+                onPressed: () {},
+                text: 'Add Exercise',
+              ),
+            ),
+          ],
+        ),
+      ].withSpaceBetween(
+        height: EzConstLayout.spacerSmall,
+      ),
     );
   }
 }
