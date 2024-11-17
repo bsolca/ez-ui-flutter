@@ -21,28 +21,21 @@ class WorkoutExerciseListController extends _$WorkoutExerciseListController {
   }
 
   Future<void> deleteWorkoutExercise(String exerciseId) async {
-    try {
-      await EzAsyncValue.guard(
-        ref: ref,
-        operation: () async {
-          final service = ref.read(workoutExerciseServiceProvider);
-          await service.deleteWorkoutExercise(exerciseId);
-        },
-        successToastMessage: 'Successfully deleted exercise',
-        errorToastMessage: (error) => 'Failed to delete exercise: $error',
-      );
-
-      // On success, update the state by removing the exercise
-      final currentState = state;
-      if (currentState is AsyncData<List<WorkoutExerciseModel>>) {
-        final currentList = currentState.value;
-        final updatedList = List<WorkoutExerciseModel>.from(currentList)
-          ..removeWhere((e) => e.id == exerciseId);
-        state = AsyncValue.data(updatedList);
-      }
-    } catch (err, stack) {
-      // If an error occurs, the state remains unchanged
-      // The error toast is already displayed by EzAsyncValue.guard
-    }
+    await EzAsyncValue.guard(
+      ref: ref,
+      errorToastMessage: (error) => 'Failed to delete exercise: $error',
+      operation: () async => ref
+          .read(workoutExerciseServiceProvider)
+          .deleteWorkoutExercise(exerciseId),
+      onSuccess: () {
+        // Update the state upon success
+        state = AsyncValue.data(
+          state.value?.where((e) => e.exerciseId != exerciseId).toList(),
+        );
+      },
+      onError: (error, stack) {
+        // Dp nothing
+      },
+    );
   }
 }

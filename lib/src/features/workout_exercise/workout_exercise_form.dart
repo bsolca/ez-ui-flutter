@@ -1,13 +1,3 @@
-import 'package:ez_fit_app/src/features/_core/_models/distance_model.codegen.dart';
-import 'package:ez_fit_app/src/features/_core/_models/duration_model.codegen.dart';
-import 'package:ez_fit_app/src/features/_core/_models/intensity_model.codegen.dart';
-import 'package:ez_fit_app/src/features/_core/_models/load_model.codegen.dart';
-import 'package:ez_fit_app/src/features/_core/_models/reps_model.codegen.dart';
-import 'package:ez_fit_app/src/features/_core/_models/tempo_model.codegen.dart';
-import 'package:ez_fit_app/src/features/_core/_models/weight_unit_model.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_model.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/widgets/workout_exercise_form_delete_button.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/widgets/workout_exercise_form_save_button.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
@@ -167,55 +157,6 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
               ),
             ),
           ),
-          WorkoutExerciseFormSaveButton(
-            formKey: formKey,
-            isDisabled: loadingData,
-            workoutExercise: WorkoutExerciseModel(
-              id: widget.workoutExerciseId,
-              exerciseId: exerciseIdController.text,
-              reps: repsController.text.isNotEmpty
-                  ? RepsModel(count: int.parse(repsController.text))
-                  : null,
-              duration: durationController.text.isNotEmpty
-                  ? DurationModel(
-                      seconds: double.parse(durationController.text))
-                  : null,
-              load: loadController.text.isNotEmpty
-                  ? LoadModel(
-                      amount: double.parse(loadController.text),
-                      unit: WeightUnit.kg) // Todo Assume kg, adjust as needed
-                  : null,
-              restTimeBetweenSets: restTimeController.text.isNotEmpty
-                  ? DurationModel(
-                      seconds: double.parse(restTimeController.text))
-                  : null,
-              tempo: tempoController.text.isNotEmpty
-                  ? const TempoModel(
-                      eccentric: 2,
-                      pause: 1,
-                      concentric: 2) // Placeholder values, adjust as needed
-                  : null,
-              distance: distanceController.text.isNotEmpty
-                  ? DistanceModel(
-                      value: double.parse(distanceController.text),
-                      unit: DistanceUnit.kilometers) // todo assume km
-                  : null,
-              intensity: intensityController.text.isNotEmpty
-                  ? IntensityModel(
-                      type: IntensityType.rpe, // TODO assume rpe
-                      value: int.parse(intensityController.text),
-                    )
-                  : null,
-              customNotes: customNotesController.text,
-            ),
-          ),
-          if (widget.workoutExerciseId.isNotEmpty &&
-              widget.workoutExerciseId != 'new')
-            WorkoutExerciseFormDeleteButton(
-              isDisabled: loadingData,
-              workoutId: widget.workoutExerciseId,
-              workoutName: exerciseIdController.text,
-            ),
         ].withSpaceBetween(height: EzConstLayout.spacerSmall),
       ),
     );

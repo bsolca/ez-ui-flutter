@@ -53,6 +53,18 @@ class WorkoutExerciseList extends ConsumerWidget {
                       tileBgColor: tileBgColor,
                       bgChildrenColor: bgChildrenColor,
                       title: Text(e.name),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          ref
+                              .read(
+                                workoutExerciseListControllerProvider(
+                                  stepId,
+                                ).notifier,
+                              )
+                              .deleteWorkoutExercise(exercise.exerciseId);
+                        },
+                      ),
                       children: [
                         WorkoutExerciseForm(
                           workoutExerciseId: exercise.id,
@@ -67,10 +79,12 @@ class WorkoutExerciseList extends ConsumerWidget {
                           icon: const Icon(Icons.delete),
                           onPressed: () {
                             ref
-                                .read(workoutExerciseListControllerProvider(
-                                        stepId)
-                                    .notifier)
-                                .deleteWorkoutExercise(exercise.id);
+                                .read(
+                                  workoutExerciseListControllerProvider(
+                                    stepId,
+                                  ).notifier,
+                                )
+                                .deleteWorkoutExercise(exercise.exerciseId);
                           },
                         ),
                       );

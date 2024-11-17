@@ -59,7 +59,6 @@ class WorkoutStepsController extends _$WorkoutStepsController {
         // For example, you could log the error or update the state to an error state
         // In this case, we're leaving the state unchanged
       },
-      successToastMessage: 'Successfully deleted step',
       errorToastMessage: (error) => 'Failed to delete step: $error',
     );
   }
