@@ -14,14 +14,14 @@ class WorkoutDeleteController extends _$WorkoutDeleteController {
   }
 
   /// Delete a specific workout by its ID.
-  Future<void> deleteWorkout(String id, String name) async {
+  Future<void> deleteWorkout(String workoutId, String name) async {
     state = const AsyncValue.loading();
     state = await EzAsyncValue.guard(
       ref: ref,
       successToastMessage: ref.read(appLocalProvider).successfullyDeleted(name),
       errorToastMessage: (e) => e.toString(),
       operation: () async {
-        await ref.read(workoutServiceProvider).deleteWorkout(id);
+        await ref.read(workoutServiceProvider).deleteWorkout(workoutId);
       },
     );
   }
