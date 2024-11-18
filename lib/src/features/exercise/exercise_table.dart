@@ -3,11 +3,9 @@ import 'package:ez_fit_app/src/features/exercise/model/exercise_table_column_enu
 import 'package:ez_fit_app/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
-import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
@@ -19,24 +17,26 @@ class ExerciseTable extends ConsumerStatefulWidget {
     required this.exercises,
     required this.dataGridController,
     required this.searchText,
+    required this.onCellTap,
   }) : isLoading = false;
 
   ExerciseTable.loading({super.key})
       : isLoading = true,
         exercises = const [],
         dataGridController = DataGridController(),
+        onCellTap = null,
         searchText = null;
 
-  /// The list of exercises.
+
   final List<ExerciseModel> exercises;
 
-  /// The controller for the data grid widget.
   final DataGridController dataGridController;
 
-  /// Text searched by the user and is highlighted in the table.
   final String? searchText;
 
   final bool isLoading;
+
+  final void Function(DataGridCellTapDetails p1)? onCellTap;
 
   @override
   ConsumerState<ExerciseTable> createState() => _ExerciseTableState();
@@ -95,20 +95,7 @@ class _ExerciseTableState extends ConsumerState<ExerciseTable> {
                   return true;
                 },
                 columnWidthMode: ColumnWidthMode.lastColumnFill,
-                onCellTap: (DataGridCellTapDetails details) {
-                  if (details.rowColumnIndex.rowIndex > 0) {
-                    final rowIndex = details.rowColumnIndex.rowIndex - 1;
-                    if (rowIndex < widget.exercises.length) {
-                      final exercise = widget.exercises[rowIndex];
-                      final exerciseId = exercise.id;
-
-                      context.goNamed(
-                        AppRoute.exercise.name,
-                        pathParameters: {'id': exerciseId},
-                      );
-                    }
-                  }
-                },
+                onCellTap: widget.onCellTap,
                 columns: isCompact
                     ? [
                         GridColumn(
