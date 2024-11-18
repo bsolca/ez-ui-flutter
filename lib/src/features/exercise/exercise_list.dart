@@ -102,11 +102,7 @@ class _ExerciseListState extends ConsumerState<ExerciseList> {
                     );
               }).toList(),
               dataGridController: dataGridController,
-              onCellTap: onCellTap == null
-                  ? null
-                  : (details) {
-                      onCellTap(details, exercises);
-                    },
+              onCellTap: onCellTap,
               searchText: _searchText,
             ),
             loading: ExerciseTable.loading,

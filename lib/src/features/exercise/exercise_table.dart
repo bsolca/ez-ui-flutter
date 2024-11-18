@@ -27,7 +27,6 @@ class ExerciseTable extends ConsumerStatefulWidget {
         onCellTap = null,
         searchText = null;
 
-
   final List<ExerciseModel> exercises;
 
   final DataGridController dataGridController;
@@ -36,7 +35,10 @@ class ExerciseTable extends ConsumerStatefulWidget {
 
   final bool isLoading;
 
-  final void Function(DataGridCellTapDetails p1)? onCellTap;
+  final void Function(
+    DataGridCellTapDetails details,
+    List<ExerciseModel> exercises,
+  )? onCellTap;
 
   @override
   ConsumerState<ExerciseTable> createState() => _ExerciseTableState();
@@ -75,8 +77,10 @@ class _ExerciseTableState extends ConsumerState<ExerciseTable> {
                 source: exerciseDataSource,
                 allowColumnsResizing: true,
                 controller: widget.dataGridController,
-                onSelectionChanging: (List<DataGridRow> addedRows,
-                    List<DataGridRow> removedRows,) {
+                onSelectionChanging: (
+                  List<DataGridRow> addedRows,
+                  List<DataGridRow> removedRows,
+                ) {
                   return true;
                 },
                 onColumnResizeStart: (ColumnResizeStartDetails details) {
@@ -95,7 +99,14 @@ class _ExerciseTableState extends ConsumerState<ExerciseTable> {
                   return true;
                 },
                 columnWidthMode: ColumnWidthMode.lastColumnFill,
-                onCellTap: widget.onCellTap,
+                onCellTap: (DataGridCellTapDetails details) {
+                  final exercises = widget.exercises;
+                  final onCellTap = widget.onCellTap;
+
+                  if (onCellTap != null) {
+                    onCellTap(details, exercises);
+                  }
+                },
                 columns: isCompact
                     ? [
                         GridColumn(
