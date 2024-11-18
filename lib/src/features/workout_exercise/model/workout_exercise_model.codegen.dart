@@ -15,18 +15,16 @@ part 'workout_exercise_model.codegen.g.dart';
 class WorkoutExerciseModel with _$WorkoutExerciseModel {
   /// Workout-specific exercise model, linking to core exercise details.
   const factory WorkoutExerciseModel({
-    required String id, // Unique identifier for the workout exercise
-    required String exerciseId, // Links to ExerciseModel by ID
-    required RepsModel? reps, // Optional repetitions information
-    required DurationModel?
-        duration, // Optional duration for time-based exercises
-    required LoadModel? load, // Optional load or weight information
-    required DurationModel?
-        restTimeBetweenSets, // Optional rest time between sets
-    required TempoModel? tempo, // Optional tempo information for the exercise
-    required DistanceModel? distance, // Optional distance information
-    required IntensityModel? intensity, // Optional intensity level information
-    required String? customNotes, // Optional custom notes
+    required String id,
+    required String exerciseId,
+    required RepsModel? reps,
+    required DurationModel? duration,
+    required LoadModel? load,
+    required DurationModel? restTimeBetweenSets,
+    required TempoModel? tempo,
+    required DistanceModel? distance,
+    required IntensityModel? intensity,
+    required String? customNotes,
   }) = _WorkoutExerciseModel;
 
   /// Creates a new workout exercise model from a JSON map.

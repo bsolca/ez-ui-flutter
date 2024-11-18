@@ -10,13 +10,12 @@ part 'workout_step_model.codegen.g.dart';
 class WorkoutStepModel with _$WorkoutStepModel {
   /// Workout step model to define each phase in a workout.
   const factory WorkoutStepModel({
-    required String id, // Unique identifier for the step
-    required String workoutId, // ID of the workout this step belongs to
-    required String name, // Name of the step, e.g., "Round 1"
-    required String? description, // Optional description for this step
-    required int setCount, // Number of times to repeat this step
-    required DurationModel?
-        restTime, // Optional rest time after completing this step
+    required String id,
+    required String workoutId,
+    required String name,
+    required String? description,
+    required int setCount,
+    required DurationModel? restTime,
   }) = _WorkoutStepModel;
 
   /// Creates a new workout step model from a JSON map.

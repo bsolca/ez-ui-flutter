@@ -20,24 +20,15 @@ WorkoutExerciseModel _$WorkoutExerciseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkoutExerciseModel {
-  String get id =>
-      throw _privateConstructorUsedError; // Unique identifier for the workout exercise
-  String get exerciseId =>
-      throw _privateConstructorUsedError; // Links to ExerciseModel by ID
-  RepsModel? get reps =>
-      throw _privateConstructorUsedError; // Optional repetitions information
-  DurationModel? get duration =>
-      throw _privateConstructorUsedError; // Optional duration for time-based exercises
-  LoadModel? get load =>
-      throw _privateConstructorUsedError; // Optional load or weight information
-  DurationModel? get restTimeBetweenSets =>
-      throw _privateConstructorUsedError; // Optional rest time between sets
-  TempoModel? get tempo =>
-      throw _privateConstructorUsedError; // Optional tempo information for the exercise
-  DistanceModel? get distance =>
-      throw _privateConstructorUsedError; // Optional distance information
-  IntensityModel? get intensity =>
-      throw _privateConstructorUsedError; // Optional intensity level information
+  String get id => throw _privateConstructorUsedError;
+  String get exerciseId => throw _privateConstructorUsedError;
+  RepsModel? get reps => throw _privateConstructorUsedError;
+  DurationModel? get duration => throw _privateConstructorUsedError;
+  LoadModel? get load => throw _privateConstructorUsedError;
+  DurationModel? get restTimeBetweenSets => throw _privateConstructorUsedError;
+  TempoModel? get tempo => throw _privateConstructorUsedError;
+  DistanceModel? get distance => throw _privateConstructorUsedError;
+  IntensityModel? get intensity => throw _privateConstructorUsedError;
   String? get customNotes => throw _privateConstructorUsedError;
 
   /// Serializes this WorkoutExerciseModel to a JSON map.
@@ -372,31 +363,22 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
 
   @override
   final String id;
-// Unique identifier for the workout exercise
   @override
   final String exerciseId;
-// Links to ExerciseModel by ID
   @override
   final RepsModel? reps;
-// Optional repetitions information
   @override
   final DurationModel? duration;
-// Optional duration for time-based exercises
   @override
   final LoadModel? load;
-// Optional load or weight information
   @override
   final DurationModel? restTimeBetweenSets;
-// Optional rest time between sets
   @override
   final TempoModel? tempo;
-// Optional tempo information for the exercise
   @override
   final DistanceModel? distance;
-// Optional distance information
   @override
   final IntensityModel? intensity;
-// Optional intensity level information
   @override
   final String? customNotes;
 
@@ -468,23 +450,23 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
       _$WorkoutExerciseModelImpl.fromJson;
 
   @override
-  String get id; // Unique identifier for the workout exercise
+  String get id;
   @override
-  String get exerciseId; // Links to ExerciseModel by ID
+  String get exerciseId;
   @override
-  RepsModel? get reps; // Optional repetitions information
+  RepsModel? get reps;
   @override
-  DurationModel? get duration; // Optional duration for time-based exercises
+  DurationModel? get duration;
   @override
-  LoadModel? get load; // Optional load or weight information
+  LoadModel? get load;
   @override
-  DurationModel? get restTimeBetweenSets; // Optional rest time between sets
+  DurationModel? get restTimeBetweenSets;
   @override
-  TempoModel? get tempo; // Optional tempo information for the exercise
+  TempoModel? get tempo;
   @override
-  DistanceModel? get distance; // Optional distance information
+  DistanceModel? get distance;
   @override
-  IntensityModel? get intensity; // Optional intensity level information
+  IntensityModel? get intensity;
   @override
   String? get customNotes;
 
