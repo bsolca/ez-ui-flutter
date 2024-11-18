@@ -68,21 +68,6 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
         children: [
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
           EzFormItemLayout(
-            itemLabel: 'Select Exercise',
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: 'Select Exercise',
-                ignorePointers: true,
-                mouseCursor: SystemMouseCursors.click,
-                controller: exerciseNameController,
-                validator: (v) {
-                  return v?.isNotEmpty ?? false ? null : ref.loc.required;
-                },
-              ),
-            ),
-          ),
-          EzFormItemLayout(
             itemLabel: ref.loc.workoutExerciseFormReps,
             itemDescription: ref.loc.workoutExerciseFormRepsDescription,
             child: Skeletonizer(
