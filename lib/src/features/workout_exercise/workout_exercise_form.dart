@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
@@ -6,6 +8,7 @@ import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class WorkoutExerciseForm extends ConsumerStatefulWidget {
@@ -42,6 +45,19 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
     loadingData = widget.isLoading;
   }
 
+  Future<void> onSubmit() async {
+    unawaited(SmartDialog.showLoading<void>());
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: after showLoading');
+    await Future<void>.delayed(const Duration(seconds: 2));
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: after delay');
+    await SmartDialog.dismiss<void>();
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: after dismiss');
+    await SmartDialog.showToast('test toast');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -51,7 +67,21 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
         children: [
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
           TapRegion(
-            onTapInside: (e) => print('Select Exercise Tapped'),
+            onTapInside: (e) => SmartDialog.show<void>(builder: (context) {
+              return Container(
+                height: 80,
+                width: 180,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  'easy custom dialog',
+                  style: TextStyle(color: Colors.white),
+                ),
+              );
+            }),
             child: EzFormItemLayout(
               itemLabel: 'Select Exercise',
               child: Skeletonizer(

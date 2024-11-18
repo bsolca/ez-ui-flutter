@@ -22,6 +22,7 @@ import 'package:ez_fit_app/src/utils/routing/presentation/not_found_screen.dart'
 import 'package:ez_fit_app/src/utils/routing/presentation/unauthorized_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -60,6 +61,9 @@ Raw<GoRouter> goRouter(Ref ref) {
     redirect: (context, state) async {
       return null;
     },
+    observers: [
+      FlutterSmartDialog.observer,
+    ],
     routes: [
       GoRoutePageScaffold(
         path: '/auth',

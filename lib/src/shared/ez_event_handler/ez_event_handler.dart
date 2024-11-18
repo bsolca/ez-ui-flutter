@@ -2,6 +2,7 @@ import 'package:ez_fit_app/src/shared/ez_event_handler/ez_event_controller.codeg
 import 'package:ez_fit_app/src/utils/ez_toast/ez_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:toastification/toastification.dart';
 
 class EzEventHandler extends ConsumerWidget {
@@ -29,8 +30,10 @@ class EzEventHandler extends ConsumerWidget {
         ref.read(ezEventControllerProvider.notifier).reset();
       }
     });
-    return ToastificationWrapper(
-      child: child,
+    return FlutterSmartDialog(
+      child: ToastificationWrapper(
+        child: child,
+      ),
     );
   }
 }

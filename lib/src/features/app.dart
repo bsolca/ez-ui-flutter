@@ -10,6 +10,7 @@ import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 /// App starting point.
 class App extends ConsumerWidget {
@@ -46,11 +47,13 @@ class App extends ConsumerWidget {
                     .read(getLocaleProvider.notifier)
                     .localeResolutionCallback(deviceLocale, supportedLocales);
               },
-              builder: (context, child) {
-                final c = child;
-                if (c == null) return throw Exception('Child is null');
-                return EzEventHandler(child: c);
-              },
+              builder: FlutterSmartDialog.init(
+                builder: (context, child) {
+                  final c = child;
+                  if (c == null) return throw Exception('Child is null');
+                  return EzEventHandler(child: c);
+                },
+              ),
               routerConfig: ref.watch(goRouterProvider),
             ),
           ),
