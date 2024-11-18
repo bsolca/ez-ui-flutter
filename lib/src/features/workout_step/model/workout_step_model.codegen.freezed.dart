@@ -20,16 +20,11 @@ WorkoutStepModel _$WorkoutStepModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkoutStepModel {
-  String get id =>
-      throw _privateConstructorUsedError; // Unique identifier for the step
-  String get workoutId =>
-      throw _privateConstructorUsedError; // ID of the workout this step belongs to
-  String get name =>
-      throw _privateConstructorUsedError; // Name of the step, e.g., "Round 1"
-  String? get description =>
-      throw _privateConstructorUsedError; // Optional description for this step
-  int get setCount =>
-      throw _privateConstructorUsedError; // Number of times to repeat this step
+  String get id => throw _privateConstructorUsedError;
+  String get workoutId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  int get setCount => throw _privateConstructorUsedError;
   DurationModel? get restTime => throw _privateConstructorUsedError;
 
   /// Serializes this WorkoutStepModel to a JSON map.
@@ -209,19 +204,14 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
 
   @override
   final String id;
-// Unique identifier for the step
   @override
   final String workoutId;
-// ID of the workout this step belongs to
   @override
   final String name;
-// Name of the step, e.g., "Round 1"
   @override
   final String? description;
-// Optional description for this step
   @override
   final int setCount;
-// Number of times to repeat this step
   @override
   final DurationModel? restTime;
 
@@ -282,15 +272,15 @@ abstract class _WorkoutStepModel implements WorkoutStepModel {
       _$WorkoutStepModelImpl.fromJson;
 
   @override
-  String get id; // Unique identifier for the step
+  String get id;
   @override
-  String get workoutId; // ID of the workout this step belongs to
+  String get workoutId;
   @override
-  String get name; // Name of the step, e.g., "Round 1"
+  String get name;
   @override
-  String? get description; // Optional description for this step
+  String? get description;
   @override
-  int get setCount; // Number of times to repeat this step
+  int get setCount;
   @override
   DurationModel? get restTime;
 

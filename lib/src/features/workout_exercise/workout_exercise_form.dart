@@ -1,12 +1,9 @@
 import 'dart:async';
 
-import 'package:ez_fit_app/src/features/exercise/exercise_list.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
-import 'package:ez_fit_app/src/shared/ez_squircle/src/ez_smooth_rectangle_border.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
-import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
@@ -70,54 +67,18 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
         shrinkWrap: true,
         children: [
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
-          TapRegion(
-            onTapInside: (e) => SmartDialog.show<void>(
-              animationType: SmartAnimationType.fade,
-              animationTime: EzConstValue.animationDuration,
-              builder: (context) {
-                return Container(
-                  margin: const EdgeInsets.all(50),
-                  constraints: const BoxConstraints(
-                    maxWidth: EzConstLayout.maxWidthCompact,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: Theme.of(context).colorScheme.surfaceContainer,
-                    shape: EzConstLayout.getShapeBorder(),
-                  ),
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ExerciseList(
-                      onCellTap: (details, exercises) {
-                        if (details.rowColumnIndex.rowIndex > 0) {
-                          final rowIndex = details.rowColumnIndex.rowIndex - 1;
-                          if (rowIndex < exercises.length) {
-                            final exercise = exercises[rowIndex];
-                            final exerciseId = exercise.id;
-                            exerciseIdController.text = exerciseId;
-                            exerciseNameController.text = exercise.name;
-                            SmartDialog.dismiss<void>();
-                          }
-                        }
-                      },
-                    ),
-                  ),
-                );
-              },
-            ),
-            child: EzFormItemLayout(
-              itemLabel: 'Select Exercise',
-              child: Skeletonizer(
-                enabled: loadingData,
-                child: EzTextFormField(
-                  hintText: 'Select Exercise',
-                  ignorePointers: true,
-                  mouseCursor: SystemMouseCursors.click,
-                  controller: exerciseNameController,
-                  validator: (v) {
-                    return v?.isNotEmpty ?? false ? null : ref.loc.required;
-                  },
-                ),
+          EzFormItemLayout(
+            itemLabel: 'Select Exercise',
+            child: Skeletonizer(
+              enabled: loadingData,
+              child: EzTextFormField(
+                hintText: 'Select Exercise',
+                ignorePointers: true,
+                mouseCursor: SystemMouseCursors.click,
+                controller: exerciseNameController,
+                validator: (v) {
+                  return v?.isNotEmpty ?? false ? null : ref.loc.required;
+                },
               ),
             ),
           ),
