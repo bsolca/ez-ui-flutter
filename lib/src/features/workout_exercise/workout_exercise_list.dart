@@ -24,27 +24,13 @@ class WorkoutExerciseList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final exercises = ref.watch(workoutExerciseListControllerProvider(stepId));
-    final isLight = Theme
-        .of(context)
-        .brightness == Brightness.light;
+    final isLight = Theme.of(context).brightness == Brightness.light;
     final tileBgColor = isLight
-        ? Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainer
-        : Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainerLow;
+        ? Theme.of(context).colorScheme.surfaceContainer
+        : Theme.of(context).colorScheme.surfaceContainerLow;
     final bgChildrenColor = isLight
-        ? Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainerLow
-        : Theme
-        .of(context)
-        .colorScheme
-        .surfaceContainer;
+        ? Theme.of(context).colorScheme.surfaceContainerLow
+        : Theme.of(context).colorScheme.surfaceContainer;
 
     return exercises.when(
       data: (exercises) {
@@ -57,17 +43,18 @@ class WorkoutExerciseList extends ConsumerWidget {
           itemCount: exercises.length,
           itemBuilder: (context, index) {
             final exercise = exercises[index];
+            final localExerciseId = exercise.id;
             return Padding(
               padding: index != 0
                   ? const EdgeInsets.only(
-                top: EzConstLayout.spacerSmall,
-              )
+                      top: EzConstLayout.spacerSmall,
+                    )
                   : EdgeInsets.zero,
               child: ref
-                  .watch(workoutExerciseExerciseControllerProvider(exercise.id))
+                  .watch(workoutExerciseExerciseControllerProvider(
+                      localExerciseId))
                   .when(
-                data: (e) =>
-                    EzExpansionTile(
+                    data: (e) => EzExpansionTile(
                       tileBgColor: tileBgColor,
                       bgChildrenColor: bgChildrenColor,
                       title: Text(e.name),
@@ -88,8 +75,7 @@ class WorkoutExerciseList extends ConsumerWidget {
                                         maxWidth: EzConstLayout.maxWidthCompact,
                                       ),
                                       decoration: ShapeDecoration(
-                                        color: Theme
-                                            .of(context)
+                                        color: Theme.of(context)
                                             .colorScheme
                                             .surfaceContainer,
                                         shape: EzConstLayout.getShapeBorder(),
@@ -99,14 +85,23 @@ class WorkoutExerciseList extends ConsumerWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         child: ExerciseList(
                                           onCellTap: (details, exercises) {
-                                            if (details.rowColumnIndex
-                                                .rowIndex > 0) {
+                                            if (details
+                                                    .rowColumnIndex.rowIndex >
+                                                0) {
                                               final rowIndex = details
-                                                  .rowColumnIndex.rowIndex - 1;
+                                                      .rowColumnIndex.rowIndex -
+                                                  1;
                                               if (rowIndex < exercises.length) {
-                                                final exercise = exercises[rowIndex];
-                                                final exerciseId = exercise.id;
-
+                                                final exercise =
+                                                    exercises[rowIndex];
+                                                ref
+                                                    .read(
+                                                        workoutExerciseExerciseControllerProvider(
+                                                      localExerciseId,
+                                                    ).notifier)
+                                                    .changeName(
+                                                      name: exercise.name,
+                                                    );
                                                 // todo add form controller
                                                 SmartDialog.dismiss<void>();
                                               }
@@ -117,17 +112,16 @@ class WorkoutExerciseList extends ConsumerWidget {
                                     );
                                   },
                                 );
-                              }
-                          ),
+                              }),
                           IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: () {
                               ref
                                   .read(
-                                workoutExerciseListControllerProvider(
-                                  stepId,
-                                ).notifier,
-                              )
+                                    workoutExerciseListControllerProvider(
+                                      stepId,
+                                    ).notifier,
+                                  )
                                   .deleteWorkoutExercise(exercise.exerciseId);
                             },
                           ),
@@ -139,35 +133,34 @@ class WorkoutExerciseList extends ConsumerWidget {
                         ),
                       ],
                     ),
-                error: (error, stackTrace) {
-                  return EzExpansionTile.error(
-                    title: const Text('Error - Loading an exercise'),
-                    subtitle: SelectableText(error.toString()),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        ref
-                            .read(
-                          workoutExerciseListControllerProvider(
-                            stepId,
-                          ).notifier,
-                        )
-                            .deleteWorkoutExercise(exercise.exerciseId);
-                      },
-                    ),
-                  );
-                },
-                loading: EzExpansionTile.loading,
-              ),
+                    error: (error, stackTrace) {
+                      return EzExpansionTile.error(
+                        title: const Text('Error - Loading an exercise'),
+                        subtitle: SelectableText(error.toString()),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () {
+                            ref
+                                .read(
+                                  workoutExerciseListControllerProvider(
+                                    stepId,
+                                  ).notifier,
+                                )
+                                .deleteWorkoutExercise(exercise.exerciseId);
+                          },
+                        ),
+                      );
+                    },
+                    loading: EzExpansionTile.loading,
+                  ),
             );
           },
         );
       },
-      error: (error, stackTrace) =>
-          EzExpansionTile.error(
-            title: Text('Error - Loading stepId: $stepId'),
-            subtitle: SelectableText(error.toString()),
-          ),
+      error: (error, stackTrace) => EzExpansionTile.error(
+        title: Text('Error - Loading stepId: $stepId'),
+        subtitle: SelectableText(error.toString()),
+      ),
       loading: () => const Placeholder(),
     );
   }
