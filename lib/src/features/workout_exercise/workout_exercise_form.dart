@@ -50,19 +50,24 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
         shrinkWrap: true,
         children: [
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
-          // todo exeerrcise selection dropdown
-          // EzFormItemLayout(
-          //   itemLabel: ref.loc.workoutExerciseFormExerciseId,
-          //   itemDescription: ref.loc.workoutExerciseFormExerciseIdDescription,
-          //   child: Skeletonizer(
-          //     enabled: loadingData,
-          //     child: EzTextFormField(
-          //       hintText: ref.loc.workoutExerciseFormExerciseIdHint,
-          //       controller: exerciseIdController,
-          //       validator: (v) => v?.isNotEmpty ?? false ? null : ref.loc.required,
-          //     ),
-          //   ),
-          // ),
+          TapRegion(
+            onTapInside: (e) => print('Select Exercise Tapped'),
+            child: EzFormItemLayout(
+              itemLabel: 'Select Exercise',
+              child: Skeletonizer(
+                enabled: loadingData,
+                child: EzTextFormField(
+                  hintText: 'Select Exercise',
+                  ignorePointers: true,
+                  mouseCursor: SystemMouseCursors.click,
+                  controller: exerciseIdController,
+                  validator: (v) {
+                    return v?.isNotEmpty ?? false ? null : ref.loc.required;
+                  },
+                ),
+              ),
+            ),
+          ),
           EzFormItemLayout(
             itemLabel: ref.loc.workoutExerciseFormReps,
             itemDescription: ref.loc.workoutExerciseFormRepsDescription,

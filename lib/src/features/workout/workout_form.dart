@@ -61,97 +61,110 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          EzHeader.displayMedium(ref.loc.workoutFormHeader),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutFormName,
-            itemDescription: ref.loc.workoutFormNameDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutFormNameHint,
-                controller: nameController,
-                validator: (v) {
-                  return v?.isNotEmpty ?? false ? null : ref.loc.required;
-                },
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutFormTags,
-            itemDescription: ref.loc.workoutFormTagsDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutFormTagsHint,
-                controller: tagsController,
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutFormDescription,
-            itemDescription: ref.loc.workoutFormDescriptionDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutFormDescriptionHint,
-                controller: descriptionController,
-                maxLines: 3,
-              ),
-            ),
-          ),
-          EzHeader.displayMedium(ref.loc.workoutFormStepsHeader),
-          WorkoutStepsList(
-            workoutId: widget.workoutId,
-            loadingData: loadingData,
-          ),
-          EzButton(
-            type: EzButtonType.outlined,
-            onPressed: () {
-              // Example of adding a new step
-              ref
-                  .read(
-                    workoutStepsControllerProvider(widget.workoutId).notifier,
-                  )
-                  .addStep(
-                    WorkoutStepModel(
-                      id: 'new-id-${DateTime.now().millisecondsSinceEpoch}',
-                      name: 'New Step ',
-                      description: 'Description for new step',
-                      setCount: 1,
-                      restTime: null,
-                      workoutId: widget.workoutId,
-                    ),
-                  );
-            },
-            text: 'Add Step',
-          ),
-          const EzDivider(),
-          WorkoutFormSaveButton(
-            formKey: formKey,
-            isDisabled: loadingData,
-            () => WorkoutModel(
-              id: idController.text,
-              name: nameController.text,
-              description: descriptionController.text,
-              tags: tagsController.text
-                  .split(',')
-                  .map((tag) => tag.trim())
-                  .toList(),
-            ),
-          ),
-          if (widget.workoutId.isNotEmpty && widget.workoutId != 'new')
-            WorkoutFormDeleteButton(
+    return Column(
+      children: [
+        Row(
+          children: [
+            EzHeader.displayMedium(ref.loc.workoutFormHeader),
+            const Spacer(),
+            WorkoutFormSaveButton(
+              formKey: formKey,
               isDisabled: loadingData,
-              workoutId: widget.workoutId,
-              workoutName: nameController.text,
+              () => WorkoutModel(
+                id: idController.text,
+                name: nameController.text,
+                description: descriptionController.text,
+                tags: tagsController.text
+                    .split(',')
+                    .map((tag) => tag.trim())
+                    .toList(),
+              ),
             ),
-        ].withSpaceBetween(height: EzConstLayout.spacerSmall),
-      ),
+          ],
+        ),
+        const EzDivider(),
+        Expanded(
+          child: Form(
+            key: formKey,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                EzFormItemLayout(
+                  itemLabel: ref.loc.workoutFormName,
+                  itemDescription: ref.loc.workoutFormNameDescription,
+                  child: Skeletonizer(
+                    enabled: loadingData,
+                    child: EzTextFormField(
+                      hintText: ref.loc.workoutFormNameHint,
+                      controller: nameController,
+                      validator: (v) {
+                        return v?.isNotEmpty ?? false ? null : ref.loc.required;
+                      },
+                    ),
+                  ),
+                ),
+                EzFormItemLayout(
+                  itemLabel: ref.loc.workoutFormTags,
+                  itemDescription: ref.loc.workoutFormTagsDescription,
+                  child: Skeletonizer(
+                    enabled: loadingData,
+                    child: EzTextFormField(
+                      hintText: ref.loc.workoutFormTagsHint,
+                      controller: tagsController,
+                    ),
+                  ),
+                ),
+                EzFormItemLayout(
+                  itemLabel: ref.loc.workoutFormDescription,
+                  itemDescription: ref.loc.workoutFormDescriptionDescription,
+                  child: Skeletonizer(
+                    enabled: loadingData,
+                    child: EzTextFormField(
+                      hintText: ref.loc.workoutFormDescriptionHint,
+                      controller: descriptionController,
+                      maxLines: 3,
+                    ),
+                  ),
+                ),
+                EzHeader.displayMedium(ref.loc.workoutFormStepsHeader),
+                WorkoutStepsList(
+                  workoutId: widget.workoutId,
+                  loadingData: loadingData,
+                ),
+                EzButton(
+                  type: EzButtonType.outlined,
+                  onPressed: () {
+                    // Example of adding a new step
+                    ref
+                        .read(
+                          workoutStepsControllerProvider(widget.workoutId)
+                              .notifier,
+                        )
+                        .addStep(
+                          WorkoutStepModel(
+                            id: 'new-id-${DateTime.now().millisecondsSinceEpoch}',
+                            name: 'New Step ',
+                            description: 'Description for new step',
+                            setCount: 1,
+                            restTime: null,
+                            workoutId: widget.workoutId,
+                          ),
+                        );
+                  },
+                  text: 'Add Step',
+                ),
+                const EzDivider(),
+                if (widget.workoutId.isNotEmpty && widget.workoutId != 'new')
+                  WorkoutFormDeleteButton(
+                    isDisabled: loadingData,
+                    workoutId: widget.workoutId,
+                    workoutName: nameController.text,
+                  ),
+              ].withSpaceBetween(height: EzConstLayout.spacerSmall),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
