@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/features/workout/data/workout_repository.codegen.dart';
+import 'package:ez_fit_app/src/features/workout/model/workout_form_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -30,6 +31,10 @@ class WorkoutService {
 
   Future<void> createWorkout(WorkoutModel workout) async {
     return _workoutRepository.createWorkout(workout);
+  }
+
+  Future<void> saveWorkoutForm(WorkoutFormModel workout) async {
+    return _workoutRepository.saveWorkoutForm(workout);
   }
 }
 

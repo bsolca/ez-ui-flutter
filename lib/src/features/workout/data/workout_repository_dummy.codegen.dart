@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:ez_fit_app/src/features/workout/data/workout_repository.codegen.dart';
+import 'package:ez_fit_app/src/features/workout/model/workout_form_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/services.dart';
@@ -46,6 +47,11 @@ class WorkoutRepositoryDummy implements WorkoutRepository {
 
   @override
   Future<void> deleteWorkout(String id) async {
+    _simulateRandomFailure();
+  }
+
+  @override
+  Future<void> saveWorkoutForm(WorkoutFormModel workout) async {
     _simulateRandomFailure();
   }
 

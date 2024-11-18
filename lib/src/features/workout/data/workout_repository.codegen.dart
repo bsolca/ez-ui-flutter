@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/features/workout/data/workout_repository_dummy.codegen.dart';
+import 'package:ez_fit_app/src/features/workout/model/workout_form_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -12,6 +13,7 @@ abstract class WorkoutRepository {
   Future<void> updateWorkout(WorkoutModel workout);
   Future<void> createWorkout(WorkoutModel workout);
   Future<void> deleteWorkout(String id);
+  Future<void> saveWorkoutForm(WorkoutFormModel workout);
 }
 
 /// Riverpod provider for WorkoutRepository.
