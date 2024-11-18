@@ -30,7 +30,10 @@ class WorkoutStepsController extends _$WorkoutStepsController {
     final steps = state.value ?? [];
     state = AsyncValue.data([
       for (final step in steps)
-        if (step.id == updatedStep.id) updatedStep else step,
+        if (step.workoutStepId == updatedStep.workoutStepId)
+          updatedStep
+        else
+          step,
     ]);
     await ref.read(workoutStepServiceProvider).updateWorkoutStep(updatedStep);
   }
@@ -50,7 +53,7 @@ class WorkoutStepsController extends _$WorkoutStepsController {
         if (currentState is AsyncData<List<WorkoutStepModel>>) {
           final currentSteps = currentState.value;
           final updatedSteps = List<WorkoutStepModel>.from(currentSteps)
-            ..removeWhere((step) => step.id == stepId);
+            ..removeWhere((step) => step.workoutStepId == stepId);
           state = AsyncValue.data(updatedSteps);
         }
       },

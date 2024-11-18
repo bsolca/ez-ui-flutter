@@ -43,7 +43,7 @@ class WorkoutExerciseList extends ConsumerWidget {
           itemCount: exercises.length,
           itemBuilder: (context, index) {
             final exercise = exercises[index];
-            final localExerciseId = exercise.id;
+            final localExerciseId = exercise.exerciseId;
             return Padding(
               padding: index != 0
                   ? const EdgeInsets.only(
@@ -129,7 +129,7 @@ class WorkoutExerciseList extends ConsumerWidget {
                       ),
                       children: [
                         WorkoutExerciseForm(
-                          workoutExerciseId: exercise.id,
+                          workoutExerciseId: exercise.workoutExerciseId,
                         ),
                       ],
                     ),

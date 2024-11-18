@@ -53,7 +53,7 @@ class _WorkoutTableState extends ConsumerState<WorkoutTable> {
       workouts: widget.isLoading
           ? List.generate(50, (index) {
               return WorkoutModel(
-                id: faker.guid.guid(),
+                workoutId: faker.guid.guid(),
                 name: faker.lorem.words(2).join(' '),
                 description: faker.lorem.sentences(2).join(' '),
                 tags: faker.lorem.words(3),
@@ -100,7 +100,7 @@ class _WorkoutTableState extends ConsumerState<WorkoutTable> {
                     final rowIndex = details.rowColumnIndex.rowIndex - 1;
                     if (rowIndex < widget.workouts.length) {
                       final workout = widget.workouts[rowIndex];
-                      final workoutId = workout.id;
+                      final workoutId = workout.workoutId;
 
                       context.goNamed(
                         AppRoute.workout.name,
@@ -167,7 +167,7 @@ class _WorkoutDataSource extends DataGridSource {
               // Include the id column to retrieve the workout ID on cell tap.
               DataGridCell<String>(
                 columnName: 'id',
-                value: workout.id,
+                value: workout.workoutId,
               ),
               ...WorkoutTableColumnEnum.values.map<DataGridCell>(
                 (column) {

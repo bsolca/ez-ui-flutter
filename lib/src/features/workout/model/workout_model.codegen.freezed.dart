@@ -20,7 +20,7 @@ WorkoutModel _$WorkoutModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkoutModel {
-  String get id =>
+  String get workoutId =>
       throw _privateConstructorUsedError; // Unique identifier for the workout
   String get name => throw _privateConstructorUsedError; // Name of the workout
   String? get description =>
@@ -43,7 +43,8 @@ abstract class $WorkoutModelCopyWith<$Res> {
           WorkoutModel value, $Res Function(WorkoutModel) then) =
       _$WorkoutModelCopyWithImpl<$Res, WorkoutModel>;
   @useResult
-  $Res call({String id, String name, String? description, List<String> tags});
+  $Res call(
+      {String workoutId, String name, String? description, List<String> tags});
 }
 
 /// @nodoc
@@ -61,15 +62,15 @@ class _$WorkoutModelCopyWithImpl<$Res, $Val extends WorkoutModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
     Object? tags = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      workoutId: null == workoutId
+          ? _value.workoutId
+          : workoutId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -95,7 +96,8 @@ abstract class _$$WorkoutModelImplCopyWith<$Res>
       __$$WorkoutModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String? description, List<String> tags});
+  $Res call(
+      {String workoutId, String name, String? description, List<String> tags});
 }
 
 /// @nodoc
@@ -111,15 +113,15 @@ class __$$WorkoutModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
     Object? tags = null,
   }) {
     return _then(_$WorkoutModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      workoutId: null == workoutId
+          ? _value.workoutId
+          : workoutId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -141,7 +143,7 @@ class __$$WorkoutModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WorkoutModelImpl implements _WorkoutModel {
   const _$WorkoutModelImpl(
-      {required this.id,
+      {required this.workoutId,
       required this.name,
       required this.description,
       required final List<String> tags})
@@ -151,7 +153,7 @@ class _$WorkoutModelImpl implements _WorkoutModel {
       _$$WorkoutModelImplFromJson(json);
 
   @override
-  final String id;
+  final String workoutId;
 // Unique identifier for the workout
   @override
   final String name;
@@ -170,7 +172,7 @@ class _$WorkoutModelImpl implements _WorkoutModel {
 
   @override
   String toString() {
-    return 'WorkoutModel(id: $id, name: $name, description: $description, tags: $tags)';
+    return 'WorkoutModel(workoutId: $workoutId, name: $name, description: $description, tags: $tags)';
   }
 
   @override
@@ -178,7 +180,8 @@ class _$WorkoutModelImpl implements _WorkoutModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WorkoutModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.workoutId, workoutId) ||
+                other.workoutId == workoutId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -187,7 +190,7 @@ class _$WorkoutModelImpl implements _WorkoutModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description,
+  int get hashCode => Object.hash(runtimeType, workoutId, name, description,
       const DeepCollectionEquality().hash(_tags));
 
   /// Create a copy of WorkoutModel
@@ -208,7 +211,7 @@ class _$WorkoutModelImpl implements _WorkoutModel {
 
 abstract class _WorkoutModel implements WorkoutModel {
   const factory _WorkoutModel(
-      {required final String id,
+      {required final String workoutId,
       required final String name,
       required final String? description,
       required final List<String> tags}) = _$WorkoutModelImpl;
@@ -217,7 +220,7 @@ abstract class _WorkoutModel implements WorkoutModel {
       _$WorkoutModelImpl.fromJson;
 
   @override
-  String get id; // Unique identifier for the workout
+  String get workoutId; // Unique identifier for the workout
   @override
   String get name; // Name of the workout
   @override

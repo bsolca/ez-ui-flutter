@@ -7,7 +7,7 @@ part 'workout_repository.codegen.g.dart';
 
 /// Abstract interface for the WorkoutRepository.
 abstract class WorkoutRepository {
-  Future<WorkoutModel?> getWorkoutById(String id);
+  Future<WorkoutModel> getWorkoutById(String workoutId);
   Future<List<WorkoutModel>> getWorkouts();
   Future<void> updateWorkout(WorkoutModel workout);
   Future<void> createWorkout(WorkoutModel workout);

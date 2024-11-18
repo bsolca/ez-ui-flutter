@@ -2,6 +2,7 @@ import 'package:ez_fit_app/src/utils/converters/double_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'distance_model.codegen.freezed.dart';
+
 part 'distance_model.codegen.g.dart';
 
 /// Enum representing possible distance units.
@@ -26,9 +27,6 @@ class DistanceModel with _$DistanceModel {
 }
 
 /// Converter for [DistanceUnit] to and from JSON.
-///
-/// This converter is used in [DistanceModel] to convert between [DistanceUnit] and
-/// JSON strings.
 class DistanceUnitConverter implements JsonConverter<DistanceUnit, String> {
   /// Creates an instance of [DistanceUnitConverter].
   const DistanceUnitConverter();

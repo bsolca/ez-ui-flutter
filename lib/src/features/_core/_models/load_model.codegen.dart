@@ -18,4 +18,3 @@ class LoadModel with _$LoadModel {
   factory LoadModel.fromJson(Map<String, dynamic> json) =>
       _$LoadModelFromJson(json);
 }
-

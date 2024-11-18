@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'workout_steps_controller.codegen.dart';
+part of 'workout_form_controller.codegen.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$workoutStepsControllerHash() =>
-    r'2736ae0a9ca93b9dcc11c51034f31fa9a23b12d4';
+String _$workoutFormControllerHash() =>
+    r'13f0e039e9a3aaa8d665ff406de1836d763e07cd';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,37 +30,36 @@ class _SystemHash {
   }
 }
 
-abstract class _$WorkoutStepsController
-    extends BuildlessAutoDisposeAsyncNotifier<List<WorkoutStepModel>> {
+abstract class _$WorkoutFormController
+    extends BuildlessAutoDisposeAsyncNotifier<WorkoutFormModel> {
   late final String workoutId;
 
-  FutureOr<List<WorkoutStepModel>> build(
+  FutureOr<WorkoutFormModel> build(
     String workoutId,
   );
 }
 
-/// See also [WorkoutStepsController].
-@ProviderFor(WorkoutStepsController)
-const workoutStepsControllerProvider = WorkoutStepsControllerFamily();
+/// See also [WorkoutFormController].
+@ProviderFor(WorkoutFormController)
+const workoutFormControllerProvider = WorkoutFormControllerFamily();
 
-/// See also [WorkoutStepsController].
-class WorkoutStepsControllerFamily
-    extends Family<AsyncValue<List<WorkoutStepModel>>> {
-  /// See also [WorkoutStepsController].
-  const WorkoutStepsControllerFamily();
+/// See also [WorkoutFormController].
+class WorkoutFormControllerFamily extends Family<AsyncValue<WorkoutFormModel>> {
+  /// See also [WorkoutFormController].
+  const WorkoutFormControllerFamily();
 
-  /// See also [WorkoutStepsController].
-  WorkoutStepsControllerProvider call(
+  /// See also [WorkoutFormController].
+  WorkoutFormControllerProvider call(
     String workoutId,
   ) {
-    return WorkoutStepsControllerProvider(
+    return WorkoutFormControllerProvider(
       workoutId,
     );
   }
 
   @override
-  WorkoutStepsControllerProvider getProviderOverride(
-    covariant WorkoutStepsControllerProvider provider,
+  WorkoutFormControllerProvider getProviderOverride(
+    covariant WorkoutFormControllerProvider provider,
   ) {
     return call(
       provider.workoutId,
@@ -79,31 +78,31 @@ class WorkoutStepsControllerFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'workoutStepsControllerProvider';
+  String? get name => r'workoutFormControllerProvider';
 }
 
-/// See also [WorkoutStepsController].
-class WorkoutStepsControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<WorkoutStepsController,
-        List<WorkoutStepModel>> {
-  /// See also [WorkoutStepsController].
-  WorkoutStepsControllerProvider(
+/// See also [WorkoutFormController].
+class WorkoutFormControllerProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<WorkoutFormController,
+        WorkoutFormModel> {
+  /// See also [WorkoutFormController].
+  WorkoutFormControllerProvider(
     String workoutId,
   ) : this._internal(
-          () => WorkoutStepsController()..workoutId = workoutId,
-          from: workoutStepsControllerProvider,
-          name: r'workoutStepsControllerProvider',
+          () => WorkoutFormController()..workoutId = workoutId,
+          from: workoutFormControllerProvider,
+          name: r'workoutFormControllerProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$workoutStepsControllerHash,
-          dependencies: WorkoutStepsControllerFamily._dependencies,
+                  : _$workoutFormControllerHash,
+          dependencies: WorkoutFormControllerFamily._dependencies,
           allTransitiveDependencies:
-              WorkoutStepsControllerFamily._allTransitiveDependencies,
+              WorkoutFormControllerFamily._allTransitiveDependencies,
           workoutId: workoutId,
         );
 
-  WorkoutStepsControllerProvider._internal(
+  WorkoutFormControllerProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -116,8 +115,8 @@ class WorkoutStepsControllerProvider
   final String workoutId;
 
   @override
-  FutureOr<List<WorkoutStepModel>> runNotifierBuild(
-    covariant WorkoutStepsController notifier,
+  FutureOr<WorkoutFormModel> runNotifierBuild(
+    covariant WorkoutFormController notifier,
   ) {
     return notifier.build(
       workoutId,
@@ -125,10 +124,10 @@ class WorkoutStepsControllerProvider
   }
 
   @override
-  Override overrideWith(WorkoutStepsController Function() create) {
+  Override overrideWith(WorkoutFormController Function() create) {
     return ProviderOverride(
       origin: this,
-      override: WorkoutStepsControllerProvider._internal(
+      override: WorkoutFormControllerProvider._internal(
         () => create()..workoutId = workoutId,
         from: from,
         name: null,
@@ -141,14 +140,14 @@ class WorkoutStepsControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<WorkoutStepsController,
-      List<WorkoutStepModel>> createElement() {
-    return _WorkoutStepsControllerProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<WorkoutFormController,
+      WorkoutFormModel> createElement() {
+    return _WorkoutFormControllerProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is WorkoutStepsControllerProvider &&
+    return other is WorkoutFormControllerProvider &&
         other.workoutId == workoutId;
   }
 
@@ -163,19 +162,19 @@ class WorkoutStepsControllerProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin WorkoutStepsControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<WorkoutStepModel>> {
+mixin WorkoutFormControllerRef
+    on AutoDisposeAsyncNotifierProviderRef<WorkoutFormModel> {
   /// The parameter `workoutId` of this provider.
   String get workoutId;
 }
 
-class _WorkoutStepsControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<WorkoutStepsController,
-        List<WorkoutStepModel>> with WorkoutStepsControllerRef {
-  _WorkoutStepsControllerProviderElement(super.provider);
+class _WorkoutFormControllerProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<WorkoutFormController,
+        WorkoutFormModel> with WorkoutFormControllerRef {
+  _WorkoutFormControllerProviderElement(super.provider);
 
   @override
-  String get workoutId => (origin as WorkoutStepsControllerProvider).workoutId;
+  String get workoutId => (origin as WorkoutFormControllerProvider).workoutId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -13,7 +13,7 @@ _$WorkoutStepModelImpl _$$WorkoutStepModelImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$WorkoutStepModelImpl(
-          id: $checkedConvert('id', (v) => v as String),
+          workoutStepId: $checkedConvert('workoutStepId', (v) => v as String),
           workoutId: $checkedConvert('workoutId', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String?),
@@ -31,7 +31,7 @@ _$WorkoutStepModelImpl _$$WorkoutStepModelImplFromJson(
 Map<String, dynamic> _$$WorkoutStepModelImplToJson(
         _$WorkoutStepModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'workoutStepId': instance.workoutStepId,
       'workoutId': instance.workoutId,
       'name': instance.name,
       'description': instance.description,

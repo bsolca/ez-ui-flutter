@@ -17,7 +17,8 @@ class WorkoutSaveController extends _$WorkoutSaveController {
   /// Save or update a specific workout.
   Future<void> saveWorkout(WorkoutModel workout) async {
     final workoutService = ref.read(workoutServiceProvider);
-    final isCreateWorkout = workout.id.isEmpty || workout.id == 'new';
+    final isCreateWorkout =
+        workout.workoutId.isEmpty || workout.workoutId == 'new';
     final successMessage = isCreateWorkout
         ? ref.read(appLocalProvider).successfullyCreated(workout.name)
         : ref.read(appLocalProvider).successfullyUpdated(workout.name);

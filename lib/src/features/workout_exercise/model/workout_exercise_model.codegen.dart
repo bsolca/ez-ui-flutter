@@ -15,7 +15,7 @@ part 'workout_exercise_model.codegen.g.dart';
 class WorkoutExerciseModel with _$WorkoutExerciseModel {
   /// Workout-specific exercise model, linking to core exercise details.
   const factory WorkoutExerciseModel({
-    required String id,
+    required String workoutExerciseId,
     required String exerciseId,
     required RepsModel? reps,
     required DurationModel? duration,

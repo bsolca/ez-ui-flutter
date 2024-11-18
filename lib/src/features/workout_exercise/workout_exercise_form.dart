@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
@@ -8,7 +6,6 @@ import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class WorkoutExerciseForm extends ConsumerStatefulWidget {

@@ -20,7 +20,7 @@ WorkoutStepModel _$WorkoutStepModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkoutStepModel {
-  String get id => throw _privateConstructorUsedError;
+  String get workoutStepId => throw _privateConstructorUsedError;
   String get workoutId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $WorkoutStepModelCopyWith<$Res> {
       _$WorkoutStepModelCopyWithImpl<$Res, WorkoutStepModel>;
   @useResult
   $Res call(
-      {String id,
+      {String workoutStepId,
       String workoutId,
       String name,
       String? description,
@@ -69,7 +69,7 @@ class _$WorkoutStepModelCopyWithImpl<$Res, $Val extends WorkoutStepModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? workoutStepId = null,
     Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
@@ -77,9 +77,9 @@ class _$WorkoutStepModelCopyWithImpl<$Res, $Val extends WorkoutStepModel>
     Object? restTime = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      workoutStepId: null == workoutStepId
+          ? _value.workoutStepId
+          : workoutStepId // ignore: cast_nullable_to_non_nullable
               as String,
       workoutId: null == workoutId
           ? _value.workoutId
@@ -128,7 +128,7 @@ abstract class _$$WorkoutStepModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {String workoutStepId,
       String workoutId,
       String name,
       String? description,
@@ -152,7 +152,7 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? workoutStepId = null,
     Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
@@ -160,9 +160,9 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
     Object? restTime = freezed,
   }) {
     return _then(_$WorkoutStepModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      workoutStepId: null == workoutStepId
+          ? _value.workoutStepId
+          : workoutStepId // ignore: cast_nullable_to_non_nullable
               as String,
       workoutId: null == workoutId
           ? _value.workoutId
@@ -192,7 +192,7 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WorkoutStepModelImpl implements _WorkoutStepModel {
   const _$WorkoutStepModelImpl(
-      {required this.id,
+      {required this.workoutStepId,
       required this.workoutId,
       required this.name,
       required this.description,
@@ -203,7 +203,7 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
       _$$WorkoutStepModelImplFromJson(json);
 
   @override
-  final String id;
+  final String workoutStepId;
   @override
   final String workoutId;
   @override
@@ -217,7 +217,7 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
 
   @override
   String toString() {
-    return 'WorkoutStepModel(id: $id, workoutId: $workoutId, name: $name, description: $description, setCount: $setCount, restTime: $restTime)';
+    return 'WorkoutStepModel(workoutStepId: $workoutStepId, workoutId: $workoutId, name: $name, description: $description, setCount: $setCount, restTime: $restTime)';
   }
 
   @override
@@ -225,7 +225,8 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WorkoutStepModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.workoutStepId, workoutStepId) ||
+                other.workoutStepId == workoutStepId) &&
             (identical(other.workoutId, workoutId) ||
                 other.workoutId == workoutId) &&
             (identical(other.name, name) || other.name == name) &&
@@ -239,8 +240,8 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, workoutId, name, description, setCount, restTime);
+  int get hashCode => Object.hash(runtimeType, workoutStepId, workoutId, name,
+      description, setCount, restTime);
 
   /// Create a copy of WorkoutStepModel
   /// with the given fields replaced by the non-null parameter values.
@@ -261,7 +262,7 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
 
 abstract class _WorkoutStepModel implements WorkoutStepModel {
   const factory _WorkoutStepModel(
-      {required final String id,
+      {required final String workoutStepId,
       required final String workoutId,
       required final String name,
       required final String? description,
@@ -272,7 +273,7 @@ abstract class _WorkoutStepModel implements WorkoutStepModel {
       _$WorkoutStepModelImpl.fromJson;
 
   @override
-  String get id;
+  String get workoutStepId;
   @override
   String get workoutId;
   @override

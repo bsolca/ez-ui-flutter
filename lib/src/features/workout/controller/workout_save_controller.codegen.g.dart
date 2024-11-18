@@ -7,7 +7,7 @@ part of 'workout_save_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutSaveControllerHash() =>
-    r'861fbd1fd2ec20c73714012ce32ec4f39fa4adc3';
+    r'11aa17336dea2b25aa0350a4e4656d3a77338f77';
 
 /// Controller specifically for handling saving or updating workouts.
 ///

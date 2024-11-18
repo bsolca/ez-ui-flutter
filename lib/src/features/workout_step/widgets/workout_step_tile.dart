@@ -59,14 +59,14 @@ class WorkoutStepTile extends ConsumerWidget {
                   .read(
                     workoutStepsControllerProvider(workoutId).notifier,
                   )
-                  .removeStep(step.id);
+                  .removeStep(step.workoutStepId);
             },
           ),
         ],
       ),
       children: [
         WorkoutExerciseList(
-          stepId: step.id,
+          stepId: step.workoutStepId,
         ),
         Row(
           children: [

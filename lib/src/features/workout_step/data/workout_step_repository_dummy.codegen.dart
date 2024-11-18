@@ -10,7 +10,7 @@ class WorkoutStepRepositoryDummy implements WorkoutStepRepository {
   @override
   Future<WorkoutStepModel?> getWorkoutStepById(String id) async {
     final steps = await getWorkoutSteps(id);
-    return steps.firstWhere((step) => step.id == id);
+    return steps.firstWhere((step) => step.workoutStepId == id);
   }
 
   @override

@@ -49,7 +49,7 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
       setState(() => loadingData = true);
       getWorkoutController().then((value) {
         if (value != null) {
-          idController.text = value.id;
+          idController.text = value.workoutId;
           nameController.text = value.name;
           descriptionController.text = value.description ?? '';
           tagsController.text = value.tags.join(', ');
@@ -71,7 +71,7 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
               formKey: formKey,
               isDisabled: loadingData,
               () => WorkoutModel(
-                id: idController.text,
+                workoutId: idController.text,
                 name: nameController.text,
                 description: descriptionController.text,
                 tags: tagsController.text
@@ -142,7 +142,7 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
                         )
                         .addStep(
                           WorkoutStepModel(
-                            id: 'new-id-${DateTime.now().millisecondsSinceEpoch}',
+                            workoutStepId: 'new-id-${DateTime.now().millisecondsSinceEpoch}',
                             name: 'New Step ',
                             description: 'Description for new step',
                             setCount: 1,

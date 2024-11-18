@@ -24,8 +24,8 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
   /// Save or update a specific workout exercise.
   Future<void> saveWorkoutExercise(WorkoutExerciseModel workoutExercise) async {
     final workoutExerciseService = ref.read(workoutExerciseServiceProvider);
-    final isCreateWorkoutExercise =
-        workoutExercise.id.isEmpty || workoutExercise.id == 'new';
+    final isCreateWorkoutExercise = workoutExercise.exerciseId.isEmpty ||
+        workoutExercise.workoutExerciseId == 'new';
     final successMessage = isCreateWorkoutExercise
         ? ref
             .read(appLocalProvider)
