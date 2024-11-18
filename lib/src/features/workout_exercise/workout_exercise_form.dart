@@ -46,19 +46,6 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
     loadingData = widget.isLoading;
   }
 
-  Future<void> onSubmit() async {
-    unawaited(SmartDialog.showLoading<void>());
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: after showLoading');
-    await Future<void>.delayed(const Duration(seconds: 2));
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: after delay');
-    await SmartDialog.dismiss<void>();
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: after dismiss');
-    await SmartDialog.showToast('test toast');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Form(
