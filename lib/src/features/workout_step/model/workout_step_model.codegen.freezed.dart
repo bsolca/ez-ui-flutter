@@ -24,7 +24,7 @@ mixin _$WorkoutStepModel {
   String get workoutId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  int get setCount => throw _privateConstructorUsedError;
+  int? get setCount => throw _privateConstructorUsedError;
   DurationModel? get restTime => throw _privateConstructorUsedError;
 
   /// Serializes this WorkoutStepModel to a JSON map.
@@ -48,7 +48,7 @@ abstract class $WorkoutStepModelCopyWith<$Res> {
       String workoutId,
       String name,
       String? description,
-      int setCount,
+      int? setCount,
       DurationModel? restTime});
 
   $DurationModelCopyWith<$Res>? get restTime;
@@ -73,7 +73,7 @@ class _$WorkoutStepModelCopyWithImpl<$Res, $Val extends WorkoutStepModel>
     Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
-    Object? setCount = null,
+    Object? setCount = freezed,
     Object? restTime = freezed,
   }) {
     return _then(_value.copyWith(
@@ -93,10 +93,10 @@ class _$WorkoutStepModelCopyWithImpl<$Res, $Val extends WorkoutStepModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      setCount: null == setCount
+      setCount: freezed == setCount
           ? _value.setCount
           : setCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       restTime: freezed == restTime
           ? _value.restTime
           : restTime // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ abstract class _$$WorkoutStepModelImplCopyWith<$Res>
       String workoutId,
       String name,
       String? description,
-      int setCount,
+      int? setCount,
       DurationModel? restTime});
 
   @override
@@ -156,7 +156,7 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
     Object? workoutId = null,
     Object? name = null,
     Object? description = freezed,
-    Object? setCount = null,
+    Object? setCount = freezed,
     Object? restTime = freezed,
   }) {
     return _then(_$WorkoutStepModelImpl(
@@ -176,10 +176,10 @@ class __$$WorkoutStepModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      setCount: null == setCount
+      setCount: freezed == setCount
           ? _value.setCount
           : setCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       restTime: freezed == restTime
           ? _value.restTime
           : restTime // ignore: cast_nullable_to_non_nullable
@@ -211,7 +211,7 @@ class _$WorkoutStepModelImpl implements _WorkoutStepModel {
   @override
   final String? description;
   @override
-  final int setCount;
+  final int? setCount;
   @override
   final DurationModel? restTime;
 
@@ -265,7 +265,7 @@ abstract class _WorkoutStepModel implements WorkoutStepModel {
       required final String workoutId,
       required final String name,
       required final String? description,
-      required final int setCount,
+      required final int? setCount,
       required final DurationModel? restTime}) = _$WorkoutStepModelImpl;
 
   factory _WorkoutStepModel.fromJson(Map<String, dynamic> json) =
@@ -280,7 +280,7 @@ abstract class _WorkoutStepModel implements WorkoutStepModel {
   @override
   String? get description;
   @override
-  int get setCount;
+  int? get setCount;
   @override
   DurationModel? get restTime;
 

@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/controller/workout_screen_get_workout_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_delete_button.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_save_button.dart';
@@ -60,6 +61,8 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
 
   @override
   Widget build(BuildContext context) {
+    // Watch form controller
+    ref.watch(workoutFormControllerProvider(widget.workoutId));
     return Column(
       children: [
         Row(

@@ -22,11 +22,16 @@ class WorkoutFormController extends _$WorkoutFormController {
     final workoutExercises =
         await workoutExerciseService.getWorkoutExercises(workoutId);
 
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: Before init');
     _initialState = WorkoutFormModel(
       workout: workout,
       workoutSteps: workoutSteps,
       workoutExercises: workoutExercises,
     );
+
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: INIT');
 
     state = AsyncValue.data(_initialState);
 
@@ -56,7 +61,10 @@ class WorkoutFormController extends _$WorkoutFormController {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
-        workoutExercises: currentState.workoutExercises..add(workoutExercise),
+        workoutExercises: [
+          ...currentState.workoutExercises,
+          workoutExercise,
+        ],
       ),
     );
   }

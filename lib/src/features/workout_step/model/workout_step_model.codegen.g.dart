@@ -17,7 +17,7 @@ _$WorkoutStepModelImpl _$$WorkoutStepModelImplFromJson(
           workoutId: $checkedConvert('workoutId', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String?),
-          setCount: $checkedConvert('setCount', (v) => (v as num).toInt()),
+          setCount: $checkedConvert('setCount', (v) => (v as num?)?.toInt()),
           restTime: $checkedConvert(
               'restTime',
               (v) => v == null

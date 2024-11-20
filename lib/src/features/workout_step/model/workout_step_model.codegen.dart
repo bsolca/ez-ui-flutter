@@ -14,7 +14,7 @@ class WorkoutStepModel with _$WorkoutStepModel {
     required String workoutId,
     required String name,
     required String? description,
-    required int setCount,
+    required int? setCount,
     required DurationModel? restTime,
   }) = _WorkoutStepModel;
 

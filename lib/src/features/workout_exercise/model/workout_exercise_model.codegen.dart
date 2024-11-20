@@ -16,6 +16,7 @@ class WorkoutExerciseModel with _$WorkoutExerciseModel {
   /// Workout-specific exercise model, linking to core exercise details.
   const factory WorkoutExerciseModel({
     required String id,
+    required String stepId,
     required String exerciseId,
     required RepsModel? reps,
     required DurationModel? duration,
@@ -26,6 +27,23 @@ class WorkoutExerciseModel with _$WorkoutExerciseModel {
     required IntensityModel? intensity,
     required String? customNotes,
   }) = _WorkoutExerciseModel;
+
+  /// Creates a new workout exercise model with default values.
+  factory WorkoutExerciseModel.newWorkoutExercise({required String stepId}) {
+    return WorkoutExerciseModel(
+      id: '',
+      stepId: stepId,
+      exerciseId: '',
+      reps: null,
+      duration: null,
+      load: null,
+      restTimeBetweenSets: null,
+      tempo: null,
+      distance: null,
+      intensity: null,
+      customNotes: null,
+    );
+  }
 
   /// Creates a new workout exercise model from a JSON map.
   factory WorkoutExerciseModel.fromJson(Map<String, dynamic> json) =>
