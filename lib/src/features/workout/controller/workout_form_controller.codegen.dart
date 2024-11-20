@@ -11,7 +11,7 @@ part 'workout_form_controller.codegen.g.dart';
 @riverpod
 class WorkoutFormController extends _$WorkoutFormController {
   @override
-  Future<WorkoutFormModel> build(String workoutId) async {
+  Future<WorkoutFormModel> build({required String workoutId}) async {
     state = const AsyncValue.loading();
     final workoutService = ref.watch(workoutServiceProvider);
     final workoutStepService = ref.watch(workoutStepServiceProvider);
@@ -22,16 +22,11 @@ class WorkoutFormController extends _$WorkoutFormController {
     final workoutExercises =
         await workoutExerciseService.getWorkoutExercises(workoutId);
 
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: Before init');
     _initialState = WorkoutFormModel(
       workout: workout,
       workoutSteps: workoutSteps,
       workoutExercises: workoutExercises,
     );
-
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: INIT');
 
     state = AsyncValue.data(_initialState);
 

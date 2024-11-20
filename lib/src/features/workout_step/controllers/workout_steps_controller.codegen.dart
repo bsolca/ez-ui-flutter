@@ -30,10 +30,8 @@ class WorkoutStepsController extends _$WorkoutStepsController {
 
   /// Create a new exercise in a step
   Future<void> createNewExercise(String stepId) async {
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: workoutId: $workoutId');
     final formService = ref.read(
-      workoutFormControllerProvider(workoutId).notifier,
+      workoutFormControllerProvider(workoutId: workoutId).notifier,
     );
     final workoutExercise = WorkoutExerciseModel.newWorkoutExercise(
       stepId: stepId,

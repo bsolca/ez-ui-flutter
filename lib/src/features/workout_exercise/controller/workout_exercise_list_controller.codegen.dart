@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/service/workout_exercise_service.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_async_value/ez_async_value.dart';

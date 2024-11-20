@@ -15,14 +15,18 @@ class WorkoutSaveController extends _$WorkoutSaveController {
 
   /// Save or update a specific workout.
   Future<void> saveWorkout(String workoutId) async {
-    final form = ref.read(workoutFormControllerProvider(workoutId)).value;
+    final form = ref
+        .read(
+          workoutFormControllerProvider(workoutId: workoutId),
+        )
+        .value;
 
     if (form == null) {
       throw Exception('Form is null');
     }
 
     final workoutService = ref.read(
-      workoutFormControllerProvider(form.workout.id).notifier,
+      workoutFormControllerProvider(workoutId: form.workout.id).notifier,
     );
     final isCreateWorkout = form.workout.id.isEmpty || form.workout.id == 'new';
     final successMessage = isCreateWorkout

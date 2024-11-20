@@ -7,7 +7,7 @@ part of 'workout_form_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutFormControllerHash() =>
-    r'd51202cb040a76e19ee335fab5a72db744f3b2df';
+    r'121bec5f5fbdf2d4c8ce1c93d02eb6b49d4f3aca';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,9 +34,9 @@ abstract class _$WorkoutFormController
     extends BuildlessAutoDisposeAsyncNotifier<WorkoutFormModel> {
   late final String workoutId;
 
-  FutureOr<WorkoutFormModel> build(
-    String workoutId,
-  );
+  FutureOr<WorkoutFormModel> build({
+    required String workoutId,
+  });
 }
 
 /// See also [WorkoutFormController].
@@ -49,11 +49,11 @@ class WorkoutFormControllerFamily extends Family<AsyncValue<WorkoutFormModel>> {
   const WorkoutFormControllerFamily();
 
   /// See also [WorkoutFormController].
-  WorkoutFormControllerProvider call(
-    String workoutId,
-  ) {
+  WorkoutFormControllerProvider call({
+    required String workoutId,
+  }) {
     return WorkoutFormControllerProvider(
-      workoutId,
+      workoutId: workoutId,
     );
   }
 
@@ -62,7 +62,7 @@ class WorkoutFormControllerFamily extends Family<AsyncValue<WorkoutFormModel>> {
     covariant WorkoutFormControllerProvider provider,
   ) {
     return call(
-      provider.workoutId,
+      workoutId: provider.workoutId,
     );
   }
 
@@ -86,9 +86,9 @@ class WorkoutFormControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<WorkoutFormController,
         WorkoutFormModel> {
   /// See also [WorkoutFormController].
-  WorkoutFormControllerProvider(
-    String workoutId,
-  ) : this._internal(
+  WorkoutFormControllerProvider({
+    required String workoutId,
+  }) : this._internal(
           () => WorkoutFormController()..workoutId = workoutId,
           from: workoutFormControllerProvider,
           name: r'workoutFormControllerProvider',
@@ -119,7 +119,7 @@ class WorkoutFormControllerProvider
     covariant WorkoutFormController notifier,
   ) {
     return notifier.build(
-      workoutId,
+      workoutId: workoutId,
     );
   }
 
