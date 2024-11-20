@@ -73,6 +73,7 @@ class WorkoutStepTile extends ConsumerWidget {
       ),
       children: [
         WorkoutExerciseList(
+          workoutId: workoutId,
           stepId: workoutStep.id,
         ),
       ],

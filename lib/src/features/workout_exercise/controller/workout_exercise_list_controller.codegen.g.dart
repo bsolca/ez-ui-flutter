@@ -7,7 +7,7 @@ part of 'workout_exercise_list_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutExerciseListControllerHash() =>
-    r'14d570bcd2a9ef982f752c41c4f1864056383e6a';
+    r'd9459443e354622648548a8a4c07eb866ec08493';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,11 +32,13 @@ class _SystemHash {
 
 abstract class _$WorkoutExerciseListController
     extends BuildlessAutoDisposeAsyncNotifier<List<WorkoutExerciseModel>?> {
+  late final String workoutId;
   late final String stepId;
 
-  FutureOr<List<WorkoutExerciseModel>?> build(
-    String stepId,
-  );
+  FutureOr<List<WorkoutExerciseModel>?> build({
+    required String workoutId,
+    required String stepId,
+  });
 }
 
 /// See also [WorkoutExerciseListController].
@@ -51,11 +53,13 @@ class WorkoutExerciseListControllerFamily
   const WorkoutExerciseListControllerFamily();
 
   /// See also [WorkoutExerciseListController].
-  WorkoutExerciseListControllerProvider call(
-    String stepId,
-  ) {
+  WorkoutExerciseListControllerProvider call({
+    required String workoutId,
+    required String stepId,
+  }) {
     return WorkoutExerciseListControllerProvider(
-      stepId,
+      workoutId: workoutId,
+      stepId: stepId,
     );
   }
 
@@ -64,7 +68,8 @@ class WorkoutExerciseListControllerFamily
     covariant WorkoutExerciseListControllerProvider provider,
   ) {
     return call(
-      provider.stepId,
+      workoutId: provider.workoutId,
+      stepId: provider.stepId,
     );
   }
 
@@ -88,10 +93,13 @@ class WorkoutExerciseListControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<WorkoutExerciseListController,
         List<WorkoutExerciseModel>?> {
   /// See also [WorkoutExerciseListController].
-  WorkoutExerciseListControllerProvider(
-    String stepId,
-  ) : this._internal(
-          () => WorkoutExerciseListController()..stepId = stepId,
+  WorkoutExerciseListControllerProvider({
+    required String workoutId,
+    required String stepId,
+  }) : this._internal(
+          () => WorkoutExerciseListController()
+            ..workoutId = workoutId
+            ..stepId = stepId,
           from: workoutExerciseListControllerProvider,
           name: r'workoutExerciseListControllerProvider',
           debugGetCreateSourceHash:
@@ -101,6 +109,7 @@ class WorkoutExerciseListControllerProvider
           dependencies: WorkoutExerciseListControllerFamily._dependencies,
           allTransitiveDependencies:
               WorkoutExerciseListControllerFamily._allTransitiveDependencies,
+          workoutId: workoutId,
           stepId: stepId,
         );
 
@@ -111,9 +120,11 @@ class WorkoutExerciseListControllerProvider
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
+    required this.workoutId,
     required this.stepId,
   }) : super.internal();
 
+  final String workoutId;
   final String stepId;
 
   @override
@@ -121,7 +132,8 @@ class WorkoutExerciseListControllerProvider
     covariant WorkoutExerciseListController notifier,
   ) {
     return notifier.build(
-      stepId,
+      workoutId: workoutId,
+      stepId: stepId,
     );
   }
 
@@ -130,12 +142,15 @@ class WorkoutExerciseListControllerProvider
     return ProviderOverride(
       origin: this,
       override: WorkoutExerciseListControllerProvider._internal(
-        () => create()..stepId = stepId,
+        () => create()
+          ..workoutId = workoutId
+          ..stepId = stepId,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
+        workoutId: workoutId,
         stepId: stepId,
       ),
     );
@@ -150,12 +165,14 @@ class WorkoutExerciseListControllerProvider
   @override
   bool operator ==(Object other) {
     return other is WorkoutExerciseListControllerProvider &&
+        other.workoutId == workoutId &&
         other.stepId == stepId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, workoutId.hashCode);
     hash = _SystemHash.combine(hash, stepId.hashCode);
 
     return _SystemHash.finish(hash);
@@ -166,6 +183,9 @@ class WorkoutExerciseListControllerProvider
 // ignore: unused_element
 mixin WorkoutExerciseListControllerRef
     on AutoDisposeAsyncNotifierProviderRef<List<WorkoutExerciseModel>?> {
+  /// The parameter `workoutId` of this provider.
+  String get workoutId;
+
   /// The parameter `stepId` of this provider.
   String get stepId;
 }
@@ -176,6 +196,9 @@ class _WorkoutExerciseListControllerProviderElement
         List<WorkoutExerciseModel>?> with WorkoutExerciseListControllerRef {
   _WorkoutExerciseListControllerProviderElement(super.provider);
 
+  @override
+  String get workoutId =>
+      (origin as WorkoutExerciseListControllerProvider).workoutId;
   @override
   String get stepId => (origin as WorkoutExerciseListControllerProvider).stepId;
 }

@@ -12,20 +12,22 @@ class WorkoutStepService {
 
   final WorkoutStepRepository _workoutStepRepository;
 
-  Future<List<WorkoutStepModel>> getWorkoutSteps(String workoutId) async {
+  Future<List<WorkoutStepModel>> getWorkoutSteps({
+    required String workoutId,
+  }) async {
     return _workoutStepRepository.getWorkoutSteps(workoutId);
   }
 
-  Future<void> saveWorkoutStep(WorkoutStepModel step) async {
+  Future<void> saveWorkoutStep({required WorkoutStepModel step}) async {
     return _workoutStepRepository.createWorkoutStep(step);
   }
 
-  Future<void> updateWorkoutStep(WorkoutStepModel step) async {
+  Future<void> updateWorkoutStep({required WorkoutStepModel step}) async {
     return _workoutStepRepository.updateWorkoutStep(step);
   }
 
-  Future<void> deleteWorkoutStep(String id) async {
-    return _workoutStepRepository.deleteWorkoutStep(id);
+  Future<void> deleteWorkoutStep({required String workoutStepId}) async {
+    return _workoutStepRepository.deleteWorkoutStep(workoutStepId);
   }
 }
 

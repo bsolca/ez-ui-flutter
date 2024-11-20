@@ -15,7 +15,9 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
 
     state = await AsyncValue.guard(() async {
       final workoutExerciseService = ref.read(workoutExerciseServiceProvider);
-      return workoutExerciseService.getWorkoutExerciseById(exerciseId);
+      return workoutExerciseService.getWorkoutExerciseById(
+        workoutExerciseId: exerciseId,
+      );
     });
 
     return state.value;
@@ -41,9 +43,13 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
       errorToastMessage: (e) => e.toString(),
       operation: () async {
         if (isCreateWorkoutExercise) {
-          await workoutExerciseService.createWorkoutExercise(workoutExercise);
+          await workoutExerciseService.createWorkoutExercise(
+            exercise: workoutExercise,
+          );
         } else {
-          await workoutExerciseService.updateWorkoutExercise(workoutExercise);
+          await workoutExerciseService.updateWorkoutExercise(
+            exercise: workoutExercise,
+          );
         }
         return null;
       },
@@ -62,7 +68,9 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
       successToastMessage: successMessage,
       errorToastMessage: (e) => e.toString(),
       operation: () async {
-        await workoutExerciseService.deleteWorkoutExercise(workoutExerciseId);
+        await workoutExerciseService.deleteWorkoutExercise(
+          workoutExerciseId: workoutExerciseId,
+        );
         return null;
       },
     );

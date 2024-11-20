@@ -12,25 +12,33 @@ class WorkoutExerciseService {
 
   final WorkoutExerciseRepository _workoutExerciseRepository;
 
-  Future<List<WorkoutExerciseModel>> getWorkoutExercises(String stepId) async {
+  Future<List<WorkoutExerciseModel>> getWorkoutExercises({
+    required String stepId,
+  }) async {
     return _workoutExerciseRepository.getWorkoutExercises(stepId);
   }
 
-  Future<WorkoutExerciseModel> getWorkoutExerciseById(
-    String workoutExerciseId,
-  ) async {
+  Future<WorkoutExerciseModel> getWorkoutExerciseById({
+    required String workoutExerciseId,
+  }) async {
     return _workoutExerciseRepository.getWorkoutExerciseById(workoutExerciseId);
   }
 
-  Future<void> createWorkoutExercise(WorkoutExerciseModel exercise) async {
+  Future<void> createWorkoutExercise({
+    required WorkoutExerciseModel exercise,
+  }) async {
     return _workoutExerciseRepository.createWorkoutExercise(exercise);
   }
 
-  Future<void> updateWorkoutExercise(WorkoutExerciseModel exercise) async {
+  Future<void> updateWorkoutExercise({
+    required WorkoutExerciseModel exercise,
+  }) async {
     return _workoutExerciseRepository.updateWorkoutExercise(exercise);
   }
 
-  Future<void> deleteWorkoutExercise(String workoutExerciseId) async {
+  Future<void> deleteWorkoutExercise({
+    required String workoutExerciseId,
+  }) async {
     return _workoutExerciseRepository.deleteWorkoutExercise(workoutExerciseId);
   }
 }

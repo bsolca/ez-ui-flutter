@@ -63,6 +63,7 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
   Widget build(BuildContext context) {
     // Watch form controller
     ref.watch(workoutFormControllerProvider(workoutId: widget.workoutId));
+
     return Column(
       children: [
         Row(

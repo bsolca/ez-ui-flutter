@@ -21,7 +21,7 @@ class WorkoutStepsList extends ConsumerWidget {
 
     return steps.when(
       data: (steps) {
-        if (steps.isEmpty) return const Text("No steps available");
+        if (steps.isEmpty) return const Text('No steps available');
         return ListView.builder(
           shrinkWrap: true,
           itemCount: steps.length,

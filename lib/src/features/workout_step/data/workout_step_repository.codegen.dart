@@ -1,5 +1,5 @@
-import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/data/workout_step_repository_dummy.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,7 +15,7 @@ abstract class WorkoutStepRepository {
 
   Future<void> createWorkoutStep(WorkoutStepModel workoutStep);
 
-  Future<void> deleteWorkoutStep(String id);
+  Future<void> deleteWorkoutStep(String workoutStepId);
 }
 
 /// Riverpod provider for WorkoutStepRepository.

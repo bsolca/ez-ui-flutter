@@ -9,34 +9,43 @@ part 'workout_exercise_list_controller.codegen.g.dart';
 @riverpod
 class WorkoutExerciseListController extends _$WorkoutExerciseListController {
   @override
-  Future<List<WorkoutExerciseModel>?> build(String stepId) async {
+  Future<List<WorkoutExerciseModel>?> build({
+    required String workoutId,
+    required String stepId,
+  }) async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(
       () async {
-        final service = ref.read(workoutExerciseServiceProvider);
-        return service.getWorkoutExercises(stepId);
+        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+        print('TESTY: pod before');
+        final pod = ref.read(
+          workoutFormControllerProvider(workoutId: workoutId),
+        );
+        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+        print('TESTY: pod adfter');
+        final value = pod.value;
+        final workoutExercises = value?.workoutExercises;
+        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+        print('TESTY: EXERCISES: ${workoutExercises?.length}');
+        final filteredWorkoutExercises = workoutExercises
+            ?.where(
+              (e) => e.stepId == stepId,
+            )
+            .toList();
+
+        return filteredWorkoutExercises;
       },
     );
+
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: length: ${state.value?.length}');
 
     return state.value;
   }
 
-  Future<void> deleteWorkoutExercise(String exerciseId) async {
-    await EzAsyncValue.guard(
-      ref: ref,
-      errorToastMessage: (error) => 'Failed to delete exercise: $error',
-      operation: () async => ref
-          .read(workoutExerciseServiceProvider)
-          .deleteWorkoutExercise(exerciseId),
-      onSuccess: () {
-        // Update the state upon success
-        state = AsyncValue.data(
-          state.value?.where((e) => e.exerciseId != exerciseId).toList(),
-        );
-      },
-      onError: (error, stack) {
-        // Dp nothing
-      },
+  void deleteWorkoutExercise(String exerciseId) {
+    state = AsyncValue.data(
+      state.value?.where((e) => e.exerciseId != exerciseId).toList(),
     );
   }
 }

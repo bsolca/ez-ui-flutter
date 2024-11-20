@@ -16,14 +16,21 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 class WorkoutExerciseList extends ConsumerWidget {
   const WorkoutExerciseList({
     super.key,
+    required this.workoutId,
     required this.stepId,
   });
 
+  final String workoutId;
   final String stepId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final exercises = ref.watch(workoutExerciseListControllerProvider(stepId));
+    final exercises = ref.watch(
+      workoutExerciseListControllerProvider(
+        workoutId: workoutId,
+        stepId: stepId,
+      ),
+    );
     final isLight = Theme.of(context).brightness == Brightness.light;
     final tileBgColor = isLight
         ? Theme.of(context).colorScheme.surfaceContainer
@@ -121,7 +128,8 @@ class WorkoutExerciseList extends ConsumerWidget {
                               ref
                                   .read(
                                     workoutExerciseListControllerProvider(
-                                      stepId,
+                                      workoutId: workoutId,
+                                      stepId: stepId,
                                     ).notifier,
                                   )
                                   .deleteWorkoutExercise(
@@ -147,11 +155,13 @@ class WorkoutExerciseList extends ConsumerWidget {
                             ref
                                 .read(
                                   workoutExerciseListControllerProvider(
-                                    stepId,
+                                    workoutId: workoutId,
+                                    stepId: stepId,
                                   ).notifier,
                                 )
                                 .deleteWorkoutExercise(
-                                    workoutExercise.exerciseId);
+                                  workoutExercise.exerciseId,
+                                );
                           },
                         ),
                       );

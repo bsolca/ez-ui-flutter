@@ -18,9 +18,17 @@ class WorkoutFormController extends _$WorkoutFormController {
     final workoutExerciseService = ref.watch(workoutExerciseServiceProvider);
 
     final workout = await workoutService.getWorkoutById(workoutId);
-    final workoutSteps = await workoutStepService.getWorkoutSteps(workoutId);
-    final workoutExercises =
-        await workoutExerciseService.getWorkoutExercises(workoutId);
+    final workoutSteps = await workoutStepService.getWorkoutSteps(
+      workoutId: workoutId,
+    );
+
+    final workoutExercises = (await Future.wait(
+      workoutSteps.map((step) => step.id).map((stepId) async {
+        return workoutExerciseService.getWorkoutExercises(stepId: stepId);
+      }),
+    ))
+        .expand((exercises) => exercises)
+        .toList();
 
     _initialState = WorkoutFormModel(
       workout: workout,

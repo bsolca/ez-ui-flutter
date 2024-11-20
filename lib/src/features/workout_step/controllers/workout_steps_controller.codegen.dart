@@ -3,7 +3,6 @@ import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/service/workout_step_service.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_async_value/ez_async_value.dart';
-import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'workout_steps_controller.codegen.g.dart';
@@ -15,7 +14,9 @@ class WorkoutStepsController extends _$WorkoutStepsController {
     // Load the initial steps for the workout based on the workoutId
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      return ref.read(workoutStepServiceProvider).getWorkoutSteps(workoutId);
+      return ref.read(workoutStepServiceProvider).getWorkoutSteps(
+        workoutId: workoutId,
+      );
     });
 
     return state.value ?? [];
@@ -25,7 +26,9 @@ class WorkoutStepsController extends _$WorkoutStepsController {
   Future<void> addStep(WorkoutStepModel step) async {
     final steps = state.value ?? [];
     state = AsyncValue.data([...steps, step]);
-    await ref.read(workoutStepServiceProvider).saveWorkoutStep(step);
+    await ref.read(workoutStepServiceProvider).saveWorkoutStep(
+      step: step,
+    );
   }
 
   /// Create a new exercise in a step
@@ -46,7 +49,9 @@ class WorkoutStepsController extends _$WorkoutStepsController {
       for (final step in steps)
         if (step.id == updatedStep.id) updatedStep else step,
     ]);
-    await ref.read(workoutStepServiceProvider).updateWorkoutStep(updatedStep);
+    await ref.read(workoutStepServiceProvider).updateWorkoutStep(
+          step: updatedStep,
+        );
   }
 
   /// Remove a step
@@ -55,9 +60,9 @@ class WorkoutStepsController extends _$WorkoutStepsController {
       ref: ref,
       operation: () async {
         // Call the service to delete the step
-        await ref
-            .read(workoutStepServiceProvider)
-            .deleteWorkoutStep(workoutStepId);
+        await ref.read(workoutStepServiceProvider).deleteWorkoutStep(
+              workoutStepId: workoutStepId,
+            );
       },
       onSuccess: () {
         // Update the state upon success
