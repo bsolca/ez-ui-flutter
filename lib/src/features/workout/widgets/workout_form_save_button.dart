@@ -1,22 +1,21 @@
 import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/controller/workout_save_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WorkoutFormSaveButton extends ConsumerWidget {
-  const WorkoutFormSaveButton(
-      this.workout, {
-        super.key,
-        required this.isDisabled,
-        required this.formKey,
-      });
+  const WorkoutFormSaveButton({
+    super.key,
+    required this.formKey,
+    required this.workoutId,
+    required this.isDisabled,
+  });
 
-  final WorkoutModel Function() workout;
   final bool isDisabled;
   final GlobalKey<FormState> formKey;
+  final String workoutId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,12 +30,12 @@ class WorkoutFormSaveButton extends ConsumerWidget {
       onPressed: isLoading || isGeneralLoading || isDisabled
           ? null
           : () async {
-        if (formKey.currentState?.validate() != true) return;
-        final controller = ref.read(
-          workoutSaveControllerProvider.notifier,
-        );
-        await controller.saveWorkout(workout());
-      },
+              if (formKey.currentState?.validate() != true) return;
+              final controller = ref.read(
+                workoutSaveControllerProvider.notifier,
+              );
+              await controller.saveWorkout(workoutId);
+            },
     );
   }
 }

@@ -1,5 +1,4 @@
-import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
-import 'package:ez_fit_app/src/features/workout/service/workout_service.codegen.dart';
+import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_async_value/ez_async_value.dart';
 import 'package:ez_fit_app/src/utils/localization/app_local.codegen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -15,13 +14,21 @@ class WorkoutSaveController extends _$WorkoutSaveController {
   }
 
   /// Save or update a specific workout.
-  Future<void> saveWorkout(WorkoutModel workout) async {
-    final workoutService = ref.read(workoutServiceProvider);
+  Future<void> saveWorkout(String workoutId) async {
+    final form = ref.read(workoutFormControllerProvider(workoutId)).value;
+
+    if (form == null) {
+      throw Exception('Form is null');
+    }
+
+    final workoutService = ref.read(
+      workoutFormControllerProvider(form.workout.workoutId).notifier,
+    );
     final isCreateWorkout =
-        workout.workoutId.isEmpty || workout.workoutId == 'new';
+        form.workout.workoutId.isEmpty || form.workout.workoutId == 'new';
     final successMessage = isCreateWorkout
-        ? ref.read(appLocalProvider).successfullyCreated(workout.name)
-        : ref.read(appLocalProvider).successfullyUpdated(workout.name);
+        ? ref.read(appLocalProvider).successfullyCreated(form.workout.name)
+        : ref.read(appLocalProvider).successfullyUpdated(form.workout.name);
 
     state = const AsyncValue.loading();
     state = await EzAsyncValue.guard(
@@ -29,11 +36,7 @@ class WorkoutSaveController extends _$WorkoutSaveController {
       successToastMessage: successMessage,
       errorToastMessage: (e) => e.toString(),
       operation: () async {
-        if (isCreateWorkout) {
-          await workoutService.createWorkout(workout);
-        } else {
-          await workoutService.updateWorkout(workout);
-        }
+        await workoutService.saveFullWorkout();
       },
     );
   }

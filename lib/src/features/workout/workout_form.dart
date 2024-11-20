@@ -1,5 +1,4 @@
 import 'package:ez_fit_app/src/features/workout/controller/workout_screen_get_workout_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_delete_button.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_save_button.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
@@ -70,15 +69,7 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
             WorkoutFormSaveButton(
               formKey: formKey,
               isDisabled: loadingData,
-              () => WorkoutModel(
-                workoutId: idController.text,
-                name: nameController.text,
-                description: descriptionController.text,
-                tags: tagsController.text
-                    .split(',')
-                    .map((tag) => tag.trim())
-                    .toList(),
-              ),
+              workoutId: widget.workoutId,
             ),
           ],
         ),
