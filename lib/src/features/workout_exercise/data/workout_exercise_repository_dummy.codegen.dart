@@ -45,9 +45,13 @@ class WorkoutExerciseRepositoryDummy implements WorkoutExerciseRepository {
   }
 
   @override
-  Future<WorkoutExerciseModel> getWorkoutExerciseById(String id) async {
-    final exercises = await getWorkoutExercises(id);
-    return exercises.firstWhere((exercise) => exercise.workoutExerciseId == id);
+  Future<WorkoutExerciseModel> getWorkoutExerciseById(
+    String workoutExerciseId,
+  ) async {
+    final exercises = await getWorkoutExercises(workoutExerciseId);
+    return exercises.firstWhere((workoutExercise) {
+      return workoutExercise.id == workoutExerciseId;
+    });
   }
 
   @override

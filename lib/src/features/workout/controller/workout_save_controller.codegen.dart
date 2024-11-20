@@ -22,10 +22,9 @@ class WorkoutSaveController extends _$WorkoutSaveController {
     }
 
     final workoutService = ref.read(
-      workoutFormControllerProvider(form.workout.workoutId).notifier,
+      workoutFormControllerProvider(form.workout.id).notifier,
     );
-    final isCreateWorkout =
-        form.workout.workoutId.isEmpty || form.workout.workoutId == 'new';
+    final isCreateWorkout = form.workout.id.isEmpty || form.workout.id == 'new';
     final successMessage = isCreateWorkout
         ? ref.read(appLocalProvider).successfullyCreated(form.workout.name)
         : ref.read(appLocalProvider).successfullyUpdated(form.workout.name);

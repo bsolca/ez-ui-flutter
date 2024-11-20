@@ -8,7 +8,7 @@ part 'workout_model.codegen.g.dart';
 class WorkoutModel with _$WorkoutModel {
   /// Workout model to define the structure and details of a workout.
   const factory WorkoutModel({
-    required String workoutId, // Unique identifier for the workout
+    required String id, // Unique identifier for the workout
     required String name, // Name of the workout
     required String? description, // Optional description for the workout
     required List<String> tags,

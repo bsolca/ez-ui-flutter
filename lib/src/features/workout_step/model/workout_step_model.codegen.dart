@@ -10,7 +10,7 @@ part 'workout_step_model.codegen.g.dart';
 class WorkoutStepModel with _$WorkoutStepModel {
   /// Workout step model to define each phase in a workout.
   const factory WorkoutStepModel({
-    required String workoutStepId,
+    required String id,
     required String workoutId,
     required String name,
     required String? description,

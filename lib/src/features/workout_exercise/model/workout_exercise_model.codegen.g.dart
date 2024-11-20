@@ -13,8 +13,7 @@ _$WorkoutExerciseModelImpl _$$WorkoutExerciseModelImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$WorkoutExerciseModelImpl(
-          workoutExerciseId:
-              $checkedConvert('workoutExerciseId', (v) => v as String),
+          id: $checkedConvert('id', (v) => v as String),
           exerciseId: $checkedConvert('exerciseId', (v) => v as String),
           reps: $checkedConvert(
               'reps',
@@ -60,7 +59,7 @@ _$WorkoutExerciseModelImpl _$$WorkoutExerciseModelImplFromJson(
 Map<String, dynamic> _$$WorkoutExerciseModelImplToJson(
         _$WorkoutExerciseModelImpl instance) =>
     <String, dynamic>{
-      'workoutExerciseId': instance.workoutExerciseId,
+      'id': instance.id,
       'exerciseId': instance.exerciseId,
       'reps': instance.reps?.toJson(),
       'duration': instance.duration?.toJson(),

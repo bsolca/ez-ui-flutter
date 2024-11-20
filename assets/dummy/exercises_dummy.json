@@ -1,6 +1,6 @@
 [
   {
-    "id": "exercise_001",
+    "id": "exercise_pushups",
     "name": "Push-Up",
     "imageUrl": "https://picsum.photos/seed/picsum/300/300",
     "videoUrl": "https://www.youtube.com/watch?v=_l3ySVKYVJ8",
@@ -24,7 +24,7 @@
     "description": "A fundamental exercise that strengthens the legs and glutes."
   },
   {
-    "id": "exercise_002",
+    "id": "exercise_jumping_jacks",
     "name": "Jump Jack",
     "imageUrl": "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDkyNmNxZzZ2eGxpbXU5bmttbjFtcjhuMXNtcWw1MXQ2eDFodmRmcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/2NF7WDD0oqJRyfmwHK/giphy.gif",
     "videoUrl": "https://www.youtube.com/watch?v=aclHkVaku9U",

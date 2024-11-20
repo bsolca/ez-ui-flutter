@@ -12,11 +12,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class WorkoutStepTile extends ConsumerWidget {
   const WorkoutStepTile({
     super.key,
-    required this.step,
+    required this.workoutStep,
     required this.workoutId,
   });
 
-  final WorkoutStepModel step;
+  final WorkoutStepModel workoutStep;
   final String workoutId;
 
   @override
@@ -30,8 +30,8 @@ class WorkoutStepTile extends ConsumerWidget {
         : Theme.of(context).colorScheme.surfaceContainerHighest;
 
     return EzExpansionTile(
-      title: Text(step.name),
-      subtitle: Text(step.description ?? ''),
+      title: Text(workoutStep.name),
+      subtitle: Text(workoutStep.description ?? ''),
       tileBgColor: tileBgColor,
       bgChildrenColor: bgChildrenColor,
       trailing: Row(
@@ -46,7 +46,7 @@ class WorkoutStepTile extends ConsumerWidget {
                     workoutStepsControllerProvider(workoutId).notifier,
                   )
                   .editStep(
-                    step.copyWith(
+                    workoutStep.copyWith(
                       name: 'Updated Name',
                     ), // Example update
                   );
@@ -59,14 +59,14 @@ class WorkoutStepTile extends ConsumerWidget {
                   .read(
                     workoutStepsControllerProvider(workoutId).notifier,
                   )
-                  .removeStep(step.workoutStepId);
+                  .removeStep(workoutStep.id);
             },
           ),
         ],
       ),
       children: [
         WorkoutExerciseList(
-          stepId: step.workoutStepId,
+          stepId: workoutStep.id,
         ),
         Row(
           children: [

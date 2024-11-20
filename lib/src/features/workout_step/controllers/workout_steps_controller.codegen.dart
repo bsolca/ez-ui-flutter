@@ -30,7 +30,7 @@ class WorkoutStepsController extends _$WorkoutStepsController {
     final steps = state.value ?? [];
     state = AsyncValue.data([
       for (final step in steps)
-        if (step.workoutStepId == updatedStep.workoutStepId)
+        if (step.id == updatedStep.id)
           updatedStep
         else
           step,
@@ -40,12 +40,12 @@ class WorkoutStepsController extends _$WorkoutStepsController {
 
   /// Remove a step
   /// Remove a step
-  Future<void> removeStep(String stepId) async {
+  Future<void> removeStep(String workoutStepId) async {
     await EzAsyncValue.guard(
       ref: ref,
       operation: () async {
         // Call the service to delete the step
-        await ref.read(workoutStepServiceProvider).deleteWorkoutStep(stepId);
+        await ref.read(workoutStepServiceProvider).deleteWorkoutStep(workoutStepId);
       },
       onSuccess: () {
         // Update the state upon success
@@ -53,7 +53,7 @@ class WorkoutStepsController extends _$WorkoutStepsController {
         if (currentState is AsyncData<List<WorkoutStepModel>>) {
           final currentSteps = currentState.value;
           final updatedSteps = List<WorkoutStepModel>.from(currentSteps)
-            ..removeWhere((step) => step.workoutStepId == stepId);
+            ..removeWhere((workoutStep) => workoutStep.id == workoutStepId);
           state = AsyncValue.data(updatedSteps);
         }
       },

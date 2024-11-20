@@ -42,8 +42,8 @@ class WorkoutExerciseList extends ConsumerWidget {
           shrinkWrap: true,
           itemCount: exercises.length,
           itemBuilder: (context, index) {
-            final exercise = exercises[index];
-            final localExerciseId = exercise.exerciseId;
+            final workoutExercise = exercises[index];
+            final exerciseId = workoutExercise.exerciseId;
             return Padding(
               padding: index != 0
                   ? const EdgeInsets.only(
@@ -51,8 +51,9 @@ class WorkoutExerciseList extends ConsumerWidget {
                     )
                   : EdgeInsets.zero,
               child: ref
-                  .watch(workoutExerciseExerciseControllerProvider(
-                      localExerciseId))
+                  .watch(
+                    workoutExerciseExerciseControllerProvider(exerciseId),
+                  )
                   .when(
                     data: (e) => EzExpansionTile(
                       tileBgColor: tileBgColor,
@@ -96,9 +97,10 @@ class WorkoutExerciseList extends ConsumerWidget {
                                                     exercises[rowIndex];
                                                 ref
                                                     .read(
-                                                        workoutExerciseExerciseControllerProvider(
-                                                      localExerciseId,
-                                                    ).notifier)
+                                                      workoutExerciseExerciseControllerProvider(
+                                                        exerciseId,
+                                                      ).notifier,
+                                                    )
                                                     .changeName(
                                                       name: exercise.name,
                                                     );
@@ -122,14 +124,16 @@ class WorkoutExerciseList extends ConsumerWidget {
                                       stepId,
                                     ).notifier,
                                   )
-                                  .deleteWorkoutExercise(exercise.exerciseId);
+                                  .deleteWorkoutExercise(
+                                    workoutExercise.exerciseId,
+                                  );
                             },
                           ),
                         ],
                       ),
                       children: [
                         WorkoutExerciseForm(
-                          workoutExerciseId: exercise.workoutExerciseId,
+                          workoutExerciseId: workoutExercise.id,
                         ),
                       ],
                     ),
@@ -146,7 +150,8 @@ class WorkoutExerciseList extends ConsumerWidget {
                                     stepId,
                                   ).notifier,
                                 )
-                                .deleteWorkoutExercise(exercise.exerciseId);
+                                .deleteWorkoutExercise(
+                                    workoutExercise.exerciseId);
                           },
                         ),
                       );

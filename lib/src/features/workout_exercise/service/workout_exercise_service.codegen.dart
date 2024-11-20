@@ -16,8 +16,10 @@ class WorkoutExerciseService {
     return _workoutExerciseRepository.getWorkoutExercises(stepId);
   }
 
-  Future<WorkoutExerciseModel> getWorkoutExerciseById(String id) async {
-    return _workoutExerciseRepository.getWorkoutExerciseById(id);
+  Future<WorkoutExerciseModel> getWorkoutExerciseById(
+    String workoutExerciseId,
+  ) async {
+    return _workoutExerciseRepository.getWorkoutExerciseById(workoutExerciseId);
   }
 
   Future<void> createWorkoutExercise(WorkoutExerciseModel exercise) async {

@@ -46,12 +46,12 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
 
     if (getWorkoutController != null) {
       setState(() => loadingData = true);
-      getWorkoutController().then((value) {
-        if (value != null) {
-          idController.text = value.workoutId;
-          nameController.text = value.name;
-          descriptionController.text = value.description ?? '';
-          tagsController.text = value.tags.join(', ');
+      getWorkoutController().then((workout) {
+        if (workout != null) {
+          idController.text = workout.id;
+          nameController.text = workout.name;
+          descriptionController.text = workout.description ?? '';
+          tagsController.text = workout.tags.join(', ');
         }
         setState(() => loadingData = false);
       });
@@ -133,7 +133,8 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
                         )
                         .addStep(
                           WorkoutStepModel(
-                            workoutStepId: 'new-id-${DateTime.now().millisecondsSinceEpoch}',
+                            id: 'new-id-'
+                                '${DateTime.now().millisecondsSinceEpoch}',
                             name: 'New Step ',
                             description: 'Description for new step',
                             setCount: 1,

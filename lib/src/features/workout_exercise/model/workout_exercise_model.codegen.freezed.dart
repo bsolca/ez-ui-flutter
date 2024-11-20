@@ -20,7 +20,7 @@ WorkoutExerciseModel _$WorkoutExerciseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WorkoutExerciseModel {
-  String get workoutExerciseId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get exerciseId => throw _privateConstructorUsedError;
   RepsModel? get reps => throw _privateConstructorUsedError;
   DurationModel? get duration => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $WorkoutExerciseModelCopyWith<$Res> {
       _$WorkoutExerciseModelCopyWithImpl<$Res, WorkoutExerciseModel>;
   @useResult
   $Res call(
-      {String workoutExerciseId,
+      {String id,
       String exerciseId,
       RepsModel? reps,
       DurationModel? duration,
@@ -84,7 +84,7 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? workoutExerciseId = null,
+    Object? id = null,
     Object? exerciseId = null,
     Object? reps = freezed,
     Object? duration = freezed,
@@ -96,9 +96,9 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
     Object? customNotes = freezed,
   }) {
     return _then(_value.copyWith(
-      workoutExerciseId: null == workoutExerciseId
-          ? _value.workoutExerciseId
-          : workoutExerciseId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       exerciseId: null == exerciseId
           ? _value.exerciseId
@@ -247,7 +247,7 @@ abstract class _$$WorkoutExerciseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String workoutExerciseId,
+      {String id,
       String exerciseId,
       RepsModel? reps,
       DurationModel? duration,
@@ -287,7 +287,7 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? workoutExerciseId = null,
+    Object? id = null,
     Object? exerciseId = null,
     Object? reps = freezed,
     Object? duration = freezed,
@@ -299,9 +299,9 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
     Object? customNotes = freezed,
   }) {
     return _then(_$WorkoutExerciseModelImpl(
-      workoutExerciseId: null == workoutExerciseId
-          ? _value.workoutExerciseId
-          : workoutExerciseId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       exerciseId: null == exerciseId
           ? _value.exerciseId
@@ -347,7 +347,7 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
   const _$WorkoutExerciseModelImpl(
-      {required this.workoutExerciseId,
+      {required this.id,
       required this.exerciseId,
       required this.reps,
       required this.duration,
@@ -362,7 +362,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
       _$$WorkoutExerciseModelImplFromJson(json);
 
   @override
-  final String workoutExerciseId;
+  final String id;
   @override
   final String exerciseId;
   @override
@@ -384,7 +384,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
 
   @override
   String toString() {
-    return 'WorkoutExerciseModel(workoutExerciseId: $workoutExerciseId, exerciseId: $exerciseId, reps: $reps, duration: $duration, load: $load, restTimeBetweenSets: $restTimeBetweenSets, tempo: $tempo, distance: $distance, intensity: $intensity, customNotes: $customNotes)';
+    return 'WorkoutExerciseModel(id: $id, exerciseId: $exerciseId, reps: $reps, duration: $duration, load: $load, restTimeBetweenSets: $restTimeBetweenSets, tempo: $tempo, distance: $distance, intensity: $intensity, customNotes: $customNotes)';
   }
 
   @override
@@ -392,8 +392,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WorkoutExerciseModelImpl &&
-            (identical(other.workoutExerciseId, workoutExerciseId) ||
-                other.workoutExerciseId == workoutExerciseId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.exerciseId, exerciseId) ||
                 other.exerciseId == exerciseId) &&
             (identical(other.reps, reps) || other.reps == reps) &&
@@ -413,18 +412,8 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      workoutExerciseId,
-      exerciseId,
-      reps,
-      duration,
-      load,
-      restTimeBetweenSets,
-      tempo,
-      distance,
-      intensity,
-      customNotes);
+  int get hashCode => Object.hash(runtimeType, id, exerciseId, reps, duration,
+      load, restTimeBetweenSets, tempo, distance, intensity, customNotes);
 
   /// Create a copy of WorkoutExerciseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -446,7 +435,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
 
 abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
   const factory _WorkoutExerciseModel(
-      {required final String workoutExerciseId,
+      {required final String id,
       required final String exerciseId,
       required final RepsModel? reps,
       required final DurationModel? duration,
@@ -461,7 +450,7 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
       _$WorkoutExerciseModelImpl.fromJson;
 
   @override
-  String get workoutExerciseId;
+  String get id;
   @override
   String get exerciseId;
   @override

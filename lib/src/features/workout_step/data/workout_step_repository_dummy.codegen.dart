@@ -8,9 +8,9 @@ import 'package:flutter/services.dart';
 
 class WorkoutStepRepositoryDummy implements WorkoutStepRepository {
   @override
-  Future<WorkoutStepModel?> getWorkoutStepById(String id) async {
-    final steps = await getWorkoutSteps(id);
-    return steps.firstWhere((step) => step.workoutStepId == id);
+  Future<WorkoutStepModel?> getWorkoutStepById(String workoutStepId) async {
+    final steps = await getWorkoutSteps(workoutStepId);
+    return steps.firstWhere((step) => step.id == workoutStepId);
   }
 
   @override

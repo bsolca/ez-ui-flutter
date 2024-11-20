@@ -34,17 +34,17 @@ class WorkoutStepsList extends ConsumerWidget {
                   : EdgeInsets.zero,
               child: WorkoutStepTile(
                 workoutId: workoutId,
-                step: steps[index],
+                workoutStep: steps[index],
               ),
             );
           },
         );
       },
       error: (error, stackTrace) {
-        return Text('Error: $error');
+        return SelectableText(error.toString());
       },
       loading: () {
-        return Text('Loading...');
+        return const Text('Loading...');
       },
     );
   }

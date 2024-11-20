@@ -42,32 +42,32 @@ class WorkoutFormController extends _$WorkoutFormController {
   }
 
   /// Add a new step (!!! Only on local !!!).
-  void addStep(WorkoutStepModel step) {
+  void addStep(WorkoutStepModel workoutStep) {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
-        workoutSteps: currentState.workoutSteps..add(step),
+        workoutSteps: currentState.workoutSteps..add(workoutStep),
       ),
     );
   }
 
   /// Add a new exercise (!!! Only on local !!!).
-  void addExercise(WorkoutExerciseModel exercise) {
+  void addExercise(WorkoutExerciseModel workoutExercise) {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
-        workoutExercises: currentState.workoutExercises..add(exercise),
+        workoutExercises: currentState.workoutExercises..add(workoutExercise),
       ),
     );
   }
 
   /// Remove a step (!!! Only on local !!!).
-  void removeStep(String stepId) {
+  void removeStep(String workoutStepId) {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
         workoutSteps: currentState.workoutSteps
-            .where((step) => step.workoutStepId != stepId)
+            .where((step) => step.id != workoutStepId)
             .toList(),
       ),
     );
@@ -91,7 +91,9 @@ class WorkoutFormController extends _$WorkoutFormController {
     state = AsyncValue.data(
       currentState.copyWith(
         workoutSteps: currentState.workoutSteps
-            .map((s) => s.workoutStepId == step.workoutStepId ? step : s)
+            .map(
+              (workoutStep) => workoutStep.id == step.id ? step : workoutStep,
+            )
             .toList(),
       ),
     );
