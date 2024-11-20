@@ -12,6 +12,8 @@ part 'workout_form_controller.codegen.g.dart';
 class WorkoutFormController extends _$WorkoutFormController {
   @override
   Future<WorkoutFormModel> build({required String workoutId}) async {
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: Building form for $workoutId');
     state = const AsyncValue.loading();
     final workoutService = ref.watch(workoutServiceProvider);
     final workoutStepService = ref.watch(workoutStepServiceProvider);
@@ -22,13 +24,14 @@ class WorkoutFormController extends _$WorkoutFormController {
       workoutId: workoutId,
     );
 
-    final workoutExercises = (await Future.wait(
-      workoutSteps.map((step) => step.id).map((stepId) async {
-        return workoutExerciseService.getWorkoutExercises(stepId: stepId);
-      }),
-    ))
-        .expand((exercises) => exercises)
-        .toList();
+    // Fetch all exercises for the workout steps
+    final workoutExercises = <WorkoutExerciseModel>[];
+
+    for (final step in workoutSteps) {
+      workoutExercises.addAll(
+        await workoutExerciseService.getWorkoutExercises(stepId: step.id),
+      );
+    }
 
     _initialState = WorkoutFormModel(
       workout: workout,

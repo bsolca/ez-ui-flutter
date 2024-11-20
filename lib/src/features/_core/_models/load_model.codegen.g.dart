@@ -14,7 +14,7 @@ _$LoadModelImpl _$$LoadModelImplFromJson(Map<String, dynamic> json) =>
         final val = _$LoadModelImpl(
           amount: $checkedConvert('amount', (v) => (v as num).toDouble()),
           unit: $checkedConvert(
-              'unit', (v) => $enumDecode(_$WeightUnitEnumMap, v)),
+              'unit', (v) => const WeightUnitConverter().fromJson(v as String)),
         );
         return val;
       },
@@ -23,11 +23,5 @@ _$LoadModelImpl _$$LoadModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$LoadModelImplToJson(_$LoadModelImpl instance) =>
     <String, dynamic>{
       'amount': instance.amount,
-      'unit': _$WeightUnitEnumMap[instance.unit]!,
+      'unit': const WeightUnitConverter().toJson(instance.unit),
     };
-
-const _$WeightUnitEnumMap = {
-  WeightUnit.kg: 'kg',
-  WeightUnit.lbs: 'lbs',
-  WeightUnit.percent: 'percent',
-};

@@ -39,144 +39,114 @@ class WorkoutExerciseList extends ConsumerWidget {
         ? Theme.of(context).colorScheme.surfaceContainerLow
         : Theme.of(context).colorScheme.surfaceContainer;
 
-    return exercises.when(
-      data: (exercises) {
-        if (exercises == null) {
-          // todo add Add button
-          return const SizedBox.shrink();
-        }
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: exercises.length,
-          itemBuilder: (context, index) {
-            final workoutExercise = exercises[index];
-            final exerciseId = workoutExercise.exerciseId;
-            return Padding(
-              padding: index != 0
-                  ? const EdgeInsets.only(
-                      top: EzConstLayout.spacerSmall,
-                    )
-                  : EdgeInsets.zero,
-              child: ref
-                  .watch(
-                    workoutExerciseExerciseControllerProvider(exerciseId),
-                  )
-                  .when(
-                    data: (e) => EzExpansionTile(
-                      tileBgColor: tileBgColor,
-                      bgChildrenColor: bgChildrenColor,
-                      title: Text(e.name),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          // edit icon button
-                          IconButton(
-                              icon: const Icon(Icons.edit),
-                              onPressed: () {
-                                SmartDialog.show<void>(
-                                  animationType: SmartAnimationType.fade,
-                                  animationTime: EzConstValue.animationDuration,
-                                  builder: (context) {
-                                    return Container(
-                                      margin: const EdgeInsets.all(50),
-                                      constraints: const BoxConstraints(
-                                        maxWidth: EzConstLayout.maxWidthCompact,
-                                      ),
-                                      decoration: ShapeDecoration(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .surfaceContainer,
-                                        shape: EzConstLayout.getShapeBorder(),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: ExerciseList(
-                                          onCellTap: (details, exercises) {
-                                            if (details
-                                                    .rowColumnIndex.rowIndex >
-                                                0) {
-                                              final rowIndex = details
-                                                      .rowColumnIndex.rowIndex -
-                                                  1;
-                                              if (rowIndex < exercises.length) {
-                                                final exercise =
-                                                    exercises[rowIndex];
-                                                ref
-                                                    .read(
-                                                      workoutExerciseExerciseControllerProvider(
-                                                        exerciseId,
-                                                      ).notifier,
-                                                    )
-                                                    .changeName(
-                                                      name: exercise.name,
-                                                    );
-                                                // todo add form controller
-                                                SmartDialog.dismiss<void>();
-                                              }
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              }),
-                          IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () {
-                              ref
-                                  .read(
-                                    workoutExerciseListControllerProvider(
-                                      workoutId: workoutId,
-                                      stepId: stepId,
-                                    ).notifier,
-                                  )
-                                  .deleteWorkoutExercise(
-                                    workoutExercise.exerciseId,
-                                  );
-                            },
-                          ),
-                        ],
-                      ),
-                      children: [
-                        WorkoutExerciseForm(
-                          workoutExerciseId: workoutExercise.id,
-                        ),
-                      ],
-                    ),
-                    error: (error, stackTrace) {
-                      return EzExpansionTile.error(
-                        title: const Text('Error - Loading an exercise'),
-                        subtitle: SelectableText(error.toString()),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete),
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: exercises.length,
+      itemBuilder: (context, index) {
+        final workoutExercise = exercises[index];
+        final exerciseId = workoutExercise.exerciseId;
+        return Padding(
+          padding: index != 0
+              ? const EdgeInsets.only(
+                  top: EzConstLayout.spacerSmall,
+                )
+              : EdgeInsets.zero,
+          child: ref
+              .watch(
+                workoutExerciseExerciseControllerProvider(exerciseId),
+              )
+              .when(
+                data: (e) => EzExpansionTile(
+                  tileBgColor: tileBgColor,
+                  bgChildrenColor: bgChildrenColor,
+                  title: Text(e.name),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // edit icon button
+                      IconButton(
+                          icon: const Icon(Icons.edit),
                           onPressed: () {
-                            ref
-                                .read(
-                                  workoutExerciseListControllerProvider(
-                                    workoutId: workoutId,
-                                    stepId: stepId,
-                                  ).notifier,
-                                )
-                                .deleteWorkoutExercise(
-                                  workoutExercise.exerciseId,
+                            SmartDialog.show<void>(
+                              animationType: SmartAnimationType.fade,
+                              animationTime: EzConstValue.animationDuration,
+                              builder: (context) {
+                                return Container(
+                                  margin: const EdgeInsets.all(50),
+                                  constraints: const BoxConstraints(
+                                    maxWidth: EzConstLayout.maxWidthCompact,
+                                  ),
+                                  decoration: ShapeDecoration(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .surfaceContainer,
+                                    shape: EzConstLayout.getShapeBorder(),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ExerciseList(
+                                      onCellTap: (details, exercises) {
+                                        if (details.rowColumnIndex.rowIndex >
+                                            0) {
+                                          final rowIndex =
+                                              details.rowColumnIndex.rowIndex -
+                                                  1;
+                                          if (rowIndex < exercises.length) {
+                                            final exercise =
+                                                exercises[rowIndex];
+                                            ref
+                                                .read(
+                                                  workoutExerciseExerciseControllerProvider(
+                                                    exerciseId,
+                                                  ).notifier,
+                                                )
+                                                .changeName(
+                                                  name: exercise.name,
+                                                );
+                                            // todo add form controller
+                                            SmartDialog.dismiss<void>();
+                                          }
+                                        }
+                                      },
+                                    ),
+                                  ),
                                 );
-                          },
-                        ),
-                      );
-                    },
-                    loading: EzExpansionTile.loading,
+                              },
+                            );
+                          }),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                          print('TESTY: TODO Delete');
+                        },
+                      ),
+                    ],
                   ),
-            );
-          },
+                  children: [
+                    WorkoutExerciseForm(
+                      workoutExerciseId: workoutExercise.id,
+                    ),
+                  ],
+                ),
+                error: (error, stackTrace) {
+                  return EzExpansionTile.error(
+                    title: const Text('Error - Loading an exercise'),
+                    subtitle: SelectableText(error.toString()),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                        print('TESTY: TO DO DELETE');
+                      },
+                    ),
+                  );
+                },
+                loading: EzExpansionTile.loading,
+              ),
         );
       },
-      error: (error, stackTrace) => EzExpansionTile.error(
-        title: Text('Error - Loading stepId: $stepId'),
-        subtitle: SelectableText(error.toString()),
-      ),
-      loading: () => const Placeholder(),
     );
   }
 }

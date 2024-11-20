@@ -11,7 +11,7 @@ class LoadModel with _$LoadModel {
   /// Load model to specify weight or resistance used in an exercise.
   const factory LoadModel({
     required double amount, // Amount of weight or resistance
-    required WeightUnit unit, //  kg, lbs, %
+    @WeightUnitConverter() required WeightUnit unit,
   }) = _LoadModel;
 
   /// Creates a new load model from a JSON map.

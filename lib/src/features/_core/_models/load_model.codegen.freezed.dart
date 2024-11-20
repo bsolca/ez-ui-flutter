@@ -22,6 +22,7 @@ LoadModel _$LoadModelFromJson(Map<String, dynamic> json) {
 mixin _$LoadModel {
   double get amount =>
       throw _privateConstructorUsedError; // Amount of weight or resistance
+  @WeightUnitConverter()
   WeightUnit get unit => throw _privateConstructorUsedError;
 
   /// Serializes this LoadModel to a JSON map.
@@ -39,7 +40,7 @@ abstract class $LoadModelCopyWith<$Res> {
   factory $LoadModelCopyWith(LoadModel value, $Res Function(LoadModel) then) =
       _$LoadModelCopyWithImpl<$Res, LoadModel>;
   @useResult
-  $Res call({double amount, WeightUnit unit});
+  $Res call({double amount, @WeightUnitConverter() WeightUnit unit});
 }
 
 /// @nodoc
@@ -81,7 +82,7 @@ abstract class _$$LoadModelImplCopyWith<$Res>
       __$$LoadModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double amount, WeightUnit unit});
+  $Res call({double amount, @WeightUnitConverter() WeightUnit unit});
 }
 
 /// @nodoc
@@ -116,7 +117,8 @@ class __$$LoadModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoadModelImpl implements _LoadModel {
-  const _$LoadModelImpl({required this.amount, required this.unit});
+  const _$LoadModelImpl(
+      {required this.amount, @WeightUnitConverter() required this.unit});
 
   factory _$LoadModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoadModelImplFromJson(json);
@@ -125,6 +127,7 @@ class _$LoadModelImpl implements _LoadModel {
   final double amount;
 // Amount of weight or resistance
   @override
+  @WeightUnitConverter()
   final WeightUnit unit;
 
   @override
@@ -164,7 +167,7 @@ class _$LoadModelImpl implements _LoadModel {
 abstract class _LoadModel implements LoadModel {
   const factory _LoadModel(
       {required final double amount,
-      required final WeightUnit unit}) = _$LoadModelImpl;
+      @WeightUnitConverter() required final WeightUnit unit}) = _$LoadModelImpl;
 
   factory _LoadModel.fromJson(Map<String, dynamic> json) =
       _$LoadModelImpl.fromJson;
@@ -172,6 +175,7 @@ abstract class _LoadModel implements LoadModel {
   @override
   double get amount; // Amount of weight or resistance
   @override
+  @WeightUnitConverter()
   WeightUnit get unit;
 
   /// Create a copy of LoadModel

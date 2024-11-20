@@ -16,7 +16,7 @@ enum WeightUnit {
 class WeightUnitModel with _$WeightUnitModel {
   /// Weight unit model with available units for weight measurement.
   const factory WeightUnitModel({
-    @WeightUnitConverter()  required WeightUnit unit, // Enum for "kg", "lbs", or "percent"
+    @WeightUnitConverter() required WeightUnit unit,
   }) = _WeightUnitModel;
 
   /// Creates a new weight unit model from a JSON map.
@@ -38,7 +38,7 @@ class WeightUnitConverter implements JsonConverter<WeightUnit, String> {
         return WeightUnit.percent;
       default:
         // Provide a default value when the unit is invalid
-        return WeightUnit.kg; // or any default you prefer
+        return WeightUnit.kg;
     }
   }
 
