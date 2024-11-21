@@ -96,9 +96,9 @@ class Sidebar extends ConsumerWidget {
         ),
         EzSidebarItemData.heading(text: ref.loc.library),
         EzSidebarItemData.regular(
-          text: ref.loc.exercises,
+          text: ref.loc.techniques,
           icon: Icons.fitness_center_outlined,
-          onTap: () => context.goNamed(AppRoute.exercises.name),
+          onTap: () => context.goNamed(AppRoute.techniques.name),
         ),
         EzSidebarItemData.regular(
           text: ref.loc.workouts,

@@ -1,4 +1,4 @@
-import 'package:ez_fit_app/src/features/exercise/exercise_list.dart';
+import 'package:ez_fit_app/src/features/technique/technique_list.dart';
 import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_model.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_dialog/ez_dialog.dart';
@@ -24,28 +24,26 @@ class WorkoutExerciseAddController extends _$WorkoutExerciseAddController {
       builder: (context) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ExerciseList(
+          child: TechniqueList(
             onCellTap: (details, exercises) {
               if (details.rowColumnIndex.rowIndex > 0) {
                 final rowIndex = details.rowColumnIndex.rowIndex - 1;
                 if (rowIndex < exercises.length) {
                   final exercise = exercises[rowIndex];
                   final uid = Faker().guid.guid();
-                  // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-                  print('TESTY: uid: $uid');
                   ref
                       .read(
-                    workoutFormControllerProvider(
-                      workoutId: workoutId,
-                    ).notifier,
-                  )
+                        workoutFormControllerProvider(
+                          workoutId: workoutId,
+                        ).notifier,
+                      )
                       .addExercise(
-                    WorkoutExerciseModel.newWorkoutExercise(
-                      id: uid,
-                      stepId: stepId,
-                      exerciseId: exercise.id,
-                    ),
-                  );
+                        WorkoutExerciseModel.newWorkoutExercise(
+                          id: uid,
+                          stepId: stepId,
+                          exerciseId: exercise.id,
+                        ),
+                      );
                   EzDialog.dismiss<void>();
                 }
               }

@@ -7,7 +7,7 @@ part of 'workout_exercise_add_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutExerciseAddControllerHash() =>
-    r'4fad8a5fd08d240402a0080c4f0286a27cb48fc2';
+    r'a116314a79af948cb519b974ddadd7ec256ebf58';
 
 /// See also [WorkoutExerciseAddController].
 @ProviderFor(WorkoutExerciseAddController)

@@ -3,9 +3,9 @@ import 'package:ez_fit_app/src/features/_core/loading/loading_controller.codegen
 import 'package:ez_fit_app/src/features/color_scheme_preview/color_scheme_preview.dart';
 import 'package:ez_fit_app/src/features/user_settings/ui/user_settings_screen.dart';
 import 'package:ez_fit_app/src/screens/auth_screen/auth_screen.dart';
-import 'package:ez_fit_app/src/screens/exercise_screen/exercise_screen.dart';
 import 'package:ez_fit_app/src/screens/exercises_screen/exercises_screen.dart';
 import 'package:ez_fit_app/src/screens/home_screen/home_screen.dart';
+import 'package:ez_fit_app/src/screens/technique_screen/technique_screen.dart';
 import 'package:ez_fit_app/src/screens/user_screen/user_screen.dart';
 import 'package:ez_fit_app/src/screens/users_screen/users_screen.dart';
 import 'package:ez_fit_app/src/screens/workout/workout_screen.dart';
@@ -31,8 +31,8 @@ part 'go_router_provider.codegen.g.dart';
 enum AppRoute {
   auth,
   colorSchemePreview,
-  exercise,
-  exercises,
+  technique,
+  techniques,
   home,
   settingsNotifications,
   settingsPlanAndBilling,
@@ -239,18 +239,18 @@ Raw<GoRouter> goRouter(Ref ref) {
           ),
           GoRoutePageScaffold(
             path: '/exercises',
-            name: AppRoute.exercises.name,
+            name: AppRoute.techniques.name,
             parentNavigatorKey: shellNavigatorKey,
-            body: const ExercisesScreen(),
+            body: const TechniquesScreen(),
           ),
           GoRoute(
             path: '/exercises/:id',
-            name: AppRoute.exercise.name,
+            name: AppRoute.technique.name,
             pageBuilder: (context, state) {
               final id = state.pathParameters['id'];
               return NoTransitionPage(
                 key: ValueKey('${AppRoute.usersUsers.name}/$id'),
-                child: ExerciseScreen(exerciseId: id ?? ''),
+                child: TechniqueScreen(techniqueId: id ?? ''),
               );
             },
           ),

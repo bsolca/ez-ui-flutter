@@ -1,7 +1,7 @@
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_add_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_technique_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
@@ -49,7 +49,7 @@ class WorkoutExerciseList extends ConsumerWidget {
               : EdgeInsets.zero,
           child: ref
               .watch(
-                workoutExerciseExerciseControllerProvider(exerciseId),
+                workoutExerciseTechniqueControllerProvider(exerciseId),
               )
               .when(
                 data: (exerciseModel) => EzExpansionTile(
