@@ -41,7 +41,9 @@ class WorkoutStepTile extends ConsumerWidget {
                   .read(
                     workoutStepsControllerProvider(workoutId).notifier,
                   )
-                  .createNewExercise(workoutStep.id);
+                  .createNewExercise(
+                    stepId: workoutStep.id,
+                  );
             },
           ),
           IconButton(

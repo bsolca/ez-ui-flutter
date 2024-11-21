@@ -1,19 +1,13 @@
-import 'package:ez_fit_app/src/features/exercise/exercise_list.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_add_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
-import 'package:ez_fit_app/src/utils/constants/ez_const_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-// TODO delete exercise tile, controller etc
-// todo  Add a select exercise exercise
-// todo think how to select the exercise info
-// Todo error tile and possibility to change the exercise
 class WorkoutExerciseList extends ConsumerWidget {
   const WorkoutExerciseList({
     super.key,
@@ -46,6 +40,7 @@ class WorkoutExerciseList extends ConsumerWidget {
       itemBuilder: (context, index) {
         final workoutExercise = exercises[index];
         final exerciseId = workoutExercise.exerciseId;
+
         return Padding(
           padding: index != 0
               ? const EdgeInsets.only(
@@ -57,61 +52,32 @@ class WorkoutExerciseList extends ConsumerWidget {
                 workoutExerciseExerciseControllerProvider(exerciseId),
               )
               .when(
-                data: (e) => EzExpansionTile(
+                data: (exerciseModel) => EzExpansionTile(
                   tileBgColor: tileBgColor,
                   bgChildrenColor: bgChildrenColor,
-                  title: Text(e.name),
+                  title: Text(exerciseModel.name),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       // edit icon button
                       IconButton(
-                          icon: const Icon(Icons.edit),
-                          onPressed: () {
-                            SmartDialog.show<void>(
-                              animationType: SmartAnimationType.fade,
-                              animationTime: EzConstValue.animationDuration,
-                              builder: (context) {
-                                return Container(
-                                  margin: const EdgeInsets.all(50),
-                                  constraints: const BoxConstraints(
-                                    maxWidth: EzConstLayout.maxWidthCompact,
-                                  ),
-                                  decoration: ShapeDecoration(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainer,
-                                    shape: EzConstLayout.getShapeBorder(),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ExerciseList(
-                                      onCellTap: (details, exercises) {
-                                        if (details.rowColumnIndex.rowIndex >
-                                            0) {
-                                          final rowIndex =
-                                              details.rowColumnIndex.rowIndex -
-                                                  1;
-                                          if (rowIndex < exercises.length) {
-                                            // todo add form controller
-                                            SmartDialog.dismiss<void>();
-                                          }
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          }),
+                        icon: const Icon(Icons.edit),
+                        onPressed: () => ref
+                            .read(
+                              workoutExerciseAddControllerProvider.notifier,
+                            )
+                            .showAddExerciseDialog(
+                              workoutId: workoutId,
+                              stepId: stepId,
+                            ),
+                      ),
                       IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: ref
                             .read(
                               workoutExerciseControllerProvider(
                                 workoutId: workoutId,
-                                exerciseId: exerciseId,
+                                exerciseId: workoutExercise.id,
                               ).notifier,
                             )
                             .deleteWorkoutExercise,

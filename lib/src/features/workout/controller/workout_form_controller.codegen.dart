@@ -91,7 +91,7 @@ class WorkoutFormController extends _$WorkoutFormController {
     state = AsyncValue.data(
       currentState.copyWith(
         workoutExercises: currentState.workoutExercises
-            .where((exercise) => exercise.exerciseId != exerciseId)
+            .where((exercise) => exercise.id != exerciseId)
             .toList(),
       ),
     );

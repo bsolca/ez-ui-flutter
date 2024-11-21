@@ -29,11 +29,15 @@ class WorkoutExerciseModel with _$WorkoutExerciseModel {
   }) = _WorkoutExerciseModel;
 
   /// Creates a new workout exercise model with default values.
-  factory WorkoutExerciseModel.newWorkoutExercise({required String stepId}) {
+  factory WorkoutExerciseModel.newWorkoutExercise({
+    required String id,
+    required String stepId,
+    required String exerciseId,
+  }) {
     return WorkoutExerciseModel(
-      id: '',
+      id: id,
       stepId: stepId,
-      exerciseId: '',
+      exerciseId: exerciseId,
       reps: null,
       duration: null,
       load: null,
