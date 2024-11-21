@@ -12,8 +12,6 @@ part 'workout_form_controller.codegen.g.dart';
 class WorkoutFormController extends _$WorkoutFormController {
   @override
   Future<WorkoutFormModel> build({required String workoutId}) async {
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: Building form for $workoutId');
     state = const AsyncValue.loading();
     final workoutService = ref.watch(workoutServiceProvider);
     final workoutStepService = ref.watch(workoutStepServiceProvider);

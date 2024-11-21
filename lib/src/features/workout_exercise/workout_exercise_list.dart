@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/features/exercise/exercise_list.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
@@ -93,17 +94,6 @@ class WorkoutExerciseList extends ConsumerWidget {
                                               details.rowColumnIndex.rowIndex -
                                                   1;
                                           if (rowIndex < exercises.length) {
-                                            final exercise =
-                                                exercises[rowIndex];
-                                            ref
-                                                .read(
-                                                  workoutExerciseExerciseControllerProvider(
-                                                    exerciseId,
-                                                  ).notifier,
-                                                )
-                                                .changeName(
-                                                  name: exercise.name,
-                                                );
                                             // todo add form controller
                                             SmartDialog.dismiss<void>();
                                           }
@@ -117,10 +107,14 @@ class WorkoutExerciseList extends ConsumerWidget {
                           }),
                       IconButton(
                         icon: const Icon(Icons.delete),
-                        onPressed: () {
-                          // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-                          print('TESTY: TODO Delete');
-                        },
+                        onPressed: ref
+                            .read(
+                              workoutExerciseControllerProvider(
+                                workoutId: workoutId,
+                                exerciseId: exerciseId,
+                              ).notifier,
+                            )
+                            .deleteWorkoutExercise,
                       ),
                     ],
                   ),
@@ -136,10 +130,14 @@ class WorkoutExerciseList extends ConsumerWidget {
                     subtitle: SelectableText(error.toString()),
                     trailing: IconButton(
                       icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-                        print('TESTY: TO DO DELETE');
-                      },
+                      onPressed: ref
+                          .read(
+                            workoutExerciseControllerProvider(
+                              workoutId: workoutId,
+                              exerciseId: exerciseId,
+                            ).notifier,
+                          )
+                          .deleteWorkoutExercise,
                     ),
                   );
                 },

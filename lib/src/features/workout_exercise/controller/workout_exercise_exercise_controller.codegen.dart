@@ -11,13 +11,4 @@ class WorkoutExerciseExerciseController
   Future<ExerciseModel> build(String exerciseId) async {
     return ref.watch(exerciseServiceProvider).getExerciseById(exerciseId);
   }
-
-  /// Vote against a player.
-  Future<void> changeName({required String name}) async {
-    final exercise = state.value;
-    if (exercise == null) {
-      return;
-    }
-    state = AsyncValue.data(exercise.copyWith(name: name));
-  }
 }
