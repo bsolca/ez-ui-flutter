@@ -7,7 +7,7 @@ part of 'workout_exercise_technique_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutExerciseTechniqueControllerHash() =>
-    r'c3f51c6c93b921c51b43775ee7f6d46091cde974';
+    r'07919c429cb7e169b79cca65a96dc9de98f3ebe8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,9 +34,9 @@ abstract class _$WorkoutExerciseTechniqueController
     extends BuildlessAutoDisposeAsyncNotifier<TechniqueModel> {
   late final String techniqueId;
 
-  FutureOr<TechniqueModel> build(
-    String techniqueId,
-  );
+  FutureOr<TechniqueModel> build({
+    required String techniqueId,
+  });
 }
 
 /// See also [WorkoutExerciseTechniqueController].
@@ -51,11 +51,11 @@ class WorkoutExerciseTechniqueControllerFamily
   const WorkoutExerciseTechniqueControllerFamily();
 
   /// See also [WorkoutExerciseTechniqueController].
-  WorkoutExerciseTechniqueControllerProvider call(
-    String techniqueId,
-  ) {
+  WorkoutExerciseTechniqueControllerProvider call({
+    required String techniqueId,
+  }) {
     return WorkoutExerciseTechniqueControllerProvider(
-      techniqueId,
+      techniqueId: techniqueId,
     );
   }
 
@@ -64,7 +64,7 @@ class WorkoutExerciseTechniqueControllerFamily
     covariant WorkoutExerciseTechniqueControllerProvider provider,
   ) {
     return call(
-      provider.techniqueId,
+      techniqueId: provider.techniqueId,
     );
   }
 
@@ -88,9 +88,9 @@ class WorkoutExerciseTechniqueControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
         WorkoutExerciseTechniqueController, TechniqueModel> {
   /// See also [WorkoutExerciseTechniqueController].
-  WorkoutExerciseTechniqueControllerProvider(
-    String techniqueId,
-  ) : this._internal(
+  WorkoutExerciseTechniqueControllerProvider({
+    required String techniqueId,
+  }) : this._internal(
           () => WorkoutExerciseTechniqueController()..techniqueId = techniqueId,
           from: workoutExerciseTechniqueControllerProvider,
           name: r'workoutExerciseTechniqueControllerProvider',
@@ -121,7 +121,7 @@ class WorkoutExerciseTechniqueControllerProvider
     covariant WorkoutExerciseTechniqueController notifier,
   ) {
     return notifier.build(
-      techniqueId,
+      techniqueId: techniqueId,
     );
   }
 

@@ -8,7 +8,7 @@ part 'workout_exercise_technique_controller.codegen.g.dart';
 class WorkoutExerciseTechniqueController
     extends _$WorkoutExerciseTechniqueController {
   @override
-  Future<TechniqueModel> build(String techniqueId) async {
+  Future<TechniqueModel> build({required String techniqueId}) async {
     return ref.watch(techniqueServiceProvider).getTechniqueById(techniqueId);
   }
 }

@@ -25,11 +25,11 @@ class WorkoutExerciseAddController extends _$WorkoutExerciseAddController {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: TechniqueList(
-            onCellTap: (details, exercises) {
+            onCellTap: (details, techniques) {
               if (details.rowColumnIndex.rowIndex > 0) {
                 final rowIndex = details.rowColumnIndex.rowIndex - 1;
-                if (rowIndex < exercises.length) {
-                  final exercise = exercises[rowIndex];
+                if (rowIndex < techniques.length) {
+                  final technique = techniques[rowIndex];
                   final uid = Faker().guid.guid();
                   ref
                       .read(
@@ -41,7 +41,7 @@ class WorkoutExerciseAddController extends _$WorkoutExerciseAddController {
                         WorkoutExerciseModel.newWorkoutExercise(
                           id: uid,
                           stepId: stepId,
-                          exerciseId: exercise.id,
+                          techniqueId: technique.id,
                         ),
                       );
                   EzDialog.dismiss<void>();
@@ -52,5 +52,39 @@ class WorkoutExerciseAddController extends _$WorkoutExerciseAddController {
         );
       },
     );
+  }
+
+  /// Edit an existing exercise in a step
+  void editExercise({
+    required String workoutId,
+    required WorkoutExerciseModel exercise,
+  }) {
+    EzDialog.show<void>(builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TechniqueList(
+          onCellTap: (details, techniques) {
+            if (details.rowColumnIndex.rowIndex > 0) {
+              final rowIndex = details.rowColumnIndex.rowIndex - 1;
+              if (rowIndex < techniques.length) {
+                final technique = techniques[rowIndex];
+                ref
+                    .read(
+                      workoutFormControllerProvider(
+                        workoutId: workoutId,
+                      ).notifier,
+                    )
+                    .updateExercise(
+                      exercise.copyWith(
+                        techniqueId: technique.id,
+                      ),
+                    );
+                EzDialog.dismiss<void>();
+              }
+            }
+          },
+        ),
+      );
+    });
   }
 }

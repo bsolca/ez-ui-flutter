@@ -22,7 +22,7 @@ WorkoutExerciseModel _$WorkoutExerciseModelFromJson(Map<String, dynamic> json) {
 mixin _$WorkoutExerciseModel {
   String get id => throw _privateConstructorUsedError;
   String get stepId => throw _privateConstructorUsedError;
-  String get exerciseId => throw _privateConstructorUsedError;
+  String get techniqueId => throw _privateConstructorUsedError;
   RepsModel? get reps => throw _privateConstructorUsedError;
   DurationModel? get duration => throw _privateConstructorUsedError;
   LoadModel? get load => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $WorkoutExerciseModelCopyWith<$Res> {
   $Res call(
       {String id,
       String stepId,
-      String exerciseId,
+      String techniqueId,
       RepsModel? reps,
       DurationModel? duration,
       LoadModel? load,
@@ -88,7 +88,7 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
   $Res call({
     Object? id = null,
     Object? stepId = null,
-    Object? exerciseId = null,
+    Object? techniqueId = null,
     Object? reps = freezed,
     Object? duration = freezed,
     Object? load = freezed,
@@ -107,9 +107,9 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
           ? _value.stepId
           : stepId // ignore: cast_nullable_to_non_nullable
               as String,
-      exerciseId: null == exerciseId
-          ? _value.exerciseId
-          : exerciseId // ignore: cast_nullable_to_non_nullable
+      techniqueId: null == techniqueId
+          ? _value.techniqueId
+          : techniqueId // ignore: cast_nullable_to_non_nullable
               as String,
       reps: freezed == reps
           ? _value.reps
@@ -256,7 +256,7 @@ abstract class _$$WorkoutExerciseModelImplCopyWith<$Res>
   $Res call(
       {String id,
       String stepId,
-      String exerciseId,
+      String techniqueId,
       RepsModel? reps,
       DurationModel? duration,
       LoadModel? load,
@@ -297,7 +297,7 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? stepId = null,
-    Object? exerciseId = null,
+    Object? techniqueId = null,
     Object? reps = freezed,
     Object? duration = freezed,
     Object? load = freezed,
@@ -316,9 +316,9 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
           ? _value.stepId
           : stepId // ignore: cast_nullable_to_non_nullable
               as String,
-      exerciseId: null == exerciseId
-          ? _value.exerciseId
-          : exerciseId // ignore: cast_nullable_to_non_nullable
+      techniqueId: null == techniqueId
+          ? _value.techniqueId
+          : techniqueId // ignore: cast_nullable_to_non_nullable
               as String,
       reps: freezed == reps
           ? _value.reps
@@ -362,7 +362,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
   const _$WorkoutExerciseModelImpl(
       {required this.id,
       required this.stepId,
-      required this.exerciseId,
+      required this.techniqueId,
       required this.reps,
       required this.duration,
       required this.load,
@@ -380,7 +380,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
   @override
   final String stepId;
   @override
-  final String exerciseId;
+  final String techniqueId;
   @override
   final RepsModel? reps;
   @override
@@ -400,7 +400,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
 
   @override
   String toString() {
-    return 'WorkoutExerciseModel(id: $id, stepId: $stepId, exerciseId: $exerciseId, reps: $reps, duration: $duration, load: $load, restTimeBetweenSets: $restTimeBetweenSets, tempo: $tempo, distance: $distance, intensity: $intensity, customNotes: $customNotes)';
+    return 'WorkoutExerciseModel(id: $id, stepId: $stepId, techniqueId: $techniqueId, reps: $reps, duration: $duration, load: $load, restTimeBetweenSets: $restTimeBetweenSets, tempo: $tempo, distance: $distance, intensity: $intensity, customNotes: $customNotes)';
   }
 
   @override
@@ -410,8 +410,8 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
             other is _$WorkoutExerciseModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.stepId, stepId) || other.stepId == stepId) &&
-            (identical(other.exerciseId, exerciseId) ||
-                other.exerciseId == exerciseId) &&
+            (identical(other.techniqueId, techniqueId) ||
+                other.techniqueId == techniqueId) &&
             (identical(other.reps, reps) || other.reps == reps) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
@@ -433,7 +433,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
       runtimeType,
       id,
       stepId,
-      exerciseId,
+      techniqueId,
       reps,
       duration,
       load,
@@ -465,7 +465,7 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
   const factory _WorkoutExerciseModel(
       {required final String id,
       required final String stepId,
-      required final String exerciseId,
+      required final String techniqueId,
       required final RepsModel? reps,
       required final DurationModel? duration,
       required final LoadModel? load,
@@ -483,7 +483,7 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
   @override
   String get stepId;
   @override
-  String get exerciseId;
+  String get techniqueId;
   @override
   RepsModel? get reps;
   @override

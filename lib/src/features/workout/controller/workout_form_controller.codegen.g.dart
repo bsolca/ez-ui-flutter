@@ -7,7 +7,7 @@ part of 'workout_form_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutFormControllerHash() =>
-    r'48af878ec4e2c8e176926c3cd823881cfcd738a3';
+    r'65fb4e1c4488d64e63af3f263b875db0568c0c0f';
 
 /// Copied from Dart SDK
 class _SystemHash {

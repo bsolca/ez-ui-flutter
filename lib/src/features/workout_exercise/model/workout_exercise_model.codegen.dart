@@ -17,7 +17,7 @@ class WorkoutExerciseModel with _$WorkoutExerciseModel {
   const factory WorkoutExerciseModel({
     required String id,
     required String stepId,
-    required String exerciseId,
+    required String techniqueId,
     required RepsModel? reps,
     required DurationModel? duration,
     required LoadModel? load,
@@ -32,12 +32,12 @@ class WorkoutExerciseModel with _$WorkoutExerciseModel {
   factory WorkoutExerciseModel.newWorkoutExercise({
     required String id,
     required String stepId,
-    required String exerciseId,
+    required String techniqueId,
   }) {
     return WorkoutExerciseModel(
       id: id,
       stepId: stepId,
-      exerciseId: exerciseId,
+      techniqueId: techniqueId,
       reps: null,
       duration: null,
       load: null,

@@ -39,7 +39,7 @@ class WorkoutExerciseList extends ConsumerWidget {
       itemCount: exercises.length,
       itemBuilder: (context, index) {
         final workoutExercise = exercises[index];
-        final exerciseId = workoutExercise.exerciseId;
+        final exerciseId = workoutExercise.id;
 
         return Padding(
           padding: index != 0
@@ -49,7 +49,9 @@ class WorkoutExerciseList extends ConsumerWidget {
               : EdgeInsets.zero,
           child: ref
               .watch(
-                workoutExerciseTechniqueControllerProvider(exerciseId),
+                workoutExerciseTechniqueControllerProvider(
+                  techniqueId: workoutExercise.techniqueId,
+                ),
               )
               .when(
                 data: (exerciseModel) => EzExpansionTile(
@@ -66,9 +68,9 @@ class WorkoutExerciseList extends ConsumerWidget {
                             .read(
                               workoutExerciseAddControllerProvider.notifier,
                             )
-                            .showAddExerciseDialog(
+                            .editExercise(
                               workoutId: workoutId,
-                              stepId: stepId,
+                              exercise: workoutExercise,
                             ),
                       ),
                       IconButton(

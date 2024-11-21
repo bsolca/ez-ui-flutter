@@ -17,7 +17,7 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
     );
     final workoutExercises = formPod.value?.workoutExercises ?? [];
     final exercise = workoutExercises.firstWhere(
-      (e) => e.exerciseId == exerciseId,
+      (e) => e.id == exerciseId,
       orElse: () => throw Exception('Workout exercise not found'),
     );
     return exercise;
