@@ -34,85 +34,95 @@ class WorkoutExerciseList extends ConsumerWidget {
         ? Theme.of(context).colorScheme.surfaceContainerLow
         : Theme.of(context).colorScheme.surfaceContainer;
 
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: exercises.length,
-      itemBuilder: (context, index) {
-        final workoutExercise = exercises[index];
-        final exerciseId = workoutExercise.id;
+    return exercises.when(
+      data: (exercises) => ListView.builder(
+        shrinkWrap: true,
+        itemCount: exercises.length,
+        itemBuilder: (context, index) {
+          final workoutExercise = exercises[index];
+          final exerciseId = workoutExercise.id;
 
-        return Padding(
-          padding: index != 0
-              ? const EdgeInsets.only(
-                  top: EzConstLayout.spacerSmall,
+          return Padding(
+            padding: index != 0
+                ? const EdgeInsets.only(
+                    top: EzConstLayout.spacerSmall,
+                  )
+                : EdgeInsets.zero,
+            child: ref
+                .watch(
+                  workoutExerciseTechniqueControllerProvider(
+                    techniqueId: workoutExercise.techniqueId,
+                  ),
                 )
-              : EdgeInsets.zero,
-          child: ref
-              .watch(
-                workoutExerciseTechniqueControllerProvider(
-                  techniqueId: workoutExercise.techniqueId,
-                ),
-              )
-              .when(
-                data: (exerciseModel) => EzExpansionTile(
-                  tileBgColor: tileBgColor,
-                  bgChildrenColor: bgChildrenColor,
-                  title: Text(exerciseModel.name),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
+                .when(
+                  data: (exerciseModel) => EzExpansionTile(
+                    tileBgColor: tileBgColor,
+                    bgChildrenColor: bgChildrenColor,
+                    title: Text(exerciseModel.name),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // edit icon button
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          onPressed: () => ref
+                              .read(
+                                workoutExerciseAddControllerProvider.notifier,
+                              )
+                              .editExercise(
+                                workoutId: workoutId,
+                                exercise: workoutExercise,
+                              ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: ref
+                              .read(
+                                workoutExerciseControllerProvider(
+                                  workoutId: workoutId,
+                                  exerciseId: workoutExercise.id,
+                                ).notifier,
+                              )
+                              .deleteWorkoutExercise,
+                        ),
+                      ],
+                    ),
                     children: [
-                      // edit icon button
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () => ref
-                            .read(
-                              workoutExerciseAddControllerProvider.notifier,
-                            )
-                            .editExercise(
-                              workoutId: workoutId,
-                              exercise: workoutExercise,
-                            ),
+                      WorkoutExerciseForm(
+                        workoutExerciseId: workoutExercise.id,
                       ),
-                      IconButton(
+                    ],
+                  ),
+                  error: (error, stackTrace) {
+                    return EzExpansionTile.error(
+                      title: const Text('Error - Loading an exercise'),
+                      subtitle: SelectableText(error.toString()),
+                      trailing: IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: ref
                             .read(
                               workoutExerciseControllerProvider(
                                 workoutId: workoutId,
-                                exerciseId: workoutExercise.id,
+                                exerciseId: exerciseId,
                               ).notifier,
                             )
                             .deleteWorkoutExercise,
                       ),
-                    ],
-                  ),
-                  children: [
-                    WorkoutExerciseForm(
-                      workoutExerciseId: workoutExercise.id,
-                    ),
-                  ],
+                    );
+                  },
+                  loading: EzExpansionTile.loading,
                 ),
-                error: (error, stackTrace) {
-                  return EzExpansionTile.error(
-                    title: const Text('Error - Loading an exercise'),
-                    subtitle: SelectableText(error.toString()),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: ref
-                          .read(
-                            workoutExerciseControllerProvider(
-                              workoutId: workoutId,
-                              exerciseId: exerciseId,
-                            ).notifier,
-                          )
-                          .deleteWorkoutExercise,
-                    ),
-                  );
-                },
-                loading: EzExpansionTile.loading,
-              ),
+          );
+        },
+      ),
+      error: (error, stackTrace) {
+        return Center(
+          child: Text(error.toString()),
         );
       },
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }
