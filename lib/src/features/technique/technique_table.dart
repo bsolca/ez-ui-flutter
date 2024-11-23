@@ -72,69 +72,67 @@ class _TechniqueTableState extends ConsumerState<TechniqueTable> {
         ? Center(child: Text(ref.loc.noTechniquesFound))
         : Skeletonizer(
             enabled: widget.isLoading,
-            child: SelectionArea(
-              child: SfDataGrid(
-                source: techniqueDataSource,
-                allowColumnsResizing: true,
-                controller: widget.dataGridController,
-                onSelectionChanging: (
-                  List<DataGridRow> addedRows,
-                  List<DataGridRow> removedRows,
-                ) {
-                  return true;
-                },
-                onColumnResizeStart: (ColumnResizeStartDetails details) {
-                  // Disable resizing for the first and last columns if needed.
-                  if (details.columnIndex == 0 ||
-                      details.columnIndex ==
-                          TechniqueTableColumnEnum.values.length - 1) {
-                    return false;
-                  }
-                  return true;
-                },
-                onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
-                  setState(() {
-                    columnWidths[details.column.columnName] = details.width;
-                  });
-                  return true;
-                },
-                columnWidthMode: ColumnWidthMode.lastColumnFill,
-                onCellTap: (DataGridCellTapDetails details) {
-                  final techniques = widget.techniques;
-                  final onCellTap = widget.onCellTap;
+            child: SfDataGrid(
+              source: techniqueDataSource,
+              allowColumnsResizing: true,
+              controller: widget.dataGridController,
+              onSelectionChanging: (
+                List<DataGridRow> addedRows,
+                List<DataGridRow> removedRows,
+              ) {
+                return true;
+              },
+              onColumnResizeStart: (ColumnResizeStartDetails details) {
+                // Disable resizing for the first and last columns if needed.
+                if (details.columnIndex == 0 ||
+                    details.columnIndex ==
+                        TechniqueTableColumnEnum.values.length - 1) {
+                  return false;
+                }
+                return true;
+              },
+              onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
+                setState(() {
+                  columnWidths[details.column.columnName] = details.width;
+                });
+                return true;
+              },
+              columnWidthMode: ColumnWidthMode.lastColumnFill,
+              onCellTap: (DataGridCellTapDetails details) {
+                final techniques = widget.techniques;
+                final onCellTap = widget.onCellTap;
 
-                  if (onCellTap != null) {
-                    onCellTap(details, techniques);
-                  }
-                },
-                columns: isCompact
-                    ? [
-                        GridColumn(
-                          columnName: TechniqueTableColumnEnum.name.name,
-                          label: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: EzConstLayout.spacer,
-                            ),
-                            child: Text(TechniqueTableColumnEnum.name.name),
+                if (onCellTap != null) {
+                  onCellTap(details, techniques);
+                }
+              },
+              columns: isCompact
+                  ? [
+                      GridColumn(
+                        columnName: TechniqueTableColumnEnum.name.name,
+                        label: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: EzConstLayout.spacer,
                           ),
+                          child: Text(TechniqueTableColumnEnum.name.name),
                         ),
-                      ]
-                    : TechniqueTableColumnEnum.values.map((column) {
-                        return GridColumn(
-                          columnName: column.name,
-                          minimumWidth: EzConstLayout.minColumnWidth,
-                          width: columnWidths[column.name] ?? double.nan,
-                          label: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: EzConstLayout.spacer,
-                            ),
-                            child: Text(column.name),
+                      ),
+                    ]
+                  : TechniqueTableColumnEnum.values.map((column) {
+                      return GridColumn(
+                        columnName: column.name,
+                        minimumWidth: EzConstLayout.minColumnWidth,
+                        width: columnWidths[column.name] ?? double.nan,
+                        label: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: EzConstLayout.spacer,
                           ),
-                        );
-                      }).toList(),
-              ),
+                          child: Text(column.name),
+                        ),
+                      );
+                    }).toList(),
             ),
           );
   }

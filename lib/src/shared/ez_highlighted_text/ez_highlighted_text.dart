@@ -33,7 +33,7 @@ class EzHighlightedText extends StatelessWidget {
     if (highlight == null ||
         highlight.isEmpty ||
         !text.toLowerCase().contains(highlight.toLowerCase())) {
-      return SelectableText(text, style: style);
+      return Text(text, style: style);
     }
 
     final spans = <TextSpan>[];

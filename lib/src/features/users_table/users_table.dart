@@ -43,71 +43,69 @@ class _UsersTableState extends ConsumerState<UsersTable> {
 
     return widget.users.isEmpty
         ? Center(child: Text(ref.loc.noUsersFound))
-        : SelectionArea(
-            child: SfDataGrid(
-              source: _UserDataSource(
-                users: widget.users,
-                isCompact: isCompact,
-                searchText: widget.searchText,
-              ),
-              allowColumnsResizing: true,
-              controller: widget.dataGridController,
-              onSelectionChanging:
-                  (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
-                return true;
-              },
-              onColumnResizeStart: (ColumnResizeStartDetails details) {
-                // Disable resizing for the `id` column.
-                if (details.columnIndex == 0 ||
-                    details.columnIndex ==
-                        UsersTableColumnEnum.values.length - 1) {
-                  return false;
-                }
-                return true;
-              },
-              onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
-                setState(() {
-                  columnWidths[details.column.columnName] = details.width;
-                });
-                return true;
-              },
-              columnWidthMode: ColumnWidthMode.lastColumnFill,
-              onCellTap: (DataGridCellTapDetails details) {
-                final userId = details.rowColumnIndex.rowIndex - 1;
-                context.goNamed(
-                  AppRoute.usersUser.name,
-                  pathParameters: {'id': userId.toString()},
-                );
-              },
-              columns: isCompact
-                  ? [
-                      GridColumn(
-                        columnName: UsersTableColumnEnum.firstName.name,
-                        label: Container(
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: EzConstLayout.spacer,
-                          ),
-                          child: Text(UsersTableColumnEnum.firstName.name),
-                        ),
+        : SfDataGrid(
+          source: _UserDataSource(
+            users: widget.users,
+            isCompact: isCompact,
+            searchText: widget.searchText,
+          ),
+          allowColumnsResizing: true,
+          controller: widget.dataGridController,
+          onSelectionChanging:
+              (List<DataGridRow> addedRows, List<DataGridRow> removedRows) {
+            return true;
+          },
+          onColumnResizeStart: (ColumnResizeStartDetails details) {
+            // Disable resizing for the `id` column.
+            if (details.columnIndex == 0 ||
+                details.columnIndex ==
+                    UsersTableColumnEnum.values.length - 1) {
+              return false;
+            }
+            return true;
+          },
+          onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
+            setState(() {
+              columnWidths[details.column.columnName] = details.width;
+            });
+            return true;
+          },
+          columnWidthMode: ColumnWidthMode.lastColumnFill,
+          onCellTap: (DataGridCellTapDetails details) {
+            final userId = details.rowColumnIndex.rowIndex - 1;
+            context.goNamed(
+              AppRoute.usersUser.name,
+              pathParameters: {'id': userId.toString()},
+            );
+          },
+          columns: isCompact
+              ? [
+                  GridColumn(
+                    columnName: UsersTableColumnEnum.firstName.name,
+                    label: Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: EzConstLayout.spacer,
                       ),
-                    ]
-                  : UsersTableColumnEnum.values.map((name) {
-                      return GridColumn(
-                        columnName: name.name,
-                        minimumWidth: EzConstLayout.minColumnWidth,
-                        width: columnWidths[name.name] ?? double.nan,
-                        label: Container(
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: EzConstLayout.spacer,
-                          ),
-                          child: Text(name.name),
-                        ),
-                      );
-                    }).toList(),
-            ),
-          );
+                      child: Text(UsersTableColumnEnum.firstName.name),
+                    ),
+                  ),
+                ]
+              : UsersTableColumnEnum.values.map((name) {
+                  return GridColumn(
+                    columnName: name.name,
+                    minimumWidth: EzConstLayout.minColumnWidth,
+                    width: columnWidths[name.name] ?? double.nan,
+                    label: Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: EzConstLayout.spacer,
+                      ),
+                      child: Text(name.name),
+                    ),
+                  );
+                }).toList(),
+        );
   }
 }
 

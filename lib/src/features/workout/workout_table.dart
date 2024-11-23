@@ -68,75 +68,73 @@ class _WorkoutTableState extends ConsumerState<WorkoutTable> {
         ? Center(child: Text(ref.loc.noWorkoutsFound))
         : Skeletonizer(
             enabled: widget.isLoading,
-            child: SelectionArea(
-              child: SfDataGrid(
-                source: workoutDataSource,
-                allowColumnsResizing: true,
-                controller: widget.dataGridController,
-                onSelectionChanging: (
-                  List<DataGridRow> addedRows,
-                  List<DataGridRow> removedRows,
-                ) {
-                  return true;
-                },
-                onColumnResizeStart: (ColumnResizeStartDetails details) {
-                  // Disable resizing for the first and last columns if needed.
-                  if (details.columnIndex == 0 ||
-                      details.columnIndex ==
-                          WorkoutTableColumnEnum.values.length - 1) {
-                    return false;
-                  }
-                  return true;
-                },
-                onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
-                  setState(() {
-                    columnWidths[details.column.columnName] = details.width;
-                  });
-                  return true;
-                },
-                columnWidthMode: ColumnWidthMode.lastColumnFill,
-                onCellTap: (DataGridCellTapDetails details) {
-                  if (details.rowColumnIndex.rowIndex > 0) {
-                    final rowIndex = details.rowColumnIndex.rowIndex - 1;
-                    if (rowIndex < widget.workouts.length) {
-                      final workout = widget.workouts[rowIndex];
-                      final workoutId = workout.id;
+            child: SfDataGrid(
+              source: workoutDataSource,
+              allowColumnsResizing: true,
+              controller: widget.dataGridController,
+              onSelectionChanging: (
+                List<DataGridRow> addedRows,
+                List<DataGridRow> removedRows,
+              ) {
+                return true;
+              },
+              onColumnResizeStart: (ColumnResizeStartDetails details) {
+                // Disable resizing for the first and last columns if needed.
+                if (details.columnIndex == 0 ||
+                    details.columnIndex ==
+                        WorkoutTableColumnEnum.values.length - 1) {
+                  return false;
+                }
+                return true;
+              },
+              onColumnResizeUpdate: (ColumnResizeUpdateDetails details) {
+                setState(() {
+                  columnWidths[details.column.columnName] = details.width;
+                });
+                return true;
+              },
+              columnWidthMode: ColumnWidthMode.lastColumnFill,
+              onCellTap: (DataGridCellTapDetails details) {
+                if (details.rowColumnIndex.rowIndex > 0) {
+                  final rowIndex = details.rowColumnIndex.rowIndex - 1;
+                  if (rowIndex < widget.workouts.length) {
+                    final workout = widget.workouts[rowIndex];
+                    final workoutId = workout.id;
 
-                      context.goNamed(
-                        AppRoute.workout.name,
-                        pathParameters: {'id': workoutId},
-                      );
-                    }
+                    context.goNamed(
+                      AppRoute.workout.name,
+                      pathParameters: {'id': workoutId},
+                    );
                   }
-                },
-                columns: isCompact
-                    ? [
-                        GridColumn(
-                          columnName: WorkoutTableColumnEnum.name.name,
-                          label: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: EzConstLayout.spacer,
-                            ),
-                            child: Text(WorkoutTableColumnEnum.name.name),
+                }
+              },
+              columns: isCompact
+                  ? [
+                      GridColumn(
+                        columnName: WorkoutTableColumnEnum.name.name,
+                        label: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: EzConstLayout.spacer,
                           ),
+                          child: Text(WorkoutTableColumnEnum.name.name),
                         ),
-                      ]
-                    : WorkoutTableColumnEnum.values.map((column) {
-                        return GridColumn(
-                          columnName: column.name,
-                          minimumWidth: EzConstLayout.minColumnWidth,
-                          width: columnWidths[column.name] ?? double.nan,
-                          label: Container(
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: EzConstLayout.spacer,
-                            ),
-                            child: Text(column.name),
+                      ),
+                    ]
+                  : WorkoutTableColumnEnum.values.map((column) {
+                      return GridColumn(
+                        columnName: column.name,
+                        minimumWidth: EzConstLayout.minColumnWidth,
+                        width: columnWidths[column.name] ?? double.nan,
+                        label: Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: EzConstLayout.spacer,
                           ),
-                        );
-                      }).toList(),
-              ),
+                          child: Text(column.name),
+                        ),
+                      );
+                    }).toList(),
             ),
           );
   }
