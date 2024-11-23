@@ -50,96 +50,96 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
       child: ListView(
         shrinkWrap: true,
         children: [
-          EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
+          EzHeader.displayMedium(ref.loc.workoutTechniqueFormHeader),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormReps,
-            itemDescription: ref.loc.workoutExerciseFormRepsDescription,
+            itemLabel: ref.loc.workoutTechniqueFormReps,
+            itemDescription: ref.loc.workoutTechniqueFormRepsDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormRepsHint,
+                hintText: ref.loc.workoutTechniqueFormRepsHint,
                 controller: repsController,
                 keyboardType: TextInputType.number,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormDuration,
-            itemDescription: ref.loc.workoutExerciseFormDurationDescription,
+            itemLabel: ref.loc.workoutTechniqueFormDuration,
+            itemDescription: ref.loc.workoutTechniqueFormDurationDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormDurationHint,
+                hintText: ref.loc.workoutTechniqueFormDurationHint,
                 controller: durationController,
                 keyboardType: TextInputType.number,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormLoad,
-            itemDescription: ref.loc.workoutExerciseFormLoadDescription,
+            itemLabel: ref.loc.workoutTechniqueFormLoad,
+            itemDescription: ref.loc.workoutTechniqueFormLoadDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormLoadHint,
+                hintText: ref.loc.workoutTechniqueFormLoadHint,
                 controller: loadController,
                 keyboardType: TextInputType.number,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormRestTime,
-            itemDescription: ref.loc.workoutExerciseFormRestTimeDescription,
+            itemLabel: ref.loc.workoutTechniqueFormRestTime,
+            itemDescription: ref.loc.workoutTechniqueFormRestTimeDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormRestTimeHint,
+                hintText: ref.loc.workoutTechniqueFormRestTimeHint,
                 controller: restTimeController,
                 keyboardType: TextInputType.number,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormTempo,
-            itemDescription: ref.loc.workoutExerciseFormTempoDescription,
+            itemLabel: ref.loc.workoutTechniqueFormTempo,
+            itemDescription: ref.loc.workoutTechniqueFormTempoDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormTempoHint,
+                hintText: ref.loc.workoutTechniqueFormTempoHint,
                 controller: tempoController,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormDistance,
-            itemDescription: ref.loc.workoutExerciseFormDistanceDescription,
+            itemLabel: ref.loc.workoutTechniqueFormDistance,
+            itemDescription: ref.loc.workoutTechniqueFormDistanceDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormDistanceHint,
+                hintText: ref.loc.workoutTechniqueFormDistanceHint,
                 controller: distanceController,
                 keyboardType: TextInputType.number,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormIntensity,
-            itemDescription: ref.loc.workoutExerciseFormIntensityDescription,
+            itemLabel: ref.loc.workoutTechniqueFormIntensity,
+            itemDescription: ref.loc.workoutTechniqueFormIntensityDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormIntensityLevelHint,
+                hintText: ref.loc.workoutTechniqueFormIntensityLevelHint,
                 controller: intensityController,
               ),
             ),
           ),
           EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormCustomNotes,
-            itemDescription: ref.loc.workoutExerciseFormCustomNotesDescription,
+            itemLabel: ref.loc.workoutTechniqueFormCustomNotes,
+            itemDescription: ref.loc.workoutTechniqueFormCustomNotesDescription,
             child: Skeletonizer(
               enabled: loadingData,
               child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormCustomNotesHint,
+                hintText: ref.loc.workoutTechniqueFormCustomNotesHint,
                 controller: customNotesController,
                 maxLines: 3,
               ),
