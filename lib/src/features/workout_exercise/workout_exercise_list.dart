@@ -60,7 +60,7 @@ class WorkoutExerciseList extends ConsumerWidget {
               borderRadius: EzConstLayout.getBorderRadius(),
             ),
             width: double.infinity,
-            child: Text(ref.loc.workoutTechniqueEmptyList),
+            child: Text(ref.loc.workoutExerciseEmptyList),
           );
         }
         return ListView.builder(
