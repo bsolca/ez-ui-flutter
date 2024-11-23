@@ -148,7 +148,7 @@ class WorkoutExerciseList extends ConsumerWidget {
       },
       error: (error, stackTrace) {
         return Center(
-          child: Text(error.toString()),
+          child: SelectableText(error.toString()),
         );
       },
       loading: () =>
