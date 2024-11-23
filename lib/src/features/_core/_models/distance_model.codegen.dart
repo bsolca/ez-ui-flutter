@@ -27,13 +27,13 @@ class DistanceModel with _$DistanceModel {
 }
 
 /// Converter for [DistanceUnit] to and from JSON.
-class DistanceUnitConverter implements JsonConverter<DistanceUnit, String> {
+class DistanceUnitConverter implements JsonConverter<DistanceUnit, String?> {
   /// Creates an instance of [DistanceUnitConverter].
   const DistanceUnitConverter();
 
   /// Converts a JSON string to a [DistanceUnit].
   @override
-  DistanceUnit fromJson(String json) {
+  DistanceUnit fromJson(String? json) {
     switch (json) {
       case 'meters':
         return DistanceUnit.meters;

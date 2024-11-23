@@ -15,7 +15,7 @@ _$DistanceModelImpl _$$DistanceModelImplFromJson(Map<String, dynamic> json) =>
           value: $checkedConvert(
               'value', (v) => const DefaultDoubleConverter().fromJson(v)),
           unit: $checkedConvert('unit',
-              (v) => const DistanceUnitConverter().fromJson(v as String)),
+              (v) => const DistanceUnitConverter().fromJson(v as String?)),
         );
         return val;
       },
