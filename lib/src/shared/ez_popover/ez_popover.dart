@@ -44,7 +44,7 @@ class EzPopover extends StatelessWidget {
         ),
         elevation: WidgetStateProperty.all(0),
         backgroundColor: WidgetStateProperty.all(
-          colorScheme.surfaceContainerHighest,
+          colorScheme.surfaceContainer,
         ),
       ),
       menuChildren: [
