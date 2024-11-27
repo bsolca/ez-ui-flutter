@@ -95,9 +95,9 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
                 final shouldMoveUp = targetOffset.dy > approxMiddleHeight;
                 final halfWidth = widget.menuWidth / 2;
                 final dxOffset = shouldMoveLeft ? -halfWidth : halfWidth;
-                final dyOffset = shouldMoveUp
-                    ? -EzConstLayout.spacerExtraSmall
-                    : EzConstLayout.spacerExtraSmall;
+                final dyOffset =
+                    EzConstLayout.spacerExtraSmall * (shouldMoveUp ? -1 : 1);
+
                 return Offset(
                   targetOffset.dx + dxOffset,
                   targetOffset.dy + dyOffset,
