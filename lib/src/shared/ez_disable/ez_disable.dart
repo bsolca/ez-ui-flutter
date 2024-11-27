@@ -30,8 +30,8 @@ class EzDisable extends ConsumerWidget {
 
     return MouseRegion(
       cursor: isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,
-      child: AbsorbPointer(
-        absorbing: isDisabled,
+      child: IgnorePointer(
+        ignoring: isDisabled,
         child: Opacity(
           opacity: isDisabled ? EzConstLayout.disabledOpacity : 1,
           child: child,

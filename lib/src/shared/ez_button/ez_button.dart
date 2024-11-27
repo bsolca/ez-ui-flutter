@@ -54,6 +54,7 @@ class EzButton extends StatelessWidget {
               child: Text(
                 text,
                 style: _getTextStyle(context),
+                softWrap: true,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
@@ -71,7 +72,7 @@ class EzButton extends StatelessWidget {
               ),
             if (suffixWidget != null && !isLoading) suffixWidget,
           ].withSpaceBetween(
-            width: EzConstLayout.spacer,
+            width: EzConstLayout.spacerSmall,
           ),
         ),
       ),

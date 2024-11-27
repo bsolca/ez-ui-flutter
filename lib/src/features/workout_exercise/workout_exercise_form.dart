@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/shared/ez_dropdown_button/ez_dropdown_button.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
@@ -50,6 +51,28 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
       child: ListView(
         shrinkWrap: true,
         children: [
+          Row(
+            children: [
+              EzDropdownButton(
+                text: 'Choose Type',
+                onSelected: (value) {
+                  // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                  print('TESTY: Pressed on ${value}');
+                },
+                items: const [
+                  EzDropdownItem(value: 'cardio', label: 'Cardio'),
+                  EzDropdownItem(value: 'strength', label: 'Strength'),
+                  EzDropdownItem(value: 'other', label: 'Other'),
+                ],
+              ),
+              Spacer(),
+              EzDropdownButton(text: 'Choose Type', items: const [
+                EzDropdownItem(value: 'cardio', label: 'Cardio'),
+                EzDropdownItem(value: 'strength', label: 'Strength'),
+                EzDropdownItem(value: 'other', label: 'Other'),
+              ]),
+            ],
+          ),
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
           EzFormItemLayout(
             itemLabel: ref.loc.workoutExerciseFormReps,
