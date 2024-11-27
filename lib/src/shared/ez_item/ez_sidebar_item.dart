@@ -84,6 +84,7 @@ class _EzItemState extends State<EzItem> {
                 padding: EzItemConsts.contentPadding,
                 // Using contentPadding here
                 child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     if (svgPath != null)
                       Padding(
@@ -102,7 +103,7 @@ class _EzItemState extends State<EzItem> {
                           size: EzItemConsts.sidebarItemIconSize,
                         ),
                       ),
-                    Flexible(
+                    Expanded(
                       child: Text(
                         widget.text,
                         maxLines: 1,

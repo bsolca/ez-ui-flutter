@@ -3,7 +3,7 @@ import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
 import 'package:ez_fit_app/src/shared/ez_disable/ez_disable.dart';
 import 'package:ez_fit_app/src/shared/ez_dropdown_button/widgets/ez_dropdown_button_menu.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
-import 'package:ez_fit_app/src/shared/ez_measuring_widget/ez_measuring_widget.dart';
+import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -17,7 +17,7 @@ class EzDropdownItem<T> {
 
   final String label;
   final T value;
-  final Widget? icon;
+  final IconData? icon;
   final bool isSelected;
 }
 
@@ -26,6 +26,7 @@ class EzDropdownButton<T> extends StatefulWidget {
     super.key,
     required this.text,
     required this.items,
+    required this.menuWidth,
     this.onSelected,
   }) : _type = EzButtonType.regular;
 
@@ -33,6 +34,7 @@ class EzDropdownButton<T> extends StatefulWidget {
     super.key,
     required this.text,
     required this.items,
+    required this.menuWidth,
     this.onSelected,
   }) : _type = EzButtonType.outlined;
 
@@ -40,6 +42,7 @@ class EzDropdownButton<T> extends StatefulWidget {
     super.key,
     required this.text,
     required this.items,
+    required this.menuWidth,
     this.onSelected,
   }) : _type = EzButtonType.link;
 
@@ -47,6 +50,7 @@ class EzDropdownButton<T> extends StatefulWidget {
   final List<EzDropdownItem<T>> items;
   final void Function(T value)? onSelected;
   final EzButtonType _type;
+  final double menuWidth;
 
   @override
   State<EzDropdownButton<T>> createState() => _EzDropdownButtonState<T>();
@@ -54,7 +58,6 @@ class EzDropdownButton<T> extends StatefulWidget {
 
 class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
   bool _isDropdownVisible = false;
-  double buttonWidth = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -65,15 +68,47 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
           if (_isDropdownVisible) {
             SmartDialog.dismiss<T>();
           } else {
+            final screenSize = MediaQuery.of(context).size;
+            const coefficient = 0.8;
+            final approxMiddleWidth = screenSize.width / 2 * coefficient;
+            final approxMiddleHeight = screenSize.height / 2 * coefficient;
+
             SmartDialog.showAttach<void>(
               maskColor: Colors.transparent,
               targetContext: context,
+              adjustBuilder: (param) {
+                final shouldMoveUp = param.selfOffset.dy > approxMiddleHeight;
+                final shouldMoveLeft = param.selfOffset.dx > approxMiddleWidth;
+                return AttachAdjustParam(
+                  alignment: shouldMoveLeft
+                      ? shouldMoveUp
+                          ? Alignment.topRight
+                          : Alignment.bottomRight
+                      : shouldMoveUp
+                          ? Alignment.topLeft
+                          : Alignment.bottomLeft,
+                  builder: (_) => param.selfWidget,
+                );
+              },
+              targetBuilder: (targetOffset, targetSize) {
+                final shouldMoveLeft = targetOffset.dx > approxMiddleWidth;
+                final shouldMoveUp = targetOffset.dy > approxMiddleHeight;
+                final halfWidth = widget.menuWidth / 2;
+                final dxOffset = shouldMoveLeft ? -halfWidth : halfWidth;
+                final dyOffset = shouldMoveUp
+                    ? -EzConstLayout.spacerExtraSmall
+                    : EzConstLayout.spacerExtraSmall;
+                return Offset(
+                  targetOffset.dx + dxOffset,
+                  targetOffset.dy + dyOffset,
+                );
+              },
               useAnimation: false,
               keepSingle: true,
               onDismiss: () => setState(() => _isDropdownVisible = false),
               builder: (_) => EzDropdownButtonMenu(
+                buttonWidth: widget.menuWidth,
                 items: widget.items,
-                buttonWidth: buttonWidth,
                 onTap: (T item) {
                   setState(() {
                     widget.onSelected?.call(item);
@@ -91,16 +126,13 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
         child: MouseRegion(
           cursor: _getMouseCursor(),
           child: AbsorbPointer(
-            child: EzMeasuringWidget(
-              onSize: (size) => setState(() => buttonWidth = size.width),
-              child: EzButton(
-                text: 'DropDown',
-                suffixWidget: Icon(
-                  HeroIcon.chevronDown,
-                  color: _getDefaultTextColor(Theme.of(context).colorScheme),
-                ),
-                onPressed: () {},
+            child: EzButton(
+              text: 'DropDown',
+              suffixWidget: Icon(
+                HeroIcon.chevronDown,
+                color: _getDefaultTextColor(Theme.of(context).colorScheme),
               ),
+              onPressed: () {},
             ),
           ),
         ),

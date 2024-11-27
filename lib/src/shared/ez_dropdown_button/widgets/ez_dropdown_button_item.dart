@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/shared/ez_dropdown_button/ez_dropdown_button.dart';
+import 'package:ez_fit_app/src/shared/ez_item/ez_sidebar_item.dart';
 import 'package:flutter/material.dart';
 
 class EzDropdownButtonItem<T> extends StatelessWidget {
@@ -20,28 +21,12 @@ class EzDropdownButtonItem<T> extends StatelessWidget {
         decoration: BoxDecoration(
           color: item.isSelected ? theme.colorScheme.primaryContainer : null,
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (item.icon != null) ...[
-              item.icon!,
-              const SizedBox(width: 8),
-            ],
-            Text(
-              item.label,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: item.isSelected
-                    ? theme.colorScheme.primary
-                    : theme.colorScheme.onSurface,
-              ),
-            ),
-            if (item.isSelected)
-              Icon(
-                Icons.check,
-                color: theme.colorScheme.primary,
-                size: 20,
-              ),
-          ],
+        child: EzItem(
+          icon: item.icon,
+          text: item.label,
+          isSelected: item.isSelected,
+          onTap: () {},
+          svgPath: null,
         ),
       ),
     );

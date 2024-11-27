@@ -42,6 +42,7 @@ class EzItemConsts {
     left: EzConstValue.dp16,
     top: EzConstValue.dp8,
     bottom: EzConstValue.dp8,
+    right: EzConstValue.dp16,
   );
 
   static const EdgeInsets itemIconPadding = EdgeInsets.only(

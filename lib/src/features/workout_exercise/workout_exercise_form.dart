@@ -54,6 +54,7 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
           Row(
             children: [
               EzDropdownButton(
+                menuWidth: 400,
                 text: 'Choose Type',
                 onSelected: (value) {
                   // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
@@ -66,11 +67,18 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
                 ],
               ),
               Spacer(),
-              EzDropdownButton(text: 'Choose Type', items: const [
-                EzDropdownItem(value: 'cardio', label: 'Cardio'),
-                EzDropdownItem(value: 'strength', label: 'Strength'),
-                EzDropdownItem(value: 'other', label: 'Other'),
-              ]),
+              EzDropdownButton(
+                  onSelected: (value) {
+                    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                    print('TESTY: Pressed on ${value}');
+                  },
+                  menuWidth: 200,
+                  text: 'Choose Type',
+                  items: const [
+                    EzDropdownItem(value: 'cardio', label: 'Cardio'),
+                    EzDropdownItem(value: 'strength', label: 'Strength'),
+                    EzDropdownItem(value: 'other', label: 'Other'),
+                  ]),
             ],
           ),
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),

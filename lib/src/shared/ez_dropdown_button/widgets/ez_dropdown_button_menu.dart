@@ -19,15 +19,17 @@ class EzDropdownButtonMenu<T> extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Container(
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(8),
         ),
         constraints: BoxConstraints(
-          minWidth: buttonWidth,
+          maxWidth: buttonWidth,
         ),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: items
                 .map(
