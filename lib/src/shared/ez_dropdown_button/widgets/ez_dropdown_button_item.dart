@@ -14,7 +14,7 @@ class EzDropdownButtonItem<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EzItem(
+    return EzItem.checkIcon(
       icon: item.icon,
       text: item.label,
       isSelected: item.isSelected,

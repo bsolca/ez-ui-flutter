@@ -21,7 +21,16 @@ class EzItem extends StatefulWidget {
     required this.onTap,
     required this.icon,
     required this.svgPath,
-  });
+  }) : _isCheckIcon = false;
+
+  const EzItem.checkIcon({
+    super.key,
+    required this.text,
+    required this.isSelected,
+    required this.onTap,
+    required this.icon,
+    required this.svgPath,
+  }) : _isCheckIcon = true;
 
   /// The text label of the sidebar item.
   final String text;
@@ -37,6 +46,8 @@ class EzItem extends StatefulWidget {
 
   /// Svg asset path.
   final String? svgPath;
+
+  final bool _isCheckIcon;
 
   @override
   State<EzItem> createState() => _EzItemState();
@@ -111,6 +122,12 @@ class _EzItemState extends State<EzItem> {
                         style: EzItemConsts.sidebarItemTextStyle,
                       ),
                     ),
+                    if (widget._isCheckIcon && widget.isSelected)
+                      Icon(
+                        Icons.check,
+                        color: Theme.of(context).colorScheme.primary,
+                        size: EzItemConsts.sidebarItemIconSize,
+                      ),
                   ],
                 ),
               ),
