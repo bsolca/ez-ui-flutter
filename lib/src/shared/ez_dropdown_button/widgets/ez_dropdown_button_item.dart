@@ -14,21 +14,12 @@ class EzDropdownButtonItem<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return InkWell(
+    return EzItem(
+      icon: item.icon,
+      text: item.label,
+      isSelected: item.isSelected,
       onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: item.isSelected ? theme.colorScheme.primaryContainer : null,
-        ),
-        child: EzItem(
-          icon: item.icon,
-          text: item.label,
-          isSelected: item.isSelected,
-          onTap: () {},
-          svgPath: null,
-        ),
-      ),
+      svgPath: null,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:ez_fit_app/src/shared/ez_dropdown_button/ez_dropdown_button.dart';
 import 'package:ez_fit_app/src/shared/ez_dropdown_button/widgets/ez_dropdown_button_item.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:flutter/material.dart';
 
 class EzDropdownButtonMenu<T> extends StatelessWidget {
@@ -21,8 +22,11 @@ class EzDropdownButtonMenu<T> extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outlineVariant,
+          ),
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          borderRadius: EzSmoothBorderRadius.basic,
         ),
         constraints: BoxConstraints(
           maxWidth: buttonWidth,

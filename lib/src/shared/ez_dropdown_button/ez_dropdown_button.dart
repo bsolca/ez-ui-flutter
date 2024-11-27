@@ -68,6 +68,7 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
           if (_isDropdownVisible) {
             SmartDialog.dismiss<T>();
           } else {
+            if (!context.mounted) return;
             final screenSize = MediaQuery.of(context).size;
             const coefficient = 0.8;
             final approxMiddleWidth = screenSize.width / 2 * coefficient;

@@ -61,8 +61,17 @@ class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
                   print('TESTY: Pressed on ${value}');
                 },
                 items: const [
-                  EzDropdownItem(value: 'cardio', label: 'Cardio'),
-                  EzDropdownItem(value: 'strength', label: 'Strength'),
+                  EzDropdownItem(
+                    value: 'cardio',
+                    label: 'Cardio',
+                    icon: Icons.directions_run,
+                    isSelected: true,
+                  ),
+                  EzDropdownItem(
+                    icon: Icons.fitness_center,
+                    value: 'strength',
+                    label: 'Strength',
+                  ),
                   EzDropdownItem(value: 'other', label: 'Other'),
                 ],
               ),
