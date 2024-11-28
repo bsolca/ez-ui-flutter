@@ -7,7 +7,7 @@ part of 'workout_exercise_list_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutExerciseListControllerHash() =>
-    r'2342edb906c664e00068447a760439cda88b6d7b';
+    r'2e264d4bd214e4bff170a7d7438892eaa571cc3a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,7 +37,7 @@ const workoutExerciseListControllerProvider =
 
 /// See also [workoutExerciseListController].
 class WorkoutExerciseListControllerFamily
-    extends Family<AsyncValue<List<WorkoutExerciseModel>>> {
+    extends Family<List<WorkoutExerciseModel>> {
   /// See also [workoutExerciseListController].
   const WorkoutExerciseListControllerFamily();
 
@@ -79,7 +79,7 @@ class WorkoutExerciseListControllerFamily
 
 /// See also [workoutExerciseListController].
 class WorkoutExerciseListControllerProvider
-    extends AutoDisposeProvider<AsyncValue<List<WorkoutExerciseModel>>> {
+    extends AutoDisposeProvider<List<WorkoutExerciseModel>> {
   /// See also [workoutExerciseListController].
   WorkoutExerciseListControllerProvider({
     required String workoutId,
@@ -119,7 +119,7 @@ class WorkoutExerciseListControllerProvider
 
   @override
   Override overrideWith(
-    AsyncValue<List<WorkoutExerciseModel>> Function(
+    List<WorkoutExerciseModel> Function(
             WorkoutExerciseListControllerRef provider)
         create,
   ) {
@@ -139,8 +139,7 @@ class WorkoutExerciseListControllerProvider
   }
 
   @override
-  AutoDisposeProviderElement<AsyncValue<List<WorkoutExerciseModel>>>
-      createElement() {
+  AutoDisposeProviderElement<List<WorkoutExerciseModel>> createElement() {
     return _WorkoutExerciseListControllerProviderElement(this);
   }
 
@@ -164,7 +163,7 @@ class WorkoutExerciseListControllerProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin WorkoutExerciseListControllerRef
-    on AutoDisposeProviderRef<AsyncValue<List<WorkoutExerciseModel>>> {
+    on AutoDisposeProviderRef<List<WorkoutExerciseModel>> {
   /// The parameter `workoutId` of this provider.
   String get workoutId;
 
@@ -173,7 +172,7 @@ mixin WorkoutExerciseListControllerRef
 }
 
 class _WorkoutExerciseListControllerProviderElement
-    extends AutoDisposeProviderElement<AsyncValue<List<WorkoutExerciseModel>>>
+    extends AutoDisposeProviderElement<List<WorkoutExerciseModel>>
     with WorkoutExerciseListControllerRef {
   _WorkoutExerciseListControllerProviderElement(super.provider);
 

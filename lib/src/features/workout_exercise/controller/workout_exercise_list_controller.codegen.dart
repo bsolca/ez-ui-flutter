@@ -6,21 +6,20 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'workout_exercise_list_controller.codegen.g.dart';
 
 @riverpod
-AsyncValue<List<WorkoutExerciseModel>> workoutExerciseListController(
+List<WorkoutExerciseModel> workoutExerciseListController(
   Ref ref, {
   required String workoutId,
   required String stepId,
 }) {
-  final exercisesAsyncValue = ref.watch(
-    workoutFormControllerProvider(workoutId: workoutId).select(
-      (asyncValue) => asyncValue.whenData(
-        (workoutFormModel) => workoutFormModel.workoutExercises
-            .where((e) => e.stepId == stepId)
-            .toList(),
-      ),
-    ),
+  final workoutExerciseList = ref.watch(
+    workoutFormControllerProvider(
+      workoutId: workoutId,
+    ).select((workoutForm) {
+      return workoutForm.value?.workoutExercises.where(
+        (workoutExercises) => workoutExercises.stepId == stepId,
+      ).toList();
+    }),
   );
 
-  // Return AsyncValue<List<WorkoutExerciseModel>>
-  return exercisesAsyncValue;
+  return workoutExerciseList ?? [];
 }
