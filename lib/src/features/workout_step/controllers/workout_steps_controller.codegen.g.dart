@@ -7,7 +7,7 @@ part of 'workout_steps_controller.codegen.dart';
 // **************************************************************************
 
 String _$workoutStepsControllerHash() =>
-    r'1ed1cfabca82c24650f977a610407bd969fd1c6c';
+    r'550c02fed11622f00f527ef4982692175f8e965e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$WorkoutStepsController
-    extends BuildlessAutoDisposeAsyncNotifier<List<WorkoutStepModel>> {
+    extends BuildlessAutoDisposeNotifier<List<WorkoutStepModel>> {
   late final String workoutId;
 
-  FutureOr<List<WorkoutStepModel>> build(
+  List<WorkoutStepModel> build(
     String workoutId,
   );
 }
@@ -44,8 +44,7 @@ abstract class _$WorkoutStepsController
 const workoutStepsControllerProvider = WorkoutStepsControllerFamily();
 
 /// See also [WorkoutStepsController].
-class WorkoutStepsControllerFamily
-    extends Family<AsyncValue<List<WorkoutStepModel>>> {
+class WorkoutStepsControllerFamily extends Family<List<WorkoutStepModel>> {
   /// See also [WorkoutStepsController].
   const WorkoutStepsControllerFamily();
 
@@ -83,9 +82,8 @@ class WorkoutStepsControllerFamily
 }
 
 /// See also [WorkoutStepsController].
-class WorkoutStepsControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<WorkoutStepsController,
-        List<WorkoutStepModel>> {
+class WorkoutStepsControllerProvider extends AutoDisposeNotifierProviderImpl<
+    WorkoutStepsController, List<WorkoutStepModel>> {
   /// See also [WorkoutStepsController].
   WorkoutStepsControllerProvider(
     String workoutId,
@@ -116,7 +114,7 @@ class WorkoutStepsControllerProvider
   final String workoutId;
 
   @override
-  FutureOr<List<WorkoutStepModel>> runNotifierBuild(
+  List<WorkoutStepModel> runNotifierBuild(
     covariant WorkoutStepsController notifier,
   ) {
     return notifier.build(
@@ -141,7 +139,7 @@ class WorkoutStepsControllerProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<WorkoutStepsController,
+  AutoDisposeNotifierProviderElement<WorkoutStepsController,
       List<WorkoutStepModel>> createElement() {
     return _WorkoutStepsControllerProviderElement(this);
   }
@@ -164,13 +162,13 @@ class WorkoutStepsControllerProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin WorkoutStepsControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<List<WorkoutStepModel>> {
+    on AutoDisposeNotifierProviderRef<List<WorkoutStepModel>> {
   /// The parameter `workoutId` of this provider.
   String get workoutId;
 }
 
 class _WorkoutStepsControllerProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<WorkoutStepsController,
+    extends AutoDisposeNotifierProviderElement<WorkoutStepsController,
         List<WorkoutStepModel>> with WorkoutStepsControllerRef {
   _WorkoutStepsControllerProviderElement(super.provider);
 

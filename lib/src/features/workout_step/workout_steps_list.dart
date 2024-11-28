@@ -19,32 +19,22 @@ class WorkoutStepsList extends ConsumerWidget {
     // Accessing the list of workout steps from the controller
     final steps = ref.watch(workoutStepsControllerProvider(workoutId));
 
-    return steps.when(
-      data: (steps) {
-        if (steps.isEmpty) return const Text('No steps available');
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: steps.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: index != steps.length - 1
-                  ? const EdgeInsets.only(
-                      bottom: EzConstLayout.spacerSmall,
-                    )
-                  : EdgeInsets.zero,
-              child: WorkoutStepTile(
-                workoutId: workoutId,
-                workoutStep: steps[index],
-              ),
-            );
-          },
+    if (steps.isEmpty) return const Text('No steps available');
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: steps.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: index != steps.length - 1
+              ? const EdgeInsets.only(
+                  bottom: EzConstLayout.spacerSmall,
+                )
+              : EdgeInsets.zero,
+          child: WorkoutStepTile(
+            workoutId: workoutId,
+            workoutStep: steps[index],
+          ),
         );
-      },
-      error: (error, stackTrace) {
-        return SelectableText(error.toString());
-      },
-      loading: () {
-        return const Text('Loading...');
       },
     );
   }

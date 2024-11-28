@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:ez_fit_app/src/features/workout/controller/workout_list_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout/workout_table.dart';
+import 'package:ez_fit_app/src/features/workout_table/model/workout_table.dart';
 import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';

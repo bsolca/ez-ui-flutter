@@ -1,5 +1,5 @@
 import 'package:ez_fit_app/src/features/workout/model/workout_model.codegen.dart';
-import 'package:ez_fit_app/src/features/workout/model/workout_table_column_enum.dart';
+import 'package:ez_fit_app/src/features/workout_table/workout_table_column_enum.dart';
 import 'package:ez_fit_app/src/shared/ez_highlighted_text/ez_highlighted_text.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
