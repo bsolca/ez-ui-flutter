@@ -1,3 +1,5 @@
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_duration.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
 import 'package:ez_fit_app/src/shared/ez_dropdown_button/ez_dropdown_button.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
@@ -9,182 +11,145 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class WorkoutExerciseForm extends ConsumerStatefulWidget {
+class WorkoutExerciseForm extends ConsumerWidget {
   const WorkoutExerciseForm({
     super.key,
+    required this.workoutId,
     required this.workoutExerciseId,
-    this.isLoading = false,
   });
 
+  final String workoutId;
   final String workoutExerciseId;
-  final bool isLoading;
 
   @override
-  ConsumerState<WorkoutExerciseForm> createState() =>
-      _WorkoutExerciseFormState();
-}
-
-class _WorkoutExerciseFormState extends ConsumerState<WorkoutExerciseForm> {
-  final formKey = GlobalKey<FormState>();
-  final exerciseIdController = TextEditingController();
-  final exerciseNameController = TextEditingController();
-  final repsController = TextEditingController();
-  final durationController = TextEditingController();
-  final loadController = TextEditingController();
-  final restTimeController = TextEditingController();
-  final tempoController = TextEditingController();
-  final distanceController = TextEditingController();
-  final intensityController = TextEditingController();
-  final customNotesController = TextEditingController();
-  bool loadingData = false;
-
-  @override
-  void initState() {
-    super.initState();
-    loadingData = widget.isLoading;
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final formKey = GlobalKey<FormState>();
+// TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: in form');
     return Form(
       key: formKey,
       child: ListView(
         shrinkWrap: true,
         children: [
-          Row(
-            children: [
-              EzDropdownButton(
-                menuWidth: 400,
-                text: 'Choose Type',
-                onSelected: (value) {
-                  // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-                  print('TESTY: Pressed on ${value}');
-                },
-                items: const [
-                  EzDropdownItem(
-                    value: 'cardio',
-                    label: 'Cardio',
-                    icon: Icons.directions_run,
-                    isSelected: true,
-                  ),
-                  EzDropdownItem(
-                    icon: Icons.fitness_center,
-                    value: 'strength',
-                    label: 'Strength',
-                  ),
-                  EzDropdownItem(value: 'other', label: 'Other'),
-                ],
-              ),
-              Spacer(),
-              EzDropdownButton(
-                  onSelected: (value) {
-                    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-                    print('TESTY: Pressed on ${value}');
-                  },
-                  menuWidth: 200,
-                  text: 'Choose Type',
-                  items: const [
-                    EzDropdownItem(value: 'cardio', label: 'Cardio'),
-                    EzDropdownItem(value: 'strength', label: 'Strength'),
-                    EzDropdownItem(value: 'other', label: 'Other'),
-                  ]),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     EzDropdownButton(
+          //       menuWidth: 400,
+          //       text: 'Choose Type',
+          //       onSelected: (value) {
+          //         // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+          //         print('TESTY: Pressed on ${value}');
+          //       },
+          //       items: const [
+          //         EzDropdownItem(
+          //           value: 'cardio',
+          //           label: 'Cardio',
+          //           icon: Icons.directions_run,
+          //           isSelected: true,
+          //         ),
+          //         EzDropdownItem(
+          //           icon: Icons.fitness_center,
+          //           value: 'strength',
+          //           label: 'Strength',
+          //         ),
+          //         EzDropdownItem(value: 'other', label: 'Other'),
+          //       ],
+          //     ),
+          //     Spacer(),
+          //     EzDropdownButton(
+          //         onSelected: (value) {
+          //           // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+          //           print('TESTY: Pressed on ${value}');
+          //         },
+          //         menuWidth: 200,
+          //         text: 'Choose Type',
+          //         items: const [
+          //           EzDropdownItem(value: 'cardio', label: 'Cardio'),
+          //           EzDropdownItem(value: 'strength', label: 'Strength'),
+          //           EzDropdownItem(value: 'other', label: 'Other'),
+          //         ]),
+          //   ],
+          // ),
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormReps,
-            itemDescription: ref.loc.workoutExerciseFormRepsDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormRepsHint,
-                controller: repsController,
-                keyboardType: TextInputType.number,
-              ),
-            ),
+          WorkoutExerciseFormReps(
+            key: ValueKey(workoutExerciseId),
+            workoutId: workoutId,
+            workoutExerciseId: workoutExerciseId,
           ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormDuration,
-            itemDescription: ref.loc.workoutExerciseFormDurationDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormDurationHint,
-                controller: durationController,
-                keyboardType: TextInputType.number,
-              ),
-            ),
+          WorkoutExerciseFormDuration(
+            workoutId: workoutId,
+            workoutExerciseId: workoutExerciseId,
           ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormLoad,
-            itemDescription: ref.loc.workoutExerciseFormLoadDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormLoadHint,
-                controller: loadController,
-                keyboardType: TextInputType.number,
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormRestTime,
-            itemDescription: ref.loc.workoutExerciseFormRestTimeDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormRestTimeHint,
-                controller: restTimeController,
-                keyboardType: TextInputType.number,
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormTempo,
-            itemDescription: ref.loc.workoutExerciseFormTempoDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormTempoHint,
-                controller: tempoController,
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormDistance,
-            itemDescription: ref.loc.workoutExerciseFormDistanceDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormDistanceHint,
-                controller: distanceController,
-                keyboardType: TextInputType.number,
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormIntensity,
-            itemDescription: ref.loc.workoutExerciseFormIntensityDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormIntensityLevelHint,
-                controller: intensityController,
-              ),
-            ),
-          ),
-          EzFormItemLayout(
-            itemLabel: ref.loc.workoutExerciseFormCustomNotes,
-            itemDescription: ref.loc.workoutExerciseFormCustomNotesDescription,
-            child: Skeletonizer(
-              enabled: loadingData,
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormCustomNotesHint,
-                controller: customNotesController,
-                maxLines: 3,
-              ),
-            ),
-          ),
+          // EzFormItemLayout(
+          //   itemLabel: ref.loc.workoutExerciseFormLoad,
+          //   itemDescription: ref.loc.workoutExerciseFormLoadDescription,
+          //   child: Skeletonizer(
+          //     enabled: loadingData,
+          //     child: EzTextFormField(
+          //       hintText: ref.loc.workoutExerciseFormLoadHint,
+          //       controller: loadController,
+          //       keyboardType: TextInputType.number,
+          //     ),
+          //   ),
+          // ),
+          // EzFormItemLayout(
+          //   itemLabel: ref.loc.workoutExerciseFormRestTime,
+          //   itemDescription: ref.loc.workoutExerciseFormRestTimeDescription,
+          //   child: Skeletonizer(
+          //     enabled: loadingData,
+          //     child: EzTextFormField(
+          //       hintText: ref.loc.workoutExerciseFormRestTimeHint,
+          //       controller: restTimeController,
+          //       keyboardType: TextInputType.number,
+          //     ),
+          //   ),
+          // ),
+          // EzFormItemLayout(
+          //   itemLabel: ref.loc.workoutExerciseFormTempo,
+          //   itemDescription: ref.loc.workoutExerciseFormTempoDescription,
+          //   child: Skeletonizer(
+          //     enabled: loadingData,
+          //     child: EzTextFormField(
+          //       hintText: ref.loc.workoutExerciseFormTempoHint,
+          //       controller: tempoController,
+          //     ),
+          //   ),
+          // ),
+          // EzFormItemLayout(
+          //   itemLabel: ref.loc.workoutExerciseFormDistance,
+          //   itemDescription: ref.loc.workoutExerciseFormDistanceDescription,
+          //   child: Skeletonizer(
+          //     enabled: loadingData,
+          //     child: EzTextFormField(
+          //       hintText: ref.loc.workoutExerciseFormDistanceHint,
+          //       controller: distanceController,
+          //       keyboardType: TextInputType.number,
+          //     ),
+          //   ),
+          // ),
+          // EzFormItemLayout(
+          //   itemLabel: ref.loc.workoutExerciseFormIntensity,
+          //   itemDescription: ref.loc.workoutExerciseFormIntensityDescription,
+          //   child: Skeletonizer(
+          //     enabled: loadingData,
+          //     child: EzTextFormField(
+          //       hintText: ref.loc.workoutExerciseFormIntensityLevelHint,
+          //       controller: intensityController,
+          //     ),
+          //   ),
+          // ),
+          // EzFormItemLayout(
+          //   itemLabel: ref.loc.workoutExerciseFormCustomNotes,
+          //   itemDescription: ref.loc.workoutExerciseFormCustomNotesDescription,
+          //   child: Skeletonizer(
+          //     enabled: loadingData,
+          //     child: EzTextFormField(
+          //       hintText: ref.loc.workoutExerciseFormCustomNotesHint,
+          //       controller: customNotesController,
+          //       maxLines: 3,
+          //     ),
+          //   ),
+          // ),
         ].withSpaceBetween(height: EzConstLayout.spacerSmall),
       ),
     );

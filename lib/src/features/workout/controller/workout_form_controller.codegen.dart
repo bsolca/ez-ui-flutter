@@ -1,3 +1,5 @@
+import 'package:ez_fit_app/src/features/_core/_models/duration_model.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/_models/reps_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_form_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/service/workout_service.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_model.codegen.dart';
@@ -48,6 +50,14 @@ class WorkoutFormController extends _$WorkoutFormController {
   bool hasBeenModified() {
     final currentState = state.value ?? _initialState;
     return currentState != _initialState;
+  }
+
+  /// Save the current form to the database.
+  Future<void> saveFullWorkout() async {
+    final currentState = state.value ?? _initialState;
+    final workoutService = ref.read(workoutServiceProvider);
+    state = const AsyncValue.loading();
+    await workoutService.saveWorkoutForm(currentState);
   }
 
   /// Add a new step (!!! Only on local !!!).
@@ -123,11 +133,41 @@ class WorkoutFormController extends _$WorkoutFormController {
     );
   }
 
-  /// Save the current form to the database.
-  Future<void> saveFullWorkout() async {
+  void updateReps(String workoutExerciseId, String text) {
     final currentState = state.value ?? _initialState;
-    final workoutService = ref.read(workoutServiceProvider);
-    state = const AsyncValue.loading();
-    await workoutService.saveWorkoutForm(currentState);
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(reps: RepsModel(count: int.parse(text)))
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateDuration(String workoutExerciseId, String seconds) {
+    final currentState = state.value ?? _initialState;
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: seconds ${seconds}');
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      duration: DurationModel(
+                        seconds: double.parse(seconds),
+                        hours: exercise.duration?.hours ?? 0,
+                        minutes: exercise.duration?.minutes ?? 0,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
   }
 }

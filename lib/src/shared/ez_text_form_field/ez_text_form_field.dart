@@ -13,7 +13,7 @@ class EzTextFormField extends ConsumerWidget {
   const EzTextFormField({
     super.key,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.inputFormatters,
     this.focusNode,
     this.onEditingComplete,
@@ -29,6 +29,7 @@ class EzTextFormField extends ConsumerWidget {
     this.mouseCursor,
     this.onTap,
     this.ignorePointers,
+    this.onChanged,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -36,7 +37,7 @@ class EzTextFormField extends ConsumerWidget {
   const EzTextFormField.withButton({
     super.key,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.inputFormatters,
     this.focusNode,
     this.onEditingComplete,
@@ -53,10 +54,11 @@ class EzTextFormField extends ConsumerWidget {
     this.mouseCursor,
     this.onTap,
     this.ignorePointers,
+    this.onChanged,
   }) : maxLines = 1;
 
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final List<TextInputFormatter>? inputFormatters;
   final FocusNode? focusNode;
   final void Function()? onEditingComplete;
@@ -74,10 +76,12 @@ class EzTextFormField extends ConsumerWidget {
   final bool? ignorePointers;
   final MouseCursor? mouseCursor;
   final VoidCallback? onTap;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonText = this.buttonText;
+    final controller = this.controller;
     final isWithButton = buttonText != null && onButtonPressed != null;
     const radius = EzConstLayout.borderRadiusSmall;
     final borderRadius = isWithButton
@@ -98,6 +102,7 @@ class EzTextFormField extends ConsumerWidget {
         controller: controller,
         autofocus: autofocus,
         focusNode: focusNode,
+        onChanged: (text) => onChanged?.call(text),
         inputFormatters: inputFormatters,
         validator: validator,
         autovalidateMode: autovalidateMode,
@@ -151,12 +156,13 @@ class EzTextFormField extends ConsumerWidget {
             borderRadius: borderRadius,
             borderSide: BorderSide.none,
           ),
-          suffixIcon: isClearable && controller.text.isNotEmpty
-              ? EzIconButton(
-                  icon: HeroIcon.xMark,
-                  onPressed: controller.clear,
-                )
-              : null,
+          suffixIcon:
+              isClearable && controller != null && controller.text.isNotEmpty
+                  ? EzIconButton(
+                      icon: HeroIcon.xMark,
+                      onPressed: controller.clear,
+                    )
+                  : null,
         ),
       ),
     );

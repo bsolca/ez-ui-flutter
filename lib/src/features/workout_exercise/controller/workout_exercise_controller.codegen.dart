@@ -24,9 +24,11 @@ class WorkoutExerciseController extends _$WorkoutExerciseController {
   }
 
   /// Delete a specific workout exercise.
-  void deleteWorkoutExercise() => ref
+  void deleteWorkoutExercise() {
+    ref
       .read(
         workoutFormControllerProvider(workoutId: workoutId).notifier,
       )
       .removeExercise(exerciseId);
+  }
 }

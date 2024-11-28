@@ -6,7 +6,11 @@
     "reps": {
       "count": 15
     },
-    "duration": null,
+    "duration": {
+      "seconds": 60,
+      "minutes": 1,
+      "hours": 0
+    },
     "load": null,
     "restTimeBetweenSets": {
       "seconds": 30

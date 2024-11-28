@@ -21,6 +21,7 @@ class WorkoutExerciseList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final exercises = ref.watch(
       workoutExerciseListControllerProvider(
         workoutId: workoutId,
@@ -51,6 +52,8 @@ class WorkoutExerciseList extends ConsumerWidget {
 
     return exercises.when(
       data: (exercises) {
+        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+        print('TESTY: WorkoutExerciseList.build');
         if (exercises.isEmpty) {
           return Container(
             padding: const EdgeInsets.all(EzConstLayout.spacer),
@@ -119,6 +122,8 @@ class WorkoutExerciseList extends ConsumerWidget {
                       ),
                       children: [
                         WorkoutExerciseForm(
+                          key: ValueKey(workoutId + exerciseId),
+                          workoutId: workoutId,
                           workoutExerciseId: workoutExercise.id,
                         ),
                       ],

@@ -62,7 +62,9 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
   @override
   Widget build(BuildContext context) {
     // Watch form controller
-    ref.watch(workoutFormControllerProvider(workoutId: widget.workoutId));
+    // ref.watch(workoutFormControllerProvider(workoutId: widget.workoutId));
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: WorkoutForm.build');
 
     return Column(
       children: [

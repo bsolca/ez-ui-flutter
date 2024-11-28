@@ -22,6 +22,10 @@ DurationModel _$DurationModelFromJson(Map<String, dynamic> json) {
 mixin _$DurationModel {
   @DefaultDoubleConverter()
   double get seconds => throw _privateConstructorUsedError;
+  @DefaultDoubleConverter()
+  double get minutes => throw _privateConstructorUsedError;
+  @DefaultDoubleConverter()
+  double get hours => throw _privateConstructorUsedError;
 
   /// Serializes this DurationModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +43,10 @@ abstract class $DurationModelCopyWith<$Res> {
           DurationModel value, $Res Function(DurationModel) then) =
       _$DurationModelCopyWithImpl<$Res, DurationModel>;
   @useResult
-  $Res call({@DefaultDoubleConverter() double seconds});
+  $Res call(
+      {@DefaultDoubleConverter() double seconds,
+      @DefaultDoubleConverter() double minutes,
+      @DefaultDoubleConverter() double hours});
 }
 
 /// @nodoc
@@ -58,11 +65,21 @@ class _$DurationModelCopyWithImpl<$Res, $Val extends DurationModel>
   @override
   $Res call({
     Object? seconds = null,
+    Object? minutes = null,
+    Object? hours = null,
   }) {
     return _then(_value.copyWith(
       seconds: null == seconds
           ? _value.seconds
           : seconds // ignore: cast_nullable_to_non_nullable
+              as double,
+      minutes: null == minutes
+          ? _value.minutes
+          : minutes // ignore: cast_nullable_to_non_nullable
+              as double,
+      hours: null == hours
+          ? _value.hours
+          : hours // ignore: cast_nullable_to_non_nullable
               as double,
     ) as $Val);
   }
@@ -76,7 +93,10 @@ abstract class _$$DurationModelImplCopyWith<$Res>
       __$$DurationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@DefaultDoubleConverter() double seconds});
+  $Res call(
+      {@DefaultDoubleConverter() double seconds,
+      @DefaultDoubleConverter() double minutes,
+      @DefaultDoubleConverter() double hours});
 }
 
 /// @nodoc
@@ -93,11 +113,21 @@ class __$$DurationModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? seconds = null,
+    Object? minutes = null,
+    Object? hours = null,
   }) {
     return _then(_$DurationModelImpl(
       seconds: null == seconds
           ? _value.seconds
           : seconds // ignore: cast_nullable_to_non_nullable
+              as double,
+      minutes: null == minutes
+          ? _value.minutes
+          : minutes // ignore: cast_nullable_to_non_nullable
+              as double,
+      hours: null == hours
+          ? _value.hours
+          : hours // ignore: cast_nullable_to_non_nullable
               as double,
     ));
   }
@@ -106,7 +136,10 @@ class __$$DurationModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DurationModelImpl implements _DurationModel {
-  const _$DurationModelImpl({@DefaultDoubleConverter() required this.seconds});
+  const _$DurationModelImpl(
+      {@DefaultDoubleConverter() required this.seconds,
+      @DefaultDoubleConverter() required this.minutes,
+      @DefaultDoubleConverter() required this.hours});
 
   factory _$DurationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DurationModelImplFromJson(json);
@@ -114,10 +147,16 @@ class _$DurationModelImpl implements _DurationModel {
   @override
   @DefaultDoubleConverter()
   final double seconds;
+  @override
+  @DefaultDoubleConverter()
+  final double minutes;
+  @override
+  @DefaultDoubleConverter()
+  final double hours;
 
   @override
   String toString() {
-    return 'DurationModel(seconds: $seconds)';
+    return 'DurationModel(seconds: $seconds, minutes: $minutes, hours: $hours)';
   }
 
   @override
@@ -125,12 +164,14 @@ class _$DurationModelImpl implements _DurationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DurationModelImpl &&
-            (identical(other.seconds, seconds) || other.seconds == seconds));
+            (identical(other.seconds, seconds) || other.seconds == seconds) &&
+            (identical(other.minutes, minutes) || other.minutes == minutes) &&
+            (identical(other.hours, hours) || other.hours == hours));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, seconds);
+  int get hashCode => Object.hash(runtimeType, seconds, minutes, hours);
 
   /// Create a copy of DurationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -150,7 +191,9 @@ class _$DurationModelImpl implements _DurationModel {
 
 abstract class _DurationModel implements DurationModel {
   const factory _DurationModel(
-          {@DefaultDoubleConverter() required final double seconds}) =
+          {@DefaultDoubleConverter() required final double seconds,
+          @DefaultDoubleConverter() required final double minutes,
+          @DefaultDoubleConverter() required final double hours}) =
       _$DurationModelImpl;
 
   factory _DurationModel.fromJson(Map<String, dynamic> json) =
@@ -159,6 +202,12 @@ abstract class _DurationModel implements DurationModel {
   @override
   @DefaultDoubleConverter()
   double get seconds;
+  @override
+  @DefaultDoubleConverter()
+  double get minutes;
+  @override
+  @DefaultDoubleConverter()
+  double get hours;
 
   /// Create a copy of DurationModel
   /// with the given fields replaced by the non-null parameter values.

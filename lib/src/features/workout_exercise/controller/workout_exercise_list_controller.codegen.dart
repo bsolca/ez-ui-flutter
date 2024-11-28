@@ -11,25 +11,16 @@ AsyncValue<List<WorkoutExerciseModel>> workoutExerciseListController(
   required String workoutId,
   required String stepId,
 }) {
-  try {
-    final pod = ref.watch(workoutFormControllerProvider(workoutId: workoutId));
-    final value = pod.value;
-    final workoutExercises = value?.workoutExercises;
-    final filteredWorkoutExercises = workoutExercises
-        ?.where(
-          (e) => e.stepId == stepId,
-        )
-        .toList();
+  final exercisesAsyncValue = ref.watch(
+    workoutFormControllerProvider(workoutId: workoutId).select(
+      (asyncValue) => asyncValue.whenData(
+        (workoutFormModel) => workoutFormModel.workoutExercises
+            .where((e) => e.stepId == stepId)
+            .toList(),
+      ),
+    ),
+  );
 
-    if (filteredWorkoutExercises == null) {
-      return AsyncValue.error(
-        'Workout exercises not found',
-        StackTrace.current,
-      );
-    }
-
-    return AsyncValue.data(filteredWorkoutExercises);
-  } catch (e) {
-    return AsyncValue.error(e, StackTrace.current);
-  }
+  // Return AsyncValue<List<WorkoutExerciseModel>>
+  return exercisesAsyncValue;
 }
