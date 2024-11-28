@@ -67,10 +67,10 @@ class WorkoutExerciseList extends ConsumerWidget {
                 ),
               )
               .when(
-                data: (exerciseModel) => EzExpansionTile(
+                data: (techniqueModel) => EzExpansionTile(
                   tileBgColor: tileBgColor,
                   bgChildrenColor: bgChildrenColor,
-                  title: Text(exerciseModel.name),
+                  title: Text(techniqueModel.name),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -109,7 +109,7 @@ class WorkoutExerciseList extends ConsumerWidget {
                 ),
                 error: (error, stackTrace) {
                   return EzExpansionTile.error(
-                    title: const Text('Error - Loading an exercise'),
+                    title: const Text('Error - Loading an technique'),
                     subtitle: SelectableText(error.toString()),
                     trailing: IconButton(
                       icon: const Icon(Icons.delete),
