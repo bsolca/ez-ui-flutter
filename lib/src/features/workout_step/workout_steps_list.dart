@@ -8,31 +8,38 @@ class WorkoutStepsList extends ConsumerWidget {
   const WorkoutStepsList({
     super.key,
     required this.workoutId,
-    required this.loadingData,
   });
 
   final String workoutId;
-  final bool loadingData;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Accessing the list of workout steps from the controller
-    final steps = ref.watch(workoutStepsControllerProvider(workoutId));
+    final stepsLength = ref.watch(
+      workoutStepsControllerProvider(workoutId).select(
+        (value) => value.length,
+      ),
+    );
 
-    if (steps.isEmpty) return const Text('No steps available');
+    if (stepsLength == 0) return const Text('No steps available');
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: steps.length,
+      itemCount: stepsLength,
       itemBuilder: (context, index) {
+        final workoutStep = ref.watch(
+          workoutStepsControllerProvider(workoutId).select(
+            (value) => value[index],
+          ),
+        );
         return Padding(
-          padding: index != steps.length - 1
+          padding: index != stepsLength - 1
               ? const EdgeInsets.only(
                   bottom: EzConstLayout.spacerSmall,
                 )
               : EdgeInsets.zero,
           child: WorkoutStepTile(
             workoutId: workoutId,
-            workoutStep: steps[index],
+            workoutStep: workoutStep,
           ),
         );
       },

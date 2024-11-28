@@ -30,6 +30,7 @@ class EzTextFormField extends ConsumerWidget {
     this.onTap,
     this.ignorePointers,
     this.onChanged,
+    this.initialValue,
   })  : buttonText = null,
         onButtonPressed = null;
 
@@ -55,6 +56,7 @@ class EzTextFormField extends ConsumerWidget {
     this.onTap,
     this.ignorePointers,
     this.onChanged,
+    this.initialValue,
   }) : maxLines = 1;
 
   final String hintText;
@@ -77,6 +79,7 @@ class EzTextFormField extends ConsumerWidget {
   final MouseCursor? mouseCursor;
   final VoidCallback? onTap;
   final void Function(String)? onChanged;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -99,6 +102,7 @@ class EzTextFormField extends ConsumerWidget {
     final fieldWidget = EzDisable(
       disabled: disabled,
       child: TextFormField(
+        initialValue: initialValue,
         controller: controller,
         autofocus: autofocus,
         focusNode: focusNode,

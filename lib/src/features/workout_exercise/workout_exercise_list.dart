@@ -1,9 +1,5 @@
-import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_add_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_list_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/controller/workout_exercise_technique_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_form.dart';
-import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_list_item.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
@@ -21,12 +17,13 @@ class WorkoutExerciseList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final exercises = ref.watch(
+    final exercisesLength = ref.watch(
       workoutExerciseListControllerProvider(
         workoutId: workoutId,
         stepId: stepId,
-      ),
+      ).select((value) => value.length),
     );
+
     final isLight = Theme.of(context).brightness == Brightness.light;
     final tileBgColor = isLight
         ? Theme.of(context).colorScheme.surfaceContainer
@@ -35,7 +32,7 @@ class WorkoutExerciseList extends ConsumerWidget {
         ? Theme.of(context).colorScheme.surfaceContainerLow
         : Theme.of(context).colorScheme.surfaceContainer;
 
-    if (exercises.isEmpty) {
+    if (exercisesLength == 0) {
       return Container(
         padding: const EdgeInsets.all(EzConstLayout.spacer),
         margin: const EdgeInsets.all(EzConstLayout.spacerSmall),
@@ -49,83 +46,14 @@ class WorkoutExerciseList extends ConsumerWidget {
     }
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: exercises.length,
+      itemCount: exercisesLength,
       itemBuilder: (context, index) {
-        final workoutExercise = exercises[index];
-        final exerciseId = workoutExercise.id;
-
-        return Padding(
-          padding: index != 0
-              ? const EdgeInsets.only(
-                  top: EzConstLayout.spacerSmall,
-                )
-              : EdgeInsets.zero,
-          child: ref
-              .watch(
-                workoutExerciseTechniqueControllerProvider(
-                  techniqueId: workoutExercise.techniqueId,
-                ),
-              )
-              .when(
-                data: (techniqueModel) => EzExpansionTile(
-                  tileBgColor: tileBgColor,
-                  bgChildrenColor: bgChildrenColor,
-                  title: Text(techniqueModel.name),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // edit icon button
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () => ref
-                            .read(
-                              workoutExerciseAddControllerProvider.notifier,
-                            )
-                            .editExercise(
-                              workoutId: workoutId,
-                              exercise: workoutExercise,
-                            ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: ref
-                            .read(
-                              workoutExerciseControllerProvider(
-                                workoutId: workoutId,
-                                exerciseId: workoutExercise.id,
-                              ).notifier,
-                            )
-                            .deleteWorkoutExercise,
-                      ),
-                    ],
-                  ),
-                  children: [
-                    WorkoutExerciseForm(
-                      key: ValueKey(workoutId + exerciseId),
-                      workoutId: workoutId,
-                      workoutExerciseId: workoutExercise.id,
-                    ),
-                  ],
-                ),
-                error: (error, stackTrace) {
-                  return EzExpansionTile.error(
-                    title: const Text('Error - Loading an technique'),
-                    subtitle: SelectableText(error.toString()),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: ref
-                          .read(
-                            workoutExerciseControllerProvider(
-                              workoutId: workoutId,
-                              exerciseId: exerciseId,
-                            ).notifier,
-                          )
-                          .deleteWorkoutExercise,
-                    ),
-                  );
-                },
-                loading: EzExpansionTile.loading,
-              ),
+        return WorkoutExerciseListItem(
+          index: index,
+          workoutId: workoutId,
+          stepId: stepId,
+          tileBgColor: tileBgColor,
+          bgChildrenColor: bgChildrenColor,
         );
       },
     );

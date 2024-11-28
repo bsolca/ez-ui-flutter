@@ -150,8 +150,6 @@ class WorkoutFormController extends _$WorkoutFormController {
 
   void updateDuration(String workoutExerciseId, String seconds) {
     final currentState = state.value ?? _initialState;
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: seconds ${seconds}');
     state = AsyncValue.data(
       currentState.copyWith(
         workoutExercises: currentState.workoutExercises
@@ -167,6 +165,33 @@ class WorkoutFormController extends _$WorkoutFormController {
                   : exercise,
             )
             .toList(),
+      ),
+    );
+  }
+
+  void updateName(String name) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workout: currentState.workout.copyWith(name: name),
+      ),
+    );
+  }
+
+  void updateDescription(String description) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workout: currentState.workout.copyWith(description: description),
+      ),
+    );
+  }
+
+  void updateTags(String tags) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workout: currentState.workout.copyWith(tags: tags.split(',')),
       ),
     );
   }

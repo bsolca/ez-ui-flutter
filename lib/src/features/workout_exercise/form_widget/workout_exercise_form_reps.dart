@@ -4,7 +4,6 @@ import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class WorkoutExerciseFormReps extends ConsumerStatefulWidget {
   const WorkoutExerciseFormReps({
@@ -23,39 +22,40 @@ class WorkoutExerciseFormReps extends ConsumerStatefulWidget {
 
 class _WorkoutExerciseFormRepsState
     extends ConsumerState<WorkoutExerciseFormReps> {
-
-  final repsController = TextEditingController();
-
+  late final String? initialValue;
 
   @override
   void initState() {
     super.initState();
-    repsController.addListener(() {
-      if (repsController.text.isEmpty) {
-        return;
-      }
-      ref.read(
-        workoutFormControllerProvider(workoutId: widget.workoutId).notifier,
-      ).updateReps(widget.workoutExerciseId, repsController.text);
-    });
+    initialValue = ref
+        .read(
+          workoutFormControllerProvider(workoutId: widget.workoutId),
+        )
+        .value!
+        .workoutExercises
+        .firstWhere((e) => e.id == widget.workoutExerciseId)
+        .reps
+        ?.count
+        .toString();
   }
 
   @override
   Widget build(BuildContext context) {
-    final formPod = ref.watch(
-      workoutFormControllerProvider(workoutId: widget.workoutId),
-    );
-
     return EzFormItemLayout(
       itemLabel: ref.loc.workoutExerciseFormReps,
       itemDescription: ref.loc.workoutExerciseFormRepsDescription,
-      child: Skeletonizer(
-        enabled: formPod.isLoading,
-        child: EzTextFormField(
-          hintText: ref.loc.workoutExerciseFormRepsHint,
-          controller: repsController,
-          keyboardType: TextInputType.number,
-        ),
+      child: EzTextFormField(
+        hintText: ref.loc.workoutExerciseFormRepsHint,
+        initialValue: initialValue,
+        onChanged: (value) {
+          ref
+              .read(
+                workoutFormControllerProvider(workoutId: widget.workoutId)
+                    .notifier,
+              )
+              .updateReps(widget.workoutExerciseId, value);
+        },
+        keyboardType: TextInputType.number,
       ),
     );
   }

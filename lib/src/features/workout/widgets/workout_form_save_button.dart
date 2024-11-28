@@ -10,10 +10,8 @@ class WorkoutFormSaveButton extends ConsumerWidget {
     super.key,
     required this.formKey,
     required this.workoutId,
-    required this.isDisabled,
   });
 
-  final bool isDisabled;
   final GlobalKey<FormState> formKey;
   final String workoutId;
 
@@ -26,8 +24,7 @@ class WorkoutFormSaveButton extends ConsumerWidget {
 
     return EzButton(
       text: ref.loc.save,
-      isLoading: isLoading,
-      onPressed: isLoading || isGeneralLoading || isDisabled
+      onPressed: isLoading || isGeneralLoading
           ? null
           : () async {
               if (formKey.currentState?.validate() != true) return;

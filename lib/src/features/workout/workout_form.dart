@@ -2,6 +2,9 @@ import 'package:ez_fit_app/src/features/workout/controller/workout_form_controll
 import 'package:ez_fit_app/src/features/workout/controller/workout_screen_get_workout_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_delete_button.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_save_button.dart';
+import 'package:ez_fit_app/src/features/workout/workout_form_description.dart';
+import 'package:ez_fit_app/src/features/workout/workout_form_name.dart';
+import 'package:ez_fit_app/src/features/workout/workout_form_tags.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/workout_steps_list.dart';
@@ -18,7 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class WorkoutForm extends ConsumerStatefulWidget {
+class WorkoutForm extends ConsumerWidget {
   const WorkoutForm({
     super.key,
     required this.workoutId,
@@ -27,45 +30,33 @@ class WorkoutForm extends ConsumerStatefulWidget {
   final String workoutId;
 
   @override
-  ConsumerState<WorkoutForm> createState() => _WorkoutFormState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final formKey = GlobalKey<FormState>();
+    ref.listen(workoutFormControllerProvider(workoutId: workoutId),
+        (previous, next) {
+      if (next.value != null) {
+        final prevName = previous?.value?.workout.name;
+        final nextName = next.value?.workout.name;
 
-class _WorkoutFormState extends ConsumerState<WorkoutForm> {
-  final idController = TextEditingController();
-  final nameController = TextEditingController();
-  final descriptionController = TextEditingController();
-  final tagsController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-  bool loadingData = false;
-
-  @override
-  void initState() {
-    super.initState();
-    final getWorkoutController = ref.read(
-      workoutScreenGetWorkoutControllerProvider(widget.workoutId),
-    );
-
-    if (getWorkoutController != null) {
-      setState(() => loadingData = true);
-      getWorkoutController().then((workout) {
-        if (workout != null) {
-          idController.text = workout.id;
-          nameController.text = workout.name;
-          descriptionController.text = workout.description ?? '';
-          tagsController.text = workout.tags.join(', ');
+        if (prevName != nextName) {
+          // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+          print('TESTY: Was: $prevName, Now: $nextName');
         }
-        setState(() => loadingData = false);
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // Watch form controller
-    // ref.watch(workoutFormControllerProvider(workoutId: widget.workoutId));
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: WorkoutForm.build');
-
+        next.value?.workoutExercises.forEach((workoutExercise) {
+          final nextCount = workoutExercise.reps?.count;
+          final prevCount = previous?.value?.workoutExercises
+              .firstWhere(
+                (e) => e.id == workoutExercise.id,
+              )
+              .reps
+              ?.count;
+          if (nextCount != prevCount) {
+            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+            print('TESTY: Was: $prevCount, Now: $nextCount');
+          }
+        });
+      }
+    });
     return Column(
       children: [
         Row(
@@ -74,8 +65,7 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
             const Spacer(),
             WorkoutFormSaveButton(
               formKey: formKey,
-              isDisabled: loadingData,
-              workoutId: widget.workoutId,
+              workoutId: workoutId,
             ),
           ],
         ),
@@ -86,56 +76,17 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
             child: ListView(
               shrinkWrap: true,
               children: [
-                EzFormItemLayout(
-                  itemLabel: ref.loc.workoutFormName,
-                  itemDescription: ref.loc.workoutFormNameDescription,
-                  child: Skeletonizer(
-                    enabled: loadingData,
-                    child: EzTextFormField(
-                      hintText: ref.loc.workoutFormNameHint,
-                      controller: nameController,
-                      validator: (v) {
-                        return v?.isNotEmpty ?? false ? null : ref.loc.required;
-                      },
-                    ),
-                  ),
-                ),
-                EzFormItemLayout(
-                  itemLabel: ref.loc.workoutFormTags,
-                  itemDescription: ref.loc.workoutFormTagsDescription,
-                  child: Skeletonizer(
-                    enabled: loadingData,
-                    child: EzTextFormField(
-                      hintText: ref.loc.workoutFormTagsHint,
-                      controller: tagsController,
-                    ),
-                  ),
-                ),
-                EzFormItemLayout(
-                  itemLabel: ref.loc.workoutFormDescription,
-                  itemDescription: ref.loc.workoutFormDescriptionDescription,
-                  child: Skeletonizer(
-                    enabled: loadingData,
-                    child: EzTextFormField(
-                      hintText: ref.loc.workoutFormDescriptionHint,
-                      controller: descriptionController,
-                      maxLines: 3,
-                    ),
-                  ),
-                ),
+                WorkoutFormName(workoutId: workoutId),
+                WorkoutFormTags(workoutId: workoutId),
+                WorkoutFormDescription(workoutId: workoutId),
                 EzHeader.displayMedium(ref.loc.workoutFormStepsHeader),
-                WorkoutStepsList(
-                  workoutId: widget.workoutId,
-                  loadingData: loadingData,
-                ),
+                WorkoutStepsList(workoutId: workoutId),
                 EzButton(
                   type: EzButtonType.outlined,
                   onPressed: () {
-                    // Example of adding a new step
                     ref
                         .read(
-                          workoutStepsControllerProvider(widget.workoutId)
-                              .notifier,
+                          workoutStepsControllerProvider(workoutId).notifier,
                         )
                         .addStep(
                           WorkoutStepModel(
@@ -145,18 +96,16 @@ class _WorkoutFormState extends ConsumerState<WorkoutForm> {
                             description: 'Description for new step',
                             setCount: 1,
                             restTime: null,
-                            workoutId: widget.workoutId,
+                            workoutId: workoutId,
                           ),
                         );
                   },
                   text: 'Add Step',
                 ),
                 const EzDivider(),
-                if (widget.workoutId.isNotEmpty && widget.workoutId != 'new')
+                if (workoutId.isNotEmpty && workoutId != 'new')
                   WorkoutFormDeleteButton(
-                    isDisabled: loadingData,
-                    workoutId: widget.workoutId,
-                    workoutName: nameController.text,
+                    workoutId: workoutId,
                   ),
               ].withSpaceBetween(height: EzConstLayout.spacerSmall),
             ),
