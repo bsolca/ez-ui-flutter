@@ -25,9 +25,6 @@ class WorkoutStepTile extends ConsumerWidget {
         ? Theme.of(context).colorScheme.surfaceContainerHigh
         : Theme.of(context).colorScheme.surfaceContainerHighest;
 
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: In WorkoutStepTile');
-
     return EzExpansionTile(
       title: Text('${workoutStep.name} (WkId: $workoutId)'),
       subtitle: Text(workoutStep.description ?? ''),

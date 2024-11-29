@@ -24,8 +24,7 @@ class WorkoutExerciseForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = GlobalKey<FormState>();
-// TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: in form');
+
     return Form(
       key: formKey,
       child: ListView(

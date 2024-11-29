@@ -44,6 +44,7 @@ class WorkoutExerciseList extends ConsumerWidget {
         child: Text(ref.loc.workoutExerciseEmptyList),
       );
     }
+
     return ListView.builder(
       shrinkWrap: true,
       itemCount: exercisesLength,

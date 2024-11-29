@@ -30,14 +30,20 @@ class WorkoutExerciseListItem extends ConsumerWidget {
       workoutExerciseListControllerProvider(
         workoutId: workoutId,
         stepId: stepId,
-      ).select((value) => value[index].techniqueId),
+      ).select((value) {
+        if (value.length <= index) return '';
+        return value[index].techniqueId;
+      }),
     );
 
     final workoutExerciseId = ref.watch(
       workoutExerciseListControllerProvider(
         workoutId: workoutId,
         stepId: stepId,
-      ).select((value) => value[index].id),
+      ).select((value) {
+        if (value.length <= index) return '';
+        return value[index].id;
+      }),
     );
 
     return Padding(
