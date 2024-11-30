@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class WorkoutExerciseFormDuration extends ConsumerStatefulWidget {
+class WorkoutExerciseFormDuration extends ConsumerWidget {
   const WorkoutExerciseFormDuration({
     super.key,
     required this.workoutId,
@@ -17,49 +17,48 @@ class WorkoutExerciseFormDuration extends ConsumerStatefulWidget {
   final String workoutExerciseId;
 
   @override
-  ConsumerState<WorkoutExerciseFormDuration> createState() =>
-      _WorkoutExerciseFormDurationState();
-}
-
-class _WorkoutExerciseFormDurationState
-    extends ConsumerState<WorkoutExerciseFormDuration> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final formPod = ref.watch(
-      workoutFormControllerProvider(workoutId: widget.workoutId),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final durationModel = ref.watch(
+      workoutFormControllerProvider(workoutId: workoutId).select(
+        (value) {
+          return value.when(
+            data: (v) => v.workoutExercises
+                .firstWhere(
+                  (e) => e.id == workoutExerciseId,
+                )
+                .duration,
+            error: (error, stackTrace) => throw Exception(error.toString()),
+            loading: () => null,
+          );
+        },
+      ),
     );
 
     return EzFormItemLayout(
       itemLabel: ref.loc.workoutExerciseFormDuration,
       itemDescription: ref.loc.workoutExerciseFormDurationDescription,
-      child: formPod.when(
-        data: (form) {
-          return EzTextFormField(
-            hintText: ref.loc.workoutExerciseFormDurationHint,
-            onChanged: (value) {
-              if (value.isNotEmpty) {
-                ref.read(
-                  workoutFormControllerProvider(workoutId: widget.workoutId).notifier,
-                ).updateDuration(widget.workoutExerciseId, value);
-              }
-            },
-            keyboardType: TextInputType.number,
-          );
-        },
-        error: (error, stackTrace) => Text(error.toString()),
-        loading: () => Skeletonizer(
-          child: EzTextFormField(
-            hintText: ref.loc.workoutExerciseFormDurationHint,
-            keyboardType: TextInputType.number,
-          ),
-        ),
-      ),
+      child: durationModel != null
+          ? EzTextFormField(
+              initialValue: durationModel.seconds.toString(),
+              hintText: ref.loc.workoutExerciseFormDurationHint,
+              onChanged: (value) {
+                if (value.isNotEmpty) {
+                  ref
+                      .read(
+                        workoutFormControllerProvider(workoutId: workoutId)
+                            .notifier,
+                      )
+                      .updateDuration(workoutExerciseId, value);
+                }
+              },
+              keyboardType: TextInputType.number,
+            )
+          : Skeletonizer(
+              child: EzTextFormField(
+                hintText: ref.loc.workoutExerciseFormDurationHint,
+                keyboardType: TextInputType.number,
+              ),
+            ),
     );
   }
 }

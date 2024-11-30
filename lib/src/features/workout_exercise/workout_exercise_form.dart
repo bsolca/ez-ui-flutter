@@ -1,15 +1,12 @@
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_duration.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
-import 'package:ez_fit_app/src/shared/ez_dropdown_button/ez_dropdown_button.dart';
-import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_load.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
-import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class WorkoutExerciseForm extends ConsumerWidget {
   const WorkoutExerciseForm({
@@ -79,18 +76,10 @@ class WorkoutExerciseForm extends ConsumerWidget {
             workoutId: workoutId,
             workoutExerciseId: workoutExerciseId,
           ),
-          // EzFormItemLayout(
-          //   itemLabel: ref.loc.workoutExerciseFormLoad,
-          //   itemDescription: ref.loc.workoutExerciseFormLoadDescription,
-          //   child: Skeletonizer(
-          //     enabled: loadingData,
-          //     child: EzTextFormField(
-          //       hintText: ref.loc.workoutExerciseFormLoadHint,
-          //       controller: loadController,
-          //       keyboardType: TextInputType.number,
-          //     ),
-          //   ),
-          // ),
+          WorkoutExerciseFormLoad(
+            workoutId: workoutId,
+            workoutExerciseId: workoutExerciseId,
+          ),
           // EzFormItemLayout(
           //   itemLabel: ref.loc.workoutExerciseFormRestTime,
           //   itemDescription: ref.loc.workoutExerciseFormRestTimeDescription,

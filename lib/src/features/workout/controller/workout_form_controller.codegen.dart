@@ -1,5 +1,7 @@
 import 'package:ez_fit_app/src/features/_core/_models/duration_model.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/_models/load_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/reps_model.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/_models/weight_unit_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_form_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/service/workout_service.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_model.codegen.dart';
@@ -192,6 +194,48 @@ class WorkoutFormController extends _$WorkoutFormController {
     state = AsyncValue.data(
       currentState.copyWith(
         workout: currentState.workout.copyWith(tags: tags.split(',')),
+      ),
+    );
+  }
+
+  void updateLoadAmount(String workoutExerciseId, String value) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      load: LoadModel(
+                        amount: double.parse(value),
+                        unit: exercise.load?.unit ?? WeightUnit.kg,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateLoadUnit(String workoutExerciseId, String value) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      load: LoadModel(
+                        amount: exercise.load?.amount ?? 0,
+                        unit: WeightUnit.values.firstWhere(
+                          (element) => element.name == value,
+                        ),
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
       ),
     );
   }

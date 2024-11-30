@@ -11,7 +11,10 @@
       "minutes": 1,
       "hours": 0
     },
-    "load": null,
+    "load": {
+      "amount": 10,
+      "unit": "lbs"
+    },
     "restTimeBetweenSets": {
       "seconds": 30
     },

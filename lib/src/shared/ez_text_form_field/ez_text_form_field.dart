@@ -1,4 +1,7 @@
+import 'package:ez_fit_app/src/shared/ez_button/ez_button.dart';
+import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
 import 'package:ez_fit_app/src/shared/ez_disable/ez_disable.dart';
+import 'package:ez_fit_app/src/shared/ez_dropdown_button/ez_dropdown_button.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
 import 'package:ez_fit_app/src/shared/ez_icon_button/ez_icon_button.dart';
 import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
@@ -6,6 +9,12 @@ import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+/// Private enum for constructor.
+enum _EzTextFormFieldConstructor {
+  plain,
+  withButton,
+}
 
 /// Styled text form field.
 class EzTextFormField extends ConsumerWidget {
@@ -31,8 +40,10 @@ class EzTextFormField extends ConsumerWidget {
     this.ignorePointers,
     this.onChanged,
     this.initialValue,
+    this.borderRadius,
   })  : buttonText = null,
-        onButtonPressed = null;
+        onButtonPressed = null,
+        _type = _EzTextFormFieldConstructor.plain;
 
   /// Styled text form field with button.
   const EzTextFormField.withButton({
@@ -57,7 +68,9 @@ class EzTextFormField extends ConsumerWidget {
     this.ignorePointers,
     this.onChanged,
     this.initialValue,
-  }) : maxLines = 1;
+    this.borderRadius,
+  })  : maxLines = 1,
+        _type = _EzTextFormFieldConstructor.withButton;
 
   final String hintText;
   final TextEditingController? controller;
@@ -80,6 +93,9 @@ class EzTextFormField extends ConsumerWidget {
   final VoidCallback? onTap;
   final void Function(String)? onChanged;
   final String? initialValue;
+  final EzSmoothBorderRadius? borderRadius;
+
+  final _EzTextFormFieldConstructor _type;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -87,17 +103,18 @@ class EzTextFormField extends ConsumerWidget {
     final controller = this.controller;
     final isWithButton = buttonText != null && onButtonPressed != null;
     const radius = EzConstLayout.borderRadiusSmall;
-    final borderRadius = isWithButton
-        ? const EzSmoothBorderRadius.horizontal(
-            right: EzSmoothRadius(
-              cornerRadius: 0,
-              cornerSmoothing: 0,
-            ),
-          )
-        : EzSmoothBorderRadius(
-            cornerRadius: radius,
-            cornerSmoothing: EzConstLayout.cornerSmoothing,
-          );
+    final borderRadius = this.borderRadius ??
+        (isWithButton
+            ? const EzSmoothBorderRadius.horizontal(
+                right: EzSmoothRadius(
+                  cornerRadius: 0,
+                  cornerSmoothing: 0,
+                ),
+              )
+            : EzSmoothBorderRadius(
+                cornerRadius: radius,
+                cornerSmoothing: EzConstLayout.cornerSmoothing,
+              ));
 
     final fieldWidget = EzDisable(
       disabled: disabled,
@@ -178,26 +195,25 @@ class EzTextFormField extends ConsumerWidget {
               Flexible(
                 child: fieldWidget,
               ),
-              SizedBox(
-                height: EzConstLayout.itemHeight,
-                child: ElevatedButton(
-                  onPressed: onButtonPressed,
-                  style: OutlinedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primaryContainer,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: EzSmoothBorderRadius.basic,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      buttonText,
-                      style: Theme.of(context).textTheme.bodySmall,
+              if (_type == _EzTextFormFieldConstructor.withButton)
+                SizedBox(
+                  height: EzConstLayout.itemHeight,
+                  child: EzButton(
+                    type: EzButtonType.outlined,
+                    onPressed: onButtonPressed,
+                    text: buttonText,
+                    borderRadius: EzSmoothBorderRadius.basic.copyWith(
+                      bottomLeft: const EzSmoothRadius(
+                        cornerRadius: 0,
+                        cornerSmoothing: 0,
+                      ),
+                      topLeft: const EzSmoothRadius(
+                        cornerRadius: 0,
+                        cornerSmoothing: 0,
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           )
         : fieldWidget;
@@ -206,6 +222,80 @@ class EzTextFormField extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.all(0.3),
       child: textFormFieldWidget,
+    );
+  }
+}
+
+/// Subclass for styled text form fields with a dropdown.
+class EzTextFormFieldWithDropdown<T> extends EzTextFormField {
+  const EzTextFormFieldWithDropdown({
+    super.key,
+    required super.hintText,
+    super.controller,
+    super.inputFormatters,
+    super.focusNode,
+    super.onEditingComplete,
+    super.validator,
+    super.autovalidateMode,
+    super.maxLength,
+    super.autofocus,
+    super.obscureText,
+    super.isClearable,
+    super.maxLines = 1,
+    super.disabled,
+    super.keyboardType,
+    super.mouseCursor,
+    super.onTap,
+    super.ignorePointers,
+    super.onChanged,
+    super.initialValue,
+    required this.dropdownText,
+    required this.items,
+    required this.onSelected,
+    required this.menuWidth,
+  }) : super(
+          borderRadius: const EzSmoothBorderRadius.horizontal(
+            right: EzSmoothRadius(
+              cornerRadius: 0,
+              cornerSmoothing: 0,
+            ),
+          ),
+        );
+
+  final String dropdownText;
+  final List<EzDropdownItem<T>> items;
+  final void Function(T) onSelected;
+  final double menuWidth;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Use the base class's build method for the common UI
+    final baseWidget = super.build(
+      context,
+      ref,
+    );
+
+    // Add dropdown-specific functionality
+    return SizedBox(
+      height: EzConstLayout.itemHeight,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Flexible(child: baseWidget),
+          EzDropdownButton<T>(
+            text: dropdownText,
+            items: items,
+            menuWidth: menuWidth,
+            onSelected: onSelected,
+            borderRadius: const EzSmoothBorderRadius.horizontal(
+              left: EzSmoothRadius(
+                cornerRadius: 0,
+                cornerSmoothing: 0,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

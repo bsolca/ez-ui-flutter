@@ -3,6 +3,7 @@ import 'package:ez_fit_app/src/shared/ez_button/model/ez_button_enum.dart';
 import 'package:ez_fit_app/src/shared/ez_disable/ez_disable.dart';
 import 'package:ez_fit_app/src/shared/ez_dropdown_button/widgets/ez_dropdown_button_menu.dart';
 import 'package:ez_fit_app/src/shared/ez_icon/hero_icon_icons.dart';
+import 'package:ez_fit_app/src/shared/ez_squircle/ez_squircle.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -28,6 +29,7 @@ class EzDropdownButton<T> extends StatefulWidget {
     required this.items,
     required this.menuWidth,
     this.onSelected,
+    this.borderRadius,
   }) : _type = EzButtonType.regular;
 
   const EzDropdownButton.outlined({
@@ -36,6 +38,7 @@ class EzDropdownButton<T> extends StatefulWidget {
     required this.items,
     required this.menuWidth,
     this.onSelected,
+    this.borderRadius,
   }) : _type = EzButtonType.outlined;
 
   const EzDropdownButton.link({
@@ -44,13 +47,15 @@ class EzDropdownButton<T> extends StatefulWidget {
     required this.items,
     required this.menuWidth,
     this.onSelected,
-  }) : _type = EzButtonType.link;
+  }) :  borderRadius = null,
+        _type = EzButtonType.link;
 
   final String text;
   final List<EzDropdownItem<T>> items;
   final void Function(T value)? onSelected;
   final EzButtonType _type;
   final double menuWidth;
+  final EzSmoothBorderRadius? borderRadius;
 
   @override
   State<EzDropdownButton<T>> createState() => _EzDropdownButtonState<T>();
@@ -128,7 +133,8 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
           cursor: _getMouseCursor(),
           child: AbsorbPointer(
             child: EzButton(
-              text: 'DropDown',
+              borderRadius: widget.borderRadius,
+              text: widget.text,
               suffixWidget: Icon(
                 HeroIcon.chevronDown,
                 color: _getDefaultTextColor(Theme.of(context).colorScheme),

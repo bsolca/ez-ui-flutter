@@ -16,6 +16,7 @@ class EzButton extends StatelessWidget {
     this.suffixWidget,
     this.textColor,
     this.isLoading = false,
+    this.borderRadius,
   });
 
   final VoidCallback? onPressed;
@@ -25,6 +26,7 @@ class EzButton extends StatelessWidget {
   final Widget? prefixWidget;
   final Widget? suffixWidget;
   final bool isLoading;
+  final EzSmoothBorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,9 @@ class EzButton extends StatelessWidget {
       disabled: isLoading || onPressed == null,
       child: RawMaterialButton(
         onPressed: onPressed,
-        shape: _buildShape(context),
+        shape: _buildShape(context).copyWith(
+          borderRadius: borderRadius ?? _buildShape(context).borderRadius,
+        ),
         padding: _getPadding(),
         hoverColor: _getHoverColor(context),
         splashColor: Colors.transparent,
