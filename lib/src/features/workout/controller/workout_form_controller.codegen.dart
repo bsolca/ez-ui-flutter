@@ -1,5 +1,6 @@
 import 'package:ez_fit_app/src/features/_core/_models/distance_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/duration_model.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/_models/intensity_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/load_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/reps_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/tempo_model.codegen.dart';
@@ -326,6 +327,46 @@ class WorkoutFormController extends _$WorkoutFormController {
                       distance: DistanceModel(
                         value: exercise.distance?.value ?? 0,
                         unit: unit,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateIntensityValue(String workoutExerciseId, int intensityValue) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      intensity: IntensityModel(
+                        value: intensityValue,
+                        type: exercise.intensity?.type ?? IntensityType.zone,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateIntensityType(String workoutExerciseId, IntensityType type) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      intensity: IntensityModel(
+                        value: exercise.intensity?.value ?? 0,
+                        type: type,
                       ),
                     )
                   : exercise,

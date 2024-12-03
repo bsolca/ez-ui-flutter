@@ -1,5 +1,6 @@
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_distance.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_duration.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_intensity.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_load.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_rest_time.dart';
@@ -95,17 +96,11 @@ class WorkoutExerciseForm extends ConsumerWidget {
             workoutId: workoutId,
             workoutExerciseId: workoutExerciseId,
           ),
-          // EzFormItemLayout(
-          //   itemLabel: ref.loc.workoutExerciseFormIntensity,
-          //   itemDescription: ref.loc.workoutExerciseFormIntensityDescription,
-          //   child: Skeletonizer(
-          //     enabled: loadingData,
-          //     child: EzTextFormField(
-          //       hintText: ref.loc.workoutExerciseFormIntensityLevelHint,
-          //       controller: intensityController,
-          //     ),
-          //   ),
-          // ),
+          WorkoutExerciseFormIntensity(
+            workoutId: workoutId,
+            workoutExerciseId: workoutExerciseId,
+          ),
+
           // EzFormItemLayout(
           //   itemLabel: ref.loc.workoutExerciseFormCustomNotes,
           //   itemDescription: ref.loc.workoutExerciseFormCustomNotesDescription,
