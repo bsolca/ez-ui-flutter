@@ -36,13 +36,11 @@ class WorkoutExerciseFormRestTime extends ConsumerWidget {
       itemLabel: ref.loc.workoutExerciseFormRestTime,
       itemDescription: ref.loc.workoutExerciseFormRestTimeDescription,
       child: EzTextFormField(
-        initialValue: restTime?.toString(),
+        initialValue: restTime?.seconds.toString(),
         hintText: ref.loc.workoutExerciseFormRestTimeHint,
         keyboardType: TextInputType.number,
         inputFormatters: [
-          FilteringTextInputFormatter.allow(
-            RegExp(r'^\d*$'),
-          ),
+          FilteringTextInputFormatter.digitsOnly,
         ],
         onChanged: (value) {
           if (value.isNotEmpty) {

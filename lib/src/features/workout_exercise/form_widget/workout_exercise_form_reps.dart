@@ -3,6 +3,7 @@ import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_l
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WorkoutExerciseFormReps extends ConsumerStatefulWidget {
@@ -47,13 +48,18 @@ class _WorkoutExerciseFormRepsState
       child: EzTextFormField(
         hintText: ref.loc.workoutExerciseFormRepsHint,
         initialValue: initialValue,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onChanged: (value) {
+          final reps = int.parse(value);
           ref
               .read(
                 workoutFormControllerProvider(workoutId: widget.workoutId)
                     .notifier,
               )
-              .updateReps(widget.workoutExerciseId, value);
+              .updateReps(
+                widget.workoutExerciseId,
+                reps,
+              );
         },
         keyboardType: TextInputType.number,
       ),

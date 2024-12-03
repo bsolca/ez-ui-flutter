@@ -4,7 +4,6 @@ import 'package:json_annotation/json_annotation.dart';
 class DefaultIntConverter implements JsonConverter<int, dynamic> {
   const DefaultIntConverter();
 
-
   @override
   int fromJson(dynamic json) {
     if (json == null) {

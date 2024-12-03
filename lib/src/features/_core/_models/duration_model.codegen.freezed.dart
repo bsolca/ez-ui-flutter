@@ -20,11 +20,11 @@ DurationModel _$DurationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DurationModel {
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   int get seconds => throw _privateConstructorUsedError;
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   int get minutes => throw _privateConstructorUsedError;
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   int get hours => throw _privateConstructorUsedError;
 
   /// Serializes this DurationModel to a JSON map.
@@ -44,9 +44,9 @@ abstract class $DurationModelCopyWith<$Res> {
       _$DurationModelCopyWithImpl<$Res, DurationModel>;
   @useResult
   $Res call(
-      {@DefaultDoubleConverter() int seconds,
-      @DefaultDoubleConverter() int minutes,
-      @DefaultDoubleConverter() int hours});
+      {@DefaultIntConverter() int seconds,
+      @DefaultIntConverter() int minutes,
+      @DefaultIntConverter() int hours});
 }
 
 /// @nodoc
@@ -94,9 +94,9 @@ abstract class _$$DurationModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DefaultDoubleConverter() int seconds,
-      @DefaultDoubleConverter() int minutes,
-      @DefaultDoubleConverter() int hours});
+      {@DefaultIntConverter() int seconds,
+      @DefaultIntConverter() int minutes,
+      @DefaultIntConverter() int hours});
 }
 
 /// @nodoc
@@ -137,21 +137,21 @@ class __$$DurationModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DurationModelImpl implements _DurationModel {
   const _$DurationModelImpl(
-      {@DefaultDoubleConverter() required this.seconds,
-      @DefaultDoubleConverter() required this.minutes,
-      @DefaultDoubleConverter() required this.hours});
+      {@DefaultIntConverter() required this.seconds,
+      @DefaultIntConverter() required this.minutes,
+      @DefaultIntConverter() required this.hours});
 
   factory _$DurationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DurationModelImplFromJson(json);
 
   @override
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   final int seconds;
   @override
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   final int minutes;
   @override
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   final int hours;
 
   @override
@@ -191,22 +191,21 @@ class _$DurationModelImpl implements _DurationModel {
 
 abstract class _DurationModel implements DurationModel {
   const factory _DurationModel(
-          {@DefaultDoubleConverter() required final int seconds,
-          @DefaultDoubleConverter() required final int minutes,
-          @DefaultDoubleConverter() required final int hours}) =
-      _$DurationModelImpl;
+      {@DefaultIntConverter() required final int seconds,
+      @DefaultIntConverter() required final int minutes,
+      @DefaultIntConverter() required final int hours}) = _$DurationModelImpl;
 
   factory _DurationModel.fromJson(Map<String, dynamic> json) =
       _$DurationModelImpl.fromJson;
 
   @override
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   int get seconds;
   @override
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   int get minutes;
   @override
-  @DefaultDoubleConverter()
+  @DefaultIntConverter()
   int get hours;
 
   /// Create a copy of DurationModel

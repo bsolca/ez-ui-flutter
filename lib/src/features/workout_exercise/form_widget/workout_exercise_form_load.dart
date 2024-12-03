@@ -4,6 +4,7 @@ import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_l
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WorkoutExerciseFormLoad extends ConsumerWidget {
@@ -40,6 +41,9 @@ class WorkoutExerciseFormLoad extends ConsumerWidget {
       child: EzTextFormFieldWithDropdown(
         initialValue: loadModel?.amount.toString(),
         hintText: ref.loc.workoutExerciseFormLoadHint,
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+        ],
         onChanged: (value) {
           if (value.isNotEmpty) {
             ref

@@ -135,14 +135,18 @@ class WorkoutFormController extends _$WorkoutFormController {
     );
   }
 
-  void updateReps(String workoutExerciseId, String text) {
+  void updateReps(String workoutExerciseId, int repNumber) {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
         workoutExercises: currentState.workoutExercises
             .map(
               (exercise) => exercise.id == workoutExerciseId
-                  ? exercise.copyWith(reps: RepsModel(count: int.parse(text)))
+                  ? exercise.copyWith(
+                      reps: RepsModel(
+                        count: repNumber,
+                      ),
+                    )
                   : exercise,
             )
             .toList(),
@@ -150,7 +154,7 @@ class WorkoutFormController extends _$WorkoutFormController {
     );
   }
 
-  void updateDuration(String workoutExerciseId, String seconds) {
+  void updateDuration(String workoutExerciseId, int seconds) {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
@@ -159,7 +163,7 @@ class WorkoutFormController extends _$WorkoutFormController {
               (exercise) => exercise.id == workoutExerciseId
                   ? exercise.copyWith(
                       duration: DurationModel(
-                        seconds: int.parse(seconds),
+                        seconds: seconds,
                         hours: exercise.duration?.hours ?? 0,
                         minutes: exercise.duration?.minutes ?? 0,
                       ),

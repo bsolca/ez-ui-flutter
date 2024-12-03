@@ -15,6 +15,9 @@
       "amount": 10,
       "unit": "lbs"
     },
+    "restTimeBetweenExercise": {
+      "seconds": 30
+    },
     "restTimeBetweenSets": {
       "seconds": 30
     },
