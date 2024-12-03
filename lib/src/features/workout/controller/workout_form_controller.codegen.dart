@@ -375,4 +375,19 @@ class WorkoutFormController extends _$WorkoutFormController {
       ),
     );
   }
+
+  void updateCustomNotes(String workoutExerciseId, String customNotes) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(customNotes: customNotes)
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
 }
