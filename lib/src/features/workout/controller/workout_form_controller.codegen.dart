@@ -159,7 +159,7 @@ class WorkoutFormController extends _$WorkoutFormController {
               (exercise) => exercise.id == workoutExerciseId
                   ? exercise.copyWith(
                       duration: DurationModel(
-                        seconds: double.parse(seconds),
+                        seconds: int.parse(seconds),
                         hours: exercise.duration?.hours ?? 0,
                         minutes: exercise.duration?.minutes ?? 0,
                       ),
@@ -231,6 +231,27 @@ class WorkoutFormController extends _$WorkoutFormController {
                         unit: WeightUnit.values.firstWhere(
                           (element) => element.name == value,
                         ),
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateRestTime(String workoutExerciseId, int restTime) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      restTimeBetweenExercise: DurationModel(
+                        seconds: restTime,
+                        minutes: 0,
+                        hours: 0,
                       ),
                     )
                   : exercise,

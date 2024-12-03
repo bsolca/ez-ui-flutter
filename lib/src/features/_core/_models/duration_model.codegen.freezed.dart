@@ -21,11 +21,11 @@ DurationModel _$DurationModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DurationModel {
   @DefaultDoubleConverter()
-  double get seconds => throw _privateConstructorUsedError;
+  int get seconds => throw _privateConstructorUsedError;
   @DefaultDoubleConverter()
-  double get minutes => throw _privateConstructorUsedError;
+  int get minutes => throw _privateConstructorUsedError;
   @DefaultDoubleConverter()
-  double get hours => throw _privateConstructorUsedError;
+  int get hours => throw _privateConstructorUsedError;
 
   /// Serializes this DurationModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,9 +44,9 @@ abstract class $DurationModelCopyWith<$Res> {
       _$DurationModelCopyWithImpl<$Res, DurationModel>;
   @useResult
   $Res call(
-      {@DefaultDoubleConverter() double seconds,
-      @DefaultDoubleConverter() double minutes,
-      @DefaultDoubleConverter() double hours});
+      {@DefaultDoubleConverter() int seconds,
+      @DefaultDoubleConverter() int minutes,
+      @DefaultDoubleConverter() int hours});
 }
 
 /// @nodoc
@@ -72,15 +72,15 @@ class _$DurationModelCopyWithImpl<$Res, $Val extends DurationModel>
       seconds: null == seconds
           ? _value.seconds
           : seconds // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       minutes: null == minutes
           ? _value.minutes
           : minutes // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       hours: null == hours
           ? _value.hours
           : hours // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ) as $Val);
   }
 }
@@ -94,9 +94,9 @@ abstract class _$$DurationModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DefaultDoubleConverter() double seconds,
-      @DefaultDoubleConverter() double minutes,
-      @DefaultDoubleConverter() double hours});
+      {@DefaultDoubleConverter() int seconds,
+      @DefaultDoubleConverter() int minutes,
+      @DefaultDoubleConverter() int hours});
 }
 
 /// @nodoc
@@ -120,15 +120,15 @@ class __$$DurationModelImplCopyWithImpl<$Res>
       seconds: null == seconds
           ? _value.seconds
           : seconds // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       minutes: null == minutes
           ? _value.minutes
           : minutes // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       hours: null == hours
           ? _value.hours
           : hours // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -146,13 +146,13 @@ class _$DurationModelImpl implements _DurationModel {
 
   @override
   @DefaultDoubleConverter()
-  final double seconds;
+  final int seconds;
   @override
   @DefaultDoubleConverter()
-  final double minutes;
+  final int minutes;
   @override
   @DefaultDoubleConverter()
-  final double hours;
+  final int hours;
 
   @override
   String toString() {
@@ -191,9 +191,9 @@ class _$DurationModelImpl implements _DurationModel {
 
 abstract class _DurationModel implements DurationModel {
   const factory _DurationModel(
-          {@DefaultDoubleConverter() required final double seconds,
-          @DefaultDoubleConverter() required final double minutes,
-          @DefaultDoubleConverter() required final double hours}) =
+          {@DefaultDoubleConverter() required final int seconds,
+          @DefaultDoubleConverter() required final int minutes,
+          @DefaultDoubleConverter() required final int hours}) =
       _$DurationModelImpl;
 
   factory _DurationModel.fromJson(Map<String, dynamic> json) =
@@ -201,13 +201,13 @@ abstract class _DurationModel implements DurationModel {
 
   @override
   @DefaultDoubleConverter()
-  double get seconds;
+  int get seconds;
   @override
   @DefaultDoubleConverter()
-  double get minutes;
+  int get minutes;
   @override
   @DefaultDoubleConverter()
-  double get hours;
+  int get hours;
 
   /// Create a copy of DurationModel
   /// with the given fields replaced by the non-null parameter values.

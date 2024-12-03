@@ -31,8 +31,8 @@ _$WorkoutExerciseModelImpl _$$WorkoutExerciseModelImplFromJson(
               (v) => v == null
                   ? null
                   : LoadModel.fromJson(v as Map<String, dynamic>)),
-          restTimeBetweenSets: $checkedConvert(
-              'restTimeBetweenSets',
+          restTimeBetweenExercise: $checkedConvert(
+              'restTimeBetweenExercise',
               (v) => v == null
                   ? null
                   : DurationModel.fromJson(v as Map<String, dynamic>)),
@@ -66,7 +66,7 @@ Map<String, dynamic> _$$WorkoutExerciseModelImplToJson(
       'reps': instance.reps?.toJson(),
       'duration': instance.duration?.toJson(),
       'load': instance.load?.toJson(),
-      'restTimeBetweenSets': instance.restTimeBetweenSets?.toJson(),
+      'restTimeBetweenExercise': instance.restTimeBetweenExercise?.toJson(),
       'tempo': instance.tempo?.toJson(),
       'distance': instance.distance?.toJson(),
       'intensity': instance.intensity?.toJson(),

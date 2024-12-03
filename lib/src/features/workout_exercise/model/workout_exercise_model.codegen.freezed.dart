@@ -26,7 +26,8 @@ mixin _$WorkoutExerciseModel {
   RepsModel? get reps => throw _privateConstructorUsedError;
   DurationModel? get duration => throw _privateConstructorUsedError;
   LoadModel? get load => throw _privateConstructorUsedError;
-  DurationModel? get restTimeBetweenSets => throw _privateConstructorUsedError;
+  DurationModel? get restTimeBetweenExercise =>
+      throw _privateConstructorUsedError;
   TempoModel? get tempo => throw _privateConstructorUsedError;
   DistanceModel? get distance => throw _privateConstructorUsedError;
   IntensityModel? get intensity => throw _privateConstructorUsedError;
@@ -55,7 +56,7 @@ abstract class $WorkoutExerciseModelCopyWith<$Res> {
       RepsModel? reps,
       DurationModel? duration,
       LoadModel? load,
-      DurationModel? restTimeBetweenSets,
+      DurationModel? restTimeBetweenExercise,
       TempoModel? tempo,
       DistanceModel? distance,
       IntensityModel? intensity,
@@ -64,7 +65,7 @@ abstract class $WorkoutExerciseModelCopyWith<$Res> {
   $RepsModelCopyWith<$Res>? get reps;
   $DurationModelCopyWith<$Res>? get duration;
   $LoadModelCopyWith<$Res>? get load;
-  $DurationModelCopyWith<$Res>? get restTimeBetweenSets;
+  $DurationModelCopyWith<$Res>? get restTimeBetweenExercise;
   $TempoModelCopyWith<$Res>? get tempo;
   $DistanceModelCopyWith<$Res>? get distance;
   $IntensityModelCopyWith<$Res>? get intensity;
@@ -92,7 +93,7 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
     Object? reps = freezed,
     Object? duration = freezed,
     Object? load = freezed,
-    Object? restTimeBetweenSets = freezed,
+    Object? restTimeBetweenExercise = freezed,
     Object? tempo = freezed,
     Object? distance = freezed,
     Object? intensity = freezed,
@@ -123,9 +124,9 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
           ? _value.load
           : load // ignore: cast_nullable_to_non_nullable
               as LoadModel?,
-      restTimeBetweenSets: freezed == restTimeBetweenSets
-          ? _value.restTimeBetweenSets
-          : restTimeBetweenSets // ignore: cast_nullable_to_non_nullable
+      restTimeBetweenExercise: freezed == restTimeBetweenExercise
+          ? _value.restTimeBetweenExercise
+          : restTimeBetweenExercise // ignore: cast_nullable_to_non_nullable
               as DurationModel?,
       tempo: freezed == tempo
           ? _value.tempo
@@ -192,13 +193,14 @@ class _$WorkoutExerciseModelCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationModelCopyWith<$Res>? get restTimeBetweenSets {
-    if (_value.restTimeBetweenSets == null) {
+  $DurationModelCopyWith<$Res>? get restTimeBetweenExercise {
+    if (_value.restTimeBetweenExercise == null) {
       return null;
     }
 
-    return $DurationModelCopyWith<$Res>(_value.restTimeBetweenSets!, (value) {
-      return _then(_value.copyWith(restTimeBetweenSets: value) as $Val);
+    return $DurationModelCopyWith<$Res>(_value.restTimeBetweenExercise!,
+        (value) {
+      return _then(_value.copyWith(restTimeBetweenExercise: value) as $Val);
     });
   }
 
@@ -260,7 +262,7 @@ abstract class _$$WorkoutExerciseModelImplCopyWith<$Res>
       RepsModel? reps,
       DurationModel? duration,
       LoadModel? load,
-      DurationModel? restTimeBetweenSets,
+      DurationModel? restTimeBetweenExercise,
       TempoModel? tempo,
       DistanceModel? distance,
       IntensityModel? intensity,
@@ -273,7 +275,7 @@ abstract class _$$WorkoutExerciseModelImplCopyWith<$Res>
   @override
   $LoadModelCopyWith<$Res>? get load;
   @override
-  $DurationModelCopyWith<$Res>? get restTimeBetweenSets;
+  $DurationModelCopyWith<$Res>? get restTimeBetweenExercise;
   @override
   $TempoModelCopyWith<$Res>? get tempo;
   @override
@@ -301,7 +303,7 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
     Object? reps = freezed,
     Object? duration = freezed,
     Object? load = freezed,
-    Object? restTimeBetweenSets = freezed,
+    Object? restTimeBetweenExercise = freezed,
     Object? tempo = freezed,
     Object? distance = freezed,
     Object? intensity = freezed,
@@ -332,9 +334,9 @@ class __$$WorkoutExerciseModelImplCopyWithImpl<$Res>
           ? _value.load
           : load // ignore: cast_nullable_to_non_nullable
               as LoadModel?,
-      restTimeBetweenSets: freezed == restTimeBetweenSets
-          ? _value.restTimeBetweenSets
-          : restTimeBetweenSets // ignore: cast_nullable_to_non_nullable
+      restTimeBetweenExercise: freezed == restTimeBetweenExercise
+          ? _value.restTimeBetweenExercise
+          : restTimeBetweenExercise // ignore: cast_nullable_to_non_nullable
               as DurationModel?,
       tempo: freezed == tempo
           ? _value.tempo
@@ -366,7 +368,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
       required this.reps,
       required this.duration,
       required this.load,
-      required this.restTimeBetweenSets,
+      required this.restTimeBetweenExercise,
       required this.tempo,
       required this.distance,
       required this.intensity,
@@ -388,7 +390,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
   @override
   final LoadModel? load;
   @override
-  final DurationModel? restTimeBetweenSets;
+  final DurationModel? restTimeBetweenExercise;
   @override
   final TempoModel? tempo;
   @override
@@ -400,7 +402,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
 
   @override
   String toString() {
-    return 'WorkoutExerciseModel(id: $id, stepId: $stepId, techniqueId: $techniqueId, reps: $reps, duration: $duration, load: $load, restTimeBetweenSets: $restTimeBetweenSets, tempo: $tempo, distance: $distance, intensity: $intensity, customNotes: $customNotes)';
+    return 'WorkoutExerciseModel(id: $id, stepId: $stepId, techniqueId: $techniqueId, reps: $reps, duration: $duration, load: $load, restTimeBetweenExercise: $restTimeBetweenExercise, tempo: $tempo, distance: $distance, intensity: $intensity, customNotes: $customNotes)';
   }
 
   @override
@@ -416,8 +418,9 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
             (identical(other.load, load) || other.load == load) &&
-            (identical(other.restTimeBetweenSets, restTimeBetweenSets) ||
-                other.restTimeBetweenSets == restTimeBetweenSets) &&
+            (identical(
+                    other.restTimeBetweenExercise, restTimeBetweenExercise) ||
+                other.restTimeBetweenExercise == restTimeBetweenExercise) &&
             (identical(other.tempo, tempo) || other.tempo == tempo) &&
             (identical(other.distance, distance) ||
                 other.distance == distance) &&
@@ -437,7 +440,7 @@ class _$WorkoutExerciseModelImpl implements _WorkoutExerciseModel {
       reps,
       duration,
       load,
-      restTimeBetweenSets,
+      restTimeBetweenExercise,
       tempo,
       distance,
       intensity,
@@ -469,7 +472,7 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
       required final RepsModel? reps,
       required final DurationModel? duration,
       required final LoadModel? load,
-      required final DurationModel? restTimeBetweenSets,
+      required final DurationModel? restTimeBetweenExercise,
       required final TempoModel? tempo,
       required final DistanceModel? distance,
       required final IntensityModel? intensity,
@@ -491,7 +494,7 @@ abstract class _WorkoutExerciseModel implements WorkoutExerciseModel {
   @override
   LoadModel? get load;
   @override
-  DurationModel? get restTimeBetweenSets;
+  DurationModel? get restTimeBetweenExercise;
   @override
   TempoModel? get tempo;
   @override

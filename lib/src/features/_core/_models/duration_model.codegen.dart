@@ -9,9 +9,9 @@ part 'duration_model.codegen.g.dart';
 class DurationModel with _$DurationModel {
   /// Duration model to specify time in seconds.
   const factory DurationModel({
-    @DefaultDoubleConverter() required double seconds,
-    @DefaultDoubleConverter() required double minutes,
-    @DefaultDoubleConverter() required double hours,
+    @DefaultDoubleConverter() required int seconds,
+    @DefaultDoubleConverter() required int minutes,
+    @DefaultDoubleConverter() required int hours,
   }) = _DurationModel;
 
   /// Creates a new duration model from a JSON map.
