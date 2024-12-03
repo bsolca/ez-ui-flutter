@@ -24,7 +24,7 @@ class WorkoutExerciseAddController extends _$WorkoutExerciseAddController {
     EzDialog.show<void>(
       builder: (context) {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: TechniqueList(
             onCellTap: (details, techniques) {
               if (details.rowColumnIndex.rowIndex > 0) {
@@ -96,6 +96,6 @@ class WorkoutExerciseAddController extends _$WorkoutExerciseAddController {
           },
         ),
       );
-    });
+    },);
   }
 }

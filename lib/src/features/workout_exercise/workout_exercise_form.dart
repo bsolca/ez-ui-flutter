@@ -2,8 +2,8 @@ import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exe
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_distance.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_duration.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_intensity.dart';
-import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_load.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_rest_time.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_tempo.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';

@@ -1,5 +1,5 @@
-import 'package:ez_fit_app/src/features/technique/technique_list.dart';
 import 'package:ez_fit_app/src/features/technique/model/technique_model.codegen.dart';
+import 'package:ez_fit_app/src/features/technique/technique_list.dart';
 import 'package:ez_fit_app/src/shared/ez_scaffold_body/ez_scaffold_body.dart';
 import 'package:ez_fit_app/src/utils/routing/go_router_provider.codegen.dart';
 import 'package:flutter/material.dart';
