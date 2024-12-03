@@ -32,45 +32,6 @@ class WorkoutExerciseForm extends ConsumerWidget {
       child: ListView(
         shrinkWrap: true,
         children: [
-          // Row(
-          //   children: [
-          //     EzDropdownButton(
-          //       menuWidth: 400,
-          //       text: 'Choose Type',
-          //       onSelected: (value) {
-          //         // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-          //         print('TESTY: Pressed on ${value}');
-          //       },
-          //       items: const [
-          //         EzDropdownItem(
-          //           value: 'cardio',
-          //           label: 'Cardio',
-          //           icon: Icons.directions_run,
-          //           isSelected: true,
-          //         ),
-          //         EzDropdownItem(
-          //           icon: Icons.fitness_center,
-          //           value: 'strength',
-          //           label: 'Strength',
-          //         ),
-          //         EzDropdownItem(value: 'other', label: 'Other'),
-          //       ],
-          //     ),
-          //     Spacer(),
-          //     EzDropdownButton(
-          //         onSelected: (value) {
-          //           // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-          //           print('TESTY: Pressed on ${value}');
-          //         },
-          //         menuWidth: 200,
-          //         text: 'Choose Type',
-          //         items: const [
-          //           EzDropdownItem(value: 'cardio', label: 'Cardio'),
-          //           EzDropdownItem(value: 'strength', label: 'Strength'),
-          //           EzDropdownItem(value: 'other', label: 'Other'),
-          //         ]),
-          //   ],
-          // ),
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
           WorkoutExerciseFormReps(
             key: ValueKey(workoutExerciseId),

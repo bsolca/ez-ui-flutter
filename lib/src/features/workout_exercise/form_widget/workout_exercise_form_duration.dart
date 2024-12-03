@@ -5,7 +5,6 @@ import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class WorkoutExerciseFormDuration extends ConsumerWidget {
   const WorkoutExerciseFormDuration({
@@ -36,34 +35,26 @@ class WorkoutExerciseFormDuration extends ConsumerWidget {
     );
 
     return EzFormItemLayout(
-      itemLabel: ref.loc.workoutExerciseFormDuration,
-      itemDescription: ref.loc.workoutExerciseFormDurationDescription,
-      child: durationModel != null
-          ? EzTextFormField(
-              initialValue: durationModel.seconds.toString(),
-              hintText: ref.loc.workoutExerciseFormDurationHint,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              onChanged: (value) {
-                final seconds = int.parse(value);
-                if (value.isNotEmpty) {
-                  ref
-                      .read(
-                        workoutFormControllerProvider(workoutId: workoutId)
-                            .notifier,
-                      )
-                      .updateDuration(workoutExerciseId, seconds);
-                }
-              },
-              keyboardType: TextInputType.number,
-            )
-          : Skeletonizer(
-              child: EzTextFormField(
-                hintText: ref.loc.workoutExerciseFormDurationHint,
-                keyboardType: TextInputType.number,
-              ),
-            ),
-    );
+        itemLabel: ref.loc.workoutExerciseFormDuration,
+        itemDescription: ref.loc.workoutExerciseFormDurationDescription,
+        child: EzTextFormField(
+          initialValue: durationModel?.seconds.toString(),
+          hintText: ref.loc.workoutExerciseFormDurationHint,
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly,
+          ],
+          onChanged: (value) {
+            final seconds = int.parse(value);
+            if (value.isNotEmpty) {
+              ref
+                  .read(
+                    workoutFormControllerProvider(workoutId: workoutId)
+                        .notifier,
+                  )
+                  .updateDuration(workoutExerciseId, seconds);
+            }
+          },
+          keyboardType: TextInputType.number,
+        ));
   }
 }
