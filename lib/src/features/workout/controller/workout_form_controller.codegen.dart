@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/_core/_models/distance_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/duration_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/load_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/reps_model.codegen.dart';
@@ -284,6 +285,47 @@ class WorkoutFormController extends _$WorkoutFormController {
                         concentric:
                             concentric ?? exercise.tempo?.concentric ?? 0,
                         pause: pause ?? exercise.tempo?.pause ?? 0,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateDistanceValue(String workoutExerciseId, double distance) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      distance: DistanceModel(
+                        value: distance,
+                        unit:
+                            exercise.distance?.unit ?? DistanceUnit.kilometers,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateDistanceUnit(String workoutExerciseId, DistanceUnit unit) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      distance: DistanceModel(
+                        value: exercise.distance?.value ?? 0,
+                        unit: unit,
                       ),
                     )
                   : exercise,

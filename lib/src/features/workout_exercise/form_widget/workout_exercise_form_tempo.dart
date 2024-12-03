@@ -1,4 +1,3 @@
-import 'package:ez_fit_app/src/features/_core/auth/auth_view.dart';
 import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';

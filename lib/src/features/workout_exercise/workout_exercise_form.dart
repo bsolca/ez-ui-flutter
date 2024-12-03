@@ -1,3 +1,4 @@
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_distance.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_duration.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_load.dart';
@@ -90,18 +91,10 @@ class WorkoutExerciseForm extends ConsumerWidget {
             workoutId: workoutId,
             workoutExerciseId: workoutExerciseId,
           ),
-          // EzFormItemLayout(
-          //   itemLabel: ref.loc.workoutExerciseFormDistance,
-          //   itemDescription: ref.loc.workoutExerciseFormDistanceDescription,
-          //   child: Skeletonizer(
-          //     enabled: loadingData,
-          //     child: EzTextFormField(
-          //       hintText: ref.loc.workoutExerciseFormDistanceHint,
-          //       controller: distanceController,
-          //       keyboardType: TextInputType.number,
-          //     ),
-          //   ),
-          // ),
+          WorkoutExerciseFormDistance(
+            workoutId: workoutId,
+            workoutExerciseId: workoutExerciseId,
+          ),
           // EzFormItemLayout(
           //   itemLabel: ref.loc.workoutExerciseFormIntensity,
           //   itemDescription: ref.loc.workoutExerciseFormIntensityDescription,

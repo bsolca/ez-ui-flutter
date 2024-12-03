@@ -53,7 +53,7 @@ class WorkoutExerciseFormLoad extends ConsumerWidget {
                 .updateLoadAmount(workoutExerciseId, value);
           }
         },
-        dropdownText: loadModel?.unit.name ?? 'Select',
+        dropdownText: loadModel?.unit.name ?? ref.loc.select,
         menuWidth: 200,
         keyboardType: TextInputType.number,
         items: [
