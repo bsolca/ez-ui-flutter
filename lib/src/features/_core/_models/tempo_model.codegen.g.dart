@@ -13,11 +13,11 @@ _$TempoModelImpl _$$TempoModelImplFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$TempoModelImpl(
           eccentric: $checkedConvert(
-              'eccentric', (v) => const DefaultDoubleConverter().fromJson(v)),
+              'eccentric', (v) => const DefaultIntConverter().fromJson(v)),
           pause: $checkedConvert(
-              'pause', (v) => const DefaultDoubleConverter().fromJson(v)),
+              'pause', (v) => const DefaultIntConverter().fromJson(v)),
           concentric: $checkedConvert(
-              'concentric', (v) => const DefaultDoubleConverter().fromJson(v)),
+              'concentric', (v) => const DefaultIntConverter().fromJson(v)),
         );
         return val;
       },
@@ -25,7 +25,7 @@ _$TempoModelImpl _$$TempoModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$TempoModelImplToJson(_$TempoModelImpl instance) =>
     <String, dynamic>{
-      'eccentric': const DefaultDoubleConverter().toJson(instance.eccentric),
-      'pause': const DefaultDoubleConverter().toJson(instance.pause),
-      'concentric': const DefaultDoubleConverter().toJson(instance.concentric),
+      'eccentric': const DefaultIntConverter().toJson(instance.eccentric),
+      'pause': const DefaultIntConverter().toJson(instance.pause),
+      'concentric': const DefaultIntConverter().toJson(instance.concentric),
     };

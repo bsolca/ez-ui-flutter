@@ -2,6 +2,7 @@ import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exe
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_reps.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_load.dart';
 import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_rest_time.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/form_widget/workout_exercise_form_tempo.dart';
 import 'package:ez_fit_app/src/shared/ez_header/ez_header.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:ez_fit_app/src/utils/extension/list_extension.dart';
@@ -85,29 +86,10 @@ class WorkoutExerciseForm extends ConsumerWidget {
             workoutId: workoutId,
             workoutExerciseId: workoutExerciseId,
           ),
-          // EzFormItemLayout(
-          //   itemLabel: ref.loc.workoutExerciseFormRestTime,
-          //   itemDescription: ref.loc.workoutExerciseFormRestTimeDescription,
-          //   child: Skeletonizer(
-          //     enabled: loadingData,
-          //     child: EzTextFormField(
-          //       hintText: ref.loc.workoutExerciseFormRestTimeHint,
-          //       controller: restTimeController,
-          //       keyboardType: TextInputType.number,
-          //     ),
-          //   ),
-          // ),
-          // EzFormItemLayout(
-          //   itemLabel: ref.loc.workoutExerciseFormTempo,
-          //   itemDescription: ref.loc.workoutExerciseFormTempoDescription,
-          //   child: Skeletonizer(
-          //     enabled: loadingData,
-          //     child: EzTextFormField(
-          //       hintText: ref.loc.workoutExerciseFormTempoHint,
-          //       controller: tempoController,
-          //     ),
-          //   ),
-          // ),
+          WorkoutExerciseFormTempo(
+            workoutId: workoutId,
+            workoutExerciseId: workoutExerciseId,
+          ),
           // EzFormItemLayout(
           //   itemLabel: ref.loc.workoutExerciseFormDistance,
           //   itemDescription: ref.loc.workoutExerciseFormDistanceDescription,

@@ -21,16 +21,16 @@ TempoModel _$TempoModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TempoModel {
   /// Duration for the eccentric (lowering) phase
-  @DefaultDoubleConverter()
-  double get eccentric => throw _privateConstructorUsedError;
+  @DefaultIntConverter()
+  int get eccentric => throw _privateConstructorUsedError;
 
   /// Duration for the concentric (lifting) phase
-  @DefaultDoubleConverter()
-  double get pause => throw _privateConstructorUsedError;
+  @DefaultIntConverter()
+  int get pause => throw _privateConstructorUsedError;
 
   /// Duration for the concentric (lifting) phase
-  @DefaultDoubleConverter()
-  double get concentric => throw _privateConstructorUsedError;
+  @DefaultIntConverter()
+  int get concentric => throw _privateConstructorUsedError;
 
   /// Serializes this TempoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,9 +49,9 @@ abstract class $TempoModelCopyWith<$Res> {
       _$TempoModelCopyWithImpl<$Res, TempoModel>;
   @useResult
   $Res call(
-      {@DefaultDoubleConverter() double eccentric,
-      @DefaultDoubleConverter() double pause,
-      @DefaultDoubleConverter() double concentric});
+      {@DefaultIntConverter() int eccentric,
+      @DefaultIntConverter() int pause,
+      @DefaultIntConverter() int concentric});
 }
 
 /// @nodoc
@@ -77,15 +77,15 @@ class _$TempoModelCopyWithImpl<$Res, $Val extends TempoModel>
       eccentric: null == eccentric
           ? _value.eccentric
           : eccentric // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       pause: null == pause
           ? _value.pause
           : pause // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       concentric: null == concentric
           ? _value.concentric
           : concentric // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ) as $Val);
   }
 }
@@ -99,9 +99,9 @@ abstract class _$$TempoModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@DefaultDoubleConverter() double eccentric,
-      @DefaultDoubleConverter() double pause,
-      @DefaultDoubleConverter() double concentric});
+      {@DefaultIntConverter() int eccentric,
+      @DefaultIntConverter() int pause,
+      @DefaultIntConverter() int concentric});
 }
 
 /// @nodoc
@@ -125,15 +125,15 @@ class __$$TempoModelImplCopyWithImpl<$Res>
       eccentric: null == eccentric
           ? _value.eccentric
           : eccentric // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       pause: null == pause
           ? _value.pause
           : pause // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       concentric: null == concentric
           ? _value.concentric
           : concentric // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -142,27 +142,27 @@ class __$$TempoModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TempoModelImpl implements _TempoModel {
   const _$TempoModelImpl(
-      {@DefaultDoubleConverter() required this.eccentric,
-      @DefaultDoubleConverter() required this.pause,
-      @DefaultDoubleConverter() required this.concentric});
+      {@DefaultIntConverter() required this.eccentric,
+      @DefaultIntConverter() required this.pause,
+      @DefaultIntConverter() required this.concentric});
 
   factory _$TempoModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TempoModelImplFromJson(json);
 
   /// Duration for the eccentric (lowering) phase
   @override
-  @DefaultDoubleConverter()
-  final double eccentric;
+  @DefaultIntConverter()
+  final int eccentric;
 
   /// Duration for the concentric (lifting) phase
   @override
-  @DefaultDoubleConverter()
-  final double pause;
+  @DefaultIntConverter()
+  final int pause;
 
   /// Duration for the concentric (lifting) phase
   @override
-  @DefaultDoubleConverter()
-  final double concentric;
+  @DefaultIntConverter()
+  final int concentric;
 
   @override
   String toString() {
@@ -203,28 +203,27 @@ class _$TempoModelImpl implements _TempoModel {
 
 abstract class _TempoModel implements TempoModel {
   const factory _TempoModel(
-          {@DefaultDoubleConverter() required final double eccentric,
-          @DefaultDoubleConverter() required final double pause,
-          @DefaultDoubleConverter() required final double concentric}) =
-      _$TempoModelImpl;
+      {@DefaultIntConverter() required final int eccentric,
+      @DefaultIntConverter() required final int pause,
+      @DefaultIntConverter() required final int concentric}) = _$TempoModelImpl;
 
   factory _TempoModel.fromJson(Map<String, dynamic> json) =
       _$TempoModelImpl.fromJson;
 
   /// Duration for the eccentric (lowering) phase
   @override
-  @DefaultDoubleConverter()
-  double get eccentric;
+  @DefaultIntConverter()
+  int get eccentric;
 
   /// Duration for the concentric (lifting) phase
   @override
-  @DefaultDoubleConverter()
-  double get pause;
+  @DefaultIntConverter()
+  int get pause;
 
   /// Duration for the concentric (lifting) phase
   @override
-  @DefaultDoubleConverter()
-  double get concentric;
+  @DefaultIntConverter()
+  int get concentric;
 
   /// Create a copy of TempoModel
   /// with the given fields replaced by the non-null parameter values.

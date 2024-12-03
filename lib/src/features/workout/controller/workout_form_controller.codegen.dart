@@ -1,6 +1,7 @@
 import 'package:ez_fit_app/src/features/_core/_models/duration_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/load_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/reps_model.codegen.dart';
+import 'package:ez_fit_app/src/features/_core/_models/tempo_model.codegen.dart';
 import 'package:ez_fit_app/src/features/_core/_models/weight_unit_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/model/workout_form_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/service/workout_service.codegen.dart';
@@ -256,6 +257,33 @@ class WorkoutFormController extends _$WorkoutFormController {
                         seconds: restTime,
                         minutes: 0,
                         hours: 0,
+                      ),
+                    )
+                  : exercise,
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  void updateTempo({
+    required String workoutExerciseId,
+    int? eccentric,
+    int? concentric,
+    int? pause,
+  }) {
+    final currentState = state.value ?? _initialState;
+    state = AsyncValue.data(
+      currentState.copyWith(
+        workoutExercises: currentState.workoutExercises
+            .map(
+              (exercise) => exercise.id == workoutExerciseId
+                  ? exercise.copyWith(
+                      tempo: TempoModel(
+                        eccentric: eccentric ?? exercise.tempo?.eccentric ?? 0,
+                        concentric:
+                            concentric ?? exercise.tempo?.concentric ?? 0,
+                        pause: pause ?? exercise.tempo?.pause ?? 0,
                       ),
                     )
                   : exercise,
