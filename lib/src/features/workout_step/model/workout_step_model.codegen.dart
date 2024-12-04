@@ -18,6 +18,16 @@ class WorkoutStepModel with _$WorkoutStepModel {
     required DurationModel? restTime,
   }) = _WorkoutStepModel;
 
+  /// Named constructor to create an empty workout step model with default values.
+  factory WorkoutStepModel.empty() =>  const WorkoutStepModel(
+    id: '',
+    workoutId: '',
+    name: '',
+    description: null,
+    setCount: null,
+    restTime: null,
+  );
+
   /// Creates a new workout step model from a JSON map.
   factory WorkoutStepModel.fromJson(Map<String, dynamic> json) =>
       _$WorkoutStepModelFromJson(json);

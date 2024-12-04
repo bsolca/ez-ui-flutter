@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/widgets/workout_step_tile.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,10 @@ class WorkoutStepsList extends ConsumerWidget {
       itemBuilder: (context, index) {
         final workoutStep = ref.watch(
           workoutStepsControllerProvider(workoutId).select(
-            (value) => value[index],
+            (value) {
+              if (value.length <= index) return WorkoutStepModel.empty();
+              return value[index];
+            }
           ),
         );
         return Padding(

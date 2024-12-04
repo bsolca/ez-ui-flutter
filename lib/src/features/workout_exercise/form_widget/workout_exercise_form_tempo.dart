@@ -1,4 +1,5 @@
 import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
+import 'package:ez_fit_app/src/features/workout_exercise/model/workout_exercise_model.codegen.dart';
 import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
 import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:ez_fit_app/src/utils/constants/ez_const_layout.dart';
@@ -25,7 +26,11 @@ class WorkoutExerciseFormTempo extends ConsumerWidget {
         (value) {
           return value.when(
             data: (v) => v.workoutExercises
-                .firstWhere((e) => e.id == workoutExerciseId)
+                .firstWhere(
+                  (e) => e.id == workoutExerciseId,
+              orElse: WorkoutExerciseModel.empty,
+
+            )
                 .tempo,
             error: (error, stackTrace) => throw Exception(error.toString()),
             loading: () => null,

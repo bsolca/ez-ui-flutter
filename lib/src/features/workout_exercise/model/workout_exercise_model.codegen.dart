@@ -49,6 +49,21 @@ class WorkoutExerciseModel with _$WorkoutExerciseModel {
     );
   }
 
+  /// Empty instance of [WorkoutExerciseModel].
+  factory WorkoutExerciseModel.empty() => const WorkoutExerciseModel(
+        id: '',
+        stepId: '',
+        techniqueId: '',
+        reps: null,
+        duration: null,
+        load: null,
+        restTimeBetweenExercise: null,
+        tempo: null,
+        distance: null,
+        intensity: null,
+        customNotes: null,
+      );
+
   /// Creates a new workout exercise model from a JSON map.
   factory WorkoutExerciseModel.fromJson(Map<String, dynamic> json) =>
       _$WorkoutExerciseModelFromJson(json);
