@@ -14,7 +14,7 @@ class WorkoutScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Eagerly initialize providers by watching it. // todo check if needed
+    // Eagerly initialize providers by watching it.
     ref.watch(workoutStepsControllerProvider(workoutId));
 
     return EzScaffoldBody(
