@@ -52,7 +52,7 @@ class EzHeader extends ConsumerWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              softWrap: true,
+              overflow: TextOverflow.ellipsis,
               style: _size == _HeaderSize.displayMedium ? medium : small,
               text,
             ),

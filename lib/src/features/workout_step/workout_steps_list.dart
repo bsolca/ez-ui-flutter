@@ -22,6 +22,9 @@ class WorkoutStepsList extends ConsumerWidget {
       ),
     );
 
+    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+    print('TESTY: List rebuild');
+
     if (stepsLength == 0) return const Text('No steps available');
     return ListView.builder(
       shrinkWrap: true,
@@ -35,6 +38,8 @@ class WorkoutStepsList extends ConsumerWidget {
             }
           ),
         );
+        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+        print('TESTY: Builder rebuild');
         return Padding(
           padding: index != stepsLength - 1
               ? const EdgeInsets.only(
@@ -42,6 +47,7 @@ class WorkoutStepsList extends ConsumerWidget {
                 )
               : EdgeInsets.zero,
           child: WorkoutStepTile(
+            key: ValueKey(workoutStep.id),
             workoutId: workoutId,
             workoutStep: workoutStep,
           ),

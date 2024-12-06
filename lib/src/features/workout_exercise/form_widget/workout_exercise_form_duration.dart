@@ -37,26 +37,26 @@ class WorkoutExerciseFormDuration extends ConsumerWidget {
     );
 
     return EzFormItemLayout(
-        itemLabel: ref.loc.workoutExerciseFormDuration,
-        itemDescription: ref.loc.workoutExerciseFormDurationDescription,
-        child: EzTextFormField(
-          initialValue: durationModel?.seconds.toString(),
-          hintText: ref.loc.workoutExerciseFormDurationHint,
-          inputFormatters: [
-            FilteringTextInputFormatter.digitsOnly,
-          ],
-          onChanged: (value) {
-            final seconds = int.parse(value);
-            if (value.isNotEmpty) {
-              ref
-                  .read(
-                    workoutFormControllerProvider(workoutId: workoutId)
-                        .notifier,
-                  )
-                  .updateDuration(workoutExerciseId, seconds);
-            }
-          },
-          keyboardType: TextInputType.number,
-        ));
+      itemLabel: ref.loc.workoutExerciseFormDuration,
+      itemDescription: ref.loc.workoutExerciseFormDurationDescription,
+      child: EzTextFormField(
+        initialValue: durationModel?.seconds.toString(),
+        hintText: ref.loc.workoutExerciseFormDurationHint,
+        inputFormatters: [
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+        onChanged: (value) {
+          final seconds = int.parse(value);
+          if (value.isNotEmpty) {
+            ref
+                .read(
+                  workoutFormControllerProvider(workoutId: workoutId).notifier,
+                )
+                .updateDuration(workoutExerciseId, seconds);
+          }
+        },
+        keyboardType: TextInputType.number,
+      ),
+    );
   }
 }

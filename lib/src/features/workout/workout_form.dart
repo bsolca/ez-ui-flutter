@@ -28,37 +28,12 @@ class WorkoutForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = GlobalKey<FormState>();
-    ref.listen(workoutFormControllerProvider(workoutId: workoutId),
-        (previous, next) {
-      if (next.value != null) {
-        final prevName = previous?.value?.workout.name;
-        final nextName = next.value?.workout.name;
 
-        if (prevName != nextName) {
-          // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-          print('TESTY: Was: $prevName, Now: $nextName');
-        }
-        next.value?.workoutExercises.forEach((workoutExercise) {
-          final nextCount = workoutExercise.reps?.count;
-          final prevCount = previous?.value?.workoutExercises
-              .firstWhere(
-                (e) => e.id == workoutExercise.id,
-              )
-              .reps
-              ?.count;
-          if (nextCount != prevCount) {
-            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-            print('TESTY: Was: $prevCount, Now: $nextCount');
-          }
-        });
-      }
-    });
     return Column(
       children: [
         Row(
           children: [
-            EzHeader.displayMedium(ref.loc.workoutFormHeader),
-            const Spacer(),
+            Expanded(child: EzHeader.displayMedium(ref.loc.workoutFormHeader)),
             WorkoutFormSaveButton(
               formKey: formKey,
               workoutId: workoutId,

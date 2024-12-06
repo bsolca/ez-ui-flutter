@@ -53,6 +53,7 @@ class EzFormItemLayout extends StatelessWidget {
       },
       compact: (_, children) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: children!.withSpaceBetween(
             height: EzConstLayout.spacerSmall,

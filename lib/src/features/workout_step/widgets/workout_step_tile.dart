@@ -1,7 +1,10 @@
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_list.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
+import 'package:ez_fit_app/src/shared/ez_dialog/ez_dialog.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
+import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
+import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -49,16 +52,54 @@ class WorkoutStepTile extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () {
-              // Add edit functionality, e.g., open a dialog to edit the step
-              ref
-                  .read(
-                    workoutStepsControllerProvider(workoutId).notifier,
-                  )
-                  .editStep(
-                    workoutStep.copyWith(
-                      name: 'Updated Name',
-                    ), // Example update
+              EzDialog.show<void>(
+                builder: (context) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      EzFormItemLayout(
+                        itemLabel: 'Name',
+                        itemDescription: 'Name of the step',
+                        child: EzTextFormField(
+                          initialValue: workoutStep.name,
+                          hintText: 'Hint text todo',
+                          onChanged: (value) {
+                            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                            print('TESTY: new value: $value');
+                          },
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                      EzFormItemLayout(
+                        itemLabel: 'Description',
+                        itemDescription: 'Description',
+                        child: EzTextFormField(
+                          initialValue: workoutStep.name,
+                          hintText: 'Hint text todo',
+                          onChanged: (value) {
+                            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                            print('TESTY: new value: $value');
+                          },
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                      EzFormItemLayout(
+                        itemLabel: 'Count (optional, default: 1)',
+                        itemDescription: 'Number of time to repeat the set',
+                        child: EzTextFormField(
+                          initialValue: workoutStep.name,
+                          hintText: '1',
+                          onChanged: (value) {
+                            // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
+                            print('TESTY: new value: $value');
+                          },
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                    ],
                   );
+                },
+              );
             },
           ),
           IconButton(
