@@ -47,7 +47,7 @@ class EzDropdownButton<T> extends StatefulWidget {
     required this.items,
     required this.menuWidth,
     this.onSelected,
-  }) :  borderRadius = null,
+  })  : borderRadius = null,
         _type = EzButtonType.link;
 
   final String text;
@@ -66,7 +66,7 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return EzDisable(
+    final old = EzDisable(
       disabled: widget.onSelected == null,
       child: GestureDetector(
         onTap: () {
@@ -79,23 +79,22 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
             final approxMiddleWidth = screenSize.width / 2 * coefficient;
             final approxMiddleHeight = screenSize.height / 2 * coefficient;
 
+            final renderBox = context.findRenderObject() as RenderBox?;
+            final globalPosition = renderBox?.localToGlobal(Offset.zero);
+
+            final shouldMoveUp = (globalPosition?.dy ?? 0) > approxMiddleHeight;
+            final shouldMoveLeft = (globalPosition?.dx ?? 0) > approxMiddleWidth;
+
             SmartDialog.showAttach<void>(
               maskColor: Colors.transparent,
               targetContext: context,
-              adjustBuilder: (param) {
-                final shouldMoveUp = param.selfOffset.dy > approxMiddleHeight;
-                final shouldMoveLeft = param.selfOffset.dx > approxMiddleWidth;
-                return AttachAdjustParam(
-                  alignment: shouldMoveLeft
-                      ? shouldMoveUp
-                          ? Alignment.topRight
-                          : Alignment.bottomRight
-                      : shouldMoveUp
-                          ? Alignment.topLeft
-                          : Alignment.bottomLeft,
-                  builder: (_) => param.selfWidget,
-                );
-              },
+              alignment: shouldMoveLeft
+                  ? shouldMoveUp
+                      ? Alignment.topRight
+                      : Alignment.bottomRight
+                  : shouldMoveUp
+                      ? Alignment.topLeft
+                      : Alignment.bottomLeft,
               targetBuilder: (targetOffset, targetSize) {
                 final shouldMoveLeft = targetOffset.dx > approxMiddleWidth;
                 final shouldMoveUp = targetOffset.dy > approxMiddleHeight;
@@ -145,6 +144,8 @@ class _EzDropdownButtonState<T> extends State<EzDropdownButton<T>> {
         ),
       ),
     );
+
+    return old;
   }
 
   MouseCursor _getMouseCursor() {
