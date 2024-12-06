@@ -22,37 +22,34 @@ class WorkoutStepsList extends ConsumerWidget {
       ),
     );
 
-    // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-    print('TESTY: List rebuild');
-
     if (stepsLength == 0) return const Text('No steps available');
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: stepsLength,
-      itemBuilder: (context, index) {
-        final workoutStep = ref.watch(
-          workoutStepsControllerProvider(workoutId).select(
-            (value) {
-              if (value.length <= index) return WorkoutStepModel.empty();
-              return value[index];
-            }
-          ),
-        );
-        // TODO: REMOVE TESTY DEBUG LOG BEFORE COMMIT
-        print('TESTY: Builder rebuild');
-        return Padding(
-          padding: index != stepsLength - 1
-              ? const EdgeInsets.only(
-                  bottom: EzConstLayout.spacerSmall,
-                )
-              : EdgeInsets.zero,
-          child: WorkoutStepTile(
-            key: ValueKey(workoutStep.id),
-            workoutId: workoutId,
-            workoutStep: workoutStep,
-          ),
-        );
-      },
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(
+        stepsLength,
+            (index) {
+          final workoutStep = ref.watch(
+            workoutStepsControllerProvider(workoutId).select(
+                  (value) {
+                if (value.length <= index) return WorkoutStepModel.empty();
+                return value[index];
+              },
+            ),
+          );
+          return Padding(
+            padding: index != stepsLength - 1
+                ? const EdgeInsets.only(
+              bottom: EzConstLayout.spacerSmall,
+            )
+                : EdgeInsets.zero,
+            child: WorkoutStepTile(
+              key: ValueKey(workoutStep.id),
+              workoutId: workoutId,
+              workoutStep: workoutStep,
+            ),
+          );
+        },
+      ),
     );
   }
 }

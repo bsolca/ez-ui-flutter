@@ -45,18 +45,20 @@ class WorkoutExerciseList extends ConsumerWidget {
       );
     }
 
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: exercisesLength,
-      itemBuilder: (context, index) {
-        return WorkoutExerciseListItem(
-          index: index,
-          workoutId: workoutId,
-          stepId: stepId,
-          tileBgColor: tileBgColor,
-          bgChildrenColor: bgChildrenColor,
-        );
-      },
-    );
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(
+        exercisesLength,
+            (index) {
+          return WorkoutExerciseListItem(
+            index: index,
+            workoutId: workoutId,
+            stepId: stepId,
+            tileBgColor: tileBgColor,
+            bgChildrenColor: bgChildrenColor,
+          );
+        },
+      ),
+    );;
   }
 }

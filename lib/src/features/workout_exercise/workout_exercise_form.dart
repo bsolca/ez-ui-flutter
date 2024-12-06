@@ -29,8 +29,7 @@ class WorkoutExerciseForm extends ConsumerWidget {
 
     return Form(
       key: formKey,
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
         children: [
           EzHeader.displayMedium(ref.loc.workoutExerciseFormHeader),
           WorkoutExerciseFormReps(
