@@ -12,7 +12,6 @@ import 'package:ez_fit_app/src/shared/ez_sidebar_layout/ez_sidebar_layout_consts
 import 'package:ez_fit_app/src/utils/extension/widget_ref_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
 /// A [EzSidebar] widget that displays a customizable navigation sidebar.
 class EzSidebar extends ConsumerWidget {
@@ -83,36 +82,32 @@ class EzSidebar extends ConsumerWidget {
             child: ClipRect(
               child: Stack(
                 children: [
-                  WebSmoothScroll(
+                  CustomScrollView(
                     controller: scrollController,
-                    child: CustomScrollView(
-                      controller: scrollController,
-                      physics: const NeverScrollableScrollPhysics(),
-                      slivers: [
-                        EzSidebarItemsList(
-                          items: items,
-                          currentIndex: currentIndex,
-                          onItemTap: onItemTap,
-                          updateItemHeight: updateItemHeight,
+                    slivers: [
+                      EzSidebarItemsList(
+                        items: items,
+                        currentIndex: currentIndex,
+                        onItemTap: onItemTap,
+                        updateItemHeight: updateItemHeight,
+                      ),
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: footerItems
+                              .map(
+                                (e) => EzSidebarFooterItem(
+                                  text: e.text,
+                                  icon: e.icon,
+                                  svgPath: e.svgPath,
+                                  onTap: e.onTap,
+                                ),
+                              )
+                              .toList(),
                         ),
-                        SliverFillRemaining(
-                          hasScrollBody: false,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: footerItems
-                                .map(
-                                  (e) => EzSidebarFooterItem(
-                                    text: e.text,
-                                    icon: e.icon,
-                                    svgPath: e.svgPath,
-                                    onTap: e.onTap,
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   EzSidebarIndicatorWidget(
                     scrollController: scrollController,
