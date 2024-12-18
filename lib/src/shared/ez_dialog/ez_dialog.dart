@@ -10,18 +10,21 @@ class EzDialog {
     SmartDialog.show<T>(
       animationType: SmartAnimationType.fade,
       animationTime: EzConstValue.animationDuration,
+      alignment: Alignment.center,
       builder: (context) {
         return Container(
           margin: const EdgeInsets.all(50),
           constraints: const BoxConstraints(
             maxWidth: EzConstLayout.maxWidthCompact,
           ),
-          decoration: ShapeDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainer,
-            shape: EzConstLayout.getShapeBorder(),
+            decoration: ShapeDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainer,
+              shape: EzConstLayout.getShapeBorder(),
+            ),
+          child: Padding(
+            padding: const EdgeInsets.all(48),
+            child: builder(context),
           ),
-          alignment: Alignment.center,
-          child: builder(context),
         );
       },
     );
