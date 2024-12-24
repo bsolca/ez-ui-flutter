@@ -1,4 +1,3 @@
-import 'package:ez_fit_app/src/features/workout/controller/workout_form_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_delete_button.dart';
 import 'package:ez_fit_app/src/features/workout/widgets/workout_form_save_button.dart';
 import 'package:ez_fit_app/src/features/workout/workout_form_description.dart';
@@ -28,6 +27,7 @@ class WorkoutForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formKey = GlobalKey<FormState>();
+    final scrollController = ScrollController();
 
     return Column(
       children: [
@@ -46,6 +46,7 @@ class WorkoutForm extends ConsumerWidget {
             key: formKey,
             child: ListView(
               shrinkWrap: true,
+              controller: scrollController,
               children: [
                 WorkoutFormName(workoutId: workoutId),
                 WorkoutFormTags(workoutId: workoutId),
