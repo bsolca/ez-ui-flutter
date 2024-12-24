@@ -13,8 +13,22 @@ class WorkoutStepController extends _$WorkoutStepController {
   }) {
     return ref.watch(
       workoutStepsControllerProvider(workoutId).select(
-        (steps) => steps.firstWhere((step) => step.id == workoutStepId),
+        (steps) => steps.firstWhere(
+          (step) => step.id == workoutStepId,
+          orElse: WorkoutStepModel.empty,
+        ),
       ),
     );
+  }
+
+  /// Save the step to the form.
+  void saveStep(WorkoutStepModel step) {
+    ref
+        .read(
+          workoutStepsControllerProvider(
+            step.workoutId,
+          ).notifier,
+        )
+        .editStep(step);
   }
 }

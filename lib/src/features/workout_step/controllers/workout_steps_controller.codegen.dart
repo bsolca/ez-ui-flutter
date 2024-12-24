@@ -21,8 +21,12 @@ class WorkoutStepsController extends _$WorkoutStepsController {
   }
 
   /// Add a new step
-  Future<void> addStep(WorkoutStepModel step) async {
-    state = [...state, step];
+  void addStep(WorkoutStepModel step) {
+    ref.read(
+      workoutFormControllerProvider(
+        workoutId: workoutId,
+      ).notifier,
+    ).addStep(step);
   }
 
   /// Create a new exercise in a step
@@ -40,12 +44,20 @@ class WorkoutStepsController extends _$WorkoutStepsController {
   }
 
   /// Edit an existing step
-  Future<void> editStep(WorkoutStepModel updatedStep) async {
-    throw UnimplementedError();
+  void editStep(WorkoutStepModel updatedStep) {
+    ref.read(
+      workoutFormControllerProvider(
+        workoutId: workoutId,
+      ).notifier,
+    ).updateStep(updatedStep);
   }
 
   /// Remove a step
   void removeStep(String workoutStepId) {
-    state = state.where((step) => step.id != workoutStepId).toList();
+    ref.read(
+      workoutFormControllerProvider(
+        workoutId: workoutId,
+      ).notifier,
+    ).removeStep(workoutStepId);
   }
 }

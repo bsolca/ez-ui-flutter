@@ -70,7 +70,10 @@ class WorkoutFormController extends _$WorkoutFormController {
     final currentState = state.value ?? _initialState;
     state = AsyncValue.data(
       currentState.copyWith(
-        workoutSteps: currentState.workoutSteps..add(workoutStep),
+        workoutSteps: [
+          ...currentState.workoutSteps,
+          workoutStep,
+        ],
       ),
     );
   }

@@ -1,12 +1,9 @@
 import 'package:ez_fit_app/src/features/workout_exercise/workout_exercise_list.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_step_controller.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/controllers/workout_steps_controller.codegen.dart';
-import 'package:ez_fit_app/src/features/workout_step/model/workout_step_model.codegen.dart';
 import 'package:ez_fit_app/src/features/workout_step/widgets/workout_step_tile_form.dart';
 import 'package:ez_fit_app/src/shared/ez_dialog/ez_dialog.dart';
 import 'package:ez_fit_app/src/shared/ez_expansion_tile/ez_expansion_tile.dart';
-import 'package:ez_fit_app/src/shared/ez_form/ez_form_item_layout/ez_form_item_layout.dart';
-import 'package:ez_fit_app/src/shared/ez_text_form_field/ez_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
